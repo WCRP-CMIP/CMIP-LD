@@ -8,9 +8,9 @@
             "mip:consortium"
         ],
         "@explicit": true,
-        "consortium:cmip_acronym": "",
-        "institution:cmip_acronym": "",
-        "consortium:description": "",
+        "consortium:cmip-acronym": "",
+        "institution:cmip-acronym": "",
+        "consortium:name": "",
         "institution:name": "",
         "institution:ror": "",
         "consortium:members": {

@@ -13,7 +13,7 @@ find "$@" -type f -name "*.json" | while read -r file; do
                     .key = "@id",
                     .value |= (if type == "string" then ascii_downcase | gsub("_"; "-") else . end)
                 else
-                    .key |= ascii_downcase
+                    .key |= (if type == "string" then ascii_downcase | gsub("_"; "-") else . end)
                 end
             )
         else

@@ -2,8 +2,17 @@
 import json
 from pyld import jsonld
 import jmespath
-import re
+import re,os
 
+
+
+def get_frame(base,file):
+    '''Get frame from saved collections'''
+    # sanitise path
+    path = os.path.normpath(f'{base}/{file}.json')
+    with open(__file__.replace('__init__.py','examples/')+path,'r') as f:
+        return json.load(f)
+    
 
 def direct(func):
     def wrapper(*args, **kwargs):
@@ -23,7 +32,7 @@ def direct(func):
 
 
 class Frame:
-    def __init__(self,source,frame):
+    def __init__(self,source,frame,nograph=True):
         
         # if isinstance(source, list):
         #     source = {"@context":{},"@graph":source}
@@ -33,7 +42,10 @@ class Frame:
         self.source = source
         self.frame = frame
         
-        self.data = self.graph_only(jsonld.frame(source, frame))
+        if nograph:
+            self.data = self.graph_only(jsonld.frame(source, frame))
+        else:
+            self.data = jsonld.frame(source, frame)
         
     def __str__(self):
         return json.dumps(self.data, indent=2)
@@ -61,6 +73,7 @@ class Frame:
             self.__getattribute__(function)
         
         self.end
+        return self
         
     # @staticmethod
     @property
