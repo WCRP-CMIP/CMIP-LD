@@ -8,17 +8,27 @@
             "@explicit": true
         }
     ],
-    "source-id:model-component": [
+
+    "source-id:license": {
+
+        "@explicit": false
+    },
+
+    "source-id:model-component": 
         {
             "model-component:name": "",
             "model-component:realm": {
                 "realm:name": "",
                 "@explicit": true
             },
-            "source-id:license": {
-                "kind": {}
+            "model_component:description": "",
+            "model_component:native-nominal-resolution": {
+                "native-nominal-resolution:value": "",
+                "@explicit": false,
+                "@expanded": true
             },
             "@explicit": true
+
         }
-    ]
+    
 }

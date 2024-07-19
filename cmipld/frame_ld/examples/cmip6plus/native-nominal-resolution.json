@@ -1,0 +1,9 @@
+{
+    "@type": 
+        "mip:model-component",
+    
+    "model-component:nominal-resolution": {
+       
+    },
+    "@explicit": true
+}

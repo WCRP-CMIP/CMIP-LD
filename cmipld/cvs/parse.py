@@ -3,7 +3,7 @@ def name_description(data,key='name',value='description'):
     return dict([(x[key],x[value]) for x in data])
 
 def key_only(data,key='name'):
-    return [x[key] for x in data]
+    return list(set([x[key] for x in data]))
 
 
 ##################################
@@ -34,6 +34,44 @@ def cmip6plus_descriptors (data):
     del data['index']
     return data
 
+def cmip6plus_source_id (data):
+    sid = {}
+    for source in data:
+        
+        source['organisation-id'] = source['organisation-id'].get('cmip-acronym','')
+        
+        source['license'].update(source['license'].get('kind',{}))
+        
+        del source['license']['kind']
+        del source['license']['conditions']
+        
+        source['source'] = f"{source['name']} ({source['release-year']}): \n  "
+       
+       
+        #    combine the model-components
+        for i in source['model-component']:
+            try:
+                source['source'] += f"{i['name']} ({i['realm']})\n  "
+            except:
+                print('Missing',i, source['name'])
+                
+                
+            
+        del source['model-component']
+        
+        source['source_id'] = source['name']
+        
+        sid[source['source_id']] = source
+        
+    return sid
+        
+def cmip6plus_native_nominal_resolution (data):
+    print(data[0])
+    return list(set([f"{x['nominal-resolution'].get('value',x['nominal-resolution'])}{x['nominal-resolution'].get('unit',{}).get('si','km')}" for x in data]))
+    
+
+def cmip6plus_sub_experiment_id (data):
+    return name_description(data,'sub-experiment-id','description')
 
 
 
