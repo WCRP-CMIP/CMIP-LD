@@ -1,6 +1,11 @@
 {
+    "@context": {
+        "@vocab": "activity-id",
+        "@context": {
+            "@extend": true
+        }
+    },
     "@type": "mip:activity-id",
-        "activity-id:name": "",
-        "@explicit": true
-    
+    "activity-id:name": "",
+    "@explicit": true
 }

@@ -1,4 +1,11 @@
 {
+    "@context": {
+    "@vocab": "institution",
+    "institution:location": {"@context":{
+      "@extend": true
+    }
+    }
+  },
     "@type": [
         "mip:source-id"
     ],

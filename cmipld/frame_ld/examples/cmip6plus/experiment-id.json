@@ -1,5 +1,15 @@
 {
+    "@context": {
+        "@vocab": "experiment-id",
+        "experiment-id:activity-id": {
+          "@extend": true
+        },
+        "experiment-id:sub-experiment-id": {
+          "@extend": true
+        }
+      },
     "@type": "mip:experiment-id",
+    "experiment-id": "",
     "experiment-id:activity-id": {
         "activity-id:name": {},
         "@explicit": true
@@ -13,5 +23,13 @@
             "source-type:name": "",
             "@explicit": true
         }
+    },
+    "experiment-id:sub-experiment-id": {
+        "sub-experiment-id:name": {},
+        "@explicit": true
+    },
+    "experiment-id:parent":{
+        "@embed":"@always"
     }
+    
 }

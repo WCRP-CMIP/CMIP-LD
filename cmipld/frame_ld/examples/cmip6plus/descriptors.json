@@ -1,5 +1,6 @@
 {
     "@id": "cmip6plus:core/descriptors",
+    "@context":{"@extend":true},
     "@type": 
         "mip:core-descriptors"
     ,

@@ -1,4 +1,6 @@
 
+from collections import OrderedDict
+
 def name_description(data,key='name',value='description'):
     return dict([(x[key],x[value]) for x in data])
 
@@ -27,39 +29,40 @@ def mip_cmor_tables_grid_label (data):
 ##################################
 
 def cmip6plus_organisations (data):
-    data = [d['organisation-id'] for d in data]
-    return name_description(data,key='cmip-acronym',value='name')
+    data = [d['organisation_id'] for d in data]
+    return name_description(data,key='cmip_acronym',value='name')
+
 def cmip6plus_descriptors (data):
     data.update(data['index'])
     del data['index']
+    data['DRS'] = data['drs']
+    del data['drs']
     return data
 
 def cmip6plus_source_id (data):
-    sid = {}
-    for source in data:
-        
-        source['organisation-id'] = source['organisation-id'].get('cmip-acronym','')
+    sid = OrderedDict()
+    for source in sorted(data,key=lambda x: x['source_id']):
+        # ideally organisation 
+        source['institution_id'] = source['organisation_id'].get('cmip_acronym','')
         
         source['license'].update(source['license'].get('kind',{}))
         
         del source['license']['kind']
         del source['license']['conditions']
         
-        source['source'] = f"{source['name']} ({source['release-year']}): \n  "
+        source['source'] = f"{source['source_id']} ({source['release_year']}): \n  "
        
        
         #    combine the model-components
-        for i in source['model-component']:
+        for i in source['model_component']:
             try:
-                source['source'] += f"{i['name']} ({i['realm']})\n  "
+                source['source'] += f"{i['source_id']} ({i['realm']})\n  "
             except:
-                print('Missing',i, source['name'])
+                print('Missing',i, source['source_id'])
                 
                 
             
-        del source['model-component']
-        
-        source['source_id'] = source['name']
+        del source['model_component']
         
         sid[source['source_id']] = source
         
@@ -67,12 +70,23 @@ def cmip6plus_source_id (data):
         
 def cmip6plus_native_nominal_resolution (data):
     print(data[0])
-    return list(set([f"{x['nominal-resolution'].get('value',x['nominal-resolution'])}{x['nominal-resolution'].get('unit',{}).get('si','km')}" for x in data]))
+    return list(set([f"{x['nominal_resolution'].get('value',x['nominal_resolution'])}{x['nominal_resolution'].get('unit',{}).get('si','km')}" for x in data]))
     
 
 def cmip6plus_sub_experiment_id (data):
-    return name_description(data,'sub-experiment-id','description')
+    return name_description(data,'sub_experiment_id','description')
 
+
+def cmip6plus_experiment_id (data):
+    eid = OrderedDict()
+    for e in sorted(data,key=lambda x: x['experiment_id']):
+        for i in ['additional_allowed','required']:
+            if isinstance(e['model_components'][i],str):
+ 
+                e['model_components'][i] = [e['model_components'][i]]
+        eid[e['experiment_id']] = e
+    
+    return eid
 
 
 
@@ -83,9 +97,10 @@ local_globals = globals()
 
 async def process(prefix,file,data=None):
     name = f'{prefix}_{file}'.replace('-','_')
+    # prepare for use. 
     
-    data.clean()
-    # print(list(local_globals)
+    data.clean_cv
+    data.print 
     if name in local_globals:
         data.data = local_globals[name](data.data) 
     else:

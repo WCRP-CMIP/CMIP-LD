@@ -1,34 +1,56 @@
 {
+    "@context": {
+        "@vocab": "source-id",
+        "source-id:activity-participation": {
+            "@context": {
+                "@extend": true
+            }
+        },
+        "source-id:model-component": {
+            "model-component:nominal-resolution": {
+                "model-native-nominal-resolution:cf:unit": {
+                    "@context": {
+                        "@extend": true
+                    }
+                }
+            },
+            "model-component:realm": {
+                "@context": {
+                    "@extend": true
+                }
+            }
+        },
+        "source-id:organisation-id": {
+            "@context": {
+                "@extend": true
+            }
+        }
+    },
     "@type": [
         "mip:source-id"
     ],
+    "source-id": "",
     "source-id:activity-participation": [
         {
             "activity-id:name": "",
             "@explicit": true
         }
     ],
-
     "source-id:license": {
-
         "@explicit": false
     },
-
-    "source-id:model-component": 
-        {
-            "model-component:name": "",
-            "model-component:realm": {
-                "realm:name": "",
-                "@explicit": true
-            },
-            "model_component:description": "",
-            "model_component:native-nominal-resolution": {
-                "native-nominal-resolution:value": "",
-                "@explicit": false,
-                "@expanded": true
-            },
+    "source-id:model-component": {
+        "model-component:name": "",
+        "model-component:realm": {
+            "realm:name": "",
             "@explicit": true
-
-        }
-    
+        },
+        "model_component:description": "",
+        "model_component:native-nominal-resolution": {
+            "native-nominal-resolution:value": "",
+            "@explicit": false,
+            "@expanded": true
+        },
+        "@explicit": true
+    }
 }

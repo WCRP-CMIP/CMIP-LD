@@ -20,8 +20,8 @@ async def main():
     # latest = await CMIPFileUtils.load_latest(CMIPFileUtils)
     
     # manual read since we are in development. 
-    mip= await CMIPFileUtils.read_file_fs('/Users/daniel.ellis/WIPwork/mip-cmor-tables/JSONLD/scripts/compiled/graph_data.json')
-    cmip6plus =  await CMIPFileUtils.read_file_fs('/Users/daniel.ellis/WIPwork/CMIP6Plus_CVs/JSONLD/scripts/compiled/graph_data.json')
+    mip= await CMIPFileUtils.read_file_fs('/Users/daniel.ellis/WIPwork/mip-cmor-tables/compiled/graph_data.json')
+    cmip6plus =  await CMIPFileUtils.read_file_fs('/Users/daniel.ellis/WIPwork/CMIP6Plus_CVs/ compiled/graph_data.json')
     
     latest = sum([mip,cmip6plus],[])
 
@@ -64,13 +64,14 @@ async def main():
     ### CMIP6Plus #####
     ##################################
     # organisations
-    for key in 'organisations source-id native-nominal-resolution activity-id experiment-id sub-experiment-id'.split():
+    # native-nominal-resolution
+    for key in 'organisations source-id activity-id experiment-id sub-experiment-id'.split():
         
         # run the frame. 
         frame = get_frame('cmip6plus',key)
         
         # get results using frame
-        data = Frame(latest,frame).clean()
+        data = Frame(latest,frame)
         
         # any additional processing?
         add_new = await process('cmip6plus',key,data)
@@ -86,16 +87,11 @@ async def main():
     ### fix the file #####
     ##################################
 
-    def rename_keys(d):
-        # rename dictionary keys from '-' to '_'
-        if isinstance(d, dict): return {k.replace('-', '_'): rename_keys(v) for k, v in d.items()}
-        elif isinstance(d, list): return [rename_keys(item) for item in d]
-        else: return d
         
-    CV = OrderedDict(sorted((k, (v)) for k, v in rename_keys(CV).items()))
+    CV = OrderedDict(sorted((k, (v)) for k, v in CV.items()))
     
     with open('CV.json','w') as f:
-            json.dump(CV,f,indent=4)    
+            json.dump(dict(CV = CV),f,indent=4)    
         
         
 

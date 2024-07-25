@@ -42,7 +42,10 @@ class Frame:
         self.source = source
         self.frame = frame
         
-        if nograph:
+        # if "@embed" not in frame: # make sure each instance is embedded. 
+        #     self.frame["@embed"] = "@always"
+        
+        if nograph: # usually used if framing an id directly
             self.data = self.graph_only(jsonld.frame(source, frame))
         else:
             self.data = jsonld.frame(source, frame)
@@ -74,6 +77,10 @@ class Frame:
         
         self.end
         return self
+    
+    @property
+    def clean_cv(self):
+        return self.clean(['missing','untag','lower'])
         
     # @staticmethod
     @property
@@ -107,6 +114,18 @@ class Frame:
     @direct
     def flatten(self):
         self.json_string = re.sub(r'{\s*"([^"]*?)":\s*"(.+)"\s*}', r'"\2"', self.json_string)
+        return self
+
+    @property 
+    @direct
+    def lower(self):
+        self.json_string = re.sub(r'(?<=")([^"]*?)-(.*?)(?=":)', lambda m: m.group(0).replace('-', '_') , self.json_string)
+        return self
+
+    @property 
+    @direct
+    def missing(self):
+        self.json_string = re.sub(r'\{\s*"@id"\s*:\s*"([^"]+)"\s*\}', r'"Missing Link: \1"' , self.json_string)
         return self
 
     @staticmethod
