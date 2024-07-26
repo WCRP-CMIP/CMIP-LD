@@ -80,7 +80,7 @@ class Frame:
     
     @property
     def clean_cv(self):
-        return self.clean(['missing','untag','lower'])
+        return self.clean(['rmld','missing','untag','lower','flatten'])
         
     # @staticmethod
     @property

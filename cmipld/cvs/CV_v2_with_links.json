@@ -12,24 +12,52 @@
             "filename_template": "<variable_id>_<table_id>_<source_id>_<experiment_id >_<member_id>_<grid_label>[_<time_range>].nc"
         },
         "activity_id": [
-            "CMIP",
-            "LESFMIP"
+            {
+                "@id": "cmip6plus:activity/cmip",
+                "@type": "mip:activity-id",
+                "name": "CMIP"
+            },
+            {
+                "@id": "cmip6plus:activity/lesfmip",
+                "@type": "mip:activity-id",
+                "name": "LESFMIP"
+            }
         ],
         "conventions": "^CF-1.7 CMIP-6.[0-2,5]\\( UGRID-1.0\\)\\{0,\\}$",
         "experiment_id": {
             "1pctCO2": {
-                "activity_id": "CMIP",
+                "@id": "cmip6plus:experiment/id/1pctco2",
+                "@type": "mip:experiment-id",
+                "activity_id": {
+                    "@id": "cmip6plus:activity/cmip",
+                    "@type": "mip:activity-id",
+                    "name": "CMIP"
+                },
                 "description": "DECK: 1pctCO2",
                 "experiment": "1 percent per year increase in CO2",
                 "model_components": {
                     "additional_allowed": [
-                        "AER",
-                        "CHEM",
-                        "BGC"
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/aer",
+                            "@type": "mip:source-type",
+                            "name": "AER"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/chem",
+                            "@type": "mip:source-type",
+                            "name": "CHEM"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/bgc",
+                            "@type": "mip:source-type",
+                            "name": "BGC"
+                        }
                     ],
-                    "required": [
-                        "AOGCM"
-                    ]
+                    "required": {
+                        "@id": "mip-cmor-tables:auxillary/source-type/aogcm",
+                        "@type": "mip:source-type",
+                        "name": "AOGCM"
+                    }
                 },
                 "experiment_id": "1pctCO2",
                 "parameters": {
@@ -39,28 +67,50 @@
                 },
                 "parent": {
                     "activity_id": {
+                        "@id": "cmip6plus:activity/cmip",
+                        "@type": "mip:activity-id",
                         "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
                         "name": "CMIP",
                         "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
                     },
-                    "experiment_id": {}
+                    "experiment_id": "Missing Link: cmip6:experiment/id/picontrol"
                 },
                 "sub_experiment_id": null,
                 "tier": 1
             },
             "abrupt-4xCO2": {
-                "activity_id": "CMIP",
+                "@id": "cmip6plus:experiment/id/abrupt-4xco2",
+                "@type": "mip:experiment-id",
+                "activity_id": {
+                    "@id": "cmip6plus:activity/cmip",
+                    "@type": "mip:activity-id",
+                    "name": "CMIP"
+                },
                 "description": "DECK: abrupt-4xCO2",
                 "experiment": "abrupt quadrupling of CO2",
                 "model_components": {
                     "additional_allowed": [
-                        "AER",
-                        "CHEM",
-                        "BGC"
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/aer",
+                            "@type": "mip:source-type",
+                            "name": "AER"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/chem",
+                            "@type": "mip:source-type",
+                            "name": "CHEM"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/bgc",
+                            "@type": "mip:source-type",
+                            "name": "BGC"
+                        }
                     ],
-                    "required": [
-                        "AOGCM"
-                    ]
+                    "required": {
+                        "@id": "mip-cmor-tables:auxillary/source-type/aogcm",
+                        "@type": "mip:source-type",
+                        "name": "AOGCM"
+                    }
                 },
                 "experiment_id": "abrupt-4xCO2",
                 "parameters": {
@@ -70,28 +120,50 @@
                 },
                 "parent": {
                     "activity_id": {
+                        "@id": "cmip6plus:activity/cmip",
+                        "@type": "mip:activity-id",
                         "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
                         "name": "CMIP",
                         "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
                     },
-                    "experiment_id": {}
+                    "experiment_id": "Missing Link: cmip6:experiment/id/picontrol"
                 },
                 "sub_experiment_id": null,
                 "tier": 1
             },
             "amip": {
-                "activity_id": "CMIP",
+                "@id": "cmip6plus:experiment/id/amip",
+                "@type": "mip:experiment-id",
+                "activity_id": {
+                    "@id": "cmip6plus:activity/cmip",
+                    "@type": "mip:activity-id",
+                    "name": "CMIP"
+                },
                 "description": "DECK: AMIP",
                 "experiment": "AMIP",
                 "model_components": {
                     "additional_allowed": [
-                        "AER",
-                        "CHEM",
-                        "BGC"
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/aer",
+                            "@type": "mip:source-type",
+                            "name": "AER"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/chem",
+                            "@type": "mip:source-type",
+                            "name": "CHEM"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/bgc",
+                            "@type": "mip:source-type",
+                            "name": "BGC"
+                        }
                     ],
-                    "required": [
-                        "AGCM"
-                    ]
+                    "required": {
+                        "@id": "mip-cmor-tables:auxillary/source-type/agcm",
+                        "@type": "mip:source-type",
+                        "name": "AGCM"
+                    }
                 },
                 "experiment_id": "amip",
                 "parameters": {
@@ -100,24 +172,46 @@
                     "start": 1979
                 },
                 "parent": {
-                    "activity_id": {},
-                    "experiment_id": {}
+                    "activity_id": "Missing Link: cmip6plus:activity/no parent",
+                    "experiment_id": "Missing Link: cmip6:experiment/id/no parent"
                 },
                 "sub_experiment_id": null,
                 "tier": 1
             },
             "esm-hist": {
-                "activity_id": "CMIP",
+                "@id": "cmip6plus:experiment/id/esm-hist",
+                "@type": "mip:experiment-id",
+                "activity_id": {
+                    "@id": "cmip6plus:activity/cmip",
+                    "@type": "mip:activity-id",
+                    "name": "CMIP"
+                },
                 "description": "CMIP6 historical (CO2 emission-driven)",
                 "experiment": "all-forcing simulation of the recent past with atmospheric CO2 concentration calculated (CO2 emission-driven)",
                 "model_components": {
                     "additional_allowed": [
-                        "AER",
-                        "CHEM"
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/aer",
+                            "@type": "mip:source-type",
+                            "name": "AER"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/chem",
+                            "@type": "mip:source-type",
+                            "name": "CHEM"
+                        }
                     ],
                     "required": [
-                        "AOGCM",
-                        "BGC"
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/aogcm",
+                            "@type": "mip:source-type",
+                            "name": "AOGCM"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/bgc",
+                            "@type": "mip:source-type",
+                            "name": "BGC"
+                        }
                     ]
                 },
                 "experiment_id": "esm-hist",
@@ -128,27 +222,51 @@
                 },
                 "parent": {
                     "activity_id": {
+                        "@id": "cmip6plus:activity/cmip",
+                        "@type": "mip:activity-id",
                         "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
                         "name": "CMIP",
                         "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
                     },
-                    "experiment_id": {}
+                    "experiment_id": "Missing Link: cmip6:experiment/id/esm-picontrol"
                 },
                 "sub_experiment_id": null,
                 "tier": 1
             },
             "esm-piControl": {
-                "activity_id": "CMIP",
+                "@id": "cmip6plus:experiment/id/esm-picontrol",
+                "@type": "mip:experiment-id",
+                "activity_id": {
+                    "@id": "cmip6plus:activity/cmip",
+                    "@type": "mip:activity-id",
+                    "name": "CMIP"
+                },
                 "description": "DECK: control (emission-driven)",
                 "experiment": "pre-industrial control simulation with preindustrial CO2 emissions defined (CO2 emission-driven)",
                 "model_components": {
                     "additional_allowed": [
-                        "AER",
-                        "CHEM"
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/aer",
+                            "@type": "mip:source-type",
+                            "name": "AER"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/chem",
+                            "@type": "mip:source-type",
+                            "name": "CHEM"
+                        }
                     ],
                     "required": [
-                        "AOGCM",
-                        "BGC"
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/aogcm",
+                            "@type": "mip:source-type",
+                            "name": "AOGCM"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/bgc",
+                            "@type": "mip:source-type",
+                            "name": "BGC"
+                        }
                     ]
                 },
                 "experiment_id": "esm-piControl",
@@ -159,27 +277,51 @@
                 },
                 "parent": {
                     "activity_id": {
+                        "@id": "cmip6plus:activity/cmip",
+                        "@type": "mip:activity-id",
                         "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
                         "name": "CMIP",
                         "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
                     },
-                    "experiment_id": {}
+                    "experiment_id": "Missing Link: cmip6:experiment/id/esm-picontrol-spinup"
                 },
                 "sub_experiment_id": null,
                 "tier": 1
             },
             "esm-piControl-spinup": {
-                "activity_id": "CMIP",
+                "@id": "cmip6plus:experiment/id/esm-picontrol-spinup",
+                "@type": "mip:experiment-id",
+                "activity_id": {
+                    "@id": "cmip6plus:activity/cmip",
+                    "@type": "mip:activity-id",
+                    "name": "CMIP"
+                },
                 "description": "DECK: spin-up portion of the control (emission-driven)",
                 "experiment": "pre-industrial control simulation with CO2 concentration calculated (spin-up)",
                 "model_components": {
                     "additional_allowed": [
-                        "AER",
-                        "CHEM"
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/aer",
+                            "@type": "mip:source-type",
+                            "name": "AER"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/chem",
+                            "@type": "mip:source-type",
+                            "name": "CHEM"
+                        }
                     ],
                     "required": [
-                        "AOGCM",
-                        "BGC"
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/aogcm",
+                            "@type": "mip:source-type",
+                            "name": "AOGCM"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/bgc",
+                            "@type": "mip:source-type",
+                            "name": "BGC"
+                        }
                     ]
                 },
                 "experiment_id": "esm-piControl-spinup",
@@ -189,25 +331,45 @@
                     "start": -999
                 },
                 "parent": {
-                    "activity_id": {},
-                    "experiment_id": {}
+                    "activity_id": "Missing Link: cmip6plus:activity/no parent",
+                    "experiment_id": "Missing Link: cmip6:experiment/id/no parent"
                 },
                 "sub_experiment_id": null,
                 "tier": 2
             },
             "fut-Aer": {
-                "activity_id": "LESFMIP",
+                "@id": "cmip6plus:experiment/id/fut-aer",
+                "@type": "mip:experiment-id",
+                "activity_id": {
+                    "@id": "cmip6plus:activity/lesfmip",
+                    "@type": "mip:activity-id",
+                    "name": "LESFMIP"
+                },
                 "description": "As hist-aer but with updated forcings",
                 "experiment": "future anthropogenic aerosols-only run",
                 "model_components": {
                     "additional_allowed": [
-                        "AER",
-                        "CHEM",
-                        "BGC"
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/aer",
+                            "@type": "mip:source-type",
+                            "name": "AER"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/chem",
+                            "@type": "mip:source-type",
+                            "name": "CHEM"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/bgc",
+                            "@type": "mip:source-type",
+                            "name": "BGC"
+                        }
                     ],
-                    "required": [
-                        "AOGCM"
-                    ]
+                    "required": {
+                        "@id": "mip-cmor-tables:auxillary/source-type/aogcm",
+                        "@type": "mip:source-type",
+                        "name": "AOGCM"
+                    }
                 },
                 "experiment_id": "fut-Aer",
                 "parameters": {
@@ -217,28 +379,50 @@
                 },
                 "parent": {
                     "activity_id": {
+                        "@id": "cmip6plus:activity/lesfmip",
+                        "@type": "mip:activity-id",
                         "description": "The Large Ensemble Single Forcing Model Intercomparison Project",
                         "name": "LESFMIP",
                         "url": "https://www.frontiersin.org/articles/10.3389/fclim.2022.955414/full"
                     },
-                    "experiment_id": {}
+                    "experiment_id": "Missing Link: cmip6:experiment/id/hist-aer"
                 },
                 "sub_experiment_id": null,
                 "tier": 2
             },
             "fut-GHG": {
-                "activity_id": "LESFMIP",
+                "@id": "cmip6plus:experiment/id/fut-ghg",
+                "@type": "mip:experiment-id",
+                "activity_id": {
+                    "@id": "cmip6plus:activity/lesfmip",
+                    "@type": "mip:activity-id",
+                    "name": "LESFMIP"
+                },
                 "description": "As hist-GHG but with updated forcings",
                 "experiment": "future well-mixed GHG-only run",
                 "model_components": {
                     "additional_allowed": [
-                        "AER",
-                        "CHEM",
-                        "BGC"
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/aer",
+                            "@type": "mip:source-type",
+                            "name": "AER"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/chem",
+                            "@type": "mip:source-type",
+                            "name": "CHEM"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/bgc",
+                            "@type": "mip:source-type",
+                            "name": "BGC"
+                        }
                     ],
-                    "required": [
-                        "AOGCM"
-                    ]
+                    "required": {
+                        "@id": "mip-cmor-tables:auxillary/source-type/aogcm",
+                        "@type": "mip:source-type",
+                        "name": "AOGCM"
+                    }
                 },
                 "experiment_id": "fut-GHG",
                 "parameters": {
@@ -248,28 +432,50 @@
                 },
                 "parent": {
                     "activity_id": {
+                        "@id": "cmip6plus:activity/lesfmip",
+                        "@type": "mip:activity-id",
                         "description": "The Large Ensemble Single Forcing Model Intercomparison Project",
                         "name": "LESFMIP",
                         "url": "https://www.frontiersin.org/articles/10.3389/fclim.2022.955414/full"
                     },
-                    "experiment_id": {}
+                    "experiment_id": "Missing Link: cmip6:experiment/id/hist-ghg"
                 },
                 "sub_experiment_id": null,
                 "tier": 2
             },
             "fut-lu": {
-                "activity_id": "LESFMIP",
+                "@id": "cmip6plus:experiment/id/fut-lu",
+                "@type": "mip:experiment-id",
+                "activity_id": {
+                    "@id": "cmip6plus:activity/lesfmip",
+                    "@type": "mip:activity-id",
+                    "name": "LESFMIP"
+                },
                 "description": "As hist-lu but with updated forcings",
                 "experiment": "Single forcing projections",
                 "model_components": {
                     "additional_allowed": [
-                        "AER",
-                        "CHEM",
-                        "BGC"
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/aer",
+                            "@type": "mip:source-type",
+                            "name": "AER"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/chem",
+                            "@type": "mip:source-type",
+                            "name": "CHEM"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/bgc",
+                            "@type": "mip:source-type",
+                            "name": "BGC"
+                        }
                     ],
-                    "required": [
-                        "AOGCM"
-                    ]
+                    "required": {
+                        "@id": "mip-cmor-tables:auxillary/source-type/aogcm",
+                        "@type": "mip:source-type",
+                        "name": "AOGCM"
+                    }
                 },
                 "experiment_id": "fut-lu",
                 "parameters": {
@@ -279,28 +485,50 @@
                 },
                 "parent": {
                     "activity_id": {
+                        "@id": "cmip6plus:activity/cmip",
+                        "@type": "mip:activity-id",
                         "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
                         "name": "CMIP",
                         "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
                     },
-                    "experiment_id": {}
+                    "experiment_id": "Missing Link: cmip6:experiment/id/picontrol"
                 },
                 "sub_experiment_id": null,
                 "tier": 2
             },
             "fut-sol": {
-                "activity_id": "LESFMIP",
+                "@id": "cmip6plus:experiment/id/fut-sol",
+                "@type": "mip:experiment-id",
+                "activity_id": {
+                    "@id": "cmip6plus:activity/lesfmip",
+                    "@type": "mip:activity-id",
+                    "name": "LESFMIP"
+                },
                 "description": "As hist-sol but with updated forcings",
                 "experiment": "future solar-only run",
                 "model_components": {
                     "additional_allowed": [
-                        "AER",
-                        "CHEM",
-                        "BGC"
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/aer",
+                            "@type": "mip:source-type",
+                            "name": "AER"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/chem",
+                            "@type": "mip:source-type",
+                            "name": "CHEM"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/bgc",
+                            "@type": "mip:source-type",
+                            "name": "BGC"
+                        }
                     ],
-                    "required": [
-                        "AOGCM"
-                    ]
+                    "required": {
+                        "@id": "mip-cmor-tables:auxillary/source-type/aogcm",
+                        "@type": "mip:source-type",
+                        "name": "AOGCM"
+                    }
                 },
                 "experiment_id": "fut-sol",
                 "parameters": {
@@ -310,28 +538,50 @@
                 },
                 "parent": {
                     "activity_id": {
+                        "@id": "cmip6plus:activity/lesfmip",
+                        "@type": "mip:activity-id",
                         "description": "The Large Ensemble Single Forcing Model Intercomparison Project",
                         "name": "LESFMIP",
                         "url": "https://www.frontiersin.org/articles/10.3389/fclim.2022.955414/full"
                     },
-                    "experiment_id": {}
+                    "experiment_id": "Missing Link: cmip6:experiment/id/hist-sol"
                 },
                 "sub_experiment_id": null,
                 "tier": 2
             },
             "fut-totalO3": {
-                "activity_id": "LESFMIP",
+                "@id": "cmip6plus:experiment/id/fut-totalo3",
+                "@type": "mip:experiment-id",
+                "activity_id": {
+                    "@id": "cmip6plus:activity/lesfmip",
+                    "@type": "mip:activity-id",
+                    "name": "LESFMIP"
+                },
                 "description": "As hist-totalO3 but with updated forcings",
                 "experiment": "future total ozone-only run",
                 "model_components": {
                     "additional_allowed": [
-                        "AER",
-                        "CHEM",
-                        "BGC"
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/aer",
+                            "@type": "mip:source-type",
+                            "name": "AER"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/chem",
+                            "@type": "mip:source-type",
+                            "name": "CHEM"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/bgc",
+                            "@type": "mip:source-type",
+                            "name": "BGC"
+                        }
                     ],
-                    "required": [
-                        "AOGCM"
-                    ]
+                    "required": {
+                        "@id": "mip-cmor-tables:auxillary/source-type/aogcm",
+                        "@type": "mip:source-type",
+                        "name": "AOGCM"
+                    }
                 },
                 "experiment_id": "fut-totalO3",
                 "parameters": {
@@ -341,28 +591,50 @@
                 },
                 "parent": {
                     "activity_id": {
+                        "@id": "cmip6plus:activity/lesfmip",
+                        "@type": "mip:activity-id",
                         "description": "The Large Ensemble Single Forcing Model Intercomparison Project",
                         "name": "LESFMIP",
                         "url": "https://www.frontiersin.org/articles/10.3389/fclim.2022.955414/full"
                     },
-                    "experiment_id": {}
+                    "experiment_id": "Missing Link: cmip6:experiment/id/hist-totalo3"
                 },
                 "sub_experiment_id": null,
                 "tier": 2
             },
             "fut-volc": {
-                "activity_id": "LESFMIP",
+                "@id": "cmip6plus:experiment/id/fut-volc",
+                "@type": "mip:experiment-id",
+                "activity_id": {
+                    "@id": "cmip6plus:activity/lesfmip",
+                    "@type": "mip:activity-id",
+                    "name": "LESFMIP"
+                },
                 "description": "As hist-volc but with updated forcings",
                 "experiment": "future volcanic-only run",
                 "model_components": {
                     "additional_allowed": [
-                        "AER",
-                        "CHEM",
-                        "BGC"
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/aer",
+                            "@type": "mip:source-type",
+                            "name": "AER"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/chem",
+                            "@type": "mip:source-type",
+                            "name": "CHEM"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/bgc",
+                            "@type": "mip:source-type",
+                            "name": "BGC"
+                        }
                     ],
-                    "required": [
-                        "AOGCM"
-                    ]
+                    "required": {
+                        "@id": "mip-cmor-tables:auxillary/source-type/aogcm",
+                        "@type": "mip:source-type",
+                        "name": "AOGCM"
+                    }
                 },
                 "experiment_id": "fut-volc",
                 "parameters": {
@@ -372,28 +644,50 @@
                 },
                 "parent": {
                     "activity_id": {
+                        "@id": "cmip6plus:activity/lesfmip",
+                        "@type": "mip:activity-id",
                         "description": "The Large Ensemble Single Forcing Model Intercomparison Project",
                         "name": "LESFMIP",
                         "url": "https://www.frontiersin.org/articles/10.3389/fclim.2022.955414/full"
                     },
-                    "experiment_id": {}
+                    "experiment_id": "Missing Link: cmip6:experiment/id/hist-volc"
                 },
                 "sub_experiment_id": null,
                 "tier": 2
             },
             "hist-GHG": {
-                "activity_id": "LESFMIP",
+                "@id": "cmip6plus:experiment/id/hist-ghg",
+                "@type": "mip:experiment-id",
+                "activity_id": {
+                    "@id": "cmip6plus:activity/lesfmip",
+                    "@type": "mip:activity-id",
+                    "name": "LESFMIP"
+                },
                 "description": "Well-mixed greenhouse-gas-only historical simulations",
                 "experiment": "historical well-mixed GHG-only run",
                 "model_components": {
                     "additional_allowed": [
-                        "AER",
-                        "CHEM",
-                        "BGC"
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/aer",
+                            "@type": "mip:source-type",
+                            "name": "AER"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/chem",
+                            "@type": "mip:source-type",
+                            "name": "CHEM"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/bgc",
+                            "@type": "mip:source-type",
+                            "name": "BGC"
+                        }
                     ],
-                    "required": [
-                        "AOGCM"
-                    ]
+                    "required": {
+                        "@id": "mip-cmor-tables:auxillary/source-type/aogcm",
+                        "@type": "mip:source-type",
+                        "name": "AOGCM"
+                    }
                 },
                 "experiment_id": "hist-GHG",
                 "parameters": {
@@ -403,28 +697,50 @@
                 },
                 "parent": {
                     "activity_id": {
+                        "@id": "cmip6plus:activity/cmip",
+                        "@type": "mip:activity-id",
                         "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
                         "name": "CMIP",
                         "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
                     },
-                    "experiment_id": {}
+                    "experiment_id": "Missing Link: cmip6:experiment/id/picontrol"
                 },
                 "sub_experiment_id": null,
                 "tier": 1
             },
             "hist-aer": {
-                "activity_id": "LESFMIP",
+                "@id": "cmip6plus:experiment/id/hist-aer",
+                "@type": "mip:experiment-id",
+                "activity_id": {
+                    "@id": "cmip6plus:activity/lesfmip",
+                    "@type": "mip:activity-id",
+                    "name": "LESFMIP"
+                },
                 "description": "Anthropogenic-aerosol-only historical simulations",
                 "experiment": "historical anthropogenic aerosols-only run",
                 "model_components": {
                     "additional_allowed": [
-                        "AER",
-                        "CHEM",
-                        "BGC"
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/aer",
+                            "@type": "mip:source-type",
+                            "name": "AER"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/chem",
+                            "@type": "mip:source-type",
+                            "name": "CHEM"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/bgc",
+                            "@type": "mip:source-type",
+                            "name": "BGC"
+                        }
                     ],
-                    "required": [
-                        "AOGCM"
-                    ]
+                    "required": {
+                        "@id": "mip-cmor-tables:auxillary/source-type/aogcm",
+                        "@type": "mip:source-type",
+                        "name": "AOGCM"
+                    }
                 },
                 "experiment_id": "hist-aer",
                 "parameters": {
@@ -434,28 +750,50 @@
                 },
                 "parent": {
                     "activity_id": {
+                        "@id": "cmip6plus:activity/cmip",
+                        "@type": "mip:activity-id",
                         "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
                         "name": "CMIP",
                         "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
                     },
-                    "experiment_id": {}
+                    "experiment_id": "Missing Link: cmip6:experiment/id/picontrol"
                 },
                 "sub_experiment_id": null,
                 "tier": 1
             },
             "hist-lu": {
-                "activity_id": "LESFMIP",
+                "@id": "cmip6plus:experiment/id/hist-lu",
+                "@type": "mip:experiment-id",
+                "activity_id": {
+                    "@id": "cmip6plus:activity/lesfmip",
+                    "@type": "mip:activity-id",
+                    "name": "LESFMIP"
+                },
                 "description": "Historical simulations with only land use changes",
                 "experiment": "Single forcing historical simulations",
                 "model_components": {
                     "additional_allowed": [
-                        "AER",
-                        "CHEM",
-                        "BGC"
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/aer",
+                            "@type": "mip:source-type",
+                            "name": "AER"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/chem",
+                            "@type": "mip:source-type",
+                            "name": "CHEM"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/bgc",
+                            "@type": "mip:source-type",
+                            "name": "BGC"
+                        }
                     ],
-                    "required": [
-                        "AOGCM"
-                    ]
+                    "required": {
+                        "@id": "mip-cmor-tables:auxillary/source-type/aogcm",
+                        "@type": "mip:source-type",
+                        "name": "AOGCM"
+                    }
                 },
                 "experiment_id": "hist-lu",
                 "parameters": {
@@ -465,28 +803,50 @@
                 },
                 "parent": {
                     "activity_id": {
+                        "@id": "cmip6plus:activity/cmip",
+                        "@type": "mip:activity-id",
                         "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
                         "name": "CMIP",
                         "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
                     },
-                    "experiment_id": {}
+                    "experiment_id": "Missing Link: cmip6:experiment/id/picontrol"
                 },
                 "sub_experiment_id": null,
                 "tier": 1
             },
             "hist-nat": {
-                "activity_id": "LESFMIP",
+                "@id": "cmip6plus:experiment/id/hist-nat",
+                "@type": "mip:experiment-id",
+                "activity_id": {
+                    "@id": "cmip6plus:activity/lesfmip",
+                    "@type": "mip:activity-id",
+                    "name": "LESFMIP"
+                },
                 "description": "Natural forcings (solar + volcanic)",
                 "experiment": "historical natural-only run",
                 "model_components": {
                     "additional_allowed": [
-                        "AER",
-                        "CHEM",
-                        "BGC"
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/aer",
+                            "@type": "mip:source-type",
+                            "name": "AER"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/chem",
+                            "@type": "mip:source-type",
+                            "name": "CHEM"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/bgc",
+                            "@type": "mip:source-type",
+                            "name": "BGC"
+                        }
                     ],
-                    "required": [
-                        "AOGCM"
-                    ]
+                    "required": {
+                        "@id": "mip-cmor-tables:auxillary/source-type/aogcm",
+                        "@type": "mip:source-type",
+                        "name": "AOGCM"
+                    }
                 },
                 "experiment_id": "hist-nat",
                 "parameters": {
@@ -496,28 +856,50 @@
                 },
                 "parent": {
                     "activity_id": {
+                        "@id": "cmip6plus:activity/cmip",
+                        "@type": "mip:activity-id",
                         "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
                         "name": "CMIP",
                         "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
                     },
-                    "experiment_id": {}
+                    "experiment_id": "Missing Link: cmip6:experiment/id/picontrol"
                 },
                 "sub_experiment_id": null,
                 "tier": 3
             },
             "hist-noLu": {
-                "activity_id": "LESFMIP",
+                "@id": "cmip6plus:experiment/id/hist-nolu",
+                "@type": "mip:experiment-id",
+                "activity_id": {
+                    "@id": "cmip6plus:activity/lesfmip",
+                    "@type": "mip:activity-id",
+                    "name": "LESFMIP"
+                },
                 "description": "Same as CMIP6 historical but with land cover held at 1850, no human activity; concentration driven",
                 "experiment": "historical with no land-use change",
                 "model_components": {
                     "additional_allowed": [
-                        "AER",
-                        "CHEM",
-                        "BGC"
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/aer",
+                            "@type": "mip:source-type",
+                            "name": "AER"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/chem",
+                            "@type": "mip:source-type",
+                            "name": "CHEM"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/bgc",
+                            "@type": "mip:source-type",
+                            "name": "BGC"
+                        }
                     ],
-                    "required": [
-                        "AOGCM"
-                    ]
+                    "required": {
+                        "@id": "mip-cmor-tables:auxillary/source-type/aogcm",
+                        "@type": "mip:source-type",
+                        "name": "AOGCM"
+                    }
                 },
                 "experiment_id": "hist-noLu",
                 "parameters": {
@@ -527,28 +909,50 @@
                 },
                 "parent": {
                     "activity_id": {
+                        "@id": "cmip6plus:activity/cmip",
+                        "@type": "mip:activity-id",
                         "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
                         "name": "CMIP",
                         "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
                     },
-                    "experiment_id": {}
+                    "experiment_id": "Missing Link: cmip6:experiment/id/picontrol"
                 },
                 "sub_experiment_id": null,
                 "tier": 3
             },
             "hist-piAer": {
-                "activity_id": "LESFMIP",
+                "@id": "cmip6plus:experiment/id/hist-piaer",
+                "@type": "mip:experiment-id",
+                "activity_id": {
+                    "@id": "cmip6plus:activity/lesfmip",
+                    "@type": "mip:activity-id",
+                    "name": "LESFMIP"
+                },
                 "description": "Historical WMGHG, halocarbon concentrations and O3 precursor emissions, 1850 aerosol precursor emissions.",
                 "experiment": "historical forcing, but with pre-industrial aerosol emissions",
                 "model_components": {
                     "additional_allowed": [
-                        "AER",
-                        "CHEM",
-                        "BGC"
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/aer",
+                            "@type": "mip:source-type",
+                            "name": "AER"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/chem",
+                            "@type": "mip:source-type",
+                            "name": "CHEM"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/bgc",
+                            "@type": "mip:source-type",
+                            "name": "BGC"
+                        }
                     ],
-                    "required": [
-                        "AOGCM"
-                    ]
+                    "required": {
+                        "@id": "mip-cmor-tables:auxillary/source-type/aogcm",
+                        "@type": "mip:source-type",
+                        "name": "AOGCM"
+                    }
                 },
                 "experiment_id": "hist-piAer",
                 "parameters": {
@@ -558,28 +962,50 @@
                 },
                 "parent": {
                     "activity_id": {
+                        "@id": "cmip6plus:activity/cmip",
+                        "@type": "mip:activity-id",
                         "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
                         "name": "CMIP",
                         "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
                     },
-                    "experiment_id": {}
+                    "experiment_id": "Missing Link: cmip6:experiment/id/picontrol"
                 },
                 "sub_experiment_id": null,
                 "tier": 3
             },
             "hist-piGHG": {
-                "activity_id": "LESFMIP",
+                "@id": "cmip6plus:experiment/id/hist-pighg",
+                "@type": "mip:experiment-id",
+                "activity_id": {
+                    "@id": "cmip6plus:activity/lesfmip",
+                    "@type": "mip:activity-id",
+                    "name": "LESFMIP"
+                },
                 "description": "Pre-industrial WMGHG, halocarbon and O3 precursor emissions, other forcings as for the historical experiment",
                 "experiment": "historical forcing but with pre-industrial GHG",
                 "model_components": {
                     "additional_allowed": [
-                        "AER",
-                        "CHEM",
-                        "BGC"
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/aer",
+                            "@type": "mip:source-type",
+                            "name": "AER"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/chem",
+                            "@type": "mip:source-type",
+                            "name": "CHEM"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/bgc",
+                            "@type": "mip:source-type",
+                            "name": "BGC"
+                        }
                     ],
-                    "required": [
-                        "AOGCM"
-                    ]
+                    "required": {
+                        "@id": "mip-cmor-tables:auxillary/source-type/aogcm",
+                        "@type": "mip:source-type",
+                        "name": "AOGCM"
+                    }
                 },
                 "experiment_id": "hist-piGHG",
                 "parameters": {
@@ -589,28 +1015,50 @@
                 },
                 "parent": {
                     "activity_id": {
+                        "@id": "cmip6plus:activity/cmip",
+                        "@type": "mip:activity-id",
                         "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
                         "name": "CMIP",
                         "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
                     },
-                    "experiment_id": {}
+                    "experiment_id": "Missing Link: cmip6:experiment/id/picontrol"
                 },
                 "sub_experiment_id": null,
                 "tier": 3
             },
             "hist-piSol": {
-                "activity_id": "LESFMIP",
+                "@id": "cmip6plus:experiment/id/hist-pisol",
+                "@type": "mip:experiment-id",
+                "activity_id": {
+                    "@id": "cmip6plus:activity/lesfmip",
+                    "@type": "mip:activity-id",
+                    "name": "LESFMIP"
+                },
                 "description": "historical simulations with 1850 solar forcing",
                 "experiment": "historical all-but-solar run",
                 "model_components": {
                     "additional_allowed": [
-                        "AER",
-                        "CHEM",
-                        "BGC"
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/aer",
+                            "@type": "mip:source-type",
+                            "name": "AER"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/chem",
+                            "@type": "mip:source-type",
+                            "name": "CHEM"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/bgc",
+                            "@type": "mip:source-type",
+                            "name": "BGC"
+                        }
                     ],
-                    "required": [
-                        "AOGCM"
-                    ]
+                    "required": {
+                        "@id": "mip-cmor-tables:auxillary/source-type/aogcm",
+                        "@type": "mip:source-type",
+                        "name": "AOGCM"
+                    }
                 },
                 "experiment_id": "hist-piSol",
                 "parameters": {
@@ -620,28 +1068,50 @@
                 },
                 "parent": {
                     "activity_id": {
+                        "@id": "cmip6plus:activity/cmip",
+                        "@type": "mip:activity-id",
                         "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
                         "name": "CMIP",
                         "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
                     },
-                    "experiment_id": {}
+                    "experiment_id": "Missing Link: cmip6:experiment/id/picontrol"
                 },
                 "sub_experiment_id": null,
                 "tier": 3
             },
             "hist-piTotalO3": {
-                "activity_id": "LESFMIP",
+                "@id": "cmip6plus:experiment/id/hist-pitotalo3",
+                "@type": "mip:experiment-id",
+                "activity_id": {
+                    "@id": "cmip6plus:activity/lesfmip",
+                    "@type": "mip:activity-id",
+                    "name": "LESFMIP"
+                },
                 "description": "historical simulations with 1850 total ozone",
                 "experiment": "historical all-but-ozone run",
                 "model_components": {
                     "additional_allowed": [
-                        "AER",
-                        "CHEM",
-                        "BGC"
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/aer",
+                            "@type": "mip:source-type",
+                            "name": "AER"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/chem",
+                            "@type": "mip:source-type",
+                            "name": "CHEM"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/bgc",
+                            "@type": "mip:source-type",
+                            "name": "BGC"
+                        }
                     ],
-                    "required": [
-                        "AOGCM"
-                    ]
+                    "required": {
+                        "@id": "mip-cmor-tables:auxillary/source-type/aogcm",
+                        "@type": "mip:source-type",
+                        "name": "AOGCM"
+                    }
                 },
                 "experiment_id": "hist-piTotalO3",
                 "parameters": {
@@ -651,28 +1121,50 @@
                 },
                 "parent": {
                     "activity_id": {
+                        "@id": "cmip6plus:activity/cmip",
+                        "@type": "mip:activity-id",
                         "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
                         "name": "CMIP",
                         "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
                     },
-                    "experiment_id": {}
+                    "experiment_id": "Missing Link: cmip6:experiment/id/picontrol"
                 },
                 "sub_experiment_id": null,
                 "tier": 3
             },
             "hist-piVolc": {
-                "activity_id": "LESFMIP",
+                "@id": "cmip6plus:experiment/id/hist-pivolc",
+                "@type": "mip:experiment-id",
+                "activity_id": {
+                    "@id": "cmip6plus:activity/lesfmip",
+                    "@type": "mip:activity-id",
+                    "name": "LESFMIP"
+                },
                 "description": "historical simulations with 1850 volcanic emissions",
                 "experiment": "historical all-but-volcanic run",
                 "model_components": {
                     "additional_allowed": [
-                        "AER",
-                        "CHEM",
-                        "BGC"
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/aer",
+                            "@type": "mip:source-type",
+                            "name": "AER"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/chem",
+                            "@type": "mip:source-type",
+                            "name": "CHEM"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/bgc",
+                            "@type": "mip:source-type",
+                            "name": "BGC"
+                        }
                     ],
-                    "required": [
-                        "AOGCM"
-                    ]
+                    "required": {
+                        "@id": "mip-cmor-tables:auxillary/source-type/aogcm",
+                        "@type": "mip:source-type",
+                        "name": "AOGCM"
+                    }
                 },
                 "experiment_id": "hist-piVolc",
                 "parameters": {
@@ -682,28 +1174,50 @@
                 },
                 "parent": {
                     "activity_id": {
+                        "@id": "cmip6plus:activity/cmip",
+                        "@type": "mip:activity-id",
                         "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
                         "name": "CMIP",
                         "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
                     },
-                    "experiment_id": {}
+                    "experiment_id": "Missing Link: cmip6:experiment/id/picontrol"
                 },
                 "sub_experiment_id": null,
                 "tier": 3
             },
             "hist-sol": {
-                "activity_id": "LESFMIP",
+                "@id": "cmip6plus:experiment/id/hist-sol",
+                "@type": "mip:experiment-id",
+                "activity_id": {
+                    "@id": "cmip6plus:activity/lesfmip",
+                    "@type": "mip:activity-id",
+                    "name": "LESFMIP"
+                },
                 "description": "Solar-only historical simulations",
                 "experiment": "historical solar-only run",
                 "model_components": {
                     "additional_allowed": [
-                        "AER",
-                        "CHEM",
-                        "BGC"
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/aer",
+                            "@type": "mip:source-type",
+                            "name": "AER"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/chem",
+                            "@type": "mip:source-type",
+                            "name": "CHEM"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/bgc",
+                            "@type": "mip:source-type",
+                            "name": "BGC"
+                        }
                     ],
-                    "required": [
-                        "AOGCM"
-                    ]
+                    "required": {
+                        "@id": "mip-cmor-tables:auxillary/source-type/aogcm",
+                        "@type": "mip:source-type",
+                        "name": "AOGCM"
+                    }
                 },
                 "experiment_id": "hist-sol",
                 "parameters": {
@@ -713,28 +1227,50 @@
                 },
                 "parent": {
                     "activity_id": {
+                        "@id": "cmip6plus:activity/cmip",
+                        "@type": "mip:activity-id",
                         "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
                         "name": "CMIP",
                         "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
                     },
-                    "experiment_id": {}
+                    "experiment_id": "Missing Link: cmip6:experiment/id/picontrol"
                 },
                 "sub_experiment_id": null,
                 "tier": 1
             },
             "hist-totalO3": {
-                "activity_id": "LESFMIP",
+                "@id": "cmip6plus:experiment/id/hist-totalo3",
+                "@type": "mip:experiment-id",
+                "activity_id": {
+                    "@id": "cmip6plus:activity/lesfmip",
+                    "@type": "mip:activity-id",
+                    "name": "LESFMIP"
+                },
                 "description": "Ozone-only historical simulations",
                 "experiment": "historical total ozone-only run",
                 "model_components": {
                     "additional_allowed": [
-                        "AER",
-                        "CHEM",
-                        "BGC"
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/aer",
+                            "@type": "mip:source-type",
+                            "name": "AER"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/chem",
+                            "@type": "mip:source-type",
+                            "name": "CHEM"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/bgc",
+                            "@type": "mip:source-type",
+                            "name": "BGC"
+                        }
                     ],
-                    "required": [
-                        "AOGCM"
-                    ]
+                    "required": {
+                        "@id": "mip-cmor-tables:auxillary/source-type/aogcm",
+                        "@type": "mip:source-type",
+                        "name": "AOGCM"
+                    }
                 },
                 "experiment_id": "hist-totalO3",
                 "parameters": {
@@ -744,28 +1280,50 @@
                 },
                 "parent": {
                     "activity_id": {
+                        "@id": "cmip6plus:activity/cmip",
+                        "@type": "mip:activity-id",
                         "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
                         "name": "CMIP",
                         "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
                     },
-                    "experiment_id": {}
+                    "experiment_id": "Missing Link: cmip6:experiment/id/picontrol"
                 },
                 "sub_experiment_id": null,
                 "tier": 1
             },
             "hist-volc": {
-                "activity_id": "LESFMIP",
+                "@id": "cmip6plus:experiment/id/hist-volc",
+                "@type": "mip:experiment-id",
+                "activity_id": {
+                    "@id": "cmip6plus:activity/lesfmip",
+                    "@type": "mip:activity-id",
+                    "name": "LESFMIP"
+                },
                 "description": "Volcanic-only historical simulations",
                 "experiment": "historical volcanic-only run",
                 "model_components": {
                     "additional_allowed": [
-                        "AER",
-                        "CHEM",
-                        "BGC"
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/aer",
+                            "@type": "mip:source-type",
+                            "name": "AER"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/chem",
+                            "@type": "mip:source-type",
+                            "name": "CHEM"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/bgc",
+                            "@type": "mip:source-type",
+                            "name": "BGC"
+                        }
                     ],
-                    "required": [
-                        "AOGCM"
-                    ]
+                    "required": {
+                        "@id": "mip-cmor-tables:auxillary/source-type/aogcm",
+                        "@type": "mip:source-type",
+                        "name": "AOGCM"
+                    }
                 },
                 "experiment_id": "hist-volc",
                 "parameters": {
@@ -775,28 +1333,50 @@
                 },
                 "parent": {
                     "activity_id": {
+                        "@id": "cmip6plus:activity/cmip",
+                        "@type": "mip:activity-id",
                         "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
                         "name": "CMIP",
                         "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
                     },
-                    "experiment_id": {}
+                    "experiment_id": "Missing Link: cmip6:experiment/id/picontrol"
                 },
                 "sub_experiment_id": null,
                 "tier": 1
             },
             "historical": {
-                "activity_id": "CMIP",
+                "@id": "cmip6plus:experiment/id/historical",
+                "@type": "mip:experiment-id",
+                "activity_id": {
+                    "@id": "cmip6plus:activity/cmip",
+                    "@type": "mip:activity-id",
+                    "name": "CMIP"
+                },
                 "description": "CMIP6 historical",
                 "experiment": "all-forcing simulation of the recent past (CO2 concentration-driven)",
                 "model_components": {
                     "additional_allowed": [
-                        "AER",
-                        "CHEM",
-                        "BGC"
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/aer",
+                            "@type": "mip:source-type",
+                            "name": "AER"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/chem",
+                            "@type": "mip:source-type",
+                            "name": "CHEM"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/bgc",
+                            "@type": "mip:source-type",
+                            "name": "BGC"
+                        }
                     ],
-                    "required": [
-                        "AOGCM"
-                    ]
+                    "required": {
+                        "@id": "mip-cmor-tables:auxillary/source-type/aogcm",
+                        "@type": "mip:source-type",
+                        "name": "AOGCM"
+                    }
                 },
                 "experiment_id": "historical",
                 "parameters": {
@@ -806,28 +1386,50 @@
                 },
                 "parent": {
                     "activity_id": {
+                        "@id": "cmip6plus:activity/cmip",
+                        "@type": "mip:activity-id",
                         "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
                         "name": "CMIP",
                         "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
                     },
-                    "experiment_id": {}
+                    "experiment_id": "Missing Link: cmip6:experiment/id/picontrol"
                 },
                 "sub_experiment_id": null,
                 "tier": 1
             },
             "piControl": {
-                "activity_id": "CMIP",
+                "@id": "cmip6plus:experiment/id/picontrol",
+                "@type": "mip:experiment-id",
+                "activity_id": {
+                    "@id": "cmip6plus:activity/cmip",
+                    "@type": "mip:activity-id",
+                    "name": "CMIP"
+                },
                 "description": "DECK: control",
                 "experiment": "pre-industrial control (CO2 concentration-driven)",
                 "model_components": {
                     "additional_allowed": [
-                        "AER",
-                        "CHEM",
-                        "BGC"
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/aer",
+                            "@type": "mip:source-type",
+                            "name": "AER"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/chem",
+                            "@type": "mip:source-type",
+                            "name": "CHEM"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/bgc",
+                            "@type": "mip:source-type",
+                            "name": "BGC"
+                        }
                     ],
-                    "required": [
-                        "AOGCM"
-                    ]
+                    "required": {
+                        "@id": "mip-cmor-tables:auxillary/source-type/aogcm",
+                        "@type": "mip:source-type",
+                        "name": "AOGCM"
+                    }
                 },
                 "experiment_id": "piControl",
                 "parameters": {
@@ -837,28 +1439,50 @@
                 },
                 "parent": {
                     "activity_id": {
+                        "@id": "cmip6plus:activity/cmip",
+                        "@type": "mip:activity-id",
                         "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
                         "name": "CMIP",
                         "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
                     },
-                    "experiment_id": {}
+                    "experiment_id": "Missing Link: cmip6:experiment/id/picontrol-spinup"
                 },
                 "sub_experiment_id": null,
                 "tier": 1
             },
             "piControl-spinup": {
-                "activity_id": "CMIP",
+                "@id": "cmip6plus:experiment/id/picontrol-spinup",
+                "@type": "mip:experiment-id",
+                "activity_id": {
+                    "@id": "cmip6plus:activity/cmip",
+                    "@type": "mip:activity-id",
+                    "name": "CMIP"
+                },
                 "description": "DECK: spin-up portion of the control",
                 "experiment": "pre-industrial control (spin-up)",
                 "model_components": {
                     "additional_allowed": [
-                        "AER",
-                        "CHEM",
-                        "BGC"
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/aer",
+                            "@type": "mip:source-type",
+                            "name": "AER"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/chem",
+                            "@type": "mip:source-type",
+                            "name": "CHEM"
+                        },
+                        {
+                            "@id": "mip-cmor-tables:auxillary/source-type/bgc",
+                            "@type": "mip:source-type",
+                            "name": "BGC"
+                        }
                     ],
-                    "required": [
-                        "AOGCM"
-                    ]
+                    "required": {
+                        "@id": "mip-cmor-tables:auxillary/source-type/aogcm",
+                        "@type": "mip:source-type",
+                        "name": "AOGCM"
+                    }
                 },
                 "experiment_id": "piControl-spinup",
                 "parameters": {
@@ -867,8 +1491,8 @@
                     "start": -999
                 },
                 "parent": {
-                    "activity_id": {},
-                    "experiment_id": {}
+                    "activity_id": "Missing Link: cmip6plus:activity/no parent",
+                    "experiment_id": "Missing Link: cmip6:experiment/id/no parent"
                 },
                 "sub_experiment_id": null,
                 "tier": 2
@@ -991,9 +1615,19 @@
         ],
         "source_id": {
             "GISS-E2-1-G": {
+                "@id": "cmip6plus:source/id/giss-e2-1-g",
+                "@type": "mip:source-id",
                 "activity_participation": [
-                    "LESFMIP",
-                    "CMIP"
+                    {
+                        "@id": "cmip6plus:activity/lesfmip",
+                        "@type": "mip:activity-id",
+                        "name": "LESFMIP"
+                    },
+                    {
+                        "@id": "cmip6plus:activity/cmip",
+                        "@type": "mip:activity-id",
+                        "name": "CMIP"
+                    }
                 ],
                 "cohort": "published",
                 "contributers": {},
@@ -1002,6 +1636,8 @@
                 "license": {
                     "license:exceptions_contact": "@lists.nasa.gov <- cmip-giss-l",
                     "license:kind": {
+                        "@id": "mip-cmor-tables:license/cc-by-4.0",
+                        "@type": "mip:license",
                         "conditions": "The CMIP6Plus model data linking to this entry is licensed under a Creative Commons Attribution 4.0 International (https://creativecommons.org/licenses/by/4.0/). Consult https://pcmdi.llnl.gov/CMIP6/TermsOfUse for terms of use governing CMIP6Plus output, including citation requirements and proper acknowledgment. The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law.",
                         "kind": "CC BY 4.0",
                         "license_id": "Creative Commons Attribution 4.0 International",
@@ -1011,10 +1647,14 @@
                 },
                 "source_id": "GISS-E2-1-G",
                 "organisation_id": {
+                    "@id": "mip-cmor-tables:organisations/institutions/nasa-giss",
+                    "@type": "mip:institution",
                     "acronyms": "GISS",
                     "cmip_acronym": "NASA-GISS",
                     "established": 1961,
                     "location": {
+                        "@id": "mip-cmor-tables:organisations/institutions/location/01cyfxe35",
+                        "@type": "institution:location",
                         "city": "New York",
                         "country": [
                             "United States",
@@ -1030,12 +1670,22 @@
                 },
                 "release_year": 2019,
                 "institution_id": "NASA-GISS",
-                "source": "GISS-E2-1-G (2019): \n  Varies_with_physics-version (atmosChem)\n  GISS-E2.1 (atmos)\n  GISS_LSM (land)\n  GISS_Ocean (ocean)\n  GISS_SI (seaIce)\n  "
+                "source": "GISS-E2-1-G (2019): \n  Varies_with_physics-version ({'@id': 'mip-cmor-tables:auxillary/realm/atmoschem', '@type': 'mip:realm', 'name': 'atmosChem'})\n  GISS-E2.1 ({'@id': 'mip-cmor-tables:auxillary/realm/atmos', '@type': 'mip:realm', 'name': 'atmos'})\n  GISS_LSM ({'@id': 'mip-cmor-tables:auxillary/realm/land', '@type': 'mip:realm', 'name': 'land'})\n  GISS_Ocean ({'@id': 'mip-cmor-tables:auxillary/realm/ocean', '@type': 'mip:realm', 'name': 'ocean'})\n  GISS_SI ({'@id': 'mip-cmor-tables:auxillary/realm/seaice', '@type': 'mip:realm', 'name': 'seaIce'})\n  "
             },
             "HadGEM3-GC31-LL": {
+                "@id": "cmip6plus:source/id/hadgem3-gc31-ll",
+                "@type": "mip:source-id",
                 "activity_participation": [
-                    "CMIP",
-                    "LESFMIP"
+                    {
+                        "@id": "cmip6plus:activity/cmip",
+                        "@type": "mip:activity-id",
+                        "name": "CMIP"
+                    },
+                    {
+                        "@id": "cmip6plus:activity/lesfmip",
+                        "@type": "mip:activity-id",
+                        "name": "LESFMIP"
+                    }
                 ],
                 "cohort": "published",
                 "contributers": {},
@@ -1044,6 +1694,8 @@
                 "license": {
                     "license:exceptions_contact": "@metoffice.gov.uk <- cmip6.hadgem3",
                     "license:kind": {
+                        "@id": "mip-cmor-tables:license/cc-by-4.0",
+                        "@type": "mip:license",
                         "conditions": "The CMIP6Plus model data linking to this entry is licensed under a Creative Commons Attribution 4.0 International (https://creativecommons.org/licenses/by/4.0/). Consult https://pcmdi.llnl.gov/CMIP6/TermsOfUse for terms of use governing CMIP6Plus output, including citation requirements and proper acknowledgment. The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law.",
                         "kind": "CC BY 4.0",
                         "license_id": "Creative Commons Attribution 4.0 International",
@@ -1053,10 +1705,14 @@
                 },
                 "source_id": "HadGEM3-GC31-LL",
                 "organisation_id": {
+                    "@id": "mip-cmor-tables:organisations/institutions/mohc",
+                    "@type": "mip:institution",
                     "aliases": "Meteorological Office",
                     "cmip_acronym": "MOHC",
                     "established": 1854,
                     "location": {
+                        "@id": "mip-cmor-tables:organisations/institutions/location/01ch2yn61",
+                        "@type": "institution:location",
                         "city": "Exeter",
                         "country": [
                             "United Kingdom",
@@ -1072,12 +1728,22 @@
                 },
                 "release_year": 2016,
                 "institution_id": "MOHC",
-                "source": "HadGEM3-GC31-LL (2016): \n  UKCA-GLOMAP-mode (aerosol)\n  MetUM-HadGEM3-GA7.1 (atmos)\n  JULES-HadGEM3-GL7.1 (land)\n  NEMO-HadGEM3-GO6.0 (ocean)\n  CICE-HadGEM3-GSI8 (seaIce)\n  "
+                "source": "HadGEM3-GC31-LL (2016): \n  UKCA-GLOMAP-mode ({'@id': 'mip-cmor-tables:auxillary/realm/aerosol', '@type': 'mip:realm', 'name': 'aerosol'})\n  MetUM-HadGEM3-GA7.1 ({'@id': 'mip-cmor-tables:auxillary/realm/atmos', '@type': 'mip:realm', 'name': 'atmos'})\n  JULES-HadGEM3-GL7.1 ({'@id': 'mip-cmor-tables:auxillary/realm/land', '@type': 'mip:realm', 'name': 'land'})\n  NEMO-HadGEM3-GO6.0 ({'@id': 'mip-cmor-tables:auxillary/realm/ocean', '@type': 'mip:realm', 'name': 'ocean'})\n  CICE-HadGEM3-GSI8 ({'@id': 'mip-cmor-tables:auxillary/realm/seaice', '@type': 'mip:realm', 'name': 'seaIce'})\n  "
             },
             "MIROC6": {
+                "@id": "cmip6plus:source/id/miroc6",
+                "@type": "mip:source-id",
                 "activity_participation": [
-                    "CMIP",
-                    "LESFMIP"
+                    {
+                        "@id": "cmip6plus:activity/cmip",
+                        "@type": "mip:activity-id",
+                        "name": "CMIP"
+                    },
+                    {
+                        "@id": "cmip6plus:activity/lesfmip",
+                        "@type": "mip:activity-id",
+                        "name": "LESFMIP"
+                    }
                 ],
                 "cohort": "published",
                 "contributers": {},
@@ -1086,6 +1752,8 @@
                 "license": {
                     "license:exceptions_contact": "@jamstec.go.jp <- miroc-cmip6",
                     "license:kind": {
+                        "@id": "mip-cmor-tables:license/cc-by-4.0",
+                        "@type": "mip:license",
                         "conditions": "The CMIP6Plus model data linking to this entry is licensed under a Creative Commons Attribution 4.0 International (https://creativecommons.org/licenses/by/4.0/). Consult https://pcmdi.llnl.gov/CMIP6/TermsOfUse for terms of use governing CMIP6Plus output, including citation requirements and proper acknowledgment. The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law.",
                         "kind": "CC BY 4.0",
                         "license_id": "Creative Commons Attribution 4.0 International",
@@ -1095,44 +1763,50 @@
                 },
                 "source_id": "MIROC6",
                 "organisation_id": {
+                    "@id": "mip-cmor-tables:organisations/consortia/miroc",
+                    "@type": "mip:consortium",
                     "changes": "",
                     "cmip_acronym": "MIROC",
                     "members": [
                         {
+                            "@type": "consortia:member",
                             "consortia:membership_type": "prior",
                             "dates": {
                                 "from": 2016,
                                 "phase": "CMIP6",
                                 "to": 2022
                             },
-                            "institution": {}
+                            "institution": "Missing Link: mip-cmor-tables:organisations/institutions/jamstec"
                         },
                         {
+                            "@type": "consortia:member",
                             "consortia:membership_type": "prior",
                             "dates": {
                                 "from": 2016,
                                 "phase": "CMIP6",
                                 "to": 2022
                             },
-                            "institution": {}
+                            "institution": "Missing Link: mip-cmor-tables:organisations/institutions/aori"
                         },
                         {
+                            "@type": "consortia:member",
                             "consortia:membership_type": "prior",
                             "dates": {
                                 "from": 2016,
                                 "phase": "CMIP6",
                                 "to": 2022
                             },
-                            "institution": {}
+                            "institution": "Missing Link: mip-cmor-tables:organisations/institutions/nies"
                         },
                         {
+                            "@type": "consortia:member",
                             "consortia:membership_type": "prior",
                             "dates": {
                                 "from": 2016,
                                 "phase": "CMIP6",
                                 "to": 2022
                             },
-                            "institution": {}
+                            "institution": "Missing Link: mip-cmor-tables:organisations/institutions/r-ccs"
                         }
                     ],
                     "name": "MIROC Consortium",
@@ -1141,12 +1815,22 @@
                 },
                 "release_year": 2017,
                 "institution_id": "MIROC",
-                "source": "MIROC6 (2017): \n  SPRINTARS6.0 (aerosol)\n  CCSR_AGCM (atmos)\n  MATSIRO6.0 (land)\n  COCO4.9 (seaIce)\n  "
+                "source": "MIROC6 (2017): \n  SPRINTARS6.0 ({'@id': 'mip-cmor-tables:auxillary/realm/aerosol', '@type': 'mip:realm', 'name': 'aerosol'})\n  CCSR_AGCM ({'@id': 'mip-cmor-tables:auxillary/realm/atmos', '@type': 'mip:realm', 'name': 'atmos'})\n  MATSIRO6.0 ({'@id': 'mip-cmor-tables:auxillary/realm/land', '@type': 'mip:realm', 'name': 'land'})\n  COCO4.9 ({'@id': 'mip-cmor-tables:auxillary/realm/seaice', '@type': 'mip:realm', 'name': 'seaIce'})\n  "
             },
             "MPI-ESM1-2-HR": {
+                "@id": "cmip6plus:source/id/mpi-esm1-2-hr",
+                "@type": "mip:source-id",
                 "activity_participation": [
-                    "CMIP",
-                    "LESFMIP"
+                    {
+                        "@id": "cmip6plus:activity/cmip",
+                        "@type": "mip:activity-id",
+                        "name": "CMIP"
+                    },
+                    {
+                        "@id": "cmip6plus:activity/lesfmip",
+                        "@type": "mip:activity-id",
+                        "name": "LESFMIP"
+                    }
                 ],
                 "cohort": "published",
                 "contributers": {},
@@ -1155,6 +1839,8 @@
                 "license": {
                     "license:exceptions_contact": "@dkrz.de <- cmip6-mpi-esm",
                     "license:kind": {
+                        "@id": "mip-cmor-tables:license/cc-by-4.0",
+                        "@type": "mip:license",
                         "conditions": "The CMIP6Plus model data linking to this entry is licensed under a Creative Commons Attribution 4.0 International (https://creativecommons.org/licenses/by/4.0/). Consult https://pcmdi.llnl.gov/CMIP6/TermsOfUse for terms of use governing CMIP6Plus output, including citation requirements and proper acknowledgment. The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law.",
                         "kind": "CC BY 4.0",
                         "license_id": "Creative Commons Attribution 4.0 International",
@@ -1164,10 +1850,14 @@
                 },
                 "source_id": "MPI-ESM1-2-HR",
                 "organisation_id": {
+                    "@id": "mip-cmor-tables:organisations/institutions/mpi-m",
+                    "@type": "mip:institution",
                     "acronyms": "MPI-M",
                     "cmip_acronym": "MPI-M",
                     "established": 1975,
                     "location": {
+                        "@id": "mip-cmor-tables:organisations/institutions/location/05esem239",
+                        "@type": "institution:location",
                         "city": "Hamburg",
                         "country": [
                             "Germany",
@@ -1183,12 +1873,22 @@
                 },
                 "release_year": 2017,
                 "institution_id": "MPI-M",
-                "source": "MPI-ESM1-2-HR (2017): \n  ,_prescribed_MACv2-SP (aerosol)\n  ECHAM6.3 (atmos)\n  JSBACH3.20 (land)\n  prescribed (None)\n  MPIOM1.63 (ocean)\n  HAMOCC6 (None)\n  unnamed (seaIce)\n  "
+                "source": "MPI-ESM1-2-HR (2017): \n  ,_prescribed_MACv2-SP ({'@id': 'mip-cmor-tables:auxillary/realm/aerosol', '@type': 'mip:realm', 'name': 'aerosol'})\n  ECHAM6.3 ({'@id': 'mip-cmor-tables:auxillary/realm/atmos', '@type': 'mip:realm', 'name': 'atmos'})\n  JSBACH3.20 ({'@id': 'mip-cmor-tables:auxillary/realm/land', '@type': 'mip:realm', 'name': 'land'})\n  prescribed (None)\n  MPIOM1.63 ({'@id': 'mip-cmor-tables:auxillary/realm/ocean', '@type': 'mip:realm', 'name': 'ocean'})\n  HAMOCC6 (None)\n  unnamed ({'@id': 'mip-cmor-tables:auxillary/realm/seaice', '@type': 'mip:realm', 'name': 'seaIce'})\n  "
             },
             "MPI-ESM1-2-LR": {
+                "@id": "cmip6plus:source/id/mpi-esm1-2-lr",
+                "@type": "mip:source-id",
                 "activity_participation": [
-                    "CMIP",
-                    "LESFMIP"
+                    {
+                        "@id": "cmip6plus:activity/cmip",
+                        "@type": "mip:activity-id",
+                        "name": "CMIP"
+                    },
+                    {
+                        "@id": "cmip6plus:activity/lesfmip",
+                        "@type": "mip:activity-id",
+                        "name": "LESFMIP"
+                    }
                 ],
                 "cohort": "published",
                 "contributers": {},
@@ -1197,6 +1897,8 @@
                 "license": {
                     "license:exceptions_contact": "@dkrz.de <- cmip6-mpi-esm",
                     "license:kind": {
+                        "@id": "mip-cmor-tables:license/cc-by-4.0",
+                        "@type": "mip:license",
                         "conditions": "The CMIP6Plus model data linking to this entry is licensed under a Creative Commons Attribution 4.0 International (https://creativecommons.org/licenses/by/4.0/). Consult https://pcmdi.llnl.gov/CMIP6/TermsOfUse for terms of use governing CMIP6Plus output, including citation requirements and proper acknowledgment. The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law.",
                         "kind": "CC BY 4.0",
                         "license_id": "Creative Commons Attribution 4.0 International",
@@ -1206,10 +1908,14 @@
                 },
                 "source_id": "MPI-ESM1-2-LR",
                 "organisation_id": {
+                    "@id": "mip-cmor-tables:organisations/institutions/mpi-m",
+                    "@type": "mip:institution",
                     "acronyms": "MPI-M",
                     "cmip_acronym": "MPI-M",
                     "established": 1975,
                     "location": {
+                        "@id": "mip-cmor-tables:organisations/institutions/location/05esem239",
+                        "@type": "institution:location",
                         "city": "Hamburg",
                         "country": [
                             "Germany",
@@ -1225,12 +1931,22 @@
                 },
                 "release_year": 2017,
                 "institution_id": "MPI-M",
-                "source": "MPI-ESM1-2-LR (2017): \n  ,_prescribed_MACv2-SP (aerosol)\n  ECHAM6.3 (atmos)\n  JSBACH3.20 (land)\n  prescribed (None)\n  MPIOM1.63 (ocean)\n  HAMOCC6 (None)\n  unnamed (seaIce)\n  "
+                "source": "MPI-ESM1-2-LR (2017): \n  ,_prescribed_MACv2-SP ({'@id': 'mip-cmor-tables:auxillary/realm/aerosol', '@type': 'mip:realm', 'name': 'aerosol'})\n  ECHAM6.3 ({'@id': 'mip-cmor-tables:auxillary/realm/atmos', '@type': 'mip:realm', 'name': 'atmos'})\n  JSBACH3.20 ({'@id': 'mip-cmor-tables:auxillary/realm/land', '@type': 'mip:realm', 'name': 'land'})\n  prescribed (None)\n  MPIOM1.63 ({'@id': 'mip-cmor-tables:auxillary/realm/ocean', '@type': 'mip:realm', 'name': 'ocean'})\n  HAMOCC6 (None)\n  unnamed ({'@id': 'mip-cmor-tables:auxillary/realm/seaice', '@type': 'mip:realm', 'name': 'seaIce'})\n  "
             },
             "NorESM2-LM": {
+                "@id": "cmip6plus:source/id/noresm2-lm",
+                "@type": "mip:source-id",
                 "activity_participation": [
-                    "CMIP",
-                    "LESFMIP"
+                    {
+                        "@id": "cmip6plus:activity/cmip",
+                        "@type": "mip:activity-id",
+                        "name": "CMIP"
+                    },
+                    {
+                        "@id": "cmip6plus:activity/lesfmip",
+                        "@type": "mip:activity-id",
+                        "name": "LESFMIP"
+                    }
                 ],
                 "cohort": "published",
                 "contributers": {},
@@ -1239,6 +1955,8 @@
                 "license": {
                     "license:exceptions_contact": "@met.no <- noresm-ncc",
                     "license:kind": {
+                        "@id": "mip-cmor-tables:license/cc-by-4.0",
+                        "@type": "mip:license",
                         "conditions": "The CMIP6Plus model data linking to this entry is licensed under a Creative Commons Attribution 4.0 International (https://creativecommons.org/licenses/by/4.0/). Consult https://pcmdi.llnl.gov/CMIP6/TermsOfUse for terms of use governing CMIP6Plus output, including citation requirements and proper acknowledgment. The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law.",
                         "kind": "CC BY 4.0",
                         "license_id": "Creative Commons Attribution 4.0 International",
@@ -1248,70 +1966,79 @@
                 },
                 "source_id": "NorESM2-LM",
                 "organisation_id": {
+                    "@id": "mip-cmor-tables:organisations/consortia/ncc",
+                    "@type": "mip:consortium",
                     "changes": "",
                     "cmip_acronym": "NCC",
                     "members": [
                         {
+                            "@type": "consortia:member",
                             "dates": {
                                 "from": 2016,
                                 "phase": "CMIP6",
                                 "to": 2022
                             },
-                            "institution": {},
+                            "institution": "Missing Link: mip-cmor-tables:organisations/institutions/noresm",
                             "membership_type": "prior"
                         },
                         {
+                            "@type": "consortia:member",
                             "dates": {
                                 "from": 2016,
                                 "phase": "CMIP6",
                                 "to": 2022
                             },
-                            "institution": {},
+                            "institution": "Missing Link: mip-cmor-tables:organisations/institutions/met-norway",
                             "membership_type": "prior"
                         },
                         {
+                            "@type": "consortia:member",
                             "dates": {
                                 "from": 2016,
                                 "phase": "CMIP6",
                                 "to": 2022
                             },
-                            "institution": {},
+                            "institution": "Missing Link: mip-cmor-tables:organisations/institutions/nersc",
                             "membership_type": "prior"
                         },
                         {
+                            "@type": "consortia:member",
                             "dates": {
                                 "from": 2016,
                                 "phase": "CMIP6",
                                 "to": 2022
                             },
-                            "institution": {},
+                            "institution": "Missing Link: mip-cmor-tables:organisations/institutions/nilu",
                             "membership_type": "prior"
                         },
                         {
+                            "@type": "consortia:member",
                             "dates": {
                                 "from": 2016,
                                 "phase": "CMIP6",
                                 "to": 2022
                             },
-                            "institution": {},
+                            "institution": "Missing Link: mip-cmor-tables:organisations/institutions/uib",
                             "membership_type": "prior"
                         },
                         {
+                            "@type": "consortia:member",
                             "dates": {
                                 "from": 2016,
                                 "phase": "CMIP6",
                                 "to": 2022
                             },
-                            "institution": {},
+                            "institution": "Missing Link: mip-cmor-tables:organisations/institutions/uio",
                             "membership_type": "prior"
                         },
                         {
+                            "@type": "consortia:member",
                             "dates": {
                                 "from": 2016,
                                 "phase": "CMIP6",
                                 "to": 2022
                             },
-                            "institution": {},
+                            "institution": "Missing Link: mip-cmor-tables:organisations/institutions/uni",
                             "membership_type": "prior"
                         }
                     ],
@@ -1321,20 +2048,20 @@
                 },
                 "release_year": 2017,
                 "institution_id": "NCC",
-                "source": "NorESM2-LM (2017): \n  OsloAero (aerosol)\n  CAM-OSLO (atmos)\n  OsloChemSimp (atmosChem)\n  CLM (land)\n  CISM (None)\n  MICOM (ocean)\n  HAMOCC (None)\n  CICE (seaIce)\n  "
+                "source": "NorESM2-LM (2017): \n  OsloAero ({'@id': 'mip-cmor-tables:auxillary/realm/aerosol', '@type': 'mip:realm', 'name': 'aerosol'})\n  CAM-OSLO ({'@id': 'mip-cmor-tables:auxillary/realm/atmos', '@type': 'mip:realm', 'name': 'atmos'})\n  OsloChemSimp ({'@id': 'mip-cmor-tables:auxillary/realm/atmoschem', '@type': 'mip:realm', 'name': 'atmosChem'})\n  CLM ({'@id': 'mip-cmor-tables:auxillary/realm/land', '@type': 'mip:realm', 'name': 'land'})\n  CISM (None)\n  MICOM ({'@id': 'mip-cmor-tables:auxillary/realm/ocean', '@type': 'mip:realm', 'name': 'ocean'})\n  HAMOCC (None)\n  CICE ({'@id': 'mip-cmor-tables:auxillary/realm/seaice', '@type': 'mip:realm', 'name': 'seaIce'})\n  "
             }
         },
         "source_type": [
-            "LAND",
-            "SLAB",
             "AOGCM",
-            "BGC",
-            "ISM",
-            "CHEM",
-            "AER",
-            "OGCM",
             "AGCM",
-            "RAD"
+            "AER",
+            "RAD",
+            "ISM",
+            "BGC",
+            "SLAB",
+            "LAND",
+            "CHEM",
+            "OGCM"
         ],
         "sub_experiment_id": {
             "null": null
