@@ -70,6 +70,8 @@ async def main():
         
         add_new = await process('cmip6plus',key,data)
 
+        CV[key.replace('-','_')] = add_new
+        
     
     ##################################
     ### fix the file #####
