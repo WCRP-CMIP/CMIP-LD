@@ -1325,16 +1325,16 @@
             }
         },
         "source_type": [
-            "LAND",
+            "AGCM",
+            "OGCM",
             "SLAB",
+            "RAD",
+            "AER",
             "AOGCM",
             "BGC",
-            "ISM",
             "CHEM",
-            "AER",
-            "OGCM",
-            "AGCM",
-            "RAD"
+            "ISM",
+            "LAND"
         ],
         "sub_experiment_id": {
             "null": null

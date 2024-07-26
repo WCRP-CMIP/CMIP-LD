@@ -78,7 +78,7 @@ def cmip6plus_native_nominal_resolution (data):
     
 
 def cmip6plus_sub_experiment_id (data):
-    return name_description(data,'sub_experiment_id','description')
+    return name_description(data)
 
 
 def cmip6plus_experiment_id (data):
