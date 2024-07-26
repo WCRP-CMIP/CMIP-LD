@@ -7,12 +7,11 @@
             }
         },
         "source-id:model-component": {
-            "model-component:nominal-resolution": {
-                "model-native-nominal-resolution:cf:unit": {
-                    "@context": {
-                        "@extend": true
-                    }
-                }
+          
+            "@context": {
+                "@extend": true
+            } 
+                
             },
             "model-component:realm": {
                 "@context": {
@@ -24,8 +23,8 @@
             "@context": {
                 "@extend": true
             }
-        }
-    },
+        },
+    
     "@type": [
         "mip:source-id"
     ],

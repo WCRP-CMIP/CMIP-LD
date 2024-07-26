@@ -102,6 +102,8 @@ async def process(prefix,file,data=None):
     data.clean_cv
     data.print 
     if name in local_globals:
+        # print('name',name,  local_globals)
+        # print('-------',name)
         data.data = local_globals[name](data.data) 
     else:
         print('no parsing function found', name)

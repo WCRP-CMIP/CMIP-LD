@@ -13,15 +13,15 @@ class JSONLDProcessor:
     - latest_data: The latest JSON-LD data.
     """
     
-    def __init__(self):
-        ...
+    # def __init__(self):
+    #     ...
 
-    def make_graph(self,loaditems):
+    async def make_graph(self,loaditems):
         """ create the graph. """
         
-        self.ldata = CMIPFileUtils.load(loaditems)
+        self.lddata = await CMIPFileUtils.load(loaditems)
 
-
+        # print(len(self.lddata))
 
         # classic id extraction for checks
         ids = set(re.findall(r'"@id"\s*:\s*"([^"]+)"', json.dumps(self.lddata)))
@@ -77,7 +77,7 @@ class JSONLDProcessor:
                                     
         directories = list(set(triplets.keys()))
         # find missing and problem keys 
-        self.missing = set(ids) - set(type_map.keys()) - set(directories) 
+        self.missing = list(set(ids) - set(type_map.keys()) - set(directories))
         from collections import Counter
 
         nodeweights = Counter([i['id'] for i in self.nodes])
@@ -113,10 +113,12 @@ class JSONLDProcessor:
             json.dump(self.graph,f,indent=2)
 
 
-    def walk_graph(sid):
+    def walk_graph(self,sid):
         links = [link for link in self.graph['links'] if link['source'] == sid]
         if len(links) == 0:
-            return {'@extend':True}
+            return {  "@context": {
+                "@extend": True
+            } }
         
         output = {}
         for link in links:
@@ -125,9 +127,9 @@ class JSONLDProcessor:
         return output
 
 
-    def get_context(selection):
+    def get_context(self,selection):
     # selection = 'mip:source-id'
-        sid = self.graph.types[selection]
+        sid = self.graph['types'][selection]
         structure = self.walk_graph(sid)
         return json.dumps({"@context":{"@vocab":selection.replace('mip:',''),**structure}}, indent=2)
             

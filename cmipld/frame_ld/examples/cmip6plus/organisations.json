@@ -1,9 +1,10 @@
 {
     "@context": {
     "@vocab": "institution",
-    "institution:location": {"@context":{
-      "@extend": true
-    }
+    "institution:location": {
+        "@context": {
+            "@extend": true
+        } 
     }
   },
     "@type": [
