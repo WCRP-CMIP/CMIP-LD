@@ -1,6 +1,7 @@
 {
     "@context": {
         "@vocab": "experiment-id",
+        "experiment_id": "experiment-id:name",
         "experiment-id:activity-id": {
             "@context": {
                 "@extend": true
@@ -13,7 +14,7 @@
         }
       },
     "@type": "mip:experiment-id",
-    "experiment-id": "",
+    "experiment_id": "",
     "experiment-id:activity-id": {
         "activity-id:name": {},
         "@explicit": true

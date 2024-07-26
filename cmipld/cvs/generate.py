@@ -15,16 +15,9 @@ from parse import process
 
 
 async def main():
-    # we can load the latest cmpi6plus and mip table files from github
-    
-    # latest = await CMIPFileUtils.load_latest(CMIPFileUtils)
-    
-    # manual read since we are in development. 
-    # mip= await CMIPFileUtils.read_file_fs('/Users/daniel.ellis/WIPwork/mip-cmor-tables/compiled/graph_data.json')
-    # cmip6plus =  await CMIPFileUtils.read_file_fs('/Users/daniel.ellis/WIPwork/CMIP6Plus_CVs/ compiled/graph_data.json')
-    
+
     # latest = await sum([mip,cmip6plus],[])
-    latest = await CMIPFileUtils.load(['/Users/daniel.ellis/WIPwork/CMIP6Plus_CVs/compiled/graph_data.json','/Users/daniel.ellis/WIPwork/CMIP6Plus_CVs/compiled/graph_data.json'])
+    latest = await CMIPFileUtils.load(['/Users/daniel.ellis/WIPwork/CMIP6Plus_CVs/compiled/graph_data.json','/Users/daniel.ellis/WIPwork/mip-cmor-tables/compiled/graph_data.json'])
 
     CV = {}
     # OrderedDict()
@@ -44,7 +37,7 @@ async def main():
         data = Frame(latest,frame)
         
         # any additional processing?
-        print(key,data)
+        print(key)
         add_new = await process('mip-cmor-tables',key,data)
         
         CV[key.replace('-','_')] = add_new
@@ -66,25 +59,17 @@ async def main():
     # ##################################
     # # organisations
     # # native-nominal-resolution
-    for key in 'organisations source-id activity-id experiment-id sub-experiment-id'.split():
+    for key in 'organisations activity-id sub-experiment-id experiment-id source-id'.split():
         
         # run the frame. 
         frame = get_frame('cmip6plus',key)
         
         print('\n\n---',key)
-        print(frame)
         # get results using frame
         data = Frame(latest,frame)
         
-    #     # any additional processing?
-    #     add_new = await process('cmip6plus',key,data)
-        
-    #     # pprint(add_new)
-    #     print(key)
-    #     CV[key.replace('-','_')] = add_new
-        
-    
-    
+        add_new = await process('cmip6plus',key,data)
+
     
     ##################################
     ### fix the file #####

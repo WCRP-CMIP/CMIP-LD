@@ -40,6 +40,7 @@ def cmip6plus_descriptors (data):
     return data
 
 def cmip6plus_source_id (data):
+    
     sid = OrderedDict()
     for source in sorted(data,key=lambda x: x['source_id']):
         # ideally organisation 
@@ -47,23 +48,26 @@ def cmip6plus_source_id (data):
         
         source['license'].update(source['license'].get('kind',{}))
         
-        del source['license']['kind']
-        del source['license']['conditions']
-        
+      
         source['source'] = f"{source['source_id']} ({source['release_year']}): \n  "
        
+        
        
         #    combine the model-components
         for i in source['model_component']:
             try:
-                source['source'] += f"{i['source_id']} ({i['realm']})\n  "
-            except:
+                source['source'] += f"{i['name']} ({i['realm']})\n  "
+            except Exception as e:
+                
                 print('Missing',i, source['source_id'])
                 
+                print(e)
                 
             
-        del source['model_component']
+        # del source['license']['kind']
+        # del source['license']['conditions']
         
+        del source['model_component']
         sid[source['source_id']] = source
         
     return sid
@@ -100,10 +104,7 @@ async def process(prefix,file,data=None):
     # prepare for use. 
     
     data.clean_cv
-    data.print 
     if name in local_globals:
-        # print('name',name,  local_globals)
-        # print('-------',name)
         data.data = local_globals[name](data.data) 
     else:
         print('no parsing function found', name)

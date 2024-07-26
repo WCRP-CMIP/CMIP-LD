@@ -1,6 +1,6 @@
 {
     "@context": {
-    "@vocab": "institution",
+    "@vocab": "source-id:",
     "institution:location": {
         "@context": {
             "@extend": true
@@ -24,7 +24,7 @@
         "consortium:members": {
             "institution:institution": {
                 "debugid": {},
-                "@explicit": false
+                "@explicit": true
             },
             "@explicit": true
         }

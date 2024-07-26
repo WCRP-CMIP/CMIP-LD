@@ -11,7 +11,7 @@ async def main():
     from __init__ import JSONLDProcessor
     g = JSONLDProcessor()
     # g.read_graph
-    await g.make_graph(['/Users/daniel.ellis/WIPwork/CMIP6Plus_CVs/compiled/graph_data.json','/Users/daniel.ellis/WIPwork/CMIP6Plus_CVs/compiled/graph_data.json'])
+    await g.make_graph(['/Users/daniel.ellis/WIPwork/CMIP6Plus_CVs/compiled/graph_data.json','/Users/daniel.ellis/WIPwork/mip-cmor-tables/compiled/graph_data.json'])
     print(g.graph.keys())
       
     g.write()
