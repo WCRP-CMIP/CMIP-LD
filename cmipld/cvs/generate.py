@@ -8,10 +8,10 @@ python -m cmipld.cvs.generate
 
 # Import the library
 from cmipld import *
-import asyncio,json
+import asyncio,json,os
 from collections import OrderedDict
 from parse import process
-
+from datetime import datetime
 
 
 async def main():
@@ -48,10 +48,12 @@ async def main():
     ##################################
     ### CMIP6Plus Core #####
     ##################################
+    
         
     frame = get_frame('cmip6plus','descriptors')
-    data = Frame(latest,frame,False).clean()
-    add_new = await process('cmip6plus','descriptors',data)
+    data = Frame(latest,frame,False)
+    data.print
+    add_new = await process('cmip6plus','descriptors',data,clean=['rmld','missing','untag','lower'])
     CV.update(add_new)
 
     # ##################################
@@ -76,8 +78,18 @@ async def main():
     ##################################
     ### fix the file #####
     ##################################
-
-        
+    
+    CV['version_metadata'] = dict(
+        CVs = dict(
+        version = os.system('git describe --tags --abbrev=0').read().strip(),
+        modified = datetime.now().date().isoformat(),
+        gitcommit = os.system('git rev-parse HEAD').read().strip(),
+        gitbranch = os.system('git rev-parse --abbrev-ref HEAD').read().strip(),
+        )
+        future = 'miptables, checksum, etc'
+    )
+    
+            
     CV = OrderedDict(sorted((k, (v)) for k, v in CV.items()))
     
     with open('CV.json','w') as f:

@@ -33,21 +33,32 @@ def cmip6plus_organisations (data):
     return name_description(data,key='cmip_acronym',value='name')
 
 def cmip6plus_descriptors (data):
+    for i in data['index']:
+        if isinstance(data['index'][i],str):
+            data['index'][i] = [data['index'][i]]
     data.update(data['index'])
     del data['index']
     data['DRS'] = data['drs']
-    del data['drs']
+    data['Conventions'] = data['conventions']
+    
+    del data['drs'], data['conventions']
     return data
+
+def cmip6plus_activity_id (data):
+    return name_description(data)
 
 def cmip6plus_source_id (data):
     
     sid = OrderedDict()
     for source in sorted(data,key=lambda x: x['source_id']):
         # ideally organisation 
-        source['institution_id'] = source['organisation_id'].get('cmip_acronym','')
+        source['institution_id'] = [source['organisation_id'].get('cmip_acronym','')]
         
         source['license'].update(source['license'].get('kind',{}))
         
+        if not isinstance(source['cohort'],list):
+            source['cohort'] = [source['cohort']]
+      
       
         source['source'] = f"{source['source_id']} ({source['release_year']}): \n  "
        
@@ -88,7 +99,19 @@ def cmip6plus_experiment_id (data):
             if isinstance(e['model_components'][i],str):
  
                 e['model_components'][i] = [e['model_components'][i]]
+                
+        # to list 
+        e['activity_id'] = [e['activity_id']]
+        
+        for i in e['parent']:
+                e['parent_'+i] = [e['parent'][i]]
+                
+                
+        del e['parent']
+        
         eid[e['experiment_id']] = e
+
+    
     
     return eid
 
@@ -99,11 +122,15 @@ def cmip6plus_experiment_id (data):
 ##################################
 local_globals = globals()
 
-async def process(prefix,file,data=None):
+async def process(prefix,file,data=None,clean=None):
     name = f'{prefix}_{file}'.replace('-','_')
     # prepare for use. 
     
-    data.clean_cv
+    if clean:
+        # print('clean', clean)
+        data.clean(clean)
+    else:
+        data.clean_cv
     if name in local_globals:
         data.data = local_globals[name](data.data) 
     else:

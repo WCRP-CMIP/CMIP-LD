@@ -1,9 +1,9 @@
 {
     "@id": "cmip6plus:core/descriptors",
-    "@context":{"@extend":true},
-    "@type": 
-        "mip:core-descriptors"
-    ,
+    "@context": {
+        "@extend": true
+    },
+    "@type": "mip:core-descriptors",
     "core:mip-era": {
         "mip:name": {},
         "@explicit": true
@@ -13,5 +13,5 @@
         "@explicit": true
     },
     "core:drs": {},
-    "core:index":{}
+    "core:index": {}
 }
