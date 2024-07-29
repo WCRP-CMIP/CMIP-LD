@@ -28,7 +28,7 @@ async def main():
     ##################################
 
     # mip entries
-    for key in 'source-type frequency realm grid-label'.split():
+    for key in 'source-type frequency realm grid-label nominal-resolution'.split():
         
         # run the frame. 
         frame = get_frame('mip-cmor-tables',key)
@@ -41,8 +41,6 @@ async def main():
         add_new = await process('mip-cmor-tables',key,data)
         
         CV[key.replace('-','_')] = add_new
-        
-    # nominal_resolution
     
 
     ##################################
@@ -51,9 +49,11 @@ async def main():
     
         
     frame = get_frame('cmip6plus','descriptors')
-    data = Frame(latest,frame,False)
-    data.print
+    data = Frame(latest,frame,False).clean(['rmld','missing','untag','lower'])
+    
     add_new = await process('cmip6plus','descriptors',data,clean=['rmld','missing','untag','lower'])
+
+    
     CV.update(add_new)
 
     # ##################################
@@ -65,8 +65,6 @@ async def main():
         
         # run the frame. 
         frame = get_frame('cmip6plus',key)
-        
-        print('\n\n---',key)
         # get results using frame
         data = Frame(latest,frame)
         
@@ -75,25 +73,30 @@ async def main():
         CV[key.replace('-','_')] = add_new
         
     
+    print('concluding')
     ##################################
     ### fix the file #####
     ##################################
     
-    CV['version_metadata'] = dict(
-        CVs = dict(
-        version = os.system('git describe --tags --abbrev=0').read().strip(),
-        modified = datetime.now().date().isoformat(),
-        gitcommit = os.system('git rev-parse HEAD').read().strip(),
-        gitbranch = os.system('git rev-parse --abbrev-ref HEAD').read().strip(),
-        )
-        future = 'miptables, checksum, etc'
-    )
+    CV['version_metadata'] = {
+        "file_modified" : datetime.now().date().isoformat(),
+        "CV": {
+            "version": os.popen('git describe --tags --abbrev=0').read().strip() or 'version tag read from repo running  - currently not in it. ', 
+            "git_commit":os.popen('git rev-parse HEAD').read().strip(), 
+            "gitbranch" : os.popen('git rev-parse --abbrev-ref HEAD').read().strip() } ,
+        "future": 'miptables, checksum, etc'}
     
+  
             
     CV = OrderedDict(sorted((k, (v)) for k, v in CV.items()))
     
+    # import pprint
+    # pprint.pprint(CV)
+    # print(CV)
     with open('CV.json','w') as f:
             json.dump(dict(CV = CV),f,indent=4)    
+            print('written to ',f.name )    
+        
         
         
 

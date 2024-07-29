@@ -7,6 +7,7 @@
                 "@extend": true
             } 
         },
+        "@extend": true,
         "experiment-id:sub-experiment-id": {
             "@context": {
                 "@extend": true
@@ -29,10 +30,7 @@
             "@explicit": true
         }
     },
-    "experiment-id:sub-experiment-id": {
-        "sub-experiment-id:name": {},
-        "@explicit": true
-    },
+
     "experiment-id:parent":{
         "@embed":"@always"
     }
