@@ -5,7 +5,7 @@ def name_description(data,key='name',value='description'):
     return dict([(x[key],x[value]) for x in data])
 
 def key_only(data,key='name',default='missing'):
-    return sorted(list(set([x.get(key,default) for x in data])))
+    return sorted(list(set([x.get(key,default) for x in data if x])))
 
 
 ##################################
@@ -116,7 +116,7 @@ def cmip6plus_experiment_id (data):
         e['activity_id'] = [e['activity_id']]
         
         for i in e['parent']:
-                e['parent_'+i] = [e['parent'][i]]
+                e['parent_'+i] = key_only([e['parent'][i]])
     
         e['sub_experiment_id'] = e   ['sub_experiment_id'].get('name','missing')
         

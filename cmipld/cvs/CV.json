@@ -39,104 +39,10 @@
                     "AOGCM"
                 ],
                 "parent_activity_id": [
-                    {
-                        "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                        "name": "CMIP",
-                        "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                    }
+                    "CMIP"
                 ],
                 "parent_experiment_id": [
-                    {
-                        "activity_id": {
-                            "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                            "name": "CMIP",
-                            "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                        },
-                        "description": "DECK: control",
-                        "experiment": "pre-industrial control (CO2 concentration-driven)",
-                        "model_components": {
-                            "additional_allowed": [
-                                {
-                                    "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                    "name": "AER"
-                                },
-                                {
-                                    "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                    "name": "CHEM"
-                                },
-                                {
-                                    "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                    "name": "BGC"
-                                }
-                            ],
-                            "required": {
-                                "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                "name": "AOGCM"
-                            }
-                        },
-                        "experiment_id": "piControl",
-                        "parameters": {
-                            "end": -999,
-                            "min_number_yrs_per_sim": 500,
-                            "start": -999
-                        },
-                        "parent": {
-                            "activity_id": {
-                                "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                "name": "CMIP",
-                                "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                            },
-                            "experiment_id": {
-                                "activity_id": {
-                                    "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                    "name": "CMIP",
-                                    "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                                },
-                                "description": "DECK: spin-up portion of the control",
-                                "experiment": "pre-industrial control (spin-up)",
-                                "model_components": {
-                                    "additional_allowed": [
-                                        {
-                                            "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                            "name": "AER"
-                                        },
-                                        {
-                                            "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                            "name": "CHEM"
-                                        },
-                                        {
-                                            "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                            "name": "BGC"
-                                        }
-                                    ],
-                                    "required": {
-                                        "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                        "name": "AOGCM"
-                                    }
-                                },
-                                "experiment_id": "piControl-spinup",
-                                "parameters": {
-                                    "end": -999,
-                                    "min_number_yrs_per_sim": 100,
-                                    "start": -999
-                                },
-                                "parent": {
-                                    "activity_id": {},
-                                    "experiment_id": {}
-                                },
-                                "sub_experiment_id": {
-                                    "description": "none",
-                                    "name": "none"
-                                },
-                                "tier": 2
-                            }
-                        },
-                        "sub_experiment_id": {
-                            "description": "none",
-                            "name": "none"
-                        },
-                        "tier": 1
-                    }
+                    "missing"
                 ]
             },
             "abrupt-4xCO2": {
@@ -162,104 +68,10 @@
                     "AOGCM"
                 ],
                 "parent_activity_id": [
-                    {
-                        "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                        "name": "CMIP",
-                        "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                    }
+                    "CMIP"
                 ],
                 "parent_experiment_id": [
-                    {
-                        "activity_id": {
-                            "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                            "name": "CMIP",
-                            "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                        },
-                        "description": "DECK: control",
-                        "experiment": "pre-industrial control (CO2 concentration-driven)",
-                        "model_components": {
-                            "additional_allowed": [
-                                {
-                                    "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                    "name": "AER"
-                                },
-                                {
-                                    "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                    "name": "CHEM"
-                                },
-                                {
-                                    "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                    "name": "BGC"
-                                }
-                            ],
-                            "required": {
-                                "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                "name": "AOGCM"
-                            }
-                        },
-                        "experiment_id": "piControl",
-                        "parameters": {
-                            "end": -999,
-                            "min_number_yrs_per_sim": 500,
-                            "start": -999
-                        },
-                        "parent": {
-                            "activity_id": {
-                                "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                "name": "CMIP",
-                                "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                            },
-                            "experiment_id": {
-                                "activity_id": {
-                                    "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                    "name": "CMIP",
-                                    "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                                },
-                                "description": "DECK: spin-up portion of the control",
-                                "experiment": "pre-industrial control (spin-up)",
-                                "model_components": {
-                                    "additional_allowed": [
-                                        {
-                                            "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                            "name": "AER"
-                                        },
-                                        {
-                                            "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                            "name": "CHEM"
-                                        },
-                                        {
-                                            "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                            "name": "BGC"
-                                        }
-                                    ],
-                                    "required": {
-                                        "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                        "name": "AOGCM"
-                                    }
-                                },
-                                "experiment_id": "piControl-spinup",
-                                "parameters": {
-                                    "end": -999,
-                                    "min_number_yrs_per_sim": 100,
-                                    "start": -999
-                                },
-                                "parent": {
-                                    "activity_id": {},
-                                    "experiment_id": {}
-                                },
-                                "sub_experiment_id": {
-                                    "description": "none",
-                                    "name": "none"
-                                },
-                                "tier": 2
-                            }
-                        },
-                        "sub_experiment_id": {
-                            "description": "none",
-                            "name": "none"
-                        },
-                        "tier": 1
-                    }
+                    "missing"
                 ]
             },
             "amip": {
@@ -284,12 +96,8 @@
                 "required_model_components": [
                     "AGCM"
                 ],
-                "parent_activity_id": [
-                    {}
-                ],
-                "parent_experiment_id": [
-                    {}
-                ]
+                "parent_activity_id": [],
+                "parent_experiment_id": []
             },
             "esm-hist": {
                 "activity_id": [
@@ -314,108 +122,10 @@
                     "BGC"
                 ],
                 "parent_activity_id": [
-                    {
-                        "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                        "name": "CMIP",
-                        "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                    }
+                    "CMIP"
                 ],
                 "parent_experiment_id": [
-                    {
-                        "activity_id": {
-                            "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                            "name": "CMIP",
-                            "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                        },
-                        "description": "DECK: control (emission-driven)",
-                        "experiment": "pre-industrial control simulation with preindustrial CO2 emissions defined (CO2 emission-driven)",
-                        "model_components": {
-                            "additional_allowed": [
-                                {
-                                    "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                    "name": "AER"
-                                },
-                                {
-                                    "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                    "name": "CHEM"
-                                }
-                            ],
-                            "required": [
-                                {
-                                    "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                    "name": "AOGCM"
-                                },
-                                {
-                                    "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                    "name": "BGC"
-                                }
-                            ]
-                        },
-                        "experiment_id": "esm-piControl",
-                        "parameters": {
-                            "end": -999,
-                            "min_number_yrs_per_sim": 500,
-                            "start": -999
-                        },
-                        "parent": {
-                            "activity_id": {
-                                "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                "name": "CMIP",
-                                "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                            },
-                            "experiment_id": {
-                                "activity_id": {
-                                    "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                    "name": "CMIP",
-                                    "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                                },
-                                "description": "DECK: spin-up portion of the control (emission-driven)",
-                                "experiment": "pre-industrial control simulation with CO2 concentration calculated (spin-up)",
-                                "model_components": {
-                                    "additional_allowed": [
-                                        {
-                                            "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                            "name": "AER"
-                                        },
-                                        {
-                                            "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                            "name": "CHEM"
-                                        }
-                                    ],
-                                    "required": [
-                                        {
-                                            "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                            "name": "AOGCM"
-                                        },
-                                        {
-                                            "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                            "name": "BGC"
-                                        }
-                                    ]
-                                },
-                                "experiment_id": "esm-piControl-spinup",
-                                "parameters": {
-                                    "end": -999,
-                                    "min_number_yrs_per_sim": 100,
-                                    "start": -999
-                                },
-                                "parent": {
-                                    "activity_id": {},
-                                    "experiment_id": {}
-                                },
-                                "sub_experiment_id": {
-                                    "description": "none",
-                                    "name": "none"
-                                },
-                                "tier": 2
-                            }
-                        },
-                        "sub_experiment_id": {
-                            "description": "none",
-                            "name": "none"
-                        },
-                        "tier": 1
-                    }
+                    "missing"
                 ]
             },
             "esm-piControl": {
@@ -441,59 +151,10 @@
                     "BGC"
                 ],
                 "parent_activity_id": [
-                    {
-                        "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                        "name": "CMIP",
-                        "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                    }
+                    "CMIP"
                 ],
                 "parent_experiment_id": [
-                    {
-                        "activity_id": {
-                            "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                            "name": "CMIP",
-                            "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                        },
-                        "description": "DECK: spin-up portion of the control (emission-driven)",
-                        "experiment": "pre-industrial control simulation with CO2 concentration calculated (spin-up)",
-                        "model_components": {
-                            "additional_allowed": [
-                                {
-                                    "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                    "name": "AER"
-                                },
-                                {
-                                    "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                    "name": "CHEM"
-                                }
-                            ],
-                            "required": [
-                                {
-                                    "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                    "name": "AOGCM"
-                                },
-                                {
-                                    "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                    "name": "BGC"
-                                }
-                            ]
-                        },
-                        "experiment_id": "esm-piControl-spinup",
-                        "parameters": {
-                            "end": -999,
-                            "min_number_yrs_per_sim": 100,
-                            "start": -999
-                        },
-                        "parent": {
-                            "activity_id": {},
-                            "experiment_id": {}
-                        },
-                        "sub_experiment_id": {
-                            "description": "none",
-                            "name": "none"
-                        },
-                        "tier": 2
-                    }
+                    "missing"
                 ]
             },
             "esm-piControl-spinup": {
@@ -518,12 +179,8 @@
                     "AOGCM",
                     "BGC"
                 ],
-                "parent_activity_id": [
-                    {}
-                ],
-                "parent_experiment_id": [
-                    {}
-                ]
+                "parent_activity_id": [],
+                "parent_experiment_id": []
             },
             "fut-Aer": {
                 "activity_id": [
@@ -548,151 +205,10 @@
                     "AOGCM"
                 ],
                 "parent_activity_id": [
-                    {
-                        "description": "The Large Ensemble Single Forcing Model Intercomparison Project",
-                        "name": "LESFMIP",
-                        "url": "https://www.frontiersin.org/articles/10.3389/fclim.2022.955414/full"
-                    }
+                    "LESFMIP"
                 ],
                 "parent_experiment_id": [
-                    {
-                        "activity_id": {
-                            "description": "The Large Ensemble Single Forcing Model Intercomparison Project",
-                            "name": "LESFMIP",
-                            "url": "https://www.frontiersin.org/articles/10.3389/fclim.2022.955414/full"
-                        },
-                        "description": "Anthropogenic-aerosol-only historical simulations",
-                        "experiment": "historical anthropogenic aerosols-only run",
-                        "model_components": {
-                            "additional_allowed": [
-                                {
-                                    "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                    "name": "AER"
-                                },
-                                {
-                                    "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                    "name": "CHEM"
-                                },
-                                {
-                                    "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                    "name": "BGC"
-                                }
-                            ],
-                            "required": {
-                                "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                "name": "AOGCM"
-                            }
-                        },
-                        "experiment_id": "hist-aer",
-                        "parameters": {
-                            "end": 2020,
-                            "min_number_yrs_per_sim": "none",
-                            "start": 1850
-                        },
-                        "parent": {
-                            "activity_id": {
-                                "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                "name": "CMIP",
-                                "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                            },
-                            "experiment_id": {
-                                "activity_id": {
-                                    "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                    "name": "CMIP",
-                                    "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                                },
-                                "description": "DECK: control",
-                                "experiment": "pre-industrial control (CO2 concentration-driven)",
-                                "model_components": {
-                                    "additional_allowed": [
-                                        {
-                                            "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                            "name": "AER"
-                                        },
-                                        {
-                                            "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                            "name": "CHEM"
-                                        },
-                                        {
-                                            "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                            "name": "BGC"
-                                        }
-                                    ],
-                                    "required": {
-                                        "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                        "name": "AOGCM"
-                                    }
-                                },
-                                "experiment_id": "piControl",
-                                "parameters": {
-                                    "end": -999,
-                                    "min_number_yrs_per_sim": 500,
-                                    "start": -999
-                                },
-                                "parent": {
-                                    "activity_id": {
-                                        "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                        "name": "CMIP",
-                                        "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                                    },
-                                    "experiment_id": {
-                                        "activity_id": {
-                                            "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                            "name": "CMIP",
-                                            "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                                        },
-                                        "description": "DECK: spin-up portion of the control",
-                                        "experiment": "pre-industrial control (spin-up)",
-                                        "model_components": {
-                                            "additional_allowed": [
-                                                {
-                                                    "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                                    "name": "AER"
-                                                },
-                                                {
-                                                    "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                                    "name": "CHEM"
-                                                },
-                                                {
-                                                    "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                                    "name": "BGC"
-                                                }
-                                            ],
-                                            "required": {
-                                                "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                                "name": "AOGCM"
-                                            }
-                                        },
-                                        "experiment_id": "piControl-spinup",
-                                        "parameters": {
-                                            "end": -999,
-                                            "min_number_yrs_per_sim": 100,
-                                            "start": -999
-                                        },
-                                        "parent": {
-                                            "activity_id": {},
-                                            "experiment_id": {}
-                                        },
-                                        "sub_experiment_id": {
-                                            "description": "none",
-                                            "name": "none"
-                                        },
-                                        "tier": 2
-                                    }
-                                },
-                                "sub_experiment_id": {
-                                    "description": "none",
-                                    "name": "none"
-                                },
-                                "tier": 1
-                            }
-                        },
-                        "sub_experiment_id": {
-                            "description": "Forcings 2023",
-                            "name": "f2023"
-                        },
-                        "tier": 1
-                    }
+                    "missing"
                 ]
             },
             "fut-GHG": {
@@ -718,151 +234,10 @@
                     "AOGCM"
                 ],
                 "parent_activity_id": [
-                    {
-                        "description": "The Large Ensemble Single Forcing Model Intercomparison Project",
-                        "name": "LESFMIP",
-                        "url": "https://www.frontiersin.org/articles/10.3389/fclim.2022.955414/full"
-                    }
+                    "LESFMIP"
                 ],
                 "parent_experiment_id": [
-                    {
-                        "activity_id": {
-                            "description": "The Large Ensemble Single Forcing Model Intercomparison Project",
-                            "name": "LESFMIP",
-                            "url": "https://www.frontiersin.org/articles/10.3389/fclim.2022.955414/full"
-                        },
-                        "description": "Well-mixed greenhouse-gas-only historical simulations",
-                        "experiment": "historical well-mixed GHG-only run",
-                        "model_components": {
-                            "additional_allowed": [
-                                {
-                                    "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                    "name": "AER"
-                                },
-                                {
-                                    "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                    "name": "CHEM"
-                                },
-                                {
-                                    "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                    "name": "BGC"
-                                }
-                            ],
-                            "required": {
-                                "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                "name": "AOGCM"
-                            }
-                        },
-                        "experiment_id": "hist-GHG",
-                        "parameters": {
-                            "end": 2020,
-                            "min_number_yrs_per_sim": "none",
-                            "start": 1850
-                        },
-                        "parent": {
-                            "activity_id": {
-                                "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                "name": "CMIP",
-                                "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                            },
-                            "experiment_id": {
-                                "activity_id": {
-                                    "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                    "name": "CMIP",
-                                    "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                                },
-                                "description": "DECK: control",
-                                "experiment": "pre-industrial control (CO2 concentration-driven)",
-                                "model_components": {
-                                    "additional_allowed": [
-                                        {
-                                            "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                            "name": "AER"
-                                        },
-                                        {
-                                            "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                            "name": "CHEM"
-                                        },
-                                        {
-                                            "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                            "name": "BGC"
-                                        }
-                                    ],
-                                    "required": {
-                                        "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                        "name": "AOGCM"
-                                    }
-                                },
-                                "experiment_id": "piControl",
-                                "parameters": {
-                                    "end": -999,
-                                    "min_number_yrs_per_sim": 500,
-                                    "start": -999
-                                },
-                                "parent": {
-                                    "activity_id": {
-                                        "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                        "name": "CMIP",
-                                        "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                                    },
-                                    "experiment_id": {
-                                        "activity_id": {
-                                            "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                            "name": "CMIP",
-                                            "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                                        },
-                                        "description": "DECK: spin-up portion of the control",
-                                        "experiment": "pre-industrial control (spin-up)",
-                                        "model_components": {
-                                            "additional_allowed": [
-                                                {
-                                                    "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                                    "name": "AER"
-                                                },
-                                                {
-                                                    "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                                    "name": "CHEM"
-                                                },
-                                                {
-                                                    "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                                    "name": "BGC"
-                                                }
-                                            ],
-                                            "required": {
-                                                "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                                "name": "AOGCM"
-                                            }
-                                        },
-                                        "experiment_id": "piControl-spinup",
-                                        "parameters": {
-                                            "end": -999,
-                                            "min_number_yrs_per_sim": 100,
-                                            "start": -999
-                                        },
-                                        "parent": {
-                                            "activity_id": {},
-                                            "experiment_id": {}
-                                        },
-                                        "sub_experiment_id": {
-                                            "description": "none",
-                                            "name": "none"
-                                        },
-                                        "tier": 2
-                                    }
-                                },
-                                "sub_experiment_id": {
-                                    "description": "none",
-                                    "name": "none"
-                                },
-                                "tier": 1
-                            }
-                        },
-                        "sub_experiment_id": {
-                            "description": "Forcings 2023",
-                            "name": "f2023"
-                        },
-                        "tier": 1
-                    }
+                    "missing"
                 ]
             },
             "fut-lu": {
@@ -888,104 +263,10 @@
                     "AOGCM"
                 ],
                 "parent_activity_id": [
-                    {
-                        "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                        "name": "CMIP",
-                        "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                    }
+                    "CMIP"
                 ],
                 "parent_experiment_id": [
-                    {
-                        "activity_id": {
-                            "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                            "name": "CMIP",
-                            "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                        },
-                        "description": "DECK: control",
-                        "experiment": "pre-industrial control (CO2 concentration-driven)",
-                        "model_components": {
-                            "additional_allowed": [
-                                {
-                                    "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                    "name": "AER"
-                                },
-                                {
-                                    "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                    "name": "CHEM"
-                                },
-                                {
-                                    "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                    "name": "BGC"
-                                }
-                            ],
-                            "required": {
-                                "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                "name": "AOGCM"
-                            }
-                        },
-                        "experiment_id": "piControl",
-                        "parameters": {
-                            "end": -999,
-                            "min_number_yrs_per_sim": 500,
-                            "start": -999
-                        },
-                        "parent": {
-                            "activity_id": {
-                                "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                "name": "CMIP",
-                                "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                            },
-                            "experiment_id": {
-                                "activity_id": {
-                                    "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                    "name": "CMIP",
-                                    "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                                },
-                                "description": "DECK: spin-up portion of the control",
-                                "experiment": "pre-industrial control (spin-up)",
-                                "model_components": {
-                                    "additional_allowed": [
-                                        {
-                                            "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                            "name": "AER"
-                                        },
-                                        {
-                                            "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                            "name": "CHEM"
-                                        },
-                                        {
-                                            "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                            "name": "BGC"
-                                        }
-                                    ],
-                                    "required": {
-                                        "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                        "name": "AOGCM"
-                                    }
-                                },
-                                "experiment_id": "piControl-spinup",
-                                "parameters": {
-                                    "end": -999,
-                                    "min_number_yrs_per_sim": 100,
-                                    "start": -999
-                                },
-                                "parent": {
-                                    "activity_id": {},
-                                    "experiment_id": {}
-                                },
-                                "sub_experiment_id": {
-                                    "description": "none",
-                                    "name": "none"
-                                },
-                                "tier": 2
-                            }
-                        },
-                        "sub_experiment_id": {
-                            "description": "none",
-                            "name": "none"
-                        },
-                        "tier": 1
-                    }
+                    "missing"
                 ]
             },
             "fut-sol": {
@@ -1011,151 +292,10 @@
                     "AOGCM"
                 ],
                 "parent_activity_id": [
-                    {
-                        "description": "The Large Ensemble Single Forcing Model Intercomparison Project",
-                        "name": "LESFMIP",
-                        "url": "https://www.frontiersin.org/articles/10.3389/fclim.2022.955414/full"
-                    }
+                    "LESFMIP"
                 ],
                 "parent_experiment_id": [
-                    {
-                        "activity_id": {
-                            "description": "The Large Ensemble Single Forcing Model Intercomparison Project",
-                            "name": "LESFMIP",
-                            "url": "https://www.frontiersin.org/articles/10.3389/fclim.2022.955414/full"
-                        },
-                        "description": "Solar-only historical simulations",
-                        "experiment": "historical solar-only run",
-                        "model_components": {
-                            "additional_allowed": [
-                                {
-                                    "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                    "name": "AER"
-                                },
-                                {
-                                    "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                    "name": "CHEM"
-                                },
-                                {
-                                    "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                    "name": "BGC"
-                                }
-                            ],
-                            "required": {
-                                "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                "name": "AOGCM"
-                            }
-                        },
-                        "experiment_id": "hist-sol",
-                        "parameters": {
-                            "end": 2020,
-                            "min_number_yrs_per_sim": "none",
-                            "start": 1850
-                        },
-                        "parent": {
-                            "activity_id": {
-                                "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                "name": "CMIP",
-                                "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                            },
-                            "experiment_id": {
-                                "activity_id": {
-                                    "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                    "name": "CMIP",
-                                    "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                                },
-                                "description": "DECK: control",
-                                "experiment": "pre-industrial control (CO2 concentration-driven)",
-                                "model_components": {
-                                    "additional_allowed": [
-                                        {
-                                            "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                            "name": "AER"
-                                        },
-                                        {
-                                            "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                            "name": "CHEM"
-                                        },
-                                        {
-                                            "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                            "name": "BGC"
-                                        }
-                                    ],
-                                    "required": {
-                                        "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                        "name": "AOGCM"
-                                    }
-                                },
-                                "experiment_id": "piControl",
-                                "parameters": {
-                                    "end": -999,
-                                    "min_number_yrs_per_sim": 500,
-                                    "start": -999
-                                },
-                                "parent": {
-                                    "activity_id": {
-                                        "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                        "name": "CMIP",
-                                        "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                                    },
-                                    "experiment_id": {
-                                        "activity_id": {
-                                            "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                            "name": "CMIP",
-                                            "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                                        },
-                                        "description": "DECK: spin-up portion of the control",
-                                        "experiment": "pre-industrial control (spin-up)",
-                                        "model_components": {
-                                            "additional_allowed": [
-                                                {
-                                                    "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                                    "name": "AER"
-                                                },
-                                                {
-                                                    "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                                    "name": "CHEM"
-                                                },
-                                                {
-                                                    "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                                    "name": "BGC"
-                                                }
-                                            ],
-                                            "required": {
-                                                "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                                "name": "AOGCM"
-                                            }
-                                        },
-                                        "experiment_id": "piControl-spinup",
-                                        "parameters": {
-                                            "end": -999,
-                                            "min_number_yrs_per_sim": 100,
-                                            "start": -999
-                                        },
-                                        "parent": {
-                                            "activity_id": {},
-                                            "experiment_id": {}
-                                        },
-                                        "sub_experiment_id": {
-                                            "description": "none",
-                                            "name": "none"
-                                        },
-                                        "tier": 2
-                                    }
-                                },
-                                "sub_experiment_id": {
-                                    "description": "none",
-                                    "name": "none"
-                                },
-                                "tier": 1
-                            }
-                        },
-                        "sub_experiment_id": {
-                            "description": "Forcings 2023",
-                            "name": "f2023"
-                        },
-                        "tier": 1
-                    }
+                    "missing"
                 ]
             },
             "fut-totalO3": {
@@ -1181,151 +321,10 @@
                     "AOGCM"
                 ],
                 "parent_activity_id": [
-                    {
-                        "description": "The Large Ensemble Single Forcing Model Intercomparison Project",
-                        "name": "LESFMIP",
-                        "url": "https://www.frontiersin.org/articles/10.3389/fclim.2022.955414/full"
-                    }
+                    "LESFMIP"
                 ],
                 "parent_experiment_id": [
-                    {
-                        "activity_id": {
-                            "description": "The Large Ensemble Single Forcing Model Intercomparison Project",
-                            "name": "LESFMIP",
-                            "url": "https://www.frontiersin.org/articles/10.3389/fclim.2022.955414/full"
-                        },
-                        "description": "Ozone-only historical simulations",
-                        "experiment": "historical total ozone-only run",
-                        "model_components": {
-                            "additional_allowed": [
-                                {
-                                    "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                    "name": "AER"
-                                },
-                                {
-                                    "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                    "name": "CHEM"
-                                },
-                                {
-                                    "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                    "name": "BGC"
-                                }
-                            ],
-                            "required": {
-                                "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                "name": "AOGCM"
-                            }
-                        },
-                        "experiment_id": "hist-totalO3",
-                        "parameters": {
-                            "end": 2020,
-                            "min_number_yrs_per_sim": "none",
-                            "start": 1850
-                        },
-                        "parent": {
-                            "activity_id": {
-                                "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                "name": "CMIP",
-                                "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                            },
-                            "experiment_id": {
-                                "activity_id": {
-                                    "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                    "name": "CMIP",
-                                    "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                                },
-                                "description": "DECK: control",
-                                "experiment": "pre-industrial control (CO2 concentration-driven)",
-                                "model_components": {
-                                    "additional_allowed": [
-                                        {
-                                            "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                            "name": "AER"
-                                        },
-                                        {
-                                            "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                            "name": "CHEM"
-                                        },
-                                        {
-                                            "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                            "name": "BGC"
-                                        }
-                                    ],
-                                    "required": {
-                                        "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                        "name": "AOGCM"
-                                    }
-                                },
-                                "experiment_id": "piControl",
-                                "parameters": {
-                                    "end": -999,
-                                    "min_number_yrs_per_sim": 500,
-                                    "start": -999
-                                },
-                                "parent": {
-                                    "activity_id": {
-                                        "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                        "name": "CMIP",
-                                        "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                                    },
-                                    "experiment_id": {
-                                        "activity_id": {
-                                            "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                            "name": "CMIP",
-                                            "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                                        },
-                                        "description": "DECK: spin-up portion of the control",
-                                        "experiment": "pre-industrial control (spin-up)",
-                                        "model_components": {
-                                            "additional_allowed": [
-                                                {
-                                                    "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                                    "name": "AER"
-                                                },
-                                                {
-                                                    "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                                    "name": "CHEM"
-                                                },
-                                                {
-                                                    "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                                    "name": "BGC"
-                                                }
-                                            ],
-                                            "required": {
-                                                "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                                "name": "AOGCM"
-                                            }
-                                        },
-                                        "experiment_id": "piControl-spinup",
-                                        "parameters": {
-                                            "end": -999,
-                                            "min_number_yrs_per_sim": 100,
-                                            "start": -999
-                                        },
-                                        "parent": {
-                                            "activity_id": {},
-                                            "experiment_id": {}
-                                        },
-                                        "sub_experiment_id": {
-                                            "description": "none",
-                                            "name": "none"
-                                        },
-                                        "tier": 2
-                                    }
-                                },
-                                "sub_experiment_id": {
-                                    "description": "none",
-                                    "name": "none"
-                                },
-                                "tier": 1
-                            }
-                        },
-                        "sub_experiment_id": {
-                            "description": "Forcings 2023",
-                            "name": "f2023"
-                        },
-                        "tier": 1
-                    }
+                    "missing"
                 ]
             },
             "fut-volc": {
@@ -1351,151 +350,10 @@
                     "AOGCM"
                 ],
                 "parent_activity_id": [
-                    {
-                        "description": "The Large Ensemble Single Forcing Model Intercomparison Project",
-                        "name": "LESFMIP",
-                        "url": "https://www.frontiersin.org/articles/10.3389/fclim.2022.955414/full"
-                    }
+                    "LESFMIP"
                 ],
                 "parent_experiment_id": [
-                    {
-                        "activity_id": {
-                            "description": "The Large Ensemble Single Forcing Model Intercomparison Project",
-                            "name": "LESFMIP",
-                            "url": "https://www.frontiersin.org/articles/10.3389/fclim.2022.955414/full"
-                        },
-                        "description": "Volcanic-only historical simulations",
-                        "experiment": "historical volcanic-only run",
-                        "model_components": {
-                            "additional_allowed": [
-                                {
-                                    "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                    "name": "AER"
-                                },
-                                {
-                                    "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                    "name": "CHEM"
-                                },
-                                {
-                                    "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                    "name": "BGC"
-                                }
-                            ],
-                            "required": {
-                                "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                "name": "AOGCM"
-                            }
-                        },
-                        "experiment_id": "hist-volc",
-                        "parameters": {
-                            "end": 2020,
-                            "min_number_yrs_per_sim": "none",
-                            "start": 1850
-                        },
-                        "parent": {
-                            "activity_id": {
-                                "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                "name": "CMIP",
-                                "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                            },
-                            "experiment_id": {
-                                "activity_id": {
-                                    "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                    "name": "CMIP",
-                                    "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                                },
-                                "description": "DECK: control",
-                                "experiment": "pre-industrial control (CO2 concentration-driven)",
-                                "model_components": {
-                                    "additional_allowed": [
-                                        {
-                                            "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                            "name": "AER"
-                                        },
-                                        {
-                                            "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                            "name": "CHEM"
-                                        },
-                                        {
-                                            "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                            "name": "BGC"
-                                        }
-                                    ],
-                                    "required": {
-                                        "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                        "name": "AOGCM"
-                                    }
-                                },
-                                "experiment_id": "piControl",
-                                "parameters": {
-                                    "end": -999,
-                                    "min_number_yrs_per_sim": 500,
-                                    "start": -999
-                                },
-                                "parent": {
-                                    "activity_id": {
-                                        "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                        "name": "CMIP",
-                                        "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                                    },
-                                    "experiment_id": {
-                                        "activity_id": {
-                                            "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                            "name": "CMIP",
-                                            "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                                        },
-                                        "description": "DECK: spin-up portion of the control",
-                                        "experiment": "pre-industrial control (spin-up)",
-                                        "model_components": {
-                                            "additional_allowed": [
-                                                {
-                                                    "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                                    "name": "AER"
-                                                },
-                                                {
-                                                    "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                                    "name": "CHEM"
-                                                },
-                                                {
-                                                    "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                                    "name": "BGC"
-                                                }
-                                            ],
-                                            "required": {
-                                                "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                                "name": "AOGCM"
-                                            }
-                                        },
-                                        "experiment_id": "piControl-spinup",
-                                        "parameters": {
-                                            "end": -999,
-                                            "min_number_yrs_per_sim": 100,
-                                            "start": -999
-                                        },
-                                        "parent": {
-                                            "activity_id": {},
-                                            "experiment_id": {}
-                                        },
-                                        "sub_experiment_id": {
-                                            "description": "none",
-                                            "name": "none"
-                                        },
-                                        "tier": 2
-                                    }
-                                },
-                                "sub_experiment_id": {
-                                    "description": "none",
-                                    "name": "none"
-                                },
-                                "tier": 1
-                            }
-                        },
-                        "sub_experiment_id": {
-                            "description": "Forcings 2023",
-                            "name": "f2023"
-                        },
-                        "tier": 1
-                    }
+                    "missing"
                 ]
             },
             "hist-GHG": {
@@ -1521,104 +379,10 @@
                     "AOGCM"
                 ],
                 "parent_activity_id": [
-                    {
-                        "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                        "name": "CMIP",
-                        "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                    }
+                    "CMIP"
                 ],
                 "parent_experiment_id": [
-                    {
-                        "activity_id": {
-                            "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                            "name": "CMIP",
-                            "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                        },
-                        "description": "DECK: control",
-                        "experiment": "pre-industrial control (CO2 concentration-driven)",
-                        "model_components": {
-                            "additional_allowed": [
-                                {
-                                    "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                    "name": "AER"
-                                },
-                                {
-                                    "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                    "name": "CHEM"
-                                },
-                                {
-                                    "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                    "name": "BGC"
-                                }
-                            ],
-                            "required": {
-                                "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                "name": "AOGCM"
-                            }
-                        },
-                        "experiment_id": "piControl",
-                        "parameters": {
-                            "end": -999,
-                            "min_number_yrs_per_sim": 500,
-                            "start": -999
-                        },
-                        "parent": {
-                            "activity_id": {
-                                "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                "name": "CMIP",
-                                "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                            },
-                            "experiment_id": {
-                                "activity_id": {
-                                    "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                    "name": "CMIP",
-                                    "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                                },
-                                "description": "DECK: spin-up portion of the control",
-                                "experiment": "pre-industrial control (spin-up)",
-                                "model_components": {
-                                    "additional_allowed": [
-                                        {
-                                            "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                            "name": "AER"
-                                        },
-                                        {
-                                            "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                            "name": "CHEM"
-                                        },
-                                        {
-                                            "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                            "name": "BGC"
-                                        }
-                                    ],
-                                    "required": {
-                                        "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                        "name": "AOGCM"
-                                    }
-                                },
-                                "experiment_id": "piControl-spinup",
-                                "parameters": {
-                                    "end": -999,
-                                    "min_number_yrs_per_sim": 100,
-                                    "start": -999
-                                },
-                                "parent": {
-                                    "activity_id": {},
-                                    "experiment_id": {}
-                                },
-                                "sub_experiment_id": {
-                                    "description": "none",
-                                    "name": "none"
-                                },
-                                "tier": 2
-                            }
-                        },
-                        "sub_experiment_id": {
-                            "description": "none",
-                            "name": "none"
-                        },
-                        "tier": 1
-                    }
+                    "missing"
                 ]
             },
             "hist-aer": {
@@ -1644,104 +408,10 @@
                     "AOGCM"
                 ],
                 "parent_activity_id": [
-                    {
-                        "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                        "name": "CMIP",
-                        "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                    }
+                    "CMIP"
                 ],
                 "parent_experiment_id": [
-                    {
-                        "activity_id": {
-                            "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                            "name": "CMIP",
-                            "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                        },
-                        "description": "DECK: control",
-                        "experiment": "pre-industrial control (CO2 concentration-driven)",
-                        "model_components": {
-                            "additional_allowed": [
-                                {
-                                    "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                    "name": "AER"
-                                },
-                                {
-                                    "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                    "name": "CHEM"
-                                },
-                                {
-                                    "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                    "name": "BGC"
-                                }
-                            ],
-                            "required": {
-                                "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                "name": "AOGCM"
-                            }
-                        },
-                        "experiment_id": "piControl",
-                        "parameters": {
-                            "end": -999,
-                            "min_number_yrs_per_sim": 500,
-                            "start": -999
-                        },
-                        "parent": {
-                            "activity_id": {
-                                "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                "name": "CMIP",
-                                "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                            },
-                            "experiment_id": {
-                                "activity_id": {
-                                    "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                    "name": "CMIP",
-                                    "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                                },
-                                "description": "DECK: spin-up portion of the control",
-                                "experiment": "pre-industrial control (spin-up)",
-                                "model_components": {
-                                    "additional_allowed": [
-                                        {
-                                            "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                            "name": "AER"
-                                        },
-                                        {
-                                            "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                            "name": "CHEM"
-                                        },
-                                        {
-                                            "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                            "name": "BGC"
-                                        }
-                                    ],
-                                    "required": {
-                                        "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                        "name": "AOGCM"
-                                    }
-                                },
-                                "experiment_id": "piControl-spinup",
-                                "parameters": {
-                                    "end": -999,
-                                    "min_number_yrs_per_sim": 100,
-                                    "start": -999
-                                },
-                                "parent": {
-                                    "activity_id": {},
-                                    "experiment_id": {}
-                                },
-                                "sub_experiment_id": {
-                                    "description": "none",
-                                    "name": "none"
-                                },
-                                "tier": 2
-                            }
-                        },
-                        "sub_experiment_id": {
-                            "description": "none",
-                            "name": "none"
-                        },
-                        "tier": 1
-                    }
+                    "missing"
                 ]
             },
             "hist-lu": {
@@ -1767,104 +437,10 @@
                     "AOGCM"
                 ],
                 "parent_activity_id": [
-                    {
-                        "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                        "name": "CMIP",
-                        "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                    }
+                    "CMIP"
                 ],
                 "parent_experiment_id": [
-                    {
-                        "activity_id": {
-                            "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                            "name": "CMIP",
-                            "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                        },
-                        "description": "DECK: control",
-                        "experiment": "pre-industrial control (CO2 concentration-driven)",
-                        "model_components": {
-                            "additional_allowed": [
-                                {
-                                    "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                    "name": "AER"
-                                },
-                                {
-                                    "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                    "name": "CHEM"
-                                },
-                                {
-                                    "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                    "name": "BGC"
-                                }
-                            ],
-                            "required": {
-                                "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                "name": "AOGCM"
-                            }
-                        },
-                        "experiment_id": "piControl",
-                        "parameters": {
-                            "end": -999,
-                            "min_number_yrs_per_sim": 500,
-                            "start": -999
-                        },
-                        "parent": {
-                            "activity_id": {
-                                "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                "name": "CMIP",
-                                "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                            },
-                            "experiment_id": {
-                                "activity_id": {
-                                    "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                    "name": "CMIP",
-                                    "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                                },
-                                "description": "DECK: spin-up portion of the control",
-                                "experiment": "pre-industrial control (spin-up)",
-                                "model_components": {
-                                    "additional_allowed": [
-                                        {
-                                            "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                            "name": "AER"
-                                        },
-                                        {
-                                            "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                            "name": "CHEM"
-                                        },
-                                        {
-                                            "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                            "name": "BGC"
-                                        }
-                                    ],
-                                    "required": {
-                                        "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                        "name": "AOGCM"
-                                    }
-                                },
-                                "experiment_id": "piControl-spinup",
-                                "parameters": {
-                                    "end": -999,
-                                    "min_number_yrs_per_sim": 100,
-                                    "start": -999
-                                },
-                                "parent": {
-                                    "activity_id": {},
-                                    "experiment_id": {}
-                                },
-                                "sub_experiment_id": {
-                                    "description": "none",
-                                    "name": "none"
-                                },
-                                "tier": 2
-                            }
-                        },
-                        "sub_experiment_id": {
-                            "description": "none",
-                            "name": "none"
-                        },
-                        "tier": 1
-                    }
+                    "missing"
                 ]
             },
             "hist-nat": {
@@ -1890,104 +466,10 @@
                     "AOGCM"
                 ],
                 "parent_activity_id": [
-                    {
-                        "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                        "name": "CMIP",
-                        "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                    }
+                    "CMIP"
                 ],
                 "parent_experiment_id": [
-                    {
-                        "activity_id": {
-                            "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                            "name": "CMIP",
-                            "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                        },
-                        "description": "DECK: control",
-                        "experiment": "pre-industrial control (CO2 concentration-driven)",
-                        "model_components": {
-                            "additional_allowed": [
-                                {
-                                    "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                    "name": "AER"
-                                },
-                                {
-                                    "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                    "name": "CHEM"
-                                },
-                                {
-                                    "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                    "name": "BGC"
-                                }
-                            ],
-                            "required": {
-                                "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                "name": "AOGCM"
-                            }
-                        },
-                        "experiment_id": "piControl",
-                        "parameters": {
-                            "end": -999,
-                            "min_number_yrs_per_sim": 500,
-                            "start": -999
-                        },
-                        "parent": {
-                            "activity_id": {
-                                "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                "name": "CMIP",
-                                "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                            },
-                            "experiment_id": {
-                                "activity_id": {
-                                    "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                    "name": "CMIP",
-                                    "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                                },
-                                "description": "DECK: spin-up portion of the control",
-                                "experiment": "pre-industrial control (spin-up)",
-                                "model_components": {
-                                    "additional_allowed": [
-                                        {
-                                            "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                            "name": "AER"
-                                        },
-                                        {
-                                            "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                            "name": "CHEM"
-                                        },
-                                        {
-                                            "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                            "name": "BGC"
-                                        }
-                                    ],
-                                    "required": {
-                                        "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                        "name": "AOGCM"
-                                    }
-                                },
-                                "experiment_id": "piControl-spinup",
-                                "parameters": {
-                                    "end": -999,
-                                    "min_number_yrs_per_sim": 100,
-                                    "start": -999
-                                },
-                                "parent": {
-                                    "activity_id": {},
-                                    "experiment_id": {}
-                                },
-                                "sub_experiment_id": {
-                                    "description": "none",
-                                    "name": "none"
-                                },
-                                "tier": 2
-                            }
-                        },
-                        "sub_experiment_id": {
-                            "description": "none",
-                            "name": "none"
-                        },
-                        "tier": 1
-                    }
+                    "missing"
                 ]
             },
             "hist-noLu": {
@@ -2013,104 +495,10 @@
                     "AOGCM"
                 ],
                 "parent_activity_id": [
-                    {
-                        "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                        "name": "CMIP",
-                        "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                    }
+                    "CMIP"
                 ],
                 "parent_experiment_id": [
-                    {
-                        "activity_id": {
-                            "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                            "name": "CMIP",
-                            "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                        },
-                        "description": "DECK: control",
-                        "experiment": "pre-industrial control (CO2 concentration-driven)",
-                        "model_components": {
-                            "additional_allowed": [
-                                {
-                                    "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                    "name": "AER"
-                                },
-                                {
-                                    "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                    "name": "CHEM"
-                                },
-                                {
-                                    "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                    "name": "BGC"
-                                }
-                            ],
-                            "required": {
-                                "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                "name": "AOGCM"
-                            }
-                        },
-                        "experiment_id": "piControl",
-                        "parameters": {
-                            "end": -999,
-                            "min_number_yrs_per_sim": 500,
-                            "start": -999
-                        },
-                        "parent": {
-                            "activity_id": {
-                                "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                "name": "CMIP",
-                                "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                            },
-                            "experiment_id": {
-                                "activity_id": {
-                                    "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                    "name": "CMIP",
-                                    "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                                },
-                                "description": "DECK: spin-up portion of the control",
-                                "experiment": "pre-industrial control (spin-up)",
-                                "model_components": {
-                                    "additional_allowed": [
-                                        {
-                                            "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                            "name": "AER"
-                                        },
-                                        {
-                                            "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                            "name": "CHEM"
-                                        },
-                                        {
-                                            "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                            "name": "BGC"
-                                        }
-                                    ],
-                                    "required": {
-                                        "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                        "name": "AOGCM"
-                                    }
-                                },
-                                "experiment_id": "piControl-spinup",
-                                "parameters": {
-                                    "end": -999,
-                                    "min_number_yrs_per_sim": 100,
-                                    "start": -999
-                                },
-                                "parent": {
-                                    "activity_id": {},
-                                    "experiment_id": {}
-                                },
-                                "sub_experiment_id": {
-                                    "description": "none",
-                                    "name": "none"
-                                },
-                                "tier": 2
-                            }
-                        },
-                        "sub_experiment_id": {
-                            "description": "none",
-                            "name": "none"
-                        },
-                        "tier": 1
-                    }
+                    "missing"
                 ]
             },
             "hist-piAer": {
@@ -2136,104 +524,10 @@
                     "AOGCM"
                 ],
                 "parent_activity_id": [
-                    {
-                        "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                        "name": "CMIP",
-                        "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                    }
+                    "CMIP"
                 ],
                 "parent_experiment_id": [
-                    {
-                        "activity_id": {
-                            "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                            "name": "CMIP",
-                            "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                        },
-                        "description": "DECK: control",
-                        "experiment": "pre-industrial control (CO2 concentration-driven)",
-                        "model_components": {
-                            "additional_allowed": [
-                                {
-                                    "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                    "name": "AER"
-                                },
-                                {
-                                    "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                    "name": "CHEM"
-                                },
-                                {
-                                    "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                    "name": "BGC"
-                                }
-                            ],
-                            "required": {
-                                "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                "name": "AOGCM"
-                            }
-                        },
-                        "experiment_id": "piControl",
-                        "parameters": {
-                            "end": -999,
-                            "min_number_yrs_per_sim": 500,
-                            "start": -999
-                        },
-                        "parent": {
-                            "activity_id": {
-                                "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                "name": "CMIP",
-                                "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                            },
-                            "experiment_id": {
-                                "activity_id": {
-                                    "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                    "name": "CMIP",
-                                    "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                                },
-                                "description": "DECK: spin-up portion of the control",
-                                "experiment": "pre-industrial control (spin-up)",
-                                "model_components": {
-                                    "additional_allowed": [
-                                        {
-                                            "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                            "name": "AER"
-                                        },
-                                        {
-                                            "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                            "name": "CHEM"
-                                        },
-                                        {
-                                            "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                            "name": "BGC"
-                                        }
-                                    ],
-                                    "required": {
-                                        "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                        "name": "AOGCM"
-                                    }
-                                },
-                                "experiment_id": "piControl-spinup",
-                                "parameters": {
-                                    "end": -999,
-                                    "min_number_yrs_per_sim": 100,
-                                    "start": -999
-                                },
-                                "parent": {
-                                    "activity_id": {},
-                                    "experiment_id": {}
-                                },
-                                "sub_experiment_id": {
-                                    "description": "none",
-                                    "name": "none"
-                                },
-                                "tier": 2
-                            }
-                        },
-                        "sub_experiment_id": {
-                            "description": "none",
-                            "name": "none"
-                        },
-                        "tier": 1
-                    }
+                    "missing"
                 ]
             },
             "hist-piGHG": {
@@ -2259,104 +553,10 @@
                     "AOGCM"
                 ],
                 "parent_activity_id": [
-                    {
-                        "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                        "name": "CMIP",
-                        "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                    }
+                    "CMIP"
                 ],
                 "parent_experiment_id": [
-                    {
-                        "activity_id": {
-                            "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                            "name": "CMIP",
-                            "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                        },
-                        "description": "DECK: control",
-                        "experiment": "pre-industrial control (CO2 concentration-driven)",
-                        "model_components": {
-                            "additional_allowed": [
-                                {
-                                    "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                    "name": "AER"
-                                },
-                                {
-                                    "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                    "name": "CHEM"
-                                },
-                                {
-                                    "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                    "name": "BGC"
-                                }
-                            ],
-                            "required": {
-                                "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                "name": "AOGCM"
-                            }
-                        },
-                        "experiment_id": "piControl",
-                        "parameters": {
-                            "end": -999,
-                            "min_number_yrs_per_sim": 500,
-                            "start": -999
-                        },
-                        "parent": {
-                            "activity_id": {
-                                "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                "name": "CMIP",
-                                "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                            },
-                            "experiment_id": {
-                                "activity_id": {
-                                    "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                    "name": "CMIP",
-                                    "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                                },
-                                "description": "DECK: spin-up portion of the control",
-                                "experiment": "pre-industrial control (spin-up)",
-                                "model_components": {
-                                    "additional_allowed": [
-                                        {
-                                            "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                            "name": "AER"
-                                        },
-                                        {
-                                            "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                            "name": "CHEM"
-                                        },
-                                        {
-                                            "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                            "name": "BGC"
-                                        }
-                                    ],
-                                    "required": {
-                                        "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                        "name": "AOGCM"
-                                    }
-                                },
-                                "experiment_id": "piControl-spinup",
-                                "parameters": {
-                                    "end": -999,
-                                    "min_number_yrs_per_sim": 100,
-                                    "start": -999
-                                },
-                                "parent": {
-                                    "activity_id": {},
-                                    "experiment_id": {}
-                                },
-                                "sub_experiment_id": {
-                                    "description": "none",
-                                    "name": "none"
-                                },
-                                "tier": 2
-                            }
-                        },
-                        "sub_experiment_id": {
-                            "description": "none",
-                            "name": "none"
-                        },
-                        "tier": 1
-                    }
+                    "missing"
                 ]
             },
             "hist-piSol": {
@@ -2382,104 +582,10 @@
                     "AOGCM"
                 ],
                 "parent_activity_id": [
-                    {
-                        "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                        "name": "CMIP",
-                        "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                    }
+                    "CMIP"
                 ],
                 "parent_experiment_id": [
-                    {
-                        "activity_id": {
-                            "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                            "name": "CMIP",
-                            "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                        },
-                        "description": "DECK: control",
-                        "experiment": "pre-industrial control (CO2 concentration-driven)",
-                        "model_components": {
-                            "additional_allowed": [
-                                {
-                                    "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                    "name": "AER"
-                                },
-                                {
-                                    "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                    "name": "CHEM"
-                                },
-                                {
-                                    "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                    "name": "BGC"
-                                }
-                            ],
-                            "required": {
-                                "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                "name": "AOGCM"
-                            }
-                        },
-                        "experiment_id": "piControl",
-                        "parameters": {
-                            "end": -999,
-                            "min_number_yrs_per_sim": 500,
-                            "start": -999
-                        },
-                        "parent": {
-                            "activity_id": {
-                                "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                "name": "CMIP",
-                                "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                            },
-                            "experiment_id": {
-                                "activity_id": {
-                                    "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                    "name": "CMIP",
-                                    "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                                },
-                                "description": "DECK: spin-up portion of the control",
-                                "experiment": "pre-industrial control (spin-up)",
-                                "model_components": {
-                                    "additional_allowed": [
-                                        {
-                                            "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                            "name": "AER"
-                                        },
-                                        {
-                                            "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                            "name": "CHEM"
-                                        },
-                                        {
-                                            "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                            "name": "BGC"
-                                        }
-                                    ],
-                                    "required": {
-                                        "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                        "name": "AOGCM"
-                                    }
-                                },
-                                "experiment_id": "piControl-spinup",
-                                "parameters": {
-                                    "end": -999,
-                                    "min_number_yrs_per_sim": 100,
-                                    "start": -999
-                                },
-                                "parent": {
-                                    "activity_id": {},
-                                    "experiment_id": {}
-                                },
-                                "sub_experiment_id": {
-                                    "description": "none",
-                                    "name": "none"
-                                },
-                                "tier": 2
-                            }
-                        },
-                        "sub_experiment_id": {
-                            "description": "none",
-                            "name": "none"
-                        },
-                        "tier": 1
-                    }
+                    "missing"
                 ]
             },
             "hist-piTotalO3": {
@@ -2505,104 +611,10 @@
                     "AOGCM"
                 ],
                 "parent_activity_id": [
-                    {
-                        "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                        "name": "CMIP",
-                        "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                    }
+                    "CMIP"
                 ],
                 "parent_experiment_id": [
-                    {
-                        "activity_id": {
-                            "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                            "name": "CMIP",
-                            "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                        },
-                        "description": "DECK: control",
-                        "experiment": "pre-industrial control (CO2 concentration-driven)",
-                        "model_components": {
-                            "additional_allowed": [
-                                {
-                                    "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                    "name": "AER"
-                                },
-                                {
-                                    "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                    "name": "CHEM"
-                                },
-                                {
-                                    "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                    "name": "BGC"
-                                }
-                            ],
-                            "required": {
-                                "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                "name": "AOGCM"
-                            }
-                        },
-                        "experiment_id": "piControl",
-                        "parameters": {
-                            "end": -999,
-                            "min_number_yrs_per_sim": 500,
-                            "start": -999
-                        },
-                        "parent": {
-                            "activity_id": {
-                                "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                "name": "CMIP",
-                                "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                            },
-                            "experiment_id": {
-                                "activity_id": {
-                                    "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                    "name": "CMIP",
-                                    "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                                },
-                                "description": "DECK: spin-up portion of the control",
-                                "experiment": "pre-industrial control (spin-up)",
-                                "model_components": {
-                                    "additional_allowed": [
-                                        {
-                                            "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                            "name": "AER"
-                                        },
-                                        {
-                                            "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                            "name": "CHEM"
-                                        },
-                                        {
-                                            "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                            "name": "BGC"
-                                        }
-                                    ],
-                                    "required": {
-                                        "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                        "name": "AOGCM"
-                                    }
-                                },
-                                "experiment_id": "piControl-spinup",
-                                "parameters": {
-                                    "end": -999,
-                                    "min_number_yrs_per_sim": 100,
-                                    "start": -999
-                                },
-                                "parent": {
-                                    "activity_id": {},
-                                    "experiment_id": {}
-                                },
-                                "sub_experiment_id": {
-                                    "description": "none",
-                                    "name": "none"
-                                },
-                                "tier": 2
-                            }
-                        },
-                        "sub_experiment_id": {
-                            "description": "none",
-                            "name": "none"
-                        },
-                        "tier": 1
-                    }
+                    "missing"
                 ]
             },
             "hist-piVolc": {
@@ -2628,104 +640,10 @@
                     "AOGCM"
                 ],
                 "parent_activity_id": [
-                    {
-                        "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                        "name": "CMIP",
-                        "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                    }
+                    "CMIP"
                 ],
                 "parent_experiment_id": [
-                    {
-                        "activity_id": {
-                            "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                            "name": "CMIP",
-                            "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                        },
-                        "description": "DECK: control",
-                        "experiment": "pre-industrial control (CO2 concentration-driven)",
-                        "model_components": {
-                            "additional_allowed": [
-                                {
-                                    "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                    "name": "AER"
-                                },
-                                {
-                                    "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                    "name": "CHEM"
-                                },
-                                {
-                                    "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                    "name": "BGC"
-                                }
-                            ],
-                            "required": {
-                                "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                "name": "AOGCM"
-                            }
-                        },
-                        "experiment_id": "piControl",
-                        "parameters": {
-                            "end": -999,
-                            "min_number_yrs_per_sim": 500,
-                            "start": -999
-                        },
-                        "parent": {
-                            "activity_id": {
-                                "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                "name": "CMIP",
-                                "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                            },
-                            "experiment_id": {
-                                "activity_id": {
-                                    "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                    "name": "CMIP",
-                                    "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                                },
-                                "description": "DECK: spin-up portion of the control",
-                                "experiment": "pre-industrial control (spin-up)",
-                                "model_components": {
-                                    "additional_allowed": [
-                                        {
-                                            "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                            "name": "AER"
-                                        },
-                                        {
-                                            "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                            "name": "CHEM"
-                                        },
-                                        {
-                                            "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                            "name": "BGC"
-                                        }
-                                    ],
-                                    "required": {
-                                        "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                        "name": "AOGCM"
-                                    }
-                                },
-                                "experiment_id": "piControl-spinup",
-                                "parameters": {
-                                    "end": -999,
-                                    "min_number_yrs_per_sim": 100,
-                                    "start": -999
-                                },
-                                "parent": {
-                                    "activity_id": {},
-                                    "experiment_id": {}
-                                },
-                                "sub_experiment_id": {
-                                    "description": "none",
-                                    "name": "none"
-                                },
-                                "tier": 2
-                            }
-                        },
-                        "sub_experiment_id": {
-                            "description": "none",
-                            "name": "none"
-                        },
-                        "tier": 1
-                    }
+                    "missing"
                 ]
             },
             "hist-sol": {
@@ -2751,104 +669,10 @@
                     "AOGCM"
                 ],
                 "parent_activity_id": [
-                    {
-                        "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                        "name": "CMIP",
-                        "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                    }
+                    "CMIP"
                 ],
                 "parent_experiment_id": [
-                    {
-                        "activity_id": {
-                            "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                            "name": "CMIP",
-                            "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                        },
-                        "description": "DECK: control",
-                        "experiment": "pre-industrial control (CO2 concentration-driven)",
-                        "model_components": {
-                            "additional_allowed": [
-                                {
-                                    "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                    "name": "AER"
-                                },
-                                {
-                                    "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                    "name": "CHEM"
-                                },
-                                {
-                                    "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                    "name": "BGC"
-                                }
-                            ],
-                            "required": {
-                                "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                "name": "AOGCM"
-                            }
-                        },
-                        "experiment_id": "piControl",
-                        "parameters": {
-                            "end": -999,
-                            "min_number_yrs_per_sim": 500,
-                            "start": -999
-                        },
-                        "parent": {
-                            "activity_id": {
-                                "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                "name": "CMIP",
-                                "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                            },
-                            "experiment_id": {
-                                "activity_id": {
-                                    "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                    "name": "CMIP",
-                                    "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                                },
-                                "description": "DECK: spin-up portion of the control",
-                                "experiment": "pre-industrial control (spin-up)",
-                                "model_components": {
-                                    "additional_allowed": [
-                                        {
-                                            "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                            "name": "AER"
-                                        },
-                                        {
-                                            "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                            "name": "CHEM"
-                                        },
-                                        {
-                                            "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                            "name": "BGC"
-                                        }
-                                    ],
-                                    "required": {
-                                        "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                        "name": "AOGCM"
-                                    }
-                                },
-                                "experiment_id": "piControl-spinup",
-                                "parameters": {
-                                    "end": -999,
-                                    "min_number_yrs_per_sim": 100,
-                                    "start": -999
-                                },
-                                "parent": {
-                                    "activity_id": {},
-                                    "experiment_id": {}
-                                },
-                                "sub_experiment_id": {
-                                    "description": "none",
-                                    "name": "none"
-                                },
-                                "tier": 2
-                            }
-                        },
-                        "sub_experiment_id": {
-                            "description": "none",
-                            "name": "none"
-                        },
-                        "tier": 1
-                    }
+                    "missing"
                 ]
             },
             "hist-totalO3": {
@@ -2874,104 +698,10 @@
                     "AOGCM"
                 ],
                 "parent_activity_id": [
-                    {
-                        "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                        "name": "CMIP",
-                        "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                    }
+                    "CMIP"
                 ],
                 "parent_experiment_id": [
-                    {
-                        "activity_id": {
-                            "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                            "name": "CMIP",
-                            "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                        },
-                        "description": "DECK: control",
-                        "experiment": "pre-industrial control (CO2 concentration-driven)",
-                        "model_components": {
-                            "additional_allowed": [
-                                {
-                                    "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                    "name": "AER"
-                                },
-                                {
-                                    "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                    "name": "CHEM"
-                                },
-                                {
-                                    "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                    "name": "BGC"
-                                }
-                            ],
-                            "required": {
-                                "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                "name": "AOGCM"
-                            }
-                        },
-                        "experiment_id": "piControl",
-                        "parameters": {
-                            "end": -999,
-                            "min_number_yrs_per_sim": 500,
-                            "start": -999
-                        },
-                        "parent": {
-                            "activity_id": {
-                                "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                "name": "CMIP",
-                                "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                            },
-                            "experiment_id": {
-                                "activity_id": {
-                                    "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                    "name": "CMIP",
-                                    "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                                },
-                                "description": "DECK: spin-up portion of the control",
-                                "experiment": "pre-industrial control (spin-up)",
-                                "model_components": {
-                                    "additional_allowed": [
-                                        {
-                                            "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                            "name": "AER"
-                                        },
-                                        {
-                                            "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                            "name": "CHEM"
-                                        },
-                                        {
-                                            "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                            "name": "BGC"
-                                        }
-                                    ],
-                                    "required": {
-                                        "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                        "name": "AOGCM"
-                                    }
-                                },
-                                "experiment_id": "piControl-spinup",
-                                "parameters": {
-                                    "end": -999,
-                                    "min_number_yrs_per_sim": 100,
-                                    "start": -999
-                                },
-                                "parent": {
-                                    "activity_id": {},
-                                    "experiment_id": {}
-                                },
-                                "sub_experiment_id": {
-                                    "description": "none",
-                                    "name": "none"
-                                },
-                                "tier": 2
-                            }
-                        },
-                        "sub_experiment_id": {
-                            "description": "none",
-                            "name": "none"
-                        },
-                        "tier": 1
-                    }
+                    "missing"
                 ]
             },
             "hist-volc": {
@@ -2997,104 +727,10 @@
                     "AOGCM"
                 ],
                 "parent_activity_id": [
-                    {
-                        "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                        "name": "CMIP",
-                        "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                    }
+                    "CMIP"
                 ],
                 "parent_experiment_id": [
-                    {
-                        "activity_id": {
-                            "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                            "name": "CMIP",
-                            "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                        },
-                        "description": "DECK: control",
-                        "experiment": "pre-industrial control (CO2 concentration-driven)",
-                        "model_components": {
-                            "additional_allowed": [
-                                {
-                                    "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                    "name": "AER"
-                                },
-                                {
-                                    "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                    "name": "CHEM"
-                                },
-                                {
-                                    "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                    "name": "BGC"
-                                }
-                            ],
-                            "required": {
-                                "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                "name": "AOGCM"
-                            }
-                        },
-                        "experiment_id": "piControl",
-                        "parameters": {
-                            "end": -999,
-                            "min_number_yrs_per_sim": 500,
-                            "start": -999
-                        },
-                        "parent": {
-                            "activity_id": {
-                                "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                "name": "CMIP",
-                                "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                            },
-                            "experiment_id": {
-                                "activity_id": {
-                                    "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                    "name": "CMIP",
-                                    "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                                },
-                                "description": "DECK: spin-up portion of the control",
-                                "experiment": "pre-industrial control (spin-up)",
-                                "model_components": {
-                                    "additional_allowed": [
-                                        {
-                                            "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                            "name": "AER"
-                                        },
-                                        {
-                                            "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                            "name": "CHEM"
-                                        },
-                                        {
-                                            "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                            "name": "BGC"
-                                        }
-                                    ],
-                                    "required": {
-                                        "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                        "name": "AOGCM"
-                                    }
-                                },
-                                "experiment_id": "piControl-spinup",
-                                "parameters": {
-                                    "end": -999,
-                                    "min_number_yrs_per_sim": 100,
-                                    "start": -999
-                                },
-                                "parent": {
-                                    "activity_id": {},
-                                    "experiment_id": {}
-                                },
-                                "sub_experiment_id": {
-                                    "description": "none",
-                                    "name": "none"
-                                },
-                                "tier": 2
-                            }
-                        },
-                        "sub_experiment_id": {
-                            "description": "none",
-                            "name": "none"
-                        },
-                        "tier": 1
-                    }
+                    "missing"
                 ]
             },
             "historical": {
@@ -3120,104 +756,10 @@
                     "AOGCM"
                 ],
                 "parent_activity_id": [
-                    {
-                        "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                        "name": "CMIP",
-                        "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                    }
+                    "CMIP"
                 ],
                 "parent_experiment_id": [
-                    {
-                        "activity_id": {
-                            "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                            "name": "CMIP",
-                            "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                        },
-                        "description": "DECK: control",
-                        "experiment": "pre-industrial control (CO2 concentration-driven)",
-                        "model_components": {
-                            "additional_allowed": [
-                                {
-                                    "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                    "name": "AER"
-                                },
-                                {
-                                    "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                    "name": "CHEM"
-                                },
-                                {
-                                    "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                    "name": "BGC"
-                                }
-                            ],
-                            "required": {
-                                "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                "name": "AOGCM"
-                            }
-                        },
-                        "experiment_id": "piControl",
-                        "parameters": {
-                            "end": -999,
-                            "min_number_yrs_per_sim": 500,
-                            "start": -999
-                        },
-                        "parent": {
-                            "activity_id": {
-                                "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                "name": "CMIP",
-                                "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                            },
-                            "experiment_id": {
-                                "activity_id": {
-                                    "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                                    "name": "CMIP",
-                                    "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                                },
-                                "description": "DECK: spin-up portion of the control",
-                                "experiment": "pre-industrial control (spin-up)",
-                                "model_components": {
-                                    "additional_allowed": [
-                                        {
-                                            "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                            "name": "AER"
-                                        },
-                                        {
-                                            "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                            "name": "CHEM"
-                                        },
-                                        {
-                                            "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                            "name": "BGC"
-                                        }
-                                    ],
-                                    "required": {
-                                        "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                        "name": "AOGCM"
-                                    }
-                                },
-                                "experiment_id": "piControl-spinup",
-                                "parameters": {
-                                    "end": -999,
-                                    "min_number_yrs_per_sim": 100,
-                                    "start": -999
-                                },
-                                "parent": {
-                                    "activity_id": {},
-                                    "experiment_id": {}
-                                },
-                                "sub_experiment_id": {
-                                    "description": "none",
-                                    "name": "none"
-                                },
-                                "tier": 2
-                            }
-                        },
-                        "sub_experiment_id": {
-                            "description": "none",
-                            "name": "none"
-                        },
-                        "tier": 1
-                    }
+                    "missing"
                 ]
             },
             "piControl": {
@@ -3243,57 +785,10 @@
                     "AOGCM"
                 ],
                 "parent_activity_id": [
-                    {
-                        "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                        "name": "CMIP",
-                        "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                    }
+                    "CMIP"
                 ],
                 "parent_experiment_id": [
-                    {
-                        "activity_id": {
-                            "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
-                            "name": "CMIP",
-                            "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
-                        },
-                        "description": "DECK: spin-up portion of the control",
-                        "experiment": "pre-industrial control (spin-up)",
-                        "model_components": {
-                            "additional_allowed": [
-                                {
-                                    "description": "aerosol treatment in an atmospheric model where concentrations are calculated based on emissions, transformation, and removal processes (rather than being prescribed or omitted entirely)",
-                                    "name": "AER"
-                                },
-                                {
-                                    "description": "chemistry treatment in an atmospheric model that calculates atmospheric oxidant concentrations (including at least ozone), rather than prescribing them",
-                                    "name": "CHEM"
-                                },
-                                {
-                                    "description": "biogeochemistry model component that at the very least accounts for carbon reservoirs and fluxes in the atmosphere, terrestrial biosphere, and ocean",
-                                    "name": "BGC"
-                                }
-                            ],
-                            "required": {
-                                "description": "coupled atmosphere-ocean global climate model, additionally including explicit representation of at least the land and sea ice",
-                                "name": "AOGCM"
-                            }
-                        },
-                        "experiment_id": "piControl-spinup",
-                        "parameters": {
-                            "end": -999,
-                            "min_number_yrs_per_sim": 100,
-                            "start": -999
-                        },
-                        "parent": {
-                            "activity_id": {},
-                            "experiment_id": {}
-                        },
-                        "sub_experiment_id": {
-                            "description": "none",
-                            "name": "none"
-                        },
-                        "tier": 2
-                    }
+                    "missing"
                 ]
             },
             "piControl-spinup": {
@@ -3318,12 +813,8 @@
                 "required_model_components": [
                     "AOGCM"
                 ],
-                "parent_activity_id": [
-                    {}
-                ],
-                "parent_experiment_id": [
-                    {}
-                ]
+                "parent_activity_id": [],
+                "parent_experiment_id": []
             }
         },
         "forcing_index": [
@@ -3858,7 +1349,7 @@
             "file_modified": "2024-07-29",
             "CV": {
                 "version": "version tag read from repo running  - currently not in it. ",
-                "git_commit": "86fda515086d59ba09f7424f9bf8b58030392964",
+                "git_commit": "5fd789d9694423dfe8b51622203a7a57c08e16df",
                 "gitbranch": "main"
             },
             "future": "miptables, checksum, etc"
