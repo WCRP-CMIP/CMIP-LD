@@ -7,12 +7,7 @@
                 "@extend": true
             } 
         },
-        "@extend": true,
-        "experiment-id:sub-experiment-id": {
-            "@context": {
-                "@extend": true
-            } 
-        }
+        "@extend": true
       },
     "@type": "mip:experiment-id",
     "experiment_id": "",

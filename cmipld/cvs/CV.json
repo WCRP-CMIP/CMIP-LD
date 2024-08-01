@@ -28,7 +28,9 @@
                     "min_number_yrs_per_sim": 150,
                     "start": -999
                 },
-                "sub_experiment_id": "missing",
+                "sub_experiment_id": [
+                    "missing"
+                ],
                 "tier": 1,
                 "additional_allowed_model_components": [
                     "AER",
@@ -57,7 +59,9 @@
                     "min_number_yrs_per_sim": 150,
                     "start": -999
                 },
-                "sub_experiment_id": "missing",
+                "sub_experiment_id": [
+                    "missing"
+                ],
                 "tier": 1,
                 "additional_allowed_model_components": [
                     "AER",
@@ -86,7 +90,9 @@
                     "min_number_yrs_per_sim": 43,
                     "start": 1979
                 },
-                "sub_experiment_id": "none",
+                "sub_experiment_id": [
+                    "none"
+                ],
                 "tier": 1,
                 "additional_allowed_model_components": [
                     "AER",
@@ -111,7 +117,9 @@
                     "min_number_yrs_per_sim": 165,
                     "start": 1850
                 },
-                "sub_experiment_id": "missing",
+                "sub_experiment_id": [
+                    "missing"
+                ],
                 "tier": 1,
                 "additional_allowed_model_components": [
                     "AER",
@@ -140,7 +148,9 @@
                     "min_number_yrs_per_sim": 500,
                     "start": -999
                 },
-                "sub_experiment_id": "missing",
+                "sub_experiment_id": [
+                    "missing"
+                ],
                 "tier": 1,
                 "additional_allowed_model_components": [
                     "AER",
@@ -169,7 +179,9 @@
                     "min_number_yrs_per_sim": 100,
                     "start": -999
                 },
-                "sub_experiment_id": "none",
+                "sub_experiment_id": [
+                    "none"
+                ],
                 "tier": 2,
                 "additional_allowed_model_components": [
                     "AER",
@@ -194,7 +206,9 @@
                     "min_number_yrs_per_sim": "none",
                     "start": 2015
                 },
-                "sub_experiment_id": "missing",
+                "sub_experiment_id": [
+                    "missing"
+                ],
                 "tier": 2,
                 "additional_allowed_model_components": [
                     "AER",
@@ -223,7 +237,9 @@
                     "min_number_yrs_per_sim": "none",
                     "start": 2015
                 },
-                "sub_experiment_id": "missing",
+                "sub_experiment_id": [
+                    "missing"
+                ],
                 "tier": 2,
                 "additional_allowed_model_components": [
                     "AER",
@@ -252,7 +268,9 @@
                     "min_number_yrs_per_sim": "none",
                     "start": 2015
                 },
-                "sub_experiment_id": "f2023",
+                "sub_experiment_id": [
+                    "f2023"
+                ],
                 "tier": 2,
                 "additional_allowed_model_components": [
                     "AER",
@@ -281,7 +299,9 @@
                     "min_number_yrs_per_sim": "none",
                     "start": 2015
                 },
-                "sub_experiment_id": "missing",
+                "sub_experiment_id": [
+                    "missing"
+                ],
                 "tier": 2,
                 "additional_allowed_model_components": [
                     "AER",
@@ -310,7 +330,9 @@
                     "min_number_yrs_per_sim": "none",
                     "start": 2015
                 },
-                "sub_experiment_id": "missing",
+                "sub_experiment_id": [
+                    "missing"
+                ],
                 "tier": 2,
                 "additional_allowed_model_components": [
                     "AER",
@@ -339,7 +361,9 @@
                     "min_number_yrs_per_sim": "none",
                     "start": 2015
                 },
-                "sub_experiment_id": "missing",
+                "sub_experiment_id": [
+                    "missing"
+                ],
                 "tier": 2,
                 "additional_allowed_model_components": [
                     "AER",
@@ -368,7 +392,9 @@
                     "min_number_yrs_per_sim": "none",
                     "start": 1850
                 },
-                "sub_experiment_id": "f2023",
+                "sub_experiment_id": [
+                    "f2023"
+                ],
                 "tier": 1,
                 "additional_allowed_model_components": [
                     "AER",
@@ -397,7 +423,9 @@
                     "min_number_yrs_per_sim": "none",
                     "start": 1850
                 },
-                "sub_experiment_id": "f2023",
+                "sub_experiment_id": [
+                    "f2023"
+                ],
                 "tier": 1,
                 "additional_allowed_model_components": [
                     "AER",
@@ -426,7 +454,9 @@
                     "min_number_yrs_per_sim": "none",
                     "start": 1850
                 },
-                "sub_experiment_id": "f2023",
+                "sub_experiment_id": [
+                    "f2023"
+                ],
                 "tier": 1,
                 "additional_allowed_model_components": [
                     "AER",
@@ -455,7 +485,9 @@
                     "min_number_yrs_per_sim": "none",
                     "start": 1850
                 },
-                "sub_experiment_id": "f2023",
+                "sub_experiment_id": [
+                    "f2023"
+                ],
                 "tier": 3,
                 "additional_allowed_model_components": [
                     "AER",
@@ -484,7 +516,9 @@
                     "min_number_yrs_per_sim": "none",
                     "start": 1850
                 },
-                "sub_experiment_id": "f2023",
+                "sub_experiment_id": [
+                    "f2023"
+                ],
                 "tier": 3,
                 "additional_allowed_model_components": [
                     "AER",
@@ -513,7 +547,9 @@
                     "min_number_yrs_per_sim": "none",
                     "start": 1850
                 },
-                "sub_experiment_id": "f2023",
+                "sub_experiment_id": [
+                    "f2023"
+                ],
                 "tier": 3,
                 "additional_allowed_model_components": [
                     "AER",
@@ -542,7 +578,9 @@
                     "min_number_yrs_per_sim": "none",
                     "start": 1850
                 },
-                "sub_experiment_id": "f2023",
+                "sub_experiment_id": [
+                    "f2023"
+                ],
                 "tier": 3,
                 "additional_allowed_model_components": [
                     "AER",
@@ -571,7 +609,9 @@
                     "min_number_yrs_per_sim": "none",
                     "start": 1850
                 },
-                "sub_experiment_id": "f2023",
+                "sub_experiment_id": [
+                    "f2023"
+                ],
                 "tier": 3,
                 "additional_allowed_model_components": [
                     "AER",
@@ -600,7 +640,9 @@
                     "min_number_yrs_per_sim": "none",
                     "start": 1850
                 },
-                "sub_experiment_id": "f2023",
+                "sub_experiment_id": [
+                    "f2023"
+                ],
                 "tier": 3,
                 "additional_allowed_model_components": [
                     "AER",
@@ -629,7 +671,9 @@
                     "min_number_yrs_per_sim": "none",
                     "start": 1850
                 },
-                "sub_experiment_id": "f2023",
+                "sub_experiment_id": [
+                    "f2023"
+                ],
                 "tier": 3,
                 "additional_allowed_model_components": [
                     "AER",
@@ -658,7 +702,9 @@
                     "min_number_yrs_per_sim": "none",
                     "start": 1850
                 },
-                "sub_experiment_id": "f2023",
+                "sub_experiment_id": [
+                    "f2023"
+                ],
                 "tier": 1,
                 "additional_allowed_model_components": [
                     "AER",
@@ -687,7 +733,9 @@
                     "min_number_yrs_per_sim": "none",
                     "start": 1850
                 },
-                "sub_experiment_id": "f2023",
+                "sub_experiment_id": [
+                    "f2023"
+                ],
                 "tier": 1,
                 "additional_allowed_model_components": [
                     "AER",
@@ -716,7 +764,9 @@
                     "min_number_yrs_per_sim": "none",
                     "start": 1850
                 },
-                "sub_experiment_id": "f2023",
+                "sub_experiment_id": [
+                    "f2023"
+                ],
                 "tier": 1,
                 "additional_allowed_model_components": [
                     "AER",
@@ -745,7 +795,9 @@
                     "min_number_yrs_per_sim": 165,
                     "start": 1850
                 },
-                "sub_experiment_id": "missing",
+                "sub_experiment_id": [
+                    "missing"
+                ],
                 "tier": 1,
                 "additional_allowed_model_components": [
                     "AER",
@@ -774,7 +826,9 @@
                     "min_number_yrs_per_sim": 500,
                     "start": -999
                 },
-                "sub_experiment_id": "missing",
+                "sub_experiment_id": [
+                    "missing"
+                ],
                 "tier": 1,
                 "additional_allowed_model_components": [
                     "AER",
@@ -803,7 +857,9 @@
                     "min_number_yrs_per_sim": 100,
                     "start": -999
                 },
-                "sub_experiment_id": "none",
+                "sub_experiment_id": [
+                    "none"
+                ],
                 "tier": 2,
                 "additional_allowed_model_components": [
                     "AER",
@@ -889,7 +945,7 @@
             "^\\[\\{0,\\}[[:digit:]]\\{1,\\}\\]\\{0,\\}$"
         ],
         "license": [
-            "The CMIP6Plus model data linking to this entry is licensed under a Creative Commons Attribution 4.0 International (https://creativecommons.org/licenses/by/4.0/). Consult https://pcmdi.llnl.gov/CMIP6/TermsOfUse for terms of use governing CMIP6Plus output, including citation requirements and proper acknowledgment. The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law."
+            "^CMIP6Plus model data produced by .* is licensed under a Creative Commons .* License (https://creativecommons\\.org/.*)\\. *Consult https://pcmdi\\.llnl\\.gov/CMIP6Plus/TermsOfUse for terms of use governing CMIP6Plus output, including citation requirements and proper acknowledgment\\. *The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose\\. *All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law\\.$"
         ],
         "mip_era": "CMIP6Plus",
         "nominal_resolution": [
@@ -918,9 +974,7 @@
         "physics_index": [
             "^\\[\\{0,\\}[[:digit:]]\\{1,\\}\\]\\{0,\\}$"
         ],
-        "product": {
-            "kind": "model-output"
-        },
+        "product": "model-output",
         "realization_index": [
             "^\\[\\{0,\\}[[:digit:]]\\{1,\\}\\]\\{0,\\}$"
         ],
@@ -931,7 +985,7 @@
             "land": "Land Surface",
             "landIce": "Land Ice",
             "ocean": "Ocean",
-            "ocnBgchem": "Ocean BioGeoChemistry",
+            "ocnBgchem": "Ocean Biogeochemistry",
             "seaIce": "Sea Ice"
         },
         "required_global_attributes": [
@@ -971,7 +1025,7 @@
                     "CMIP"
                 ],
                 "cohort": [
-                    "published"
+                    "Published"
                 ],
                 "contributers": {},
                 "label": "GISS-E2.1G",
@@ -1017,7 +1071,7 @@
                     "LESFMIP"
                 ],
                 "cohort": [
-                    "published"
+                    "Published"
                 ],
                 "contributers": {},
                 "label": "HadGEM3-GC31-LL",
@@ -1063,7 +1117,7 @@
                     "LESFMIP"
                 ],
                 "cohort": [
-                    "published"
+                    "Published"
                 ],
                 "contributers": {},
                 "label": "MIROC6",
@@ -1136,7 +1190,7 @@
                     "LESFMIP"
                 ],
                 "cohort": [
-                    "published"
+                    "Published"
                 ],
                 "contributers": {},
                 "label": "MPI-ESM1.2-HR",
@@ -1182,7 +1236,7 @@
                     "LESFMIP"
                 ],
                 "cohort": [
-                    "published"
+                    "Published"
                 ],
                 "contributers": {},
                 "label": "MPI-ESM1-2-LR",
@@ -1228,7 +1282,7 @@
                     "LESFMIP"
                 ],
                 "cohort": [
-                    "published"
+                    "Published"
                 ],
                 "contributers": {},
                 "label": "NorESM2-LM",
@@ -1339,6 +1393,85 @@
             "f2023": "Forcings 2023",
             "none": "none"
         },
+        "table_id": [
+            "ACmon",
+            "ACmonZ",
+            "AE1hr",
+            "AE3hrPt",
+            "AE3hrPtLev",
+            "AE6hr",
+            "AE6hrPt",
+            "AE6hrPtLev",
+            "AEday",
+            "AEmon",
+            "AEmonLev",
+            "AEmonZ",
+            "AEsubhrPt",
+            "AEsubhrPtSite",
+            "AP1hr",
+            "AP1hrPt",
+            "AP3hr",
+            "AP3hrPt",
+            "AP3hrPtLev",
+            "AP6hr",
+            "AP6hrPt",
+            "AP6hrPtLev",
+            "AP6hrPtZ",
+            "APday",
+            "APdayLev",
+            "APdayZ",
+            "APfx",
+            "APmon",
+            "APmonClim",
+            "APmonClimLev",
+            "APmonDiurnal",
+            "APmonLev",
+            "APmonZ",
+            "APsubhrPt",
+            "APsubhrPtLev",
+            "APsubhrPtSite",
+            "GIAfx",
+            "GIAmon",
+            "GIAyr",
+            "GIGfx",
+            "GIGmon",
+            "GIGyr",
+            "LI3hrPt",
+            "LI6hrPt",
+            "LIday",
+            "LIfx",
+            "LImon",
+            "LIsubhrPtSite",
+            "LP3hr",
+            "LP3hrPt",
+            "LP6hrPt",
+            "LPday",
+            "LPfx",
+            "LPmon",
+            "LPyr",
+            "LPyrPt",
+            "OBday",
+            "OBmon",
+            "OBmonLev",
+            "OByr",
+            "OByrLev",
+            "OP3hrPt",
+            "OPday",
+            "OPdec",
+            "OPdecLev",
+            "OPdecZ",
+            "OPfx",
+            "OPmon",
+            "OPmonClim",
+            "OPmonClimLev",
+            "OPmonLev",
+            "OPmonZ",
+            "OPyr",
+            "OPyrLev",
+            "SIday",
+            "SImon",
+            "SImonPt"
+        ],
         "tracking_id": [
             "hdl:21.14100/.*"
         ],
@@ -1346,10 +1479,10 @@
             "r[[:digit:]]\\{1,\\}i[[:digit:]]\\{1,\\}p[[:digit:]]\\{1,\\}f[[:digit:]]\\{1,\\}$"
         ],
         "version_metadata": {
-            "file_modified": "2024-07-29",
+            "file_modified": "2024-08-01",
             "CV": {
                 "version": "version tag read from repo running  - currently not in it. ",
-                "git_commit": "5fd789d9694423dfe8b51622203a7a57c08e16df",
+                "git_commit": "8f7110d1aea1f25806bb4a2d9ce1a88867c301a3",
                 "gitbranch": "main"
             },
             "future": "miptables, checksum, etc"

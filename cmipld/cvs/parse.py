@@ -47,6 +47,8 @@ def cmip6plus_descriptors (data):
     data['DRS'] = data['drs']
     data['Conventions'] = data['conventions']
     data['mip_era'] = data['mip_era']['name']
+    data['product'] = data['product']['kind']
+    
     
     del data['drs'], data['conventions'], data['@context']
     return data
@@ -60,6 +62,8 @@ def cmip6plus_source_id (data):
     for source in sorted(data,key=lambda x: x['source_id']):
         # ideally organisation 
         source['institution_id'] = [source['organisation_id'].get('cmip_acronym','')]
+        
+        # dict([[source['organisation_id'].get(i,'') for i in ['cmip_acronym','name']]])
         
         source['license'].update(source['license'].get('kind',{}))
         
@@ -118,7 +122,7 @@ def cmip6plus_experiment_id (data):
         for i in e['parent']:
                 e['parent_'+i] = key_only([e['parent'][i]])
     
-        e['sub_experiment_id'] = e   ['sub_experiment_id'].get('name','missing')
+        e['sub_experiment_id'] = [e['sub_experiment_id'].get('name','missing')]
         
         del e['parent']
         

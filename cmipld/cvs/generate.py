@@ -86,25 +86,43 @@ async def main():
             "gitbranch" : os.popen('git rev-parse --abbrev-ref HEAD').read().strip() } ,
         "future": 'miptables, checksum, etc'}
     
-  
+    print('above not fatal - version metadata')
             
     CV = OrderedDict(sorted((k, (v)) for k, v in CV.items()))
     
     # import pprint
     # pprint.pprint(CV)
     # print(CV)
-    with open('CV.json','w') as f:
+    
+    writelocation = 'CV.json'
+    
+    with open(writelocation,'w') as f:
             json.dump(dict(CV = CV),f,indent=4)    
             print('written to ',f.name )    
         
         
+    return writelocation
         
 
-
+def test():
+    import pytest
+    # Run pytest and capture the result
+    result = pytest.main(["-v", f"{__file__.replace('cvs/generate.py','tests/cvs')}.py"])
+    
+    # Print a summary based on the result
+    if result == pytest.ExitCode.OK:
+        print("\nAll tests passed successfully!")
+    elif result == pytest.ExitCode.TESTS_FAILED:
+        print("\nSome tests failed. Please check the output above for details.")
+    else:
+        print(f"\nAn error occurred while running the tests. Exit code: {result}")
+    
 
 
 
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    writelocation = asyncio.run(main())
+    print('pass cv location into tests')
+    test()
