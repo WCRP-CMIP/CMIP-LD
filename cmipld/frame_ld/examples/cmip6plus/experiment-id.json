@@ -1,33 +1,34 @@
-{
+frame = {
     "@context": {
-        "@vocab": "experiment-id",
         "experiment_id": "experiment-id:name",
         "experiment-id:activity-id": {
             "@context": {
-                "@extend": true
+                "@extend": True
             } 
         },
-        "@extend": true
+        "experiment-id:parent": {
+
+        },
+        
+        "@extend": True
       },
     "@type": "mip:experiment-id",
     "experiment_id": "",
     "experiment-id:activity-id": {
         "activity-id:name": {},
-        "@explicit": true
+        "@explicit": True
     },
     "experiment-id:model-components": {
         "experiment-id:additional-allowed": {
             "source-type:name": "",
-            "@explicit": true
+            "@explicit": True
         },
         "experiment-id:required": {
             "source-type:name": "",
-            "@explicit": true
+            "@explicit": True
         }
     },
 
-    "experiment-id:parent":{
-        "@embed":"@always"
-    }
+
     
 }

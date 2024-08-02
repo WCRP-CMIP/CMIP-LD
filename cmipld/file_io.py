@@ -16,12 +16,24 @@ Use main CMIP class to get data from CMIP JSON-LD files
 from .utils.classfn import DotAccessibleDict
 
 LatestFiles = DotAccessibleDict({
-    'cmip6plus_ld': ['WCRP-CMIP','CMIP6Plus_CVs','JSONLD/scripts/compiled/graph_data.min.json','jsonld'],
-    'mip_cmor_tabes_ld': ['PCMDI','mip-cmor-tables','JSONLD/scripts/compiled/graph_data.min.json','jsonld'],
+    'cmip6plus_ld': ['WCRP-CMIP','CMIP6Plus_CVs','compiled/graph_data.min.json','jsonld'],
+    'mip_cmor_tabes_ld': ['PCMDI','mip-cmor-tables','compiled/graph_data.min.json','jsonld'],
 })
 
 
 
+async def gh_read_file(owner, repo, file_path, branch='main'):
+    url = f"https://api.github.com/repos/{owner}/{repo}/contents/{file_path}?ref={branch}"
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        content = response.json()['content']
+        return json.loads(base64.b64decode(content).decode('utf-8'))
+    
+    except requests.RequestException as e:
+        print(f"Error reading file: {e}")
+        return None
+        
 
 class CMIPFileUtils:
     @staticmethod
@@ -39,18 +51,6 @@ class CMIPFileUtils:
             return None
 
 
-    @staticmethod
-    async def gh_read_file(owner, repo, file_path, branch='main'):
-        url = f"https://api.github.com/repos/{owner}/{repo}/contents/{file_path}?ref={branch}"
-        try:
-            response = requests.get(url)
-            response.raise_for_status()
-            content = response.json()['content']
-            return json.loads(base64.b64decode(content).decode('utf-8'))
-        
-        except requests.RequestException as e:
-            print(f"Error reading file: {e}")
-            return None
 
     @staticmethod
     async def read_file_fs(filename):
@@ -85,11 +85,11 @@ class CMIPFileUtils:
         
     # @property
     @staticmethod
-    async def load_latest(self):
+    async def load_latest():
         print("Loading latest CMIP6Plus and MIP-CMOR-Tables files...")
         latest = [LatestFiles.mip_cmor_tabes_ld, LatestFiles.cmip6plus_ld]
         
-        return sum([await self.gh_read_file(*f) for f in latest],[])
+        return sum([await gh_read_file(*f) for f in latest],[])
         
         
 
@@ -110,7 +110,7 @@ class CMIPFileUtils:
             if 'http' in f:
                 read.append(await CMIPFileUtils.read_file_url(f))
             elif f in LatestFiles.entries:
-                read.append(await CMIPFileUtils.gh_read_file(*LatestFiles.entries[f]))
+                read.append(await gh_read_file(*LatestFiles.entries[f]))
             elif os.path.exists(f):
                 read.append(await CMIPFileUtils.read_file_fs(f))
             else:

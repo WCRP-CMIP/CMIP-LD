@@ -79,6 +79,14 @@ class Frame:
         return self
     
     @property
+    def filter_empty(self):
+        
+        # self.data = {k:v for k,v in self.data.items() if v}
+        self.data = [v for v in self.data if v]
+        
+        return self
+    
+    @property
     def clean_cv(self):
         return self.clean(['rmld','missing','untag','lower','flatten'])
         
