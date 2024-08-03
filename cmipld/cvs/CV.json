@@ -1298,7 +1298,7 @@
             "file_modified": "2024-08-03",
             "CV": {
                 "version": "version tag read from repo running  - currently not in it. ",
-                "git_commit": "f61d576bb5efca5e046fff41903c7ce0ec79af5b",
+                "git_commit": "d13e84c65db9ed1b7180da76c1d658414a1f0b19",
                 "gitbranch": "main"
             },
             "future": "miptables, checksum, etc"

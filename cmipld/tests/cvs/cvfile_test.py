@@ -24,18 +24,20 @@ def test_activity_id(cv_data):
 
 def test_experiment_structure(cv_data):
     """Test if the experiment structure contains all required keys."""
-    test_experiment = cv_data['CV']['experiment_id']['1pctCO2']
+    
     expected_keys = {
         "activity_id", "additional_allowed_model_components", "description",
         "experiment", "experiment_id", "parent_activity_id",
         "parent_experiment_id", "required_model_components", "sub_experiment_id"
     }
-    missing_keys = expected_keys - set(test_experiment.keys())
-    assert not missing_keys, f"Experiment is missing the following keys: {missing_keys}"
+    
+    for test_experiment in cv_data['CV']['experiment_id'].values():
+    
+        missing_keys = expected_keys - set(test_experiment.keys())
+        assert not missing_keys, f"Experiment is missing the following keys: {missing_keys}"
 
 def test_experiment_types(cv_data):
     """Test if the experiment fields have the correct types."""
-    test_experiment = cv_data['CV']['experiment_id']['1pctCO2']
     expected_types = {
         "activity_id": list,
         "additional_allowed_model_components": list,
@@ -47,14 +49,15 @@ def test_experiment_types(cv_data):
         "required_model_components": list,
         "sub_experiment_id": list,
     }
-    for attr, attr_type in expected_types.items():
-        assert isinstance(test_experiment[attr], attr_type), f"Field '{attr}' should be of type {attr_type}, but is {type(test_experiment[attr])}"
+    for test_experiment in cv_data['CV']['experiment_id'].values():
+        for attr, attr_type in expected_types.items():
+            assert isinstance(test_experiment[attr], attr_type), f"Field '{attr}' should be of type {attr_type}, but is {type(test_experiment[attr])}"
 
 def test_sub_experiment_id(cv_data):
     """Test if sub_experiment_id is valid."""
-    test_experiment = cv_data['CV']['experiment_id']['1pctCO2']
-    assert test_experiment['sub_experiment_id'][0] in cv_data['CV']['sub_experiment_id'], \
-        f"Invalid sub_experiment_id: {test_experiment['sub_experiment_id'][0]}"
+    for test_experiment in cv_data['CV']['experiment_id'].values():
+        assert test_experiment['sub_experiment_id'][0] in cv_data['CV']['sub_experiment_id'], \
+            f"Invalid sub_experiment_id: {test_experiment['sub_experiment_id'][0]} from experiment {test_experiment['experiment_id']}"
 
 def test_index_types(cv_data):
     """Test if index fields are lists."""
@@ -115,7 +118,6 @@ def test_required_global_attributes(cv_data):
 
 def test_source_id(cv_data):
     """Test if source_id has the correct structure and types."""
-    test_source_id = cv_data['CV']['source_id']['GISS-E2-1-G']
     expected = {
         'activity_participation': list,
         'cohort': list,
@@ -123,11 +125,13 @@ def test_source_id(cv_data):
         'source': str,
         'source_id': str
     }
-    for attr, attr_type in expected.items():
-        assert isinstance(test_source_id[attr], attr_type), \
-            f"Field '{attr}' should be of type {attr_type}, but is {type(test_source_id[attr])}"
-    assert test_source_id['cohort'] == ['Published'], \
-        f"Cohort should be ['Published'], but is {test_source_id['cohort']}"
+    
+    for test_source_id in cv_data['CV']['source_id'].values():
+        for attr, attr_type in expected.items():
+            assert isinstance(test_source_id[attr], attr_type), \
+                f"Field '{attr}' should be of type {attr_type}, but is {type(test_source_id[attr])}"
+        assert test_source_id['cohort'] == ['Published'], \
+            f"Cohort should be ['Published'], but is {test_source_id['cohort']}"
 
 def test_miscellaneous(cv_data):
     """Test miscellaneous fields for correct types and values."""
