@@ -42,8 +42,10 @@ class Frame:
         self.source = source
         self.frame = frame
         
+        # "@embed": "@always"
+        
         # if "@embed" not in frame: # make sure each instance is embedded. 
-        #     self.frame["@embed"] = "@always"
+        self.frame["@embed"] = "@always"
         
         if nograph: # usually used if framing an id directly
             self.data = self.graph_only(jsonld.frame(source, frame))

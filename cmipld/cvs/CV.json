@@ -29,7 +29,7 @@
                     "start": -999
                 },
                 "sub_experiment_id": [
-                    "missing"
+                    "none"
                 ],
                 "tier": 1,
                 "additional_allowed_model_components": [
@@ -44,7 +44,7 @@
                     "CMIP"
                 ],
                 "parent_experiment_id": [
-                    "missing"
+                    "piControl"
                 ]
             },
             "abrupt-4xCO2": {
@@ -60,7 +60,7 @@
                     "start": -999
                 },
                 "sub_experiment_id": [
-                    "missing"
+                    "none"
                 ],
                 "tier": 1,
                 "additional_allowed_model_components": [
@@ -75,7 +75,7 @@
                     "CMIP"
                 ],
                 "parent_experiment_id": [
-                    "missing"
+                    "piControl"
                 ]
             },
             "amip": {
@@ -102,8 +102,12 @@
                 "required_model_components": [
                     "AGCM"
                 ],
-                "parent_activity_id": [],
-                "parent_experiment_id": []
+                "parent_activity_id": [
+                    "no parent"
+                ],
+                "parent_experiment_id": [
+                    "no parent"
+                ]
             },
             "esm-hist": {
                 "activity_id": [
@@ -118,7 +122,7 @@
                     "start": 1850
                 },
                 "sub_experiment_id": [
-                    "missing"
+                    "none"
                 ],
                 "tier": 1,
                 "additional_allowed_model_components": [
@@ -133,7 +137,7 @@
                     "CMIP"
                 ],
                 "parent_experiment_id": [
-                    "missing"
+                    "esm-piControl"
                 ]
             },
             "esm-piControl": {
@@ -149,7 +153,7 @@
                     "start": -999
                 },
                 "sub_experiment_id": [
-                    "missing"
+                    "none"
                 ],
                 "tier": 1,
                 "additional_allowed_model_components": [
@@ -164,7 +168,7 @@
                     "CMIP"
                 ],
                 "parent_experiment_id": [
-                    "missing"
+                    "esm-piControl-spinup"
                 ]
             },
             "esm-piControl-spinup": {
@@ -191,8 +195,12 @@
                     "AOGCM",
                     "BGC"
                 ],
-                "parent_activity_id": [],
-                "parent_experiment_id": []
+                "parent_activity_id": [
+                    "no parent"
+                ],
+                "parent_experiment_id": [
+                    "no parent"
+                ]
             },
             "fut-Aer": {
                 "activity_id": [
@@ -207,7 +215,7 @@
                     "start": 2015
                 },
                 "sub_experiment_id": [
-                    "missing"
+                    "f2023"
                 ],
                 "tier": 2,
                 "additional_allowed_model_components": [
@@ -222,7 +230,7 @@
                     "LESFMIP"
                 ],
                 "parent_experiment_id": [
-                    "missing"
+                    "hist-aer"
                 ]
             },
             "fut-GHG": {
@@ -238,7 +246,7 @@
                     "start": 2015
                 },
                 "sub_experiment_id": [
-                    "missing"
+                    "f2023"
                 ],
                 "tier": 2,
                 "additional_allowed_model_components": [
@@ -253,7 +261,7 @@
                     "LESFMIP"
                 ],
                 "parent_experiment_id": [
-                    "missing"
+                    "hist-GHG"
                 ]
             },
             "fut-lu": {
@@ -284,7 +292,7 @@
                     "CMIP"
                 ],
                 "parent_experiment_id": [
-                    "missing"
+                    "piControl"
                 ]
             },
             "fut-sol": {
@@ -300,7 +308,7 @@
                     "start": 2015
                 },
                 "sub_experiment_id": [
-                    "missing"
+                    "f2023"
                 ],
                 "tier": 2,
                 "additional_allowed_model_components": [
@@ -315,7 +323,7 @@
                     "LESFMIP"
                 ],
                 "parent_experiment_id": [
-                    "missing"
+                    "hist-sol"
                 ]
             },
             "fut-totalO3": {
@@ -331,7 +339,7 @@
                     "start": 2015
                 },
                 "sub_experiment_id": [
-                    "missing"
+                    "f2023"
                 ],
                 "tier": 2,
                 "additional_allowed_model_components": [
@@ -346,7 +354,7 @@
                     "LESFMIP"
                 ],
                 "parent_experiment_id": [
-                    "missing"
+                    "hist-totalO3"
                 ]
             },
             "fut-volc": {
@@ -362,7 +370,7 @@
                     "start": 2015
                 },
                 "sub_experiment_id": [
-                    "missing"
+                    "f2023"
                 ],
                 "tier": 2,
                 "additional_allowed_model_components": [
@@ -377,7 +385,7 @@
                     "LESFMIP"
                 ],
                 "parent_experiment_id": [
-                    "missing"
+                    "hist-volc"
                 ]
             },
             "hist-GHG": {
@@ -408,7 +416,7 @@
                     "CMIP"
                 ],
                 "parent_experiment_id": [
-                    "missing"
+                    "piControl"
                 ]
             },
             "hist-aer": {
@@ -439,7 +447,7 @@
                     "CMIP"
                 ],
                 "parent_experiment_id": [
-                    "missing"
+                    "piControl"
                 ]
             },
             "hist-lu": {
@@ -470,7 +478,7 @@
                     "CMIP"
                 ],
                 "parent_experiment_id": [
-                    "missing"
+                    "piControl"
                 ]
             },
             "hist-nat": {
@@ -501,7 +509,7 @@
                     "CMIP"
                 ],
                 "parent_experiment_id": [
-                    "missing"
+                    "piControl"
                 ]
             },
             "hist-noLu": {
@@ -532,7 +540,7 @@
                     "CMIP"
                 ],
                 "parent_experiment_id": [
-                    "missing"
+                    "piControl"
                 ]
             },
             "hist-piAer": {
@@ -563,7 +571,7 @@
                     "CMIP"
                 ],
                 "parent_experiment_id": [
-                    "missing"
+                    "piControl"
                 ]
             },
             "hist-piGHG": {
@@ -594,7 +602,7 @@
                     "CMIP"
                 ],
                 "parent_experiment_id": [
-                    "missing"
+                    "piControl"
                 ]
             },
             "hist-piSol": {
@@ -625,7 +633,7 @@
                     "CMIP"
                 ],
                 "parent_experiment_id": [
-                    "missing"
+                    "piControl"
                 ]
             },
             "hist-piTotalO3": {
@@ -656,7 +664,7 @@
                     "CMIP"
                 ],
                 "parent_experiment_id": [
-                    "missing"
+                    "piControl"
                 ]
             },
             "hist-piVolc": {
@@ -687,7 +695,7 @@
                     "CMIP"
                 ],
                 "parent_experiment_id": [
-                    "missing"
+                    "piControl"
                 ]
             },
             "hist-sol": {
@@ -718,7 +726,7 @@
                     "CMIP"
                 ],
                 "parent_experiment_id": [
-                    "missing"
+                    "piControl"
                 ]
             },
             "hist-totalO3": {
@@ -749,7 +757,7 @@
                     "CMIP"
                 ],
                 "parent_experiment_id": [
-                    "missing"
+                    "piControl"
                 ]
             },
             "hist-volc": {
@@ -780,7 +788,7 @@
                     "CMIP"
                 ],
                 "parent_experiment_id": [
-                    "missing"
+                    "piControl"
                 ]
             },
             "historical": {
@@ -796,7 +804,7 @@
                     "start": 1850
                 },
                 "sub_experiment_id": [
-                    "missing"
+                    "none"
                 ],
                 "tier": 1,
                 "additional_allowed_model_components": [
@@ -811,7 +819,7 @@
                     "CMIP"
                 ],
                 "parent_experiment_id": [
-                    "missing"
+                    "piControl"
                 ]
             },
             "piControl": {
@@ -827,7 +835,7 @@
                     "start": -999
                 },
                 "sub_experiment_id": [
-                    "missing"
+                    "none"
                 ],
                 "tier": 1,
                 "additional_allowed_model_components": [
@@ -842,7 +850,7 @@
                     "CMIP"
                 ],
                 "parent_experiment_id": [
-                    "missing"
+                    "piControl-spinup"
                 ]
             },
             "piControl-spinup": {
@@ -869,8 +877,12 @@
                 "required_model_components": [
                     "AOGCM"
                 ],
-                "parent_activity_id": [],
-                "parent_experiment_id": []
+                "parent_activity_id": [
+                    "no parent"
+                ],
+                "parent_experiment_id": [
+                    "no parent"
+                ]
             }
         },
         "forcing_index": [
@@ -944,6 +956,11 @@
         "initialization_index": [
             "^\\[\\{0,\\}[[:digit:]]\\{1,\\}\\]\\{0,\\}$"
         ],
+        "institution_id": {
+            "NASA-GISS": "Goddard Institute for Space Studies",
+            "MOHC": "Met Office",
+            "MPI-M": "Max Planck Institute for Meteorology"
+        },
         "license": [
             "^CMIP6Plus model data produced by .* is licensed under a Creative Commons .* License (https://creativecommons\\.org/.*)\\. *Consult https://pcmdi\\.llnl\\.gov/CMIP6Plus/TermsOfUse for terms of use governing CMIP6Plus output, including citation requirements and proper acknowledgment\\. *The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose\\. *All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law\\.$"
         ],
@@ -965,12 +982,6 @@
             "50 km",
             "5 km"
         ],
-        "organisations": {
-            "NASA-GISS": "Goddard Institute for Space Studies",
-            "MOHC": "Met Office",
-            "null": null,
-            "MPI-M": "Max Planck Institute for Meteorology"
-        },
         "physics_index": [
             "^\\[\\{0,\\}[[:digit:]]\\{1,\\}\\]\\{0,\\}$"
         ],
@@ -1033,7 +1044,6 @@
                 "license": {
                     "license:exceptions_contact": "@lists.nasa.gov <- cmip-giss-l",
                     "license:kind": {
-                        "conditions": "The CMIP6Plus model data linking to this entry is licensed under a Creative Commons Attribution 4.0 International (https://creativecommons.org/licenses/by/4.0/). Consult https://pcmdi.llnl.gov/CMIP6/TermsOfUse for terms of use governing CMIP6Plus output, including citation requirements and proper acknowledgment. The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law.",
                         "kind": "CC BY 4.0",
                         "license_id": "Creative Commons Attribution 4.0 International",
                         "license_url": "https://creativecommons.org/licenses/by/4.0/"
@@ -1041,24 +1051,6 @@
                     "license:source_specific_info": ""
                 },
                 "source_id": "GISS-E2-1-G",
-                "organisation_id": {
-                    "acronyms": "GISS",
-                    "cmip_acronym": "NASA-GISS",
-                    "established": 1961,
-                    "location": {
-                        "city": "New York",
-                        "country": [
-                            "United States",
-                            "US"
-                        ],
-                        "lat": 40.71427,
-                        "lon": -74.00597
-                    },
-                    "name": "Goddard Institute for Space Studies",
-                    "ror": "01cyfxe35",
-                    "type": "Facility",
-                    "url": "http://www.giss.nasa.gov/"
-                },
                 "release_year": 2019,
                 "institution_id": [
                     "NASA-GISS"
@@ -1079,7 +1071,6 @@
                 "license": {
                     "license:exceptions_contact": "@metoffice.gov.uk <- cmip6.hadgem3",
                     "license:kind": {
-                        "conditions": "The CMIP6Plus model data linking to this entry is licensed under a Creative Commons Attribution 4.0 International (https://creativecommons.org/licenses/by/4.0/). Consult https://pcmdi.llnl.gov/CMIP6/TermsOfUse for terms of use governing CMIP6Plus output, including citation requirements and proper acknowledgment. The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law.",
                         "kind": "CC BY 4.0",
                         "license_id": "Creative Commons Attribution 4.0 International",
                         "license_url": "https://creativecommons.org/licenses/by/4.0/"
@@ -1087,24 +1078,6 @@
                     "license:source_specific_info": "https://ukesm.ac.uk/licensing-of-met-office-nerc-and-niwa-cmip6-data/"
                 },
                 "source_id": "HadGEM3-GC31-LL",
-                "organisation_id": {
-                    "aliases": "Meteorological Office",
-                    "cmip_acronym": "MOHC",
-                    "established": 1854,
-                    "location": {
-                        "city": "Exeter",
-                        "country": [
-                            "United Kingdom",
-                            "GB"
-                        ],
-                        "lat": 50.7236,
-                        "lon": 50.7236
-                    },
-                    "name": "Met Office",
-                    "ror": "01ch2yn61",
-                    "type": "Government",
-                    "url": "http://www.metoffice.gov.uk/"
-                },
                 "release_year": 2016,
                 "institution_id": [
                     "MOHC"
@@ -1125,7 +1098,6 @@
                 "license": {
                     "license:exceptions_contact": "@jamstec.go.jp <- miroc-cmip6",
                     "license:kind": {
-                        "conditions": "The CMIP6Plus model data linking to this entry is licensed under a Creative Commons Attribution 4.0 International (https://creativecommons.org/licenses/by/4.0/). Consult https://pcmdi.llnl.gov/CMIP6/TermsOfUse for terms of use governing CMIP6Plus output, including citation requirements and proper acknowledgment. The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law.",
                         "kind": "CC BY 4.0",
                         "license_id": "Creative Commons Attribution 4.0 International",
                         "license_url": "https://creativecommons.org/licenses/by/4.0/"
@@ -1133,54 +1105,9 @@
                     "license:source_specific_info": ""
                 },
                 "source_id": "MIROC6",
-                "organisation_id": {
-                    "changes": "",
-                    "cmip_acronym": "MIROC",
-                    "members": [
-                        {
-                            "consortia:membership_type": "prior",
-                            "dates": {
-                                "from": 2016,
-                                "phase": "CMIP6",
-                                "to": 2022
-                            },
-                            "institution": {}
-                        },
-                        {
-                            "consortia:membership_type": "prior",
-                            "dates": {
-                                "from": 2016,
-                                "phase": "CMIP6",
-                                "to": 2022
-                            },
-                            "institution": {}
-                        },
-                        {
-                            "consortia:membership_type": "prior",
-                            "dates": {
-                                "from": 2016,
-                                "phase": "CMIP6",
-                                "to": 2022
-                            },
-                            "institution": {}
-                        },
-                        {
-                            "consortia:membership_type": "prior",
-                            "dates": {
-                                "from": 2016,
-                                "phase": "CMIP6",
-                                "to": 2022
-                            },
-                            "institution": {}
-                        }
-                    ],
-                    "name": "MIROC Consortium",
-                    "status": "active",
-                    "url": ""
-                },
                 "release_year": 2017,
                 "institution_id": [
-                    "MIROC"
+                    null
                 ],
                 "source": "MIROC6 (2017): \n  SPRINTARS6.0 (aerosol)\n  CCSR_AGCM (atmos)\n  MATSIRO6.0 (land)\n  COCO4.9 (seaIce)\n  "
             },
@@ -1198,7 +1125,6 @@
                 "license": {
                     "license:exceptions_contact": "@dkrz.de <- cmip6-mpi-esm",
                     "license:kind": {
-                        "conditions": "The CMIP6Plus model data linking to this entry is licensed under a Creative Commons Attribution 4.0 International (https://creativecommons.org/licenses/by/4.0/). Consult https://pcmdi.llnl.gov/CMIP6/TermsOfUse for terms of use governing CMIP6Plus output, including citation requirements and proper acknowledgment. The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law.",
                         "kind": "CC BY 4.0",
                         "license_id": "Creative Commons Attribution 4.0 International",
                         "license_url": "https://creativecommons.org/licenses/by/4.0/"
@@ -1206,24 +1132,6 @@
                     "license:source_specific_info": ""
                 },
                 "source_id": "MPI-ESM1-2-HR",
-                "organisation_id": {
-                    "acronyms": "MPI-M",
-                    "cmip_acronym": "MPI-M",
-                    "established": 1975,
-                    "location": {
-                        "city": "Hamburg",
-                        "country": [
-                            "Germany",
-                            "DE"
-                        ],
-                        "lat": 53.567794,
-                        "lon": 9.975468
-                    },
-                    "name": "Max Planck Institute for Meteorology",
-                    "ror": "05esem239",
-                    "type": "Facility",
-                    "url": "http://www.mpimet.mpg.de/en/home.html"
-                },
                 "release_year": 2017,
                 "institution_id": [
                     "MPI-M"
@@ -1244,7 +1152,6 @@
                 "license": {
                     "license:exceptions_contact": "@dkrz.de <- cmip6-mpi-esm",
                     "license:kind": {
-                        "conditions": "The CMIP6Plus model data linking to this entry is licensed under a Creative Commons Attribution 4.0 International (https://creativecommons.org/licenses/by/4.0/). Consult https://pcmdi.llnl.gov/CMIP6/TermsOfUse for terms of use governing CMIP6Plus output, including citation requirements and proper acknowledgment. The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law.",
                         "kind": "CC BY 4.0",
                         "license_id": "Creative Commons Attribution 4.0 International",
                         "license_url": "https://creativecommons.org/licenses/by/4.0/"
@@ -1252,24 +1159,6 @@
                     "license:source_specific_info": ""
                 },
                 "source_id": "MPI-ESM1-2-LR",
-                "organisation_id": {
-                    "acronyms": "MPI-M",
-                    "cmip_acronym": "MPI-M",
-                    "established": 1975,
-                    "location": {
-                        "city": "Hamburg",
-                        "country": [
-                            "Germany",
-                            "DE"
-                        ],
-                        "lat": 53.567794,
-                        "lon": 9.975468
-                    },
-                    "name": "Max Planck Institute for Meteorology",
-                    "ror": "05esem239",
-                    "type": "Facility",
-                    "url": "http://www.mpimet.mpg.de/en/home.html"
-                },
                 "release_year": 2017,
                 "institution_id": [
                     "MPI-M"
@@ -1290,7 +1179,6 @@
                 "license": {
                     "license:exceptions_contact": "@met.no <- noresm-ncc",
                     "license:kind": {
-                        "conditions": "The CMIP6Plus model data linking to this entry is licensed under a Creative Commons Attribution 4.0 International (https://creativecommons.org/licenses/by/4.0/). Consult https://pcmdi.llnl.gov/CMIP6/TermsOfUse for terms of use governing CMIP6Plus output, including citation requirements and proper acknowledgment. The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law.",
                         "kind": "CC BY 4.0",
                         "license_id": "Creative Commons Attribution 4.0 International",
                         "license_url": "https://creativecommons.org/licenses/by/4.0/"
@@ -1298,81 +1186,9 @@
                     "license:source_specific_info": ""
                 },
                 "source_id": "NorESM2-LM",
-                "organisation_id": {
-                    "changes": "",
-                    "cmip_acronym": "NCC",
-                    "members": [
-                        {
-                            "dates": {
-                                "from": 2016,
-                                "phase": "CMIP6",
-                                "to": 2022
-                            },
-                            "institution": {},
-                            "membership_type": "prior"
-                        },
-                        {
-                            "dates": {
-                                "from": 2016,
-                                "phase": "CMIP6",
-                                "to": 2022
-                            },
-                            "institution": {},
-                            "membership_type": "prior"
-                        },
-                        {
-                            "dates": {
-                                "from": 2016,
-                                "phase": "CMIP6",
-                                "to": 2022
-                            },
-                            "institution": {},
-                            "membership_type": "prior"
-                        },
-                        {
-                            "dates": {
-                                "from": 2016,
-                                "phase": "CMIP6",
-                                "to": 2022
-                            },
-                            "institution": {},
-                            "membership_type": "prior"
-                        },
-                        {
-                            "dates": {
-                                "from": 2016,
-                                "phase": "CMIP6",
-                                "to": 2022
-                            },
-                            "institution": {},
-                            "membership_type": "prior"
-                        },
-                        {
-                            "dates": {
-                                "from": 2016,
-                                "phase": "CMIP6",
-                                "to": 2022
-                            },
-                            "institution": {},
-                            "membership_type": "prior"
-                        },
-                        {
-                            "dates": {
-                                "from": 2016,
-                                "phase": "CMIP6",
-                                "to": 2022
-                            },
-                            "institution": {},
-                            "membership_type": "prior"
-                        }
-                    ],
-                    "name": "NCC Consortium",
-                    "status": "active",
-                    "url": ""
-                },
                 "release_year": 2017,
                 "institution_id": [
-                    "NCC"
+                    null
                 ],
                 "source": "NorESM2-LM (2017): \n  OsloAero (aerosol)\n  CAM-OSLO (atmos)\n  OsloChemSimp (atmosChem)\n  CLM (land)\n  CISM (landIce)\n  MICOM (ocean)\n  HAMOCC (ocnBgchem)\n  CICE (seaIce)\n  "
             }
@@ -1479,10 +1295,10 @@
             "r[[:digit:]]\\{1,\\}i[[:digit:]]\\{1,\\}p[[:digit:]]\\{1,\\}f[[:digit:]]\\{1,\\}$"
         ],
         "version_metadata": {
-            "file_modified": "2024-08-01",
+            "file_modified": "2024-08-03",
             "CV": {
                 "version": "version tag read from repo running  - currently not in it. ",
-                "git_commit": "8f7110d1aea1f25806bb4a2d9ce1a88867c301a3",
+                "git_commit": "f61d576bb5efca5e046fff41903c7ce0ec79af5b",
                 "gitbranch": "main"
             },
             "future": "miptables, checksum, etc"

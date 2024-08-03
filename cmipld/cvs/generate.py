@@ -63,6 +63,7 @@ async def main():
     # # native-nominal-resolution
     for key in 'organisations activity-id sub-experiment-id experiment-id source-id'.split():
         
+        print(key)
         # run the frame. 
         frame = get_frame('cmip6plus',key)
         # get results using frame
@@ -72,6 +73,9 @@ async def main():
 
         CV[key.replace('-','_')] = add_new
         
+    CV['institution_id'] = CV['organisations']
+    del CV['organisations']
+    
     
     print('concluding')
     ##################################
@@ -94,35 +98,43 @@ async def main():
     # pprint.pprint(CV)
     # print(CV)
     
-    writelocation = 'CV.json'
+    writelocation = os.path.join(os.path.dirname(__file__),'CV.json')
     
     with open(writelocation,'w') as f:
             json.dump(dict(CV = CV),f,indent=4)    
             print('written to ',f.name )    
         
         
-    return writelocation
+    return os.path.abspath(writelocation)
         
 
-def test():
+def test(writelocation):
+    
     import pytest
+    
     # Run pytest and capture the result
-    result = pytest.main(["-v", f"{__file__.replace('cvs/generate.py','tests/cvs')}.py"])
+    testsuite =os.path.abspath(os.path.join(os.path.dirname(__file__), '../tests/cvs/'))
+    print(testsuite,writelocation)
+    result = pytest.main(["-v",f"--file-location={writelocation}", f"{testsuite}"])
     
-    # Print a summary based on the result
-    if result == pytest.ExitCode.OK:
-        print("\nAll tests passed successfully!")
-    elif result == pytest.ExitCode.TESTS_FAILED:
-        print("\nSome tests failed. Please check the output above for details.")
-    else:
-        print(f"\nAn error occurred while running the tests. Exit code: {result}")
+    # # Print a summary based on the result
+    # if result == pytest.ExitCode.OK:
+    #     print("\nAll tests passed successfully!")
+    # elif result == pytest.ExitCode.TESTS_FAILED:
+    #     print("\nSome tests failed. Please check the output above for details.")
+    # else:
+    #     print(f"\nAn error occurred while running the tests. Exit code: {result}")
     
 
+'''
+!cd ../tests/;
+!pytest -v --file-location='/Users/daniel.ellis/WIPwork/CMIP-LD/cmipld/cvs/CV.json' /Users/daniel.ellis/WIPwork/CMIP-LD/cmipld/tests/cvs
 
+'''
 
 
 
 if __name__ == "__main__":
     writelocation = asyncio.run(main())
     print('pass cv location into tests')
-    test()
+    test(writelocation)

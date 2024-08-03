@@ -5,6 +5,9 @@ def name_description(data,key='name',value='description'):
     return dict([(x[key],x[value]) for x in data])
 
 def key_only(data,key='name',default='missing'):
+    if isinstance(data[0],str):
+        # if single value do not fetch key
+        return data
     return sorted(list(set([x.get(key,default) for x in data if x])))
 
 
@@ -29,7 +32,8 @@ def mip_cmor_tables_grid_label (data):
 ##################################
 
 def cmip6plus_organisations (data):
-    data = [d['organisation_id'] for d in data]
+    data = [d['organisation_id'] for d in data if d['organisation_id']['cmip_acronym']]
+    
     return name_description(data,key='cmip_acronym',value='name')
 
 def cmip6plus_descriptors (data):
@@ -62,6 +66,7 @@ def cmip6plus_source_id (data):
     for source in sorted(data,key=lambda x: x['source_id']):
         # ideally organisation 
         source['institution_id'] = [source['organisation_id'].get('cmip_acronym','')]
+        del source['organisation_id']
         
         # dict([[source['organisation_id'].get(i,'') for i in ['cmip_acronym','name']]])
         
@@ -95,7 +100,7 @@ def cmip6plus_source_id (data):
     return sid
         
 def cmip6plus_native_nominal_resolution (data):
-    print(data[0])
+
     return list(set([f"{x['nominal_resolution'].get('value',x['nominal_resolution'])}{x['nominal_resolution'].get('unit',{}).get('si','km')}" for x in data]))
     
 
@@ -104,7 +109,7 @@ def cmip6plus_sub_experiment_id (data):
 
 
 def cmip6plus_experiment_id (data):
-    print(data)
+    
     eid = OrderedDict()
     for e in sorted(data,key=lambda x: x['experiment_id']):
         
@@ -117,10 +122,11 @@ def cmip6plus_experiment_id (data):
         del e['model_components']
                 
         # to list 
-        e['activity_id'] = [e['activity_id']]
+        e['activity_id'] = key_only([e['activity_id']])
+        
         
         for i in e['parent']:
-                e['parent_'+i] = key_only([e['parent'][i]])
+                e['parent_'+i] = [e['parent'][i]]
     
         e['sub_experiment_id'] = [e['sub_experiment_id'].get('name','missing')]
         
