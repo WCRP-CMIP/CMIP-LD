@@ -14,7 +14,9 @@ setup(
         "console_scripts": [
             "cmipgraph=cmipld.graph:main",
             "updateld=cmipld.generate.update_new:init",
-            "ldcontext=cmipld.generate.update_new:init",
+            "makegraph=cmipld.generate.makegraph:run",
+            "reframe=cmipld.generate.reframe:run"
+            
         ],
     },
     scripts=[

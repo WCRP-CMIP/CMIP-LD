@@ -1,3 +1,6 @@
+from collections import OrderedDict
+
+
 class DotAccessibleDict:
     def __init__(self, entries):
         self.entries = dict(entries)
@@ -12,3 +15,16 @@ class DotAccessibleDict:
 
     def __str__(self):
         return str(self.entries.keys())
+    
+
+def sorted_dict(dct):
+    """
+    Sort a dictionary by keys and return an OrderedDict.
+
+    Args:
+    dct (dict): The input dictionary to be sorted.
+
+    Returns:
+    OrderedDict: A new OrderedDict with items sorted by keys.
+    """
+    return OrderedDict(sorted((k, v) for k, v in dct.items()))

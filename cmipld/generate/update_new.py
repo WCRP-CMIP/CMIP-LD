@@ -29,13 +29,14 @@ import mmap
 import os
 import re
 import subprocess
+from  cmipld.locations import rmap, namesplit
 from typing import List, Dict, Any, Tuple
 
 from pyld import jsonld
 
 # Constants
-SHORTHAND = "mip-cmor-tables:"
-DEFAULT_SKIP_FILES = ['schema.jsonld', 'graph.jsonld', ".DS_Store", "create.ipynb", "version.json"]
+SHORTHAND = ""
+DEFAULT_SKIP_FILES = ['schema.jsonld', 'graph.jsonld', ".DS_Store", "create.ipynb", "version.jsonld"]
 DEFAULT_SKIP_DIRS = ['JSONLD/archive', 'JSONLD/scripts']
 
 graphfile = './compiled/graph_data.json'
@@ -68,6 +69,8 @@ def read_json_file_mmap(file: str, directory: str) -> Tuple[Dict[str, Any], Dict
         with mmap.mmap(f.fileno(), 0, access=mmap.ACCESS_READ) as mm:
             version_data = githistory(file_path, False) 
             return json.loads(mm.read().decode('utf-8')), version_data
+
+
 
 def read_all_json_files(directory: str, base_dir: str) -> Tuple[str, str]:
     """Read and process all JSON files in a directory."""
@@ -137,13 +140,20 @@ def read_all_json_files(directory: str, base_dir: str) -> Tuple[str, str]:
     
      
     print('ADD WALK HERE TO CONTEXT')
+    
+    ldroot = directory.removeprefix(base_dir).removeprefix('/./')
+    
+    
     complete_graph = {
-        "@id": directory.replace(base_dir, REPO).replace('blob/main/JSONLD/', ''),
-        "@type": "graph",
+        "@id": 'graph:'+context['@vocab'].replace('_','-'),
+            # ldroot.replace('JSONLD/',rmap[namesplit(REPO)]),
+           
+        "@type": "mip:graph",
         "@context": context,
-        "ldroot": directory.removeprefix(base_dir),
+        ':url': REPO.removesuffix('JSONLD')+ldroot,
+        ":ldroot": ldroot,
         "@graph": all_data,
-        "files": files
+        ":files": files
     }
 
     # JSON-LD conformance test

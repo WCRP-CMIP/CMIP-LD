@@ -8,10 +8,12 @@ python -m cmipld.cvs.generate
 
 # Import the library
 from cmipld import *
+from cmipld.utils.classfn import sorted_dict
 import asyncio,json,os
 from collections import OrderedDict
 from parse import process
 from datetime import datetime
+
 
 
 async def main():
@@ -92,7 +94,7 @@ async def main():
     
     print('above not fatal - version metadata')
             
-    CV = OrderedDict(sorted((k, (v)) for k, v in CV.items()))
+    CV = sorted_dict(CV)
     
     # import pprint
     # pprint.pprint(CV)

@@ -4,7 +4,7 @@ import json
 import base64
 import asyncio
 import sys,os
-
+from .locations import LatestFiles
 
 '''
 Use main CMIP class to get data from CMIP JSON-LD files
@@ -13,12 +13,8 @@ Use main CMIP class to get data from CMIP JSON-LD files
 
 '''
 
-from .utils.classfn import DotAccessibleDict
 
-LatestFiles = DotAccessibleDict({
-    'cmip6plus_ld': ['WCRP-CMIP','CMIP6Plus_CVs','compiled/graph_data.min.json','jsonld'],
-    'mip_cmor_tabes_ld': ['PCMDI','mip-cmor-tables','compiled/graph_data.min.json','jsonld'],
-})
+
 
 
 
@@ -116,5 +112,7 @@ class CMIPFileUtils:
             else:
                 sys.exit(f"File {f} not found")
                 
-                
-        return sum(read,[])
+        if len(read)>1:    
+            return sum(read,[])
+        else:
+            return read[0]

@@ -1,6 +1,6 @@
 from .file_io import CMIPFileUtils,LatestFiles
 from .frame_ld import Frame,get_frame
-
+from .locations import *
 
 
 # for CLI purposes. To develop further
