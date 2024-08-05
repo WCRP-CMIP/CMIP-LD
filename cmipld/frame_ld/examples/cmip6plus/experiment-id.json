@@ -3,6 +3,9 @@
         "experiment_id": "experiment-id:name"
        
       },
+
+
+      
     "@type": "mip:experiment-id",
     "experiment_id": "",
     "experiment-id:model-components": {
@@ -33,6 +36,17 @@
         }
      
     },
+
+    "experiment-id:sub-experiment-id": {
+        "sub-experiment-id:description": "",
+        "sub-experiment-id:name": "",
+        "@type": "mip:sub-experiment-id",
+
+        "@embed": "@always",
+        "@explicit": false
+    },
+
+    
 
         "@embed": "@always"
 }

@@ -132,6 +132,10 @@ def test(writelocation):
 !cd ../tests/;
 !pytest -v --file-location='/Users/daniel.ellis/WIPwork/CMIP-LD/cmipld/cvs/CV.json' /Users/daniel.ellis/WIPwork/CMIP-LD/cmipld/tests/cvs
 
+
+
+
+
 '''
 
 

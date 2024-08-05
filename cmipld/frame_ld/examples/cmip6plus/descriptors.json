@@ -11,10 +11,8 @@
     },
     "@type": "mip:core-descriptors",
     "core:mip-era": {
-        
-        "@vocab": "mip:",
-        "mip:name": {},
-        "@explicit": true
+        "mip-era:name": {},
+        "@explicit": false
     },
     "core:product": {
         "product:kind": {},

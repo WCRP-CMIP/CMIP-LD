@@ -230,7 +230,7 @@
                     "LESFMIP"
                 ],
                 "parent_experiment_id": [
-                    "hist-aer"
+                    "hist-Aer"
                 ]
             },
             "fut-GHG": {
@@ -388,13 +388,13 @@
                     "hist-volc"
                 ]
             },
-            "hist-GHG": {
+            "hist-Aer": {
                 "activity_id": [
                     "LESFMIP"
                 ],
-                "description": "Well-mixed greenhouse-gas-only historical simulations",
-                "experiment": "historical well-mixed GHG-only run",
-                "experiment_id": "hist-GHG",
+                "description": "Anthropogenic-aerosol-only historical simulations",
+                "experiment": "historical anthropogenic aerosols-only run",
+                "experiment_id": "hist-Aer",
                 "parameters": {
                     "end": 2020,
                     "min_number_yrs_per_sim": "none",
@@ -419,13 +419,13 @@
                     "piControl"
                 ]
             },
-            "hist-aer": {
+            "hist-GHG": {
                 "activity_id": [
                     "LESFMIP"
                 ],
-                "description": "Anthropogenic-aerosol-only historical simulations",
-                "experiment": "historical anthropogenic aerosols-only run",
-                "experiment_id": "hist-aer",
+                "description": "Well-mixed greenhouse-gas-only historical simulations",
+                "experiment": "historical well-mixed GHG-only run",
+                "experiment_id": "hist-GHG",
                 "parameters": {
                     "end": 2020,
                     "min_number_yrs_per_sim": "none",
@@ -1032,13 +1032,20 @@
         "source_id": {
             "GISS-E2-1-G": {
                 "activity_participation": [
-                    "LESFMIP",
-                    "CMIP"
+                    {
+                        "description": "The Large Ensemble Single Forcing Model Intercomparison Project",
+                        "name": "LESFMIP",
+                        "url": "https://www.frontiersin.org/articles/10.3389/fclim.2022.955414/full"
+                    },
+                    {
+                        "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
+                        "name": "CMIP",
+                        "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
+                    }
                 ],
                 "cohort": [
                     "Published"
                 ],
-                "contributers": {},
                 "label": "GISS-E2.1G",
                 "label_extended": "GISS-E2.1G",
                 "license": {
@@ -1055,17 +1062,24 @@
                 "institution_id": [
                     "NASA-GISS"
                 ],
-                "source": "GISS-E2-1-G (2019): \n  Varies_with_physics-version (atmosChem)\n  GISS-E2.1 (atmos)\n  GISS_LSM (land)\n  GISS_Ocean (ocean)\n  GISS_SI (seaIce)\n  "
+                "source": "GISS-E2-1-G (2019): \n  Varies_with_physics-version ({'description': 'Atmospheric Chemistry', 'name': 'atmosChem'})\n  GISS-E2.1 ({'description': 'Atmosphere', 'name': 'atmos'})\n  GISS_LSM ({'description': 'Land Surface', 'name': 'land'})\n  GISS_Ocean ({'description': 'Ocean', 'name': 'ocean'})\n  GISS_SI ({'description': 'Sea Ice', 'name': 'seaIce'})\n  "
             },
             "HadGEM3-GC31-LL": {
                 "activity_participation": [
-                    "CMIP",
-                    "LESFMIP"
+                    {
+                        "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
+                        "name": "CMIP",
+                        "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
+                    },
+                    {
+                        "description": "The Large Ensemble Single Forcing Model Intercomparison Project",
+                        "name": "LESFMIP",
+                        "url": "https://www.frontiersin.org/articles/10.3389/fclim.2022.955414/full"
+                    }
                 ],
                 "cohort": [
                     "Published"
                 ],
-                "contributers": {},
                 "label": "HadGEM3-GC31-LL",
                 "label_extended": "HadGEM3-GC3.1-N96ORCA1",
                 "license": {
@@ -1082,17 +1096,24 @@
                 "institution_id": [
                     "MOHC"
                 ],
-                "source": "HadGEM3-GC31-LL (2016): \n  UKCA-GLOMAP-mode (aerosol)\n  MetUM-HadGEM3-GA7.1 (atmos)\n  JULES-HadGEM3-GL7.1 (land)\n  NEMO-HadGEM3-GO6.0 (ocean)\n  CICE-HadGEM3-GSI8 (seaIce)\n  "
+                "source": "HadGEM3-GC31-LL (2016): \n  UKCA-GLOMAP-mode ({'description': 'Aerosol', 'name': 'aerosol'})\n  MetUM-HadGEM3-GA7.1 ({'description': 'Atmosphere', 'name': 'atmos'})\n  JULES-HadGEM3-GL7.1 ({'description': 'Land Surface', 'name': 'land'})\n  NEMO-HadGEM3-GO6.0 ({'description': 'Ocean', 'name': 'ocean'})\n  CICE-HadGEM3-GSI8 ({'description': 'Sea Ice', 'name': 'seaIce'})\n  "
             },
             "MIROC6": {
                 "activity_participation": [
-                    "CMIP",
-                    "LESFMIP"
+                    {
+                        "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
+                        "name": "CMIP",
+                        "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
+                    },
+                    {
+                        "description": "The Large Ensemble Single Forcing Model Intercomparison Project",
+                        "name": "LESFMIP",
+                        "url": "https://www.frontiersin.org/articles/10.3389/fclim.2022.955414/full"
+                    }
                 ],
                 "cohort": [
                     "Published"
                 ],
-                "contributers": {},
                 "label": "MIROC6",
                 "label_extended": "MIROC6",
                 "license": {
@@ -1107,19 +1128,26 @@
                 "source_id": "MIROC6",
                 "release_year": 2017,
                 "institution_id": [
-                    null
+                    "MIROC"
                 ],
-                "source": "MIROC6 (2017): \n  SPRINTARS6.0 (aerosol)\n  CCSR_AGCM (atmos)\n  MATSIRO6.0 (land)\n  COCO4.9 (seaIce)\n  "
+                "source": "MIROC6 (2017): \n  SPRINTARS6.0 ({'description': 'Aerosol', 'name': 'aerosol'})\n  CCSR_AGCM ({'description': 'Atmosphere', 'name': 'atmos'})\n  MATSIRO6.0 ({'description': 'Land Surface', 'name': 'land'})\n  COCO4.9 ({'description': 'Sea Ice', 'name': 'seaIce'})\n  "
             },
             "MPI-ESM1-2-HR": {
                 "activity_participation": [
-                    "CMIP",
-                    "LESFMIP"
+                    {
+                        "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
+                        "name": "CMIP",
+                        "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
+                    },
+                    {
+                        "description": "The Large Ensemble Single Forcing Model Intercomparison Project",
+                        "name": "LESFMIP",
+                        "url": "https://www.frontiersin.org/articles/10.3389/fclim.2022.955414/full"
+                    }
                 ],
                 "cohort": [
                     "Published"
                 ],
-                "contributers": {},
                 "label": "MPI-ESM1.2-HR",
                 "label_extended": "MPI-ESM1.2-HR",
                 "license": {
@@ -1136,17 +1164,24 @@
                 "institution_id": [
                     "MPI-M"
                 ],
-                "source": "MPI-ESM1-2-HR (2017): \n  ,_prescribed_MACv2-SP (aerosol)\n  ECHAM6.3 (atmos)\n  JSBACH3.20 (land)\n  prescribed (landIce)\n  MPIOM1.63 (ocean)\n  HAMOCC6 (ocnBgchem)\n  unnamed (seaIce)\n  "
+                "source": "MPI-ESM1-2-HR (2017): \n  ,_prescribed_MACv2-SP ({'description': 'Aerosol', 'name': 'aerosol'})\n  ECHAM6.3 ({'description': 'Atmosphere', 'name': 'atmos'})\n  JSBACH3.20 ({'description': 'Land Surface', 'name': 'land'})\n  prescribed ({'description': 'Land Ice', 'name': 'landIce'})\n  MPIOM1.63 ({'description': 'Ocean', 'name': 'ocean'})\n  HAMOCC6 ({'description': 'Ocean Biogeochemistry', 'name': 'ocnBgchem'})\n  unnamed ({'description': 'Sea Ice', 'name': 'seaIce'})\n  "
             },
             "MPI-ESM1-2-LR": {
                 "activity_participation": [
-                    "CMIP",
-                    "LESFMIP"
+                    {
+                        "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
+                        "name": "CMIP",
+                        "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
+                    },
+                    {
+                        "description": "The Large Ensemble Single Forcing Model Intercomparison Project",
+                        "name": "LESFMIP",
+                        "url": "https://www.frontiersin.org/articles/10.3389/fclim.2022.955414/full"
+                    }
                 ],
                 "cohort": [
                     "Published"
                 ],
-                "contributers": {},
                 "label": "MPI-ESM1-2-LR",
                 "label_extended": "MPI-ESM1.2-LR",
                 "license": {
@@ -1163,17 +1198,24 @@
                 "institution_id": [
                     "MPI-M"
                 ],
-                "source": "MPI-ESM1-2-LR (2017): \n  ,_prescribed_MACv2-SP (aerosol)\n  ECHAM6.3 (atmos)\n  JSBACH3.20 (land)\n  prescribed (landIce)\n  MPIOM1.63 (ocean)\n  HAMOCC6 (ocnBgchem)\n  unnamed (seaIce)\n  "
+                "source": "MPI-ESM1-2-LR (2017): \n  ,_prescribed_MACv2-SP ({'description': 'Aerosol', 'name': 'aerosol'})\n  ECHAM6.3 ({'description': 'Atmosphere', 'name': 'atmos'})\n  JSBACH3.20 ({'description': 'Land Surface', 'name': 'land'})\n  prescribed ({'description': 'Land Ice', 'name': 'landIce'})\n  MPIOM1.63 ({'description': 'Ocean', 'name': 'ocean'})\n  HAMOCC6 ({'description': 'Ocean Biogeochemistry', 'name': 'ocnBgchem'})\n  unnamed ({'description': 'Sea Ice', 'name': 'seaIce'})\n  "
             },
             "NorESM2-LM": {
                 "activity_participation": [
-                    "CMIP",
-                    "LESFMIP"
+                    {
+                        "description": "CMIP DECK: 1pctCO2, abrupt4xCO2, amip, esm-piControl, esm-historical, historical, and piControl experiments",
+                        "name": "CMIP",
+                        "url": "https://gmd.copernicus.org/articles/9/1937/2016/gmd-9-1937-2016.pdf"
+                    },
+                    {
+                        "description": "The Large Ensemble Single Forcing Model Intercomparison Project",
+                        "name": "LESFMIP",
+                        "url": "https://www.frontiersin.org/articles/10.3389/fclim.2022.955414/full"
+                    }
                 ],
                 "cohort": [
                     "Published"
                 ],
-                "contributers": {},
                 "label": "NorESM2-LM",
                 "label_extended": "NorESM2-LM (low atmosphere-medium ocean resolution, GHG concentration driven)",
                 "license": {
@@ -1188,9 +1230,9 @@
                 "source_id": "NorESM2-LM",
                 "release_year": 2017,
                 "institution_id": [
-                    null
+                    "NCC"
                 ],
-                "source": "NorESM2-LM (2017): \n  OsloAero (aerosol)\n  CAM-OSLO (atmos)\n  OsloChemSimp (atmosChem)\n  CLM (land)\n  CISM (landIce)\n  MICOM (ocean)\n  HAMOCC (ocnBgchem)\n  CICE (seaIce)\n  "
+                "source": "NorESM2-LM (2017): \n  OsloAero ({'description': 'Aerosol', 'name': 'aerosol'})\n  CAM-OSLO ({'description': 'Atmosphere', 'name': 'atmos'})\n  OsloChemSimp ({'description': 'Atmospheric Chemistry', 'name': 'atmosChem'})\n  CLM ({'description': 'Land Surface', 'name': 'land'})\n  CISM ({'description': 'Land Ice', 'name': 'landIce'})\n  MICOM ({'description': 'Ocean', 'name': 'ocean'})\n  HAMOCC ({'description': 'Ocean Biogeochemistry', 'name': 'ocnBgchem'})\n  CICE ({'description': 'Sea Ice', 'name': 'seaIce'})\n  "
             }
         },
         "source_type": [
@@ -1295,10 +1337,10 @@
             "r[[:digit:]]\\{1,\\}i[[:digit:]]\\{1,\\}p[[:digit:]]\\{1,\\}f[[:digit:]]\\{1,\\}$"
         ],
         "version_metadata": {
-            "file_modified": "2024-08-03",
+            "file_modified": "2024-08-05",
             "CV": {
                 "version": "version tag read from repo running  - currently not in it. ",
-                "git_commit": "d13e84c65db9ed1b7180da76c1d658414a1f0b19",
+                "git_commit": "9729fb7bc445eb6e72280913dc958384833b4ee9",
                 "gitbranch": "main"
             },
             "future": "miptables, checksum, etc"

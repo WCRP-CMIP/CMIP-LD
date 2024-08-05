@@ -141,3 +141,36 @@ def test_miscellaneous(cv_data):
     assert cv_data['CV']['product'] == 'model-output', f"product should be 'model-output', but is {cv_data['CV']['product']}"
     assert cv_data['CV']['realm']["ocnBgchem"] == "Ocean Biogeochemistry", \
         f"ocnBgchem realm should be 'Ocean Biogeochemistry', but is {cv_data['CV']['realm']['ocnBgchem']}"
+        
+        
+
+
+def test_no_null(cv_data, current_path=None ,main=True):
+    null_keys = []
+    if current_path is None:
+        current_path = []
+    
+    if isinstance(cv_data, dict):
+        for key, value in cv_data.items():
+            new_path = current_path + [key]
+            if value is None:
+                null_keys.append('.'.join(map(str, new_path)))
+            elif isinstance(value, (dict, list)):
+                null_keys.extend(test_no_null(value, new_path,False))
+    
+    elif isinstance(cv_data, list):
+        for index, value in enumerate(cv_data):
+            new_path = current_path + [index]
+            if value is None:
+                null_keys.append('.'.join(map(str, new_path)))
+            elif isinstance(value, (dict, list)):
+                null_keys.extend(test_no_null(value, new_path,False))
+    
+    
+    if main:
+        keys = [str(i) for i in enumerate(null_keys)]
+        assert len(keys)==0, f"Null values found at: {keys}"
+    else:return null_keys
+    
+
+

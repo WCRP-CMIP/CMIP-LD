@@ -1,75 +1,62 @@
 {
-
-"@context": {
-    "@vocab": "source-id",
-    "source_id": "source-id:name",
-    "source-id:activity-participation": {
-        "@context": {
-            "@extend": true
-        }
+    "@context": {
+        "@vocab": "source-id",
+        "source_id": "source-id:name"
     },
-    "source-id:license":{
-        "@context": {
-            "@vocab": "license:",
-            "@extend": true
-        }
-    },
-    "source-id:model-component": {
-        "@context": {
-            "model-component:nominal-resolution": {
-                "@context": {
-                    "model-native-nominal-resolution:cf:unit": {
-                        "@context": {
-                            "@extend": true
-                        }
-                    }
-                }
-            },
-            "model-component:realm": {
-                "@context": {
-                    "@extend": true
-                }
-            }
-        }
-    },
-    "source-id:organisation-id": {
-        "@context": {
-            "@extend": true
-        }
-    }
-},
-
     "@type": [
         "mip:source-id"
     ],
     "source_id": "",
-    "source-id:activity-participation": [
-        {
-            "activity-id:name": "",
-            "@explicit": true
-        }
-    ],
-
-    "source-id:organisation-id": {
-        "consortium:cmip-acronym": "",
-        "institution:cmip-acronym": "",
+    "@embed": "@always",
+    "@explicit": true,
+    "source-id:activity-participation": {
+        "activity-id:description": "",
+        "activity-id:name": "",
+        "activity-id:url": "",
+        "@type": "mip:activity-id",
+        "@context": {
+            "@vocab": "activity-id",
+            "@base": "cmip6plus:activity"
+        },
+        "@embed": "@always",
         "@explicit": true
     },
+    "source-id:cohort": "",
+    "source-id:label": "",
+    "source-id:label-extended": "",
     "source-id:license": {
-        "@explicit": false
+        "source-id:license:exceptions-contact": "",
+        "source-id:license:kind": {},
+        "source-id:license:source-specific-info": ""
     },
     "source-id:model-component": {
+        "model-component:description": "",
         "model-component:name": "",
+        "model-component:nominal-resolution": {},
         "model-component:realm": {
+            "realm:description": "",
             "realm:name": "",
+            "@type": "mip:realm",
+            "@context": {
+                "@vocab": "realm",
+                "@base": "mip-cmor-tables:auxillary/realm"
+            },
+            "@embed": "@always",
             "@explicit": true
         },
-        "model_component:description": "",
-        "model_component:native-nominal-resolution": {
-            "native-nominal-resolution:value": "",
-            "@explicit": false,
-            "@expanded": true
+        "model-component:version": "",
+        "@type": "mip:model-component",
+        "@context": {
+            "@vocab": "model-component",
+            "@base": "cmip6plus:model/component"
         },
+        "@embed": "@always",
         "@explicit": true
-    }
+    },
+    "source-id:name": "",
+    "source-id:organisation-id": {
+        "@embed": "@always",
+        "@explicit": false
+    },
+    "source-id:release-year": ""
 }

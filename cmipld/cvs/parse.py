@@ -50,6 +50,7 @@ def cmip6plus_descriptors (data):
     del data['index']
     data['DRS'] = data['drs']
     data['Conventions'] = data['conventions']
+    print(data['mip_era'])
     data['mip_era'] = data['mip_era']['name']
     data['product'] = data['product']['kind']
     

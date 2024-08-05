@@ -1,6 +1,6 @@
 {
     "@context":{
-        "@vocab":"experiment-sub-id:"
+        "@vocab":"sub-experiment-id:"
     },
     "@type": [
         "mip:sub-experiment-id"
