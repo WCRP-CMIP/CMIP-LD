@@ -87,7 +87,7 @@ async def main():
         
         
     for i in errors:
-        print(i[0])
+        print(i[0],i[-1])
 
 def run():
     asyncio.run(main())
