@@ -61,7 +61,7 @@ async def main():
         counter = 0
         
         for entry in data:
-            print(entry["@id"],entry) 
+            print('\n\n',entry["@id"],'\n',entry) 
             if '@id' in entry:
                 es.index(index=index, id=entry["@id"], body=entry)
                 counter += 1
