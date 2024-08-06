@@ -62,7 +62,7 @@ async def main():
         
         for entry in data:
             if '@id' in entry:
-                es.index(index=index, doc_type=doc, id=entry["@id"], body=entry)
+                es.index(index=index, id=entry["@id"], body=entry)
                 counter += 1
             else: 
                 print(f'No @id in {fname}, {fvalue}')
