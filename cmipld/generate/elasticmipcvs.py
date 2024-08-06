@@ -8,8 +8,12 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
+es = Elasticsearch(
+        ['https://127.0.0.1:9200'],  
+        basic_auth=('elastic', os.getenv('ELASTIC_PASSWORD')),
+    )
 
-def main():
+async def main():
     files = ['cmip6plus_ld', 'mip_cmor_tabes_ld']
 
     # # Process input files
@@ -25,10 +29,7 @@ def main():
     linked_frame = graph.link_frames
 
     # Initialize the Elasticsearch client with correct parameters
-    es = Elasticsearch(
-        ['https://127.0.0.1:9200'],  
-        basic_auth=('elastic', os.getenv('ELASTIC_PASSWORD')),
-    )
+
 
     indexes = []
 
