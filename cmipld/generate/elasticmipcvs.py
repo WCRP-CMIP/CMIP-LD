@@ -52,7 +52,7 @@ async def main():
             del fvalue['@context']
 
     
-        data = Frame(ldcontent, fvalue)
+        data = Frame(ldcontent, fvalue).data
         
         index,doc = fname.split(':') 
         indexes.append(index)
