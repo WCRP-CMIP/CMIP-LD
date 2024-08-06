@@ -44,7 +44,7 @@ async def main():
 
     indexes = []
 
-    counter = 0
+   
     for fname,fvalue in linked_frame.items():
         print("Linked Frame: ", fname)
         # print('--',fvalue)
@@ -58,14 +58,16 @@ async def main():
         indexes.append(index)
         
         # add to 
+        counter = 0
         
-        if '@id' in data:
-            es.index(index=index, doc_type=doc, id=data["@id"], body=data)
-            counter += 1
-        else: 
-            print(f'No @id in {fname}, {fvalue}')
+        for entry in data:
+            if '@id' in entry:
+                es.index(index=index, doc_type=doc, id=entry["@id"], body=entry)
+                counter += 1
+            else: 
+                print(f'No @id in {fname}, {fvalue}')
             
-    print(f'Added {counter} documents to index')
+        print(f'Added {counter} documents to index')
         
     for index in indexes:
         es.indices.refresh(index=index)
