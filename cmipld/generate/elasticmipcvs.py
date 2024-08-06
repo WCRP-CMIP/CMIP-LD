@@ -47,7 +47,7 @@ async def main():
 
     for fname,fvalue in linked_frame.items():
         print("Linked Frame: ", fname)
-        print('--',fvalue)
+        # print('--',fvalue)
         if '@context' in fvalue:
             del fvalue['@context']
     
@@ -57,8 +57,12 @@ async def main():
         indexes.append(index)
         
         # add to 
+        counter = 0
         if '@id' in fvalue:
             es.index(index=index, doc_type=doc, id=fvalue["@id"], body=fvalue)
+            coutner += 1
+            
+        print(f'Added {counter} documents to index')
         
     for index in indexes:
         es.indices.refresh(index=index)
