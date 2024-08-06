@@ -50,8 +50,7 @@ async def main():
         # print('--',fvalue)
         if '@context' in fvalue:
             del fvalue['@context']
-        if "@id" not in fvalue:
-            fvalue["@id"] = ""
+
     
         data = Frame(ldcontent, fvalue)
         
@@ -60,8 +59,8 @@ async def main():
         
         # add to 
         
-        if '@id' in fvalue:
-            es.index(index=index, doc_type=doc, id=fvalue["@id"], body=fvalue)
+        if '@id' in data:
+            es.index(index=index, doc_type=doc, id=data["@id"], body=data)
             counter += 1
         else: 
             print(f'No @id in {fname}, {fvalue}')
