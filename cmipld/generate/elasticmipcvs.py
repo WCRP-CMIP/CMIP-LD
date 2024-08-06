@@ -54,7 +54,8 @@ async def main():
         indexes.append(index)
         
         # add to 
-        es.index(index=index, doc_type=doc, id=fvalue["@id"], body=fvalue)
+        if '@id' in fvalue:
+            es.index(index=index, doc_type=doc, id=fvalue["@id"], body=fvalue)
         
     for index in indexes:
         es.indices.refresh(index=index)
