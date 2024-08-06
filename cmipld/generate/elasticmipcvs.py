@@ -6,15 +6,24 @@ import asyncio
 from elasticsearch import Elasticsearch
 import os 
 from dotenv import load_dotenv
-load_dotenv()
+# load_dotenv()
 
-es = Elasticsearch(
-        ['https://127.0.0.1:9200'],  
-        basic_auth=('elastic', os.getenv('ELASTIC_PASSWORD')),
-    )
+home_dir = os.path.expanduser('~')
+env_path = os.path.join(home_dir, '.env')
+# Load environment variables from the .env file
+load_dotenv(dotenv_path=env_path)
+
+
 
 async def main():
     files = ['cmip6plus_ld', 'mip_cmor_tabes_ld']
+
+    # Initialize the Elasticsearch client with correct parameters
+    es = Elasticsearch(
+            ['https://127.0.0.1:9200'],  
+            basic_auth=('elastic', os.environ['ELASTIC_PASSWORD']),
+        )
+
 
     # # Process input files
     # ldcontent = await CMIPFileUtils().load(files)
@@ -28,7 +37,6 @@ async def main():
     core_frame = graph.generate_frames
     linked_frame = graph.link_frames
 
-    # Initialize the Elasticsearch client with correct parameters
 
 
     indexes = []
