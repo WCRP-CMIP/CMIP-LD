@@ -15,6 +15,7 @@ load_dotenv(dotenv_path=env_path)
 
 
 
+
 async def main():
     files = ['cmip6plus_ld', 'mip_cmor_tabes_ld']
 
@@ -43,6 +44,7 @@ async def main():
 
 
     indexes = []
+    errors = []
 
    
     for fname,fvalue in linked_frame.items():
@@ -52,7 +54,7 @@ async def main():
             del fvalue['@context']
 
     
-        data = Frame(ldcontent, fvalue).data
+        data = Frame(ldcontent, fvalue).clean(['untag']).data
         
         index,doc = fname.split(':') 
         indexes.append(index)
@@ -62,11 +64,13 @@ async def main():
         
         for entry in data:
             print('\n\n',entry["@id"],'\n',entry) 
-            if '@id' in entry:
+            try:
                 es.index(index=index, id=entry["@id"], body=entry)
                 counter += 1
-            else: 
-                print(f'No @id in {fname}, {fvalue}')
+            except Exception as e:
+                print(e)
+                print('Error in adding document to index')
+                errors.append([entry['@id'],entry, e])
             
         print(f'Added {counter} documents to index')
         
@@ -75,6 +79,15 @@ async def main():
         print(f'Index {index} has been refreshed')
 
 
+
+    for i in errors:
+        for j in i:
+            print(j)
+        print('\n\n')
+        
+        
+    for i in errors:
+        print(i[0])
 
 def run():
     asyncio.run(main())
