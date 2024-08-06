@@ -50,7 +50,7 @@ async def main():
     
         data = Frame(ldcontent, fvalue)
         
-        index,doc = fvalue.split(':') 
+        index,doc = fname.split(':') 
         indexes.append(index)
         
         # add to 
