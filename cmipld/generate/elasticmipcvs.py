@@ -54,7 +54,7 @@ async def main():
             del fvalue['@context']
 
     
-        data = Frame(ldcontent, fvalue).clean(['untag']).data
+        data = Frame(ldcontent, fvalue).clean(['untag','rmnoparent']).data
         
         index,doc = fname.split(':') 
         indexes.append(index)

@@ -120,6 +120,20 @@ class Frame:
     def rmnull(self):
         self.json_string = re.sub(r'[\s]*"(.*?)":\s*null*[,\s]*|[,\s]*"(.*?)":\s*null*[\s]*', '', self.json_string)
         return self
+    
+    @property 
+    @direct
+    def rmnoparent(self):
+        # Remove key-value pairs where the value is 'no parent'
+        self.json_string = re.sub(
+            r'[\s]*"(.*?)":\s*"no parent"[,\s]*',  # Pattern to match
+            '',  # Replacement (remove the matched part)
+            self.json_string
+        )
+        # Clean up any trailing commas or whitespace
+        self.json_string = re.sub(r',\s*(?=[}\]])', '', self.json_string)
+        return self
+    
     @property 
     @direct
     def flatten(self):
