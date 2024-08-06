@@ -22,8 +22,11 @@ async def main():
     es = Elasticsearch(
             ['https://127.0.0.1:9200'],  
             basic_auth=('elastic', os.environ['ELASTIC_PASSWORD']),
+            verify_certs=True,  # Enable certificate verification
+            ca_certs=os.environ['ELASTIC_CERTS']  # Path to CA certificate
         )
-
+    
+    # https://www.elastic.co/guide/en/elasticsearch/reference/current/targz.html
 
     # # Process input files
     # ldcontent = await CMIPFileUtils().load(files)
