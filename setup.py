@@ -16,6 +16,7 @@ setup(
             "updateld=cmipld.generate.update_new:init",
             "makegraph=cmipld.generate.makegraph:run",
             "reframe=cmipld.generate.reframe:run"
+            "updateelastic=cmipld.generate.elasticmipcvs:run"
             
         ],
     },

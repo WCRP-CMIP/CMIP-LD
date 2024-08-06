@@ -194,7 +194,7 @@ class JSONLDGraphProcessor:
                             nentry[key] = cleaned_value
                             
                 elif isinstance(value, list):
-                    nentry[key] = []
+                    nentry[key] = {}
                        
                 else:
                     print('-else', key, value)
