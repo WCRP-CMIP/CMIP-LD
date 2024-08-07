@@ -80,10 +80,10 @@ async def main():
 
 
 
-    for i in errors:
-        for j in i:
-            print(j)
-        print('\n\n')
+    # for i in errors:
+    #     for j in i:
+    #         print(j)
+    #     print('\n\n')
         
         
     for i in errors:
@@ -91,6 +91,8 @@ async def main():
 
 def run():
     asyncio.run(main())
+    
+
     
     
 if __name__ == "__main__":

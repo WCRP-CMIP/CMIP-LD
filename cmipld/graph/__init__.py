@@ -4,9 +4,10 @@ from collections import Counter
 from pyld import jsonld
 from cmipld import CMIPFileUtils,Frame,locations
 from cmipld.utils.classfn import sorted_dict
-import re,json,sys,os
+import re,json,sys,os,copy
 from typing import Dict, Any, List, Optional
 
+delimiter = ' <~~ '
 
 class JSONLDGraphProcessor:
     """
@@ -37,13 +38,50 @@ class JSONLDGraphProcessor:
         self.links = []
 
         clink = lambda s: '/'.join(s.split('/')[:-1])
-        prefix = lambda s: s.split(':')[0]
+        prefix = lambda s: s.split(':')[0] 
+        
+        blank_nodes = {}
+        # blank_predicate = {}
+        
+        # def prefix(s):
+        #     if '_' in s:
+        #         s = blank_nodes.get(s)
+                
+        #     s = '/'.join(s.split('/')[:-1])
+        #     return s
+
+        # def clink(s):
+        #     if '_' in s:
+        #         s = blank_nodes.get(s)
+                
+        #     s = '/'.join(s.split('/')[:-1])
+        #     return s
 
 
+
+        
         for group in triplets.values():
+            
+            for t in group:
+                if '_' in t['subject']['value'] and '_' not in t['object']['value'] and ':' in t['object']['value']:   
+                    # if t['object']['value'] != t['predicate']['value']:
+                    #     continue
+                    # el
+                    
+                    if t['subject']['value'] in blank_nodes:
+                        blank_nodes[t['subject']['value']].append([t['object']['value'],t['predicate']['value']])
+                        # blank_nodes[t['subject']['value']] = list(set(blank_nodes[t['subject']['value']]))
+                    else:
+                        blank_nodes[t['subject']['value']] = [[t['object']['value'],t['predicate']['value']]]
+                    
+            self.blank = blank_nodes
+
+            
             for t in group:
                 s = str(t)
-                if 'literal' not in s and '_:' not in s:
+                if 'literal' not in s :
+                    # actually we want blank nodes as these are nested elements required for other sections.
+                    # and '_:' not in s 
                     if 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type' in s:
                         type_map[t['subject']['value']] = t['object']['value']
                         
@@ -52,8 +90,23 @@ class JSONLDGraphProcessor:
                             self.nodes.append(node)
                     else:
                         try:
-                            link = dict(source=clink(t['subject']['value']),target=clink(t['object']['value']),predicate=t['predicate']['value'])
-                            self.links.append(link)
+                            if '_' in t['object']['value']:
+                                
+                                '''
+                                Go into blank nodes, iterate over items, and create links
+                                '''
+                                
+                                # print('[[][]]',t['object']['value'])
+                                
+                                for item in blank_nodes[t['object']['value']]:
+                                    link = dict(source=clink(t['subject']['value']),target=clink(item[0]),predicate=f"{t['predicate']['value']}{delimiter}{item[1]}")
+                                    self.links.append(link)
+                                    
+                             
+                            else:
+                                link = dict(source=clink(t['subject']['value']),target=clink(t['object']['value']),predicate=t['predicate']['value'])
+                                self.links.append(link)
+                            
                             
                             # additional origin links
                             src  = link['source']
@@ -72,9 +125,9 @@ class JSONLDGraphProcessor:
                             l2= dict(source=path[i],target=src,predicate='_')
                             self.links.append(l2)
                             
-                        except:
+                        except Exception as e:
                             # skips out the blank nodes
-                            print(t)
+                            print('except1: ',e,t)
                             ...
                                     
         directories = list(set(triplets.keys()))
@@ -106,7 +159,11 @@ class JSONLDGraphProcessor:
         self.graph = dict(nodes=self.nodes,links=self.links,types=self.types,vocab=self.vocab, missing = self.missing)
         
         return self
+    @property
+    def lddata_debug(self):
+        print(json.dumps(self.lddata, indent=2))
         
+    
     def read_graph(self,location = 'network.json'):
         """ read the graph from a file. """
         self.graph = json.load(open(location,'r'))
@@ -156,11 +213,11 @@ class JSONLDGraphProcessor:
         return output
 
 
-    def get_context(self,selection):
-    # selection = 'mip:source-id'
-        sid = self.graph['types'][selection]
-        structure = self.walk_graph(sid)
-        return json.dumps({"@context":{"@vocab":selection.replace('mip:',''),**structure}}, indent=2)
+    # def get_context(self,selection):
+    # # selection = 'mip:source-id'
+    #     sid = self.graph['types'][selection]
+    #     structure = self.walk_graph(sid)
+    #     return json.dumps({"@context":{"@vocab":selection.replace('mip:',''),**structure}}, indent=2)
             
 
     def clean_entry(self,entry: Dict[str, Any], ignore: bool = False) -> Dict[str, Any]:
@@ -183,6 +240,12 @@ class JSONLDGraphProcessor:
                 if key[0] == '@':
                     continue
            
+                if value in ['no parent','none']:
+                    value = {"@id": value}
+                    
+                # exceptions check and correction. 
+                
+                
                 if isinstance(value, (str, int, float, bool)) or value is None:
                     nentry[key] = ""  
                 elif isinstance(value, dict):
@@ -192,6 +255,8 @@ class JSONLDGraphProcessor:
                         cleaned_value = self.clean_entry(value, False)
                         if cleaned_value:  # Only add non-empty dictionaries
                             nentry[key] = cleaned_value
+                            
+                            # print('---',key)/
                             
                 elif isinstance(value, list):
                     nentry[key] = {}
@@ -217,9 +282,15 @@ class JSONLDGraphProcessor:
             if not len(data.data):
                 continue
             
-            print(k, v)
-            single = data.data[-1]
-            cleaned = self.clean_entry(single, ignore=True)
+            # print(k, v)
+            
+            cleaned = {}
+            for i in [0,-1]:
+                single = data.data[0]
+                dummy_cleaned = self.clean_entry(single, ignore=True)
+                cleaned = {**cleaned, **dummy_cleaned}  
+            
+            
             cleaned['@type'] = f'mip:{v}'
             cleaned['@context'] = {"@vocab": v, '@base': k}
             cleaned['@embed'] = '@always'
@@ -241,6 +312,7 @@ class JSONLDGraphProcessor:
             List[Dict[str, Any]]: List of failed links.
         """
         fail = []
+        framefreeze = copy.deepcopy(self.frames)
         for select in self.frames:
             links = self.linked(select, 'source')
             if not links:
@@ -248,13 +320,31 @@ class JSONLDGraphProcessor:
             # print(links)
             for link in links:
                 try:
-                    self.frames[select][link['predicate']] = self.frames[link['target']]
+                    # if link['predicate'] != select:
+                    #     # no duplicates
+                    #     continue
+                    if delimiter in link['predicate']:
+                        # nested keys
+                        
+                        pred = link['predicate'].split(delimiter)
+                        
+                        print(pred)
+                        
+                        
+                        if len(pred) > 2: sys.exit('Too many delimiters on key. Currently hard coded only for two.')
+                        
+                        
+                        self.frames[select][pred[0]][pred[1]]  = framefreeze[link['target']]
+                    else:
+                        self.frames[select][link['predicate']] = framefreeze[link['target']]
                 except Exception as e:
                     link['error'] = str(e)
                     fail.append(link)
                     continue
         
-        print("Failed links:", fail)
+        print("Failed links:")
+        for f in fail:
+            print('- ',f)
         
         self.failed_links = fail
         return self.frames
