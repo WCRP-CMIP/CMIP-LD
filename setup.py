@@ -16,7 +16,8 @@ setup(
             "updateld=cmipld.generate.update_new:init",
             "makegraph=cmipld.generate.makegraph:run",
             "reframe=cmipld.generate.reframe:run",
-            "updateelastic=cmipld.generate.elasticmipcvs:run"
+            "updateelastic=cmipld.generate.elasticmipcvs:run",
+            "add_new=cmipld.git.actions.add:submit_dispatch",
         ],
     },
     scripts=[

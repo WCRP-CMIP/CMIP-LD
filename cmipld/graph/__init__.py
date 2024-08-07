@@ -1,210 +1,198 @@
-
-
 from collections import Counter
 from pyld import jsonld
-from cmipld import CMIPFileUtils,Frame,locations
+from cmipld import CMIPFileUtils, Frame, locations
 from cmipld.utils.classfn import sorted_dict
-import re,json,sys,os,copy
+import re, json, sys, os, copy
 from typing import Dict, Any, List, Optional
 
-delimiter = ' <~~ '
+# Constant for delimiter used in predicate processing
+DELIMITER = ' <~~ '
 
 class JSONLDGraphProcessor:
     """
     A class to process JSON-LD files and extract information.
 
     Attributes:
-    - latest_data: The latest JSON-LD data.
+    - lddata: The loaded JSON-LD data.
+    - graph: The processed graph data.
+    - frames: Generated frames from the graph's vocabulary.
+    - prefix: The repository prefix.
+    - repo_root: The root directory of the repository.
     """
-    
-    # def __init__(self):
-    #     ...
 
-    async def make_graph(self,loaditems):
-        """ create the graph. """
-        
+    async def make_graph(self, loaditems):
+        """Create the graph from loaded JSON-LD data."""
         self.lddata = await CMIPFileUtils.load(loaditems)
-        print(len(self.lddata))
+        print(f"Loaded {len(self.lddata)} items")
 
-        # classic id extraction for checks
+        # Extract IDs for validation
         ids = set(re.findall(r'"@id"\s*:\s*"([^"]+)"', json.dumps(self.lddata)))
 
-        # get the triplets
+        # Convert JSON-LD to RDF triplets
         triplets = jsonld.to_rdf(self.lddata)
 
-        # grab all the types and ids
-        type_map = {}
         self.nodes = []
         self.links = []
-
-        clink = lambda s: '/'.join(s.split('/')[:-1])
-        prefix = lambda s: s.split(':')[0] 
-        
+        type_map = {}
         blank_nodes = {}
-        # blank_predicate = {}
-        
-        # def prefix(s):
-        #     if '_' in s:
-        #         s = blank_nodes.get(s)
-                
-        #     s = '/'.join(s.split('/')[:-1])
-        #     return s
 
-        # def clink(s):
-        #     if '_' in s:
-        #         s = blank_nodes.get(s)
-                
-        #     s = '/'.join(s.split('/')[:-1])
-        #     return s
+        # Helper functions for URL processing
+        clink = lambda s: '/'.join(s.split('/')[:-1])
+        prefix = lambda s: s.split(':')[0]
 
-
-
-        
+        # Process triplets to build nodes and links
         for group in triplets.values():
-            
-            for t in group:
-                if '_' in t['subject']['value'] and '_' not in t['object']['value'] and ':' in t['object']['value']:   
-                    # if t['object']['value'] != t['predicate']['value']:
-                    #     continue
-                    # el
-                    
-                    if t['subject']['value'] in blank_nodes:
-                        blank_nodes[t['subject']['value']].append([t['object']['value'],t['predicate']['value']])
-                        # blank_nodes[t['subject']['value']] = list(set(blank_nodes[t['subject']['value']]))
-                    else:
-                        blank_nodes[t['subject']['value']] = [[t['object']['value'],t['predicate']['value']]]
-                    
-            self.blank = blank_nodes
+            self._process_group(group, blank_nodes, type_map, clink, prefix)
 
-            
-            for t in group:
-                s = str(t)
-                if 'literal' not in s :
-                    # actually we want blank nodes as these are nested elements required for other sections.
-                    # and '_:' not in s 
-                    if 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type' in s:
-                        type_map[t['subject']['value']] = t['object']['value']
-                        
-                        node = dict(id=clink(t['subject']['value']),type=t['object']['value'], origin=prefix(t['subject']['value']))
-                        if node['origin']!='https':
-                            self.nodes.append(node)
-                    else:
-                        try:
-                            if '_' in t['object']['value']:
-                                
-                                '''
-                                Go into blank nodes, iterate over items, and create links
-                                '''
-                                
-                                # print('[[][]]',t['object']['value'])
-                                
-                                for item in blank_nodes[t['object']['value']]:
-                                    link = dict(source=clink(t['subject']['value']),target=clink(item[0]),predicate=f"{t['predicate']['value']}{delimiter}{item[1]}")
-                                    self.links.append(link)
-                                    
-                             
-                            else:
-                                link = dict(source=clink(t['subject']['value']),target=clink(t['object']['value']),predicate=t['predicate']['value'])
-                                self.links.append(link)
-                            
-                            
-                            # additional origin links
-                            src  = link['source']
-                            path = re.split(r'[:/]',src)
-                            for i in range(1,len(path)):
-                                me = path[i-1]
-                                n2 = dict(id=me,type='directory',origin=path[0])
-                                self.nodes.append(n2)
-                                l2= dict(source=path[i-1],target=path[i],predicate='_')
-                                self.links.append(l2)
-                            # dont forget the final node. 
-                            me = path[i]
-                            n2 = dict(id=me,type='directory-path',origin=path[0])
-                            self.nodes.append(n2)
-                            # link up to original
-                            l2= dict(source=path[i],target=src,predicate='_')
-                            self.links.append(l2)
-                            
-                        except Exception as e:
-                            # skips out the blank nodes
-                            print('except1: ',e,t)
-                            ...
-                                    
-        directories = list(set(triplets.keys()))
-        # find missing and problem keys 
-        self.missing = list(set(ids) - set(type_map.keys()) - set(directories))
-        from collections import Counter
+        self.blank = blank_nodes
 
-        nodeweights = Counter([i['id'] for i in self.nodes])
-        linkweights = Counter([f"{i['source']} -> {i['target']}" for i in self.links])
+        # Post-processing: Add weights and remove duplicates
+        self._post_process_nodes_and_links()
 
-        for i in self.nodes:
-            i['weight'] = nodeweights[i['id']]
-            
-        for i in self.links: 
-            i['weight'] = linkweights[f"{i['source']} -> {i['target']}"]
+        # Finalize graph data
+        self.types = {v: clink(k) for k, v in type_map.items()}
+        self.vocab = {v: k.replace('mip:', '') for k, v in self.types.items() if 'https' not in v}
+        self.graph = {
+            "nodes": self.nodes,
+            "links": self.links,
+            "types": self.types,
+            "vocab": self.vocab,
+            "missing": list(set(ids) - set(type_map.keys()) - set(triplets.keys()))
+        }
 
-
-        self.nodes = list(dict([(i['id'],i) for i in self.nodes]).values())
-        self.links = list(dict([((i['source'],i['target'],i['predicate']),i) for i in self.links]).values())
-
-
-
-        self.types = dict([[v,clink(k)] for k,v in type_map.items()])
-
-
-        # since the types are defined by the vocab
-        self.vocab = {v: k.replace('mip:','') for k, v in self.types.items() if 'https' not in v}
-
-        self.graph = dict(nodes=self.nodes,links=self.links,types=self.types,vocab=self.vocab, missing = self.missing)
-        
         return self
+
+    def _process_group(self, group, blank_nodes, type_map, clink, prefix):
+        """Process a group of triplets to build nodes and links."""
+        for t in group:
+            self._process_blank_nodes(t, blank_nodes)
+
+        for t in group:
+            self._process_triplet(t, type_map, clink, prefix)
+
+    def _process_blank_nodes(self, t, blank_nodes):
+        """Process blank nodes in triplets."""
+        if '_' in t['subject']['value'] and '_' not in t['object']['value'] and ':' in t['object']['value']:
+            subject = t['subject']['value']
+            if subject in blank_nodes:
+                blank_nodes[subject].append([t['object']['value'], t['predicate']['value']])
+            else:
+                blank_nodes[subject] = [[t['object']['value'], t['predicate']['value']]]
+
+    def _process_triplet(self, t, type_map, clink, prefix):
+        """Process individual triplets to create nodes and links."""
+        s = str(t)
+        if 'literal' not in s:
+            if 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type' in s:
+                self._add_type_node(t, type_map, clink, prefix)
+            else:
+                self._add_link(t, clink)
+
+    def _add_type_node(self, t, type_map, clink, prefix):
+        """Add a node based on type information."""
+        type_map[t['subject']['value']] = t['object']['value']
+        node = {
+            "id": clink(t['subject']['value']),
+            "type": t['object']['value'],
+            "origin": prefix(t['subject']['value'])
+        }
+        if node['origin'] != 'https':
+            self.nodes.append(node)
+
+    def _add_link(self, t, clink):
+        """Add a link between nodes."""
+        try:
+            if '_' in t['object']['value']:
+                for item in self.blank[t['object']['value']]:
+                    self.links.append({
+                        "source": clink(t['subject']['value']),
+                        "target": clink(item[0]),
+                        "predicate": f"{t['predicate']['value']}{DELIMITER}{item[1]}"
+                    })
+            else:
+                self.links.append({
+                    "source": clink(t['subject']['value']),
+                    "target": clink(t['object']['value']),
+                    "predicate": t['predicate']['value']
+                })
+
+            # Add additional origin links
+            self._add_origin_links(clink(t['subject']['value']))
+        except Exception as e:
+            # print(f"Exception in _add_link: {e}, triplet: {t}")
+            ...
+
+    def _add_origin_links(self, src):
+        """Add links representing the directory structure."""
+        path = re.split(r'[:/]', src)
+        for i in range(1, len(path)):
+            self._add_directory_node(path[i-1], path[0])
+            self._add_directory_link(path[i-1], path[i])
+        
+        self._add_directory_node(path[-1], path[0], 'directory-path')
+        self._add_directory_link(path[-1], src)
+
+    def _add_directory_node(self, id, origin, type='directory'):
+        """Add a node representing a directory."""
+        self.nodes.append({"id": id, "type": type, "origin": origin})
+
+    def _add_directory_link(self, source, target):
+        """Add a link between directory nodes."""
+        self.links.append({"source": source, "target": target, "predicate": '_'})
+
+    def _post_process_nodes_and_links(self):
+        """Add weights to nodes and links, remove duplicates."""
+        node_weights = Counter(i['id'] for i in self.nodes)
+        link_weights = Counter(f"{i['source']} -> {i['target']}" for i in self.links)
+
+        for node in self.nodes:
+            node['weight'] = node_weights[node['id']]
+        
+        for link in self.links:
+            link['weight'] = link_weights[f"{link['source']} -> {link['target']}"]
+
+        # Remove duplicates
+        self.nodes = list({i['id']: i for i in self.nodes}.values())
+        self.links = list({(i['source'], i['target'], i['predicate']): i for i in self.links}.values())
+
     @property
     def lddata_debug(self):
+        """Print the JSON-LD data for debugging."""
         print(json.dumps(self.lddata, indent=2))
-        
-    
-    def read_graph(self,location = 'network.json'):
-        """ read the graph from a file. """
-        self.graph = json.load(open(location,'r'))
-        
+
+    def read_graph(self, location='network.json'):
+        """Read the graph from a file."""
+        with open(location, 'r') as f:
+            self.graph = json.load(f)
         return self
-        
-    def write(self,location = 'network.json',item = 'graph'):
-        """ write the graph to a file. """
-        
-        data = self.__dict__.get(item)
-        if data == {}:
+
+    def write(self, location='network.json', item='graph'):
+        """Write the specified item to a file."""
+        data = getattr(self, item, {})
+        if not data:
             print(f"No {item} to write")
             return
+
+        with open(location, 'w') as f:
+            json.dump(data, f, indent=2)
         
-        with open(location,'w') as f:
-            json.dump(data,f,indent=2)
-            
         print(f"{item.capitalize()} written to {location}")
 
-    # @staticmethod
-    def linked(self,selection,direction = 'source'):
-        """ get the linked items for a selection """
-    
-        
+    def linked(self, selection, direction='source'):
+        """Get the linked items for a selection."""
         if direction == 'source':
             return [link for link in self.graph['links'] if link['source'] == selection]
         elif direction == 'target':
             return [link for link in self.graph['links'] if link['target'] == selection]
-        
         else:
             return [link for link in self.graph['links'] if link['source'] == selection or link['target'] == selection]
-        
-        
 
-    def walk_graph(self,sid):
-        links = self.linked(sid,'source')
+    def walk_graph(self, sid):
+        """Recursively walk the graph starting from a given node."""
+        links = self.linked(sid, 'source')
         
-        if len(links) == 0:
-            return  {
-                "@extend": True
-           } 
+        if not links:
+            return {"@extend": True}
         
         output = {}
         for link in links:
@@ -212,15 +200,7 @@ class JSONLDGraphProcessor:
             
         return output
 
-
-    # def get_context(self,selection):
-    # # selection = 'mip:source-id'
-    #     sid = self.graph['types'][selection]
-    #     structure = self.walk_graph(sid)
-    #     return json.dumps({"@context":{"@vocab":selection.replace('mip:',''),**structure}}, indent=2)
-            
-
-    def clean_entry(self,entry: Dict[str, Any], ignore: bool = False) -> Dict[str, Any]:
+    def clean_entry(self, entry: Dict[str, Any], ignore: bool = False) -> Dict[str, Any]:
         """
         Clean an entry by removing certain keys and simplifying the structure.
 
@@ -231,38 +211,31 @@ class JSONLDGraphProcessor:
         Returns:
             Dict[str, Any]: The cleaned entry.
         """
-        nentry = {}
         if '@id' in entry and not ignore:
             return {}
         
-        if isinstance(entry, dict):
-            for key, value in entry.items():
-                if key[0] == '@':
-                    continue
+        nentry = {}
+        for key, value in entry.items():
+            if key.startswith('@'):
+                continue
            
-                if value in ['no parent','none']:
-                    value = {"@id": value}
-                    
-                # exceptions check and correction. 
+            if value in ['no parent', 'none']:
+                value = {"@id": value}
                 
-                
-                if isinstance(value, (str, int, float, bool)) or value is None:
-                    nentry[key] = ""  
-                elif isinstance(value, dict):
-                    if '@id' in value:
-                        nentry[key] = {}
-                    else:                        
-                        cleaned_value = self.clean_entry(value, False)
-                        if cleaned_value:  # Only add non-empty dictionaries
-                            nentry[key] = cleaned_value
-                            
-                            # print('---',key)/
-                            
-                elif isinstance(value, list):
+            if isinstance(value, (str, int, float, bool)) or value is None:
+                nentry[key] = ""  
+            elif isinstance(value, dict):
+                if '@id' in value:
                     nentry[key] = {}
-                       
-                else:
-                    print('-else', key, value)
+                else:                        
+                    cleaned_value = self.clean_entry(value, False)
+                    if cleaned_value:  # Only add non-empty dictionaries
+                        nentry[key] = cleaned_value
+            elif isinstance(value, list):
+                nentry[key] = {}
+            else:
+                print(f'Unexpected type for {key}: {type(value)}')
+        
         return nentry
 
     @property
@@ -279,22 +252,21 @@ class JSONLDGraphProcessor:
                 continue
             
             data = Frame(self.lddata, {"@type": f'mip:{v}', "@embed": "@always"})
-            if not len(data.data):
+            if not data.data:
                 continue
             
-            # print(k, v)
-            
             cleaned = {}
-            for i in [0,-1]:
+            for i in [0, -1]:
                 single = data.data[0]
                 dummy_cleaned = self.clean_entry(single, ignore=True)
-                cleaned = {**cleaned, **dummy_cleaned}  
+                cleaned.update(dummy_cleaned)
             
-            
-            cleaned['@type'] = f'mip:{v}'
-            cleaned['@context'] = {"@vocab": v, '@base': k}
-            cleaned['@embed'] = '@always'
-            cleaned['@explicit'] = True 
+            cleaned.update({
+                '@type': f'mip:{v}',
+                '@context': {"@vocab": v, '@base': k},
+                '@embed': '@always',
+                '@explicit': True 
+            })
             frames[k] = cleaned 
         
         self.frames = frames
@@ -305,9 +277,6 @@ class JSONLDGraphProcessor:
         """
         Link frames based on their relationships.
 
-        Args:
-            frames (Dict[str, Dict[str, Any]]): The frames to link.
-
         Returns:
             List[Dict[str, Any]]: List of failed links.
         """
@@ -317,96 +286,86 @@ class JSONLDGraphProcessor:
             links = self.linked(select, 'source')
             if not links:
                 continue
-            # print(links)
+            
             for link in links:
                 try:
-                    # if link['predicate'] != select:
-                    #     # no duplicates
-                    #     continue
-                    if delimiter in link['predicate']:
-                        # nested keys
+                    if DELIMITER in link['predicate']:
+                        # Handle nested keys
+                        pred = link['predicate'].split(DELIMITER)
+                        if len(pred) > 2:
+                            raise ValueError('Too many delimiters on key. Currently hard coded only for two.')
                         
-                        pred = link['predicate'].split(delimiter)
-                        
-                        print(pred)
-                        
-                        
-                        if len(pred) > 2: sys.exit('Too many delimiters on key. Currently hard coded only for two.')
-                        
-                        
-                        self.frames[select][pred[0]][pred[1]]  = framefreeze[link['target']]
+                        self.frames[select][pred[0]][pred[1]] = framefreeze[link['target']]
                     else:
                         self.frames[select][link['predicate']] = framefreeze[link['target']]
                 except Exception as e:
-                    link['error'] = str(e)
-                    fail.append(link)
-                    continue
+                    fail.append({**link, 'error': str(e)})
         
         print("Failed links:")
         for f in fail:
-            print('- ',f)
+            print(f"- {f}")
         
         self.failed_links = fail
         return self.frames
-        
-        
-    def load_frame(self,frame):
-        self.frames = json.load(open(frame,'r'))
+
+    def load_frame(self, frame):
+        """Load frames from a file."""
+        with open(frame, 'r') as f:
+            self.frames = json.load(f)
         return self
     
     @property
     def filter_frames(self):
+        """Filter frames to only include those in the current repository."""
         self.get_prefix
-        # select only frames that are in the repo
         self.frames = {k: v for k, v in self.frames.items() if self.prefix in k}    
-        
-    def update_frames(self,overwrite = True):
-
+    
+    def update_frames(self, overwrite=True):
+        """Update frame files in the repository."""
         self.get_prefix
 
-        for location in self.frames:
+        for location, content in self.frames.items():
             if self.prefix not in location:
                 continue
             
-            file = location.replace(self.prefix, self.repo_root+'/JSONLD/') + '/frame.jsonld'
-            assert os.path.exists(file), f'No file found at {file}'
+            file = location.replace(self.prefix, f"{self.repo_root}/JSONLD/") + '/frame.jsonld'
+            if not os.path.exists(file):
+                print(f"Warning: No file found at {file}")
+                continue
             
             if overwrite:
-                # this should aready exist for there to be an LD entry
-                previous = json.load(open(file,'r'))
-                  
-                content = sorted_dict(self.frames[location])
-                if content != previous and content: 
+                with open(file, 'r') as f:
+                    previous = json.load(f)
+                
+                content = sorted_dict(content)
+                if content != previous and content:
                     with open(file, 'w') as f:   
                         json.dump(content, f, indent=4)
-                        print(f'Written frame: {location} ({file})')
+                    print(f'Updated frame: {location} ({file})')
 
-                    
-        print(f'All frames updated sucessfully. ')
+        print('All frames updated successfully.')
 
     @property
     def get_prefix(self):
-        if hasattr(self,'prefix'):
+        """Get the repository prefix and root directory."""
+        if hasattr(self, 'prefix'):
             return 
-        repo_root = os.popen('git rev-parse --show-toplevel').read().strip()
+        
+        self.repo_root = os.popen('git rev-parse --show-toplevel').read().strip()
         repo_url = os.popen('git config --get remote.origin.url').read().strip().replace('.git', '')
 
         namesplit = locations.namesplit(repo_url)
 
         try:
-            assert locations.namesplit(repo_root)[1] == namesplit[1]
+            assert locations.namesplit(self.repo_root)[1] == namesplit[1]
         except AssertionError:
-            
-            print('Repositories must be registered within cmipld.locations file. \n These are:')
+            print('Repositories must be registered within cmipld.locations file. \nThese are:')
             for s in locations.rmap:
                 print(s)
-                
-            sys.exit(f'You tried to submit: {locations.namesplit(repo_root)[1]} whilst expected: {namesplit[1]}')
+            
+            sys.exit(f'You tried to submit: {locations.namesplit(self.repo_root)[1]} whilst expected: {namesplit[1]}')
 
         self.prefix = locations.rmap[namesplit]
-        self.repo_root = repo_root
-        
-
 
 if __name__ == "__main__":
     import argparse
@@ -418,4 +377,3 @@ if __name__ == "__main__":
         args = parser.parse_args()
         
         print(args)
-        
