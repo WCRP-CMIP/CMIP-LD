@@ -38,6 +38,7 @@ def submit_dispatch():
     '''
 
     for kind in parsed:
+        print(kind)
         data = parsed[kind]
         
         payload = {
@@ -50,8 +51,8 @@ def submit_dispatch():
             }
         }
 
-    update_issue_title(issue_number,kind,payload)
+        update_issue_title(issue_number,kind,payload)
 
-    dispatch(token,payload,repo)
-    
+        dispatch(token,payload,repo)
+        
 
