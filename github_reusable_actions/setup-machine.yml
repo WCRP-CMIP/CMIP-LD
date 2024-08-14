@@ -1,0 +1,28 @@
+name: Setup Machine
+
+on:
+  workflow_call:
+    inputs:
+      depth:
+        required: false
+        type: string
+        default: 1
+
+jobs:
+  setup-machine:
+    runs-on: ubuntu-latest
+    steps:
+    
+    - name: Checkout last two commits
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: ${{ inputs.depth }}  
+        # 2 -> Fetch only the last two commits
+
+    - name: test
+      run: | 
+        echo ${{ inputs.depth }}
+
+
+
+    

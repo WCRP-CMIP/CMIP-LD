@@ -39,6 +39,7 @@ jobs:
         # Convert newline-separated directories to a space-separated string for the environment variable
         UPDATED_DIRS_LIST=$(echo "$UPDATED_DIRS" | tr '\n' ' ')
         echo "UPDATED_DIRS=$UPDATED_DIRS_LIST" >> $GITHUB_ENV
+        echo "::set-output name=updated_dirs::$UPDATED_DIRS_LIST"
 
     - name: Write updated directories to summary
       run: |
