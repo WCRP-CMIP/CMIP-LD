@@ -7,6 +7,10 @@ on:
         required: false
         type: string
         default: 1
+      repository:
+        required: true
+        type: string
+        # default ${{ github.repository }}
 
 jobs:
   setup-machine:
@@ -16,7 +20,7 @@ jobs:
     - name: Checkout last two commits
       uses: actions/checkout@v4
       with:
-        repository: ${{ github.repository }}
+        repository: ${{ inputs.repository }}
         fetch-depth: ${{ inputs.depth }}  
         # 2 -> Fetch only the last two commits
 
