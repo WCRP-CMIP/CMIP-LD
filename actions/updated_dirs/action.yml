@@ -1,0 +1,30 @@
+name: 'updated directories'
+description: 'Gets directories which have been updated'
+
+# inputs:
+#   content:
+#     description: 'Content to write to the summary'
+#     required: true
+    
+runs:
+  using: "composite"
+  steps:
+    - name: updated directories
+      shell: bash
+      run: |
+        git fetch --depth=2
+        PREV_COMMIT=$(git log -2 --pretty=format:"%H" | tail -n1)
+        UPDATED_FILES=$(git diff --name-only $PREV_COMMIT HEAD)
+        UPDATED_DIRS=$(for file in $UPDATED_FILES; do
+                         dir=$(dirname "$file")
+                         while [ "$dir" != "." ]; do
+                           echo "$dir"
+                           dir=$(dirname "$dir")
+                         done
+                       done | sort -u)
+        UPDATED_DIRS_LIST=$(echo "$UPDATED_DIRS" | tr '\n' ' ')
+        # Set the output
+        echo "updated_dirs=$UPDATED_DIRS_LIST" >> $GITHUB_OUTPUT
+
+
+        
