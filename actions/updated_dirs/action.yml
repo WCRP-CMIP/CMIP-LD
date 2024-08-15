@@ -29,17 +29,19 @@ runs:
         UPDATED_DIRS_LIST=$(echo "$UPDATED_DIRS" | tr '\n' ' ')
         # Set the output
         # echo "updated_dirs=$UPDATED_DIRS_LIST" >> $GITHUB_OUTPUT
+
         echo "updated_dirs=$UPDATED_DIRS_LIST" >> $GITHUB_ENV
-
-
-        SUMMARY=""
-        for dir in $UPDATED_DIRS_LIST; do
-          SUMMARY+="-  $dir<br>"
-        done
+        # access  ${{env.updated_dirs }}"
 
         echo "Directories Found:" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY # this is a blank line
-        echo "$SUMMARY" >> $GITHUB_STEP_SUMMARY
+        # echo "$SUMMARY" >> $GITHUB_STEP_SUMMARY
+
+        for dir in $UPDATED_DIRS_LIST; do
+          echo "-  $dir " >> $GITHUB_STEP_SUMMARY
+        done
 
 
         # https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/workflow-commands-for-github-actions
+
+        
