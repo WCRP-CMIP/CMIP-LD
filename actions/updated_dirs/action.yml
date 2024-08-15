@@ -28,8 +28,8 @@ runs:
                        done | sort -u)
         UPDATED_DIRS_LIST=$(echo "$UPDATED_DIRS" | tr '\n' ' ')
         # Set the output
-        echo "updated_dirs=$UPDATED_DIRS_LIST" >> $GITHUB_OUTPUT
-        echo "updated_dirs=$UPDATED_DIRS_LIST" >> $GITHUB_STATE
+        # echo "updated_dirs=$UPDATED_DIRS_LIST" >> $GITHUB_OUTPUT
+        echo "updated_dirs=$UPDATED_DIRS_LIST" >> $GITHUB_ENV
 
 
         
