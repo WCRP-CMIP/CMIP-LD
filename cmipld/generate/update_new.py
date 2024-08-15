@@ -277,6 +277,8 @@ def init():
             import sys
             sys.exit('No directories found in the base directory. Skipping... ')
             return
+        else:
+            os.environ['needs_update'] = len(args.updated)
         
     print (args)
 
