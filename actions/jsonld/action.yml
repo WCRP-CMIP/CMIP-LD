@@ -9,6 +9,10 @@ inputs:
     description: 'frame locations to update'
     required: false
     default: '$PWD/compiled/graph_data.json'
+  frame_update:
+    description: 'set to "" if you do not want to update the frames'
+    required: false
+    default: '--frame-update'
    
 
 runs:
@@ -20,7 +24,7 @@ runs:
       id: display-inputs
       shell: bash
       run: |
-        echo "### Inputs" >> $GITHUB_STEP_SUMMARY
+        echo "### JSONLD Inputs" >> $GITHUB_STEP_SUMMARY
         echo "Directories: ${{ inputs.dirs }}" >> $GITHUB_STEP_SUMMARY
         echo "Frames: ${{ inputs.frames }}" >> $GITHUB_STEP_SUMMARY
 
@@ -29,11 +33,15 @@ runs:
       shell: bash
       run: |
 
-        echo "### Computing the new JSONLD information. \n ```" >> $GITHUB_STEP_SUMMARY
+        echo "### Computing the new JSONLD information." >> $GITHUB_STEP_SUMMARY
+
+        echo "```" >> $GITHUB_STEP_SUMMARY
         
-        OUTPUT=$(updateld --updated ${{inputs.dirs}})
+        OUTPUT=updateld --updated ${{inputs.dirs}}
         
-        echo "$OUTPUT ```" >> $GITHUB_STEP_SUMMARY
+        echo "$OUTPUT" >> $GITHUB_STEP_SUMMARY
+
+        echo "```" >> $GITHUB_STEP_SUMMARY
 
       continue-on-error: false
 
@@ -58,7 +66,7 @@ runs:
       run: |
         echo "### Calculating the Network and Framing options." >> $GITHUB_STEP_SUMMARY
 
-        OUTPUT=$(reframe --graph ./compiled/graph.json --frame ./compiled/frames.json --frame-update ${{inputs.frames}})
+        OUTPUT=$(reframe --graph ./compiled/graph.json --frame ./compiled/frames.json ${{inputs.frame_update}} ${{inputs.frames}})
 
         echo "$OUTPUT" >> $GITHUB_STEP_SUMMARY
 
