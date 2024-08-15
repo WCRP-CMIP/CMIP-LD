@@ -273,6 +273,10 @@ def init():
     
     if args.updated:
         args.updated = [i for i in args.updated if 'JSONLD/' in i]
+        if len(args.updated) == 0:
+            import sys
+            sys.exit('No directories found in the base directory. Skipping... ')
+            return
         
     print (args)
 

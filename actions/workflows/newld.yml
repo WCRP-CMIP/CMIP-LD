@@ -1,0 +1,64 @@
+name: List Updated Directories
+on: 
+  push:
+    branches:
+      - main  # Adjust this to your branch name if different
+jobs:
+  list-updated-directories:
+    runs-on: ubuntu-latest  # Specify the machine type
+      
+    steps:
+
+    - name: Get a list of directories with updated files
+      id: install-cmipld
+      uses: WCRP-CMIP/CMIP-LD/actions/cmipld@main
+    
+    - name: Checkout Code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 2
+
+    - name: Get a list of directories with updated files
+      id: updated-dirs
+      uses: WCRP-CMIP/CMIP-LD/actions/updated_dirs@main
+
+
+    - name: update LD 
+      id: update-ld
+      shell: bash
+      run: |
+
+        echo "### Computing the new JSONLD information. <br>```" >> $GITHUB_STEP_SUMMARY
+        OUTPUT=$(updateld --updated ${{env.updated_dirs}})
+        echo "$OUTPUT ```" >> $GITHUB_STEP_SUMMARY
+      continue-on-error: false
+
+    - name: group LD
+      id: group-ld
+      shell: bash
+      if: success()
+      run: |
+
+        echo "### Collecting all JSONLD graphs in compiled folder" >> $GITHUB_STEP_SUMMARY
+        mkdir -p compiled
+        combine-graphs compiled/graph_data . graph ./scripts 
+
+
+    - name: generating graph and updating Frames
+      id: graph-gen-ld
+      shell: bash
+      if: success()
+      run: |
+        echo "### Calculating the Network and Framing options." >> $GITHUB_STEP_SUMMARY
+        OUTPUT=$(reframe --graph ./compiled/graph.json --frame ./compiled/frames.json --frame-update ${pwd}/compiled/graph_data.json}})
+        echo "$OUTPUT" >> $GITHUB_STEP_SUMMARY
+
+
+
+    - name: cmt
+      shell: bash
+      if: success()
+      run: |
+        git add -A 
+        git commit -m 'demo'
+        git push
