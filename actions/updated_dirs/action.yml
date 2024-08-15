@@ -32,4 +32,4 @@ runs:
         echo "updated_dirs=$UPDATED_DIRS_LIST" >> $GITHUB_ENV
 
 
-        
+        echo "{Dirctories found: $UPDATED_DIRS_LIST}" >> $GITHUB_STEP_SUMMARY
