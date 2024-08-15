@@ -1,9 +1,9 @@
 name: 'updated directories'
 description: 'Gets directories which have been updated'
 
-outputs:
-  updated_dirs:
-    description: directories which have been updated
+# outputs:
+#   updated_dirs:
+#     description: directories which have been updated
 # inputs:
 #   content:
 #     description: 'Content to write to the summary'
