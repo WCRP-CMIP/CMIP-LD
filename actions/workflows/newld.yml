@@ -1,8 +1,9 @@
-name: List Updated Directories
+name: Update JSONLD
 on: 
   push:
     branches:
-      - main  # Adjust this to your branch name if different
+      - '*' 
+      # - main  # Adjust this to your branch name if different
 jobs:
   list-updated-directories:
     runs-on: ubuntu-latest  # Specify the machine type
@@ -30,28 +31,10 @@ jobs:
         frames: "$PWD/compiled/graph_data.json"
 
 
-    - name: Commit All
-      id: cmt
-      uses: WCRP-CMIP/CMIP-LD/actions/commit_all@main
-      with:
-        message: "Automated update of JSONLD files, network and frames"
+
+      
 
       # artifact on new version release required. 
       # if artifact, then release
 
         
-
-    
-
-
-
-
-    - name: cmt
-      shell: bash
-      if: env.needs_update != '0'
-      run: |
-        git config --global user.email "daniel.ellis@ext.esa.int"
-        git config --global user.name "Daniel Ellis"
-        git add -A 
-        git commit -m 'demo'
-        git push
