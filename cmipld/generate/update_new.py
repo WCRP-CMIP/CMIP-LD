@@ -276,6 +276,7 @@ def init():
         args.updated = [i for i in args.updated if 'JSONLD/' in i]
         if len(args.updated) == 0:
             import sys
+            update_env("needs_update",0)
             sys.exit('No directories found in the base directory. Skipping... ')
             return
         else:

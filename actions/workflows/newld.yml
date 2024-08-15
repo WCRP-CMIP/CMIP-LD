@@ -31,18 +31,20 @@ jobs:
       run: |
 
         echo "### Computing the new JSONLD information. ```" >> $GITHUB_STEP_SUMMARY
-        OUTPUT=$(updateld --updated $filtered_dirs)
+        OUTPUT=$(updateld --updated ${{env.updated_dirs}})
         echo "$OUTPUT $length```" >> $GITHUB_STEP_SUMMARY
 
-        echo "### Updating the JSONLD information. $needs_update" >> $GITHUB_STEP_SUMMARY
       continue-on-error: false
+      
+        
 
     - name: group LD
       id: group-ld
       shell: bash
-      if: success()
+      if: env.needs_update != '0'
       run: |
 
+        echo "### Updating the JSONLD information. ${{env.needs_update}}" >> $GITHUB_STEP_SUMMARY
         echo "### Collecting all JSONLD graphs in compiled folder" >> $GITHUB_STEP_SUMMARY
         mkdir -p compiled
         combine-graphs compiled/graph_data . graph ./scripts 
@@ -51,7 +53,7 @@ jobs:
     - name: generating graph and updating Frames
       id: graph-gen-ld
       shell: bash
-      if: success()
+      if: env.needs_update != '0'
       run: |
         echo "### Calculating the Network and Framing options." >> $GITHUB_STEP_SUMMARY
         OUTPUT=$(reframe --graph ./compiled/graph.json --frame ./compiled/frames.json --frame-update $PWD/compiled/graph_data.json)
@@ -61,14 +63,10 @@ jobs:
 
     - name: cmt
       shell: bash
-      if: success()
+      if: env.needs_update != '0'
       run: |
         git config --global user.email "daniel.ellis@ext.esa.int"
         git config --global user.name "Daniel Ellis"
         git add -A 
         git commit -m 'demo'
         git push
-
-
-
-
