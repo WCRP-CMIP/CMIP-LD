@@ -32,4 +32,9 @@ runs:
         echo "updated_dirs=$UPDATED_DIRS_LIST" >> $GITHUB_ENV
 
 
-        echo "{Dirctories found: $UPDATED_DIRS_LIST}" >> $GITHUB_STEP_SUMMARY
+        echo "Directories Found:" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY # this is a blank line
+        echo "- $UPDATED_DIRS_LIST" >> $GITHUB_STEP_SUMMARY
+
+
+        # https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/workflow-commands-for-github-actions
