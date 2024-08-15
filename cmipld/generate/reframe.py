@@ -34,7 +34,6 @@ def parse_args():
     
     args = parser.parse_args()
 
-    print(args)
     if not args.files:
         parser.error("At least one input file is required.")
         

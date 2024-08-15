@@ -64,7 +64,7 @@ runs:
       shell: bash
       if: env.needs_update != '0'
       run: |
-        echo "###£ Calculating the Network and Framing options." >> $GITHUB_STEP_SUMMARY
+        echo "### Calculating the Network and Framing options." >> $GITHUB_STEP_SUMMARY
 
         OUTPUT=$(reframe --graph ./compiled/graph.json --frame ./compiled/frames.json ${{inputs.frame_update}} ${{inputs.frames}})
 

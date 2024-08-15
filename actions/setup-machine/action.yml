@@ -13,9 +13,7 @@ inputs:
 
 jobs:
   setup-machine:
-    runs-on: ubuntu-latest
     steps:
-    
     - name: Checkout last two commits
       uses: actions/checkout@v4
       with:
@@ -23,9 +21,16 @@ jobs:
         fetch-depth: ${{ inputs.depth }}  
         # 2 -> Fetch only the last two commits
 
-    - name: test
-      run: | 
-        echo ${{ inputs.depth }}
+    - name: commits
+      run: |
+
+        git config user.email "actions@wcrp-cmip.org"
+        
+        git config user.name "CMIP-IPO: Automated GitHub Action"
+
+    # - name: test
+    #   run: | 
+    #     echo ${{ inputs.depth }}
 
 
 
