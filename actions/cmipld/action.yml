@@ -1,5 +1,5 @@
 name: 'Install CMIP-LD Library'
-description: 'Installs the CMIPLD Python library from a GitHub repository'
+description: 'Installs the CMIP-LD Python library from a GitHub repository'
 
 inputs:
   branch:
@@ -18,6 +18,6 @@ runs:
 
     - name: Install library
       run: |
-        pip install git+https://github.com/WCRP-CMIP/CMIP-LD.git@{{ inputs.branch }}
+        pip install git+https://github.com/WCRP-CMIP/CMIP-LD.git@${{ inputs.branch }}
 
         echo "Installed CMIP-LD library from branch ${{ inputs.branch }}" >> $GITHUB_STEP_SUMMARY
