@@ -1,27 +1,55 @@
-name: 'Install CMIP-LD Library'
-description: 'Installs the CMIP-LD Python library from a GitHub repository'
+name: 'Update JSONLD Files'
+description: 'A collection of actions to update the JSONLD files'
 
 inputs:
   dirs:
     description: 'directories to update'
     required: true
   frames:
-    description: 'Frame locations to update'
-    required: true
+    description: 'frame locations to update'
+    required: false
+    default: '$PWD/compiled/graph_data.json'
    
 
 runs:
   using: 'composite'
   steps:
-    - name: Checkout the library repository
-      uses: actions/checkout@v4
-      with:
-        repository: WCRP-CMIP/CMIP-LD
-        ref: ${{ inputs.branch }}
 
-    - name: Install library
+    - name: check for updates in LD directories
+      id: update-ld
       shell: bash
       run: |
-        pip install git+https://github.com/WCRP-CMIP/CMIP-LD.git@${{ inputs.branch }}
 
-        echo " [x] Installed CMIP-LD library from branch ${{ inputs.branch }}" >> $GITHUB_STEP_SUMMARY
+        echo "### Computing the new JSONLD information. \n ```" >> $GITHUB_STEP_SUMMARY
+        
+        OUTPUT=$(updateld --updated $dirs)
+        
+        echo "$OUTPUT ```" >> $GITHUB_STEP_SUMMARY
+
+      continue-on-error: false
+
+    - name: collect all the JSONLD @graphs into one
+      id: group-ld
+      shell: bash
+      if: env.needs_update != '0'
+      run: |
+
+        echo "### Updating the JSONLD information. ${{env.needs_update}}" >> $GITHUB_STEP_SUMMARY
+        
+        echo "### Collecting all JSONLD graphs in compiled folder" >> $GITHUB_STEP_SUMMARY
+        
+        mkdir -p compiled
+        combine-graphs compiled/graph_data . graph ./scripts 
+
+
+    - name: generate network and update frames
+      id: graph-gen-ld
+      shell: bash
+      if: env.needs_update != '0'
+      run: |
+        echo "### Calculating the Network and Framing options." >> $GITHUB_STEP_SUMMARY
+
+        OUTPUT=$(reframe --graph ./compiled/graph.json --frame ./compiled/frames.json --frame-update $frames)
+
+        echo "$OUTPUT" >> $GITHUB_STEP_SUMMARY
+
