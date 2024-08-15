@@ -8,7 +8,7 @@ inputs:
   
 runs:
   using: 'composite'
-  continue-on-error: true
+  
   steps:
     - name: commits
       shell: bash
@@ -24,4 +24,5 @@ runs:
         git commit -m "${{ inputs.message }}"
         git pull 
         git push
+      continue-on-error: true
       
