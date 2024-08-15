@@ -29,7 +29,7 @@ runs:
         UPDATED_DIRS_LIST=$(echo "$UPDATED_DIRS" | tr '\n' ' ')
         # Set the output
         echo "updated_dirs=$UPDATED_DIRS_LIST" >> $GITHUB_OUTPUT
-        echo "::set-output name=updated_dirs::$UPDATED_DIRS_LIST"
+        echo "updated_dirs=$UPDATED_DIRS_LIST" >> $GITHUB_STATE
 
 
         
