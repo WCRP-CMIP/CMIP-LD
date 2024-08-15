@@ -1,16 +1,15 @@
 name: Setup Machine
+description: Load Ubuntu and checkout the latest branch of current repo
 
-on:
-  workflow_call:
-    inputs:
-      depth:
-        required: false
-        type: string
-        default: 1
-      repository:
-        required: true
-        type: string
-        # default ${{ github.repository }}
+inputs:
+  depth:
+    required: false
+    type: string
+    default: 1
+  repository:
+    required: true
+    type: string
+    # default ${{ github.repository }}
 
 jobs:
   setup-machine:
