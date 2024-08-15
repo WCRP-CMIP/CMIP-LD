@@ -15,6 +15,6 @@ jobs:
     - name: Write updated directories to summary
       run: |
         # Write Markdown to the GitHub Actions summary
-        echo "${{input.content}}" >> $GITHUB_STEP_SUMMARY
+        echo "${{inputs.content}}" >> $GITHUB_STEP_SUMMARY
 
         
