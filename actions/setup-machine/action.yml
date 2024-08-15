@@ -27,6 +27,7 @@ jobs:
         git config user.email "actions@wcrp-cmip.org"
         
         git config user.name "CMIP-IPO: Automated GitHub Action"
+      continue-on-error: true
 
     # - name: test
     #   run: | 
