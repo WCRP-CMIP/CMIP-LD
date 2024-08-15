@@ -17,6 +17,7 @@ runs:
         ref: ${{ inputs.branch }}
 
     - name: Install library
+      shell: bash
       run: |
         pip install git+https://github.com/WCRP-CMIP/CMIP-LD.git@${{ inputs.branch }}
 
