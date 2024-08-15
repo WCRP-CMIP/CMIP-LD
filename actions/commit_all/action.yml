@@ -6,18 +6,18 @@ inputs:
     description: 'commit message'
     required: true
   
-
 runs:
   using: 'composite'
   steps:
     - name: commits
+      shell: bash
       run: |
-
         git config user.email "actions@wcrp-cmip.org"
         
         git config user.name "CMIP-IPO: Automated GitHub Action"
 
     - name: Add
+      shell: bash
       run: |
         git add -A
         git commit -m "${{ inputs.message }}"
