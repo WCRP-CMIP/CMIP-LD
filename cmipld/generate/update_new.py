@@ -30,6 +30,7 @@ import os
 import re
 import subprocess
 from  cmipld.locations import rmap, namesplit
+from cmipld.git.actions import update_env
 from cmipld.utils import bprint, errprint
 from cmipld.git.repo_info import get_cmip_repo_info
 from typing import List, Dict, Any, Tuple
@@ -278,7 +279,7 @@ def init():
             sys.exit('No directories found in the base directory. Skipping... ')
             return
         else:
-            os.system(f'needs_update:{len(args.updated)} >> $GITHUB_ENV')
+            update_env("needs_update",len(args.updated))
         
     print (args)
 
