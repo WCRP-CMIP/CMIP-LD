@@ -33,7 +33,7 @@ runs:
         echo "updated_dirs=$UPDATED_DIRS_LIST" >> $GITHUB_ENV
         # access  ${{env.updated_dirs }}"
 
-        echo "Directories Found:" >> $GITHUB_STEP_SUMMARY
+        echo "### Updated Directories:" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY # this is a blank line
         # echo "$SUMMARY" >> $GITHUB_STEP_SUMMARY
 
