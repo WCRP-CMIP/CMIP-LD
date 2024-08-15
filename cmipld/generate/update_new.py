@@ -278,7 +278,7 @@ def init():
             sys.exit('No directories found in the base directory. Skipping... ')
             return
         else:
-            os.environ['needs_update'] = len(args.updated)
+            os.system(f'needs_update:{len(args.updated)} >> $GITHUB_ENV')
         
     print (args)
 
