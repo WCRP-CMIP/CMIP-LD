@@ -10,6 +10,7 @@ runs:
   using: "composite"
   steps:
     - name: updated directories
+      id: updir
       shell: bash
       run: |
         git fetch --depth=2
