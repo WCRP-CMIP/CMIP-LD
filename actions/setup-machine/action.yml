@@ -1,5 +1,5 @@
 name: Setup Machine
-description: Load Ubuntu and checkout the latest branch of current repo
+description: checkout the latest branch of current repo
 
 inputs:
   depth:
