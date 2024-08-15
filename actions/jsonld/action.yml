@@ -15,6 +15,15 @@ runs:
   using: 'composite'
   steps:
 
+
+    - name: display inputs
+      id: display-inputs
+      shell: bash
+      run: |
+        echo "### Inputs" >> $GITHUB_STEP_SUMMARY
+        echo "Directories: ${{ inputs.dirs }}" >> $GITHUB_STEP_SUMMARY
+        echo "Frames: ${{ inputs.frames }}" >> $GITHUB_STEP_SUMMARY
+
     - name: check for updates in LD directories
       id: update-ld
       shell: bash
@@ -22,7 +31,7 @@ runs:
 
         echo "### Computing the new JSONLD information. \n ```" >> $GITHUB_STEP_SUMMARY
         
-        OUTPUT=$(updateld --updated $dirs)
+        OUTPUT=$(updateld --updated ${{inputs.dirs}})
         
         echo "$OUTPUT ```" >> $GITHUB_STEP_SUMMARY
 
@@ -49,7 +58,7 @@ runs:
       run: |
         echo "### Calculating the Network and Framing options." >> $GITHUB_STEP_SUMMARY
 
-        OUTPUT=$(reframe --graph ./compiled/graph.json --frame ./compiled/frames.json --frame-update $frames)
+        OUTPUT=$(reframe --graph ./compiled/graph.json --frame ./compiled/frames.json --frame-update ${{inputs.frames}})
 
         echo "$OUTPUT" >> $GITHUB_STEP_SUMMARY
 
