@@ -34,7 +34,7 @@ runs:
 
         SUMMARY=""
         for dir in $UPDATED_DIRS_LIST; do
-          SUMMARY+=" -  $dir<br>"
+          SUMMARY+="-  $dir<br>"
         done
 
         echo "Directories Found:" >> $GITHUB_STEP_SUMMARY
