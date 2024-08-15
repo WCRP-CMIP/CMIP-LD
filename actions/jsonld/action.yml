@@ -37,7 +37,7 @@ runs:
 
         echo "```" >> $GITHUB_STEP_SUMMARY
         
-        OUTPUT=${updateld --updated ${{inputs.dirs}}}
+        OUTPUT=$( updateld --updated ${{inputs.dirs}})
         
         echo "$OUTPUT" >> $GITHUB_STEP_SUMMARY
 
