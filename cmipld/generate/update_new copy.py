@@ -30,8 +30,6 @@ import os
 import re
 import subprocess
 from  cmipld.locations import rmap, namesplit
-from cmipld.utils import bprint, errprint
-from cmipld.git.repo_info import get_cmip_repo_info
 from typing import List, Dict, Any, Tuple
 
 from pyld import jsonld
@@ -43,7 +41,25 @@ DEFAULT_SKIP_DIRS = ['JSONLD/archive', 'JSONLD/scripts']
 
 graphfile = './compiled/graph_data.json'
 
-REPO, CVTAG, MIPTAG = get_cmip_repo_info()
+def get_repo_info() -> Tuple[str, str, str]:
+    """Retrieve repository information and tags."""
+    repo = subprocess.getoutput('git remote get-url origin').replace('.git', '/blob/main/JSONLD').strip()
+    cv_tag = subprocess.getoutput("curl -s https://api.github.com/repos/WCRP-CMIP/CMIP6Plus_CVs/tags | jq -r '.[0].name'").strip()
+    mip_tag = subprocess.getoutput("curl -s https://api.github.com/repos/PCMDI/mip-cmor-tables/tags | jq -r '.[0].name'").strip()
+    return repo, cv_tag, mip_tag
+
+REPO, CVTAG, MIPTAG = get_repo_info()
+
+def errprint(*text):
+    RED = "\033[91m"
+    RESET = "\033[0m"
+    print(RED,text,RESET)
+    
+    
+def bprint(*text):
+    other = "\033[94m"
+    RESET = "\033[0m"
+    print(other,text,RESET)
 
 
 def read_json_file_mmap(file: str, directory: str) -> Tuple[Dict[str, Any], Dict[str, Any]]:
@@ -118,6 +134,12 @@ def read_all_json_files(directory: str, base_dir: str) -> Tuple[str, str]:
     
     
     all_data = [add_prefix_to_keys(item, prefix) for item in all_data]
+
+    # print(all_data[0])
+    
+    
+     
+    print('ADD WALK HERE TO CONTEXT')
     
     ldroot = directory.removeprefix(base_dir).removeprefix('/./')
     
@@ -143,6 +165,8 @@ def read_all_json_files(directory: str, base_dir: str) -> Tuple[str, str]:
     except jsonld.JsonLdError as e:
         errprint(f"<<< FAIL JSON-LD conformance test: {directory}: {e}")
         
+        
+    
 
     # Write graph and versioning
     gpath = f"{directory}/graph.jsonld"
@@ -216,7 +240,7 @@ def get_directories_to_process(base_dir: str, skip_dirs: set, override: bool) ->
     # Get unique directories that need updating
     return set(re.findall(r'^JSONLD.*(?=/)', output, re.MULTILINE)) - skip_dirs
 
-def main(base_dir: str, exclude_dirs: List[str], exclude_files: List[str], override: bool,matched = False):
+def main(base_dir: str, exclude_dirs: List[str], exclude_files: List[str], override: bool):
     """
     Main function to orchestrate the JSON-LD file processing.
 
@@ -228,11 +252,8 @@ def main(base_dir: str, exclude_dirs: List[str], exclude_files: List[str], overr
     skip_files = DEFAULT_SKIP_FILES + exclude_files
     skip_dirs = set(DEFAULT_SKIP_DIRS + exclude_dirs)
 
-
-
-    if not matched:
-    # Get directories to process if not supplied already
-        matched = get_directories_to_process(base_dir, skip_dirs, override)
+    # Get directories to process
+    matched = get_directories_to_process(base_dir, skip_dirs, override)
     
     print(base_dir, matched)
     if not matched:
@@ -263,24 +284,13 @@ def init():
     parser.add_argument("--output-dir", type=str, default="", help="where to save output")
     
     parser.add_argument("--override", action="store_true", help="Process all non-skipped repos, ignoring Git status")
-    
-    parser.add_argument("--updated", nargs="+", help="If we want to run specific directories")
-    
-    
-    
     args = parser.parse_args()
-    
-    
-    if args.updated:
-        args.updated = [i for i in args.updated if 'JSONLD/' in i]
-        
-    print (args)
 
     base_dir = args.base_dir.rstrip('/')  # Remove trailing slash for consistency
     exclude_dirs = args.exclude_dirs.split(',') if args.exclude_dirs else []
     exclude_files = args.exclude_files.split(',') if args.exclude_files else []
 
-    main(base_dir, exclude_dirs, exclude_files, args.override, args.updated)
+    main(base_dir, exclude_dirs, exclude_files, args.override)
         
         
 if __name__ == "__main__":

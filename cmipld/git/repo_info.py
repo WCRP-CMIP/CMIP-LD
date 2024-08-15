@@ -1,4 +1,7 @@
-import os 
+import os, subprocess
+
+from typing import List, Dict, Any, Tuple
+
 
 def toplevel():
     return os.popen('git rev-parse --show-toplevel').read().strip()
@@ -21,3 +24,12 @@ def commit(message):
     
 def addfile(file):
     os.popen(f'git add {file}').read()
+
+
+
+def get_cmip_repo_info() -> Tuple[str, str, str]:
+    """Retrieve repository information and tags."""
+    repo = subprocess.getoutput('git remote get-url origin').replace('.git', '/blob/main/JSONLD').strip()
+    cv_tag = subprocess.getoutput("curl -s https://api.github.com/repos/WCRP-CMIP/CMIP6Plus_CVs/tags | jq -r '.[0].name'").strip()
+    mip_tag = subprocess.getoutput("curl -s https://api.github.com/repos/PCMDI/mip-cmor-tables/tags | jq -r '.[0].name'").strip()
+    return repo, cv_tag, mip_tag

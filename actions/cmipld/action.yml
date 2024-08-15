@@ -21,4 +21,4 @@ runs:
       run: |
         pip install git+https://github.com/WCRP-CMIP/CMIP-LD.git@${{ inputs.branch }}
 
-        echo "Installed CMIP-LD library from branch ${{ inputs.branch }}" >> $GITHUB_STEP_SUMMARY
+        echo " [x] Installed CMIP-LD library from branch ${{ inputs.branch }}" >> $GITHUB_STEP_SUMMARY

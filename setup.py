@@ -18,6 +18,7 @@ setup(
             "reframe=cmipld.generate.reframe:run",
             "updateelastic=cmipld.generate.elasticmipcvs:run",
             "add_new=cmipld.git.actions.add:submit_dispatch",
+            "test_inputs=cmipld.tests.inputs:run",
         ],
     },
     scripts=[

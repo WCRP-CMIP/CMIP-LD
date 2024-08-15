@@ -1,7 +1,6 @@
 
 import os, json
 
-
 def read_jsn(f):
     return json.load(open(f,'r'))
 
@@ -25,4 +24,5 @@ def read_url(url):
 
 
 
+    
 # git reset --hard miptables/jsonld && git clean -fd
