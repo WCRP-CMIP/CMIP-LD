@@ -17,20 +17,10 @@ def action():
 
 
 
-def main(conf):
-    issue_number = os.environ.get('ISSUE_NUMBER')
-    issue_submitter = os.environ.get('ISSUE_SUBMITTER') or 'automation@wcrp-cmip.org'
-    # repo = repo_info.url().replace('https://github.com','https://api.github.com/repos')
-    token = os.environ.get('GH_TOKEN')
+def main(config):
     errors = []
 
-    # process conf
-    config = configparser.ConfigParser()
-    config.read_string(conf)
-
-    # print(config.sections())
-
-    for section in config.sections():
+    for section in config.keys():
         try: 
             # data 
             entry = config[section]
