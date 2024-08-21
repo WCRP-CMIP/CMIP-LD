@@ -5,8 +5,8 @@ elementpath = 'experiment/sub-id'
 elementtype = "sub-experiment-id"
 owners=['cmip6plus:']
 
-repo_path = repo_info.ldpath('')
-repourl = repo_info.url()
+repo_path = cmipld.utils.git.ldpath('')
+repourl = cmipld.utils.git.url()
 reposhort = urlmap[repourl]
 
 ####################################################
@@ -14,11 +14,11 @@ reposhort = urlmap[repourl]
 ####################################################
 conf = f'''
 [{elementtype}]
-    name =  new-sub-experiment
-    description = A sample sub-experiment id
+    name =  "new-sub-experiment"
+    description = "A sample sub-experiment id"
     
     # only change the item below to "update" if you are submitting a correction. 
-    action = new
+    action = "new"
 ''' 
 
 description = '''

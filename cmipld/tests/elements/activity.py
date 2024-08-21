@@ -5,8 +5,8 @@ elementpath = 'activity/'
 elementtype = "activity-id"
 owners=['cmip6plus:']
 
-repo_path = repo_info.ldpath('')
-repourl = repo_info.url()
+repo_path = cmipld.utils.git.ldpath('')
+repourl = cmipld.utils.git.url()
 reposhort = urlmap[repourl]
 
 ####################################################
@@ -14,12 +14,12 @@ reposhort = urlmap[repourl]
 ####################################################
 conf = '''
 [activity]
-    Name = CMIP
-    Long_Name =  Coupled Model Intercomparison Project
-    URL = https://wcrp-cmip.org
+    Name = "CMIP"
+    Long_Name =  "Coupled Model Intercomparison Project"
+    URL = "https://wcrp-cmip.org"
     
     # only change the item below to "update" if you are submitting a correction. 
-    action = new
+    action = "new"
 ''' 
 
 description = '''
