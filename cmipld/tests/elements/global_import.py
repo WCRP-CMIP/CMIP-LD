@@ -1,7 +1,6 @@
 import json, os, sys
 from collections import OrderedDict
 import cmipld
-import pytest
 import cmipld.utils.git 
 
 # from schema import Schema, And, Use, Optional, SchemaError
@@ -111,8 +110,7 @@ def create_template(element_type,moreinfo,config,location):
     element_type_c = element_type.capitalize()
     split = ' '.join([i.capitalize() for i in element_type.split('-')])
     
-    template  = f"""    
----
+    template  = f"""---
 name: {element_type_c}
 about: Addding a new, or updating an existing, {split.lower()}
 title: 'Review request for change in {element_type}'

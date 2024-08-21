@@ -9,7 +9,7 @@ setup(
         "requests",
         "pyld",
         "jmespath",
-	"schema"
+	    "pytest"
     ],
     entry_points={
         "console_scripts": [
