@@ -4,7 +4,7 @@ import cmipld
 import cmipld.utils.git 
 
 # from schema import Schema, And, Use, Optional, SchemaError
-from cmipld.utils.git import repo_info,update_issue
+from cmipld.utils.git import update_issue
 from cmipld.locations import urlmap
 from cmipld.utils import errprint
 

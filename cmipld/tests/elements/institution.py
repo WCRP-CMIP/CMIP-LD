@@ -6,8 +6,8 @@ elementpath = 'organisations/institutions'
 elementtype = "institution"
 owners=['mip-cmor-tables:']
 
-repo_path = repo_info.ldpath('')
-repourl = repo_info.url()
+repo_path = cmipld.utils.git.ldpath('')
+repourl = cmipld.utils.git.url()
 reposhort = urlmap[repourl]
 
 ####################################################
