@@ -21,6 +21,7 @@ setup(
             "add_new=cmipld.git.actions.add:submit_dispatch",
             "test_inputs=cmipld.tests.inputs:run",
             "issue_templates=cmipld.generate.issue_template:run",
+            "new_element=cmipld.generate.new_element_from_issue:action",
         ],
     },
     scripts=[

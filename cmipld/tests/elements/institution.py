@@ -175,7 +175,8 @@ class institution(MIPConfig):
                 cmipld.utils.git.close_issue('### File Already Exists \n Closing Issue. \n If you meant to update the file, please change the action to "update"')
                 raise FileExistsError(f'File Already Exists {path}')
             
-            cmipld.utils.git.update_issue_title(f"Add{elementtype}: {self.getid} [{self.json['cmip_acronym']} - {self.json['name']}")
+            self.pullname = f"Add {elementtype}:{self.getid}"
+            cmipld.utils.git.update_issue_title(f"{self.pullname} [{self.json['cmip_acronym']}] - {self.json['name']}")
 
         
         
@@ -196,10 +197,21 @@ class institution(MIPConfig):
             
         
         if self.validate(self.json):
-            print(json.dumps(self.json, indent=4))
+            # print(json.dumps(self.json, indent=4))
             
             if write:
-                cmipld.utils.git.prepare_pull(f'{elementtype}:{getid(self.json['@id'])}','main')
+                
+                cmipld.utils.git.prepare_pull(f'{elementtype}:{self.getid}','main')
+
+                with open(path, 'w') as f:
+                    json.dump(cmipld.utils.sorted_dict(self.json), f, indent=4)
+                    
+                author = os.environ.get('OVERRIDE_AUTHOR','cmip-ipo')
+                cmipld.utils.git.addfile(path,author,f"New entry {self.getid} to the {elementpath} LD file")
+                
+                
+                
+                
                 
                 
                 print(path)

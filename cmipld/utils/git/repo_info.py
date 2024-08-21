@@ -20,6 +20,13 @@ def commit_override_author(entry,where):
         return True
     return False
 
+def addfile(location,author,comment):
+    print(os.popen(f'git add {location}').read())
+    print(os.popen(f'git commit -a --author="{author} <{author}@users.noreply.github.com>" -m "{comment}"').read())
+    print(os.popen(f'git push').read())
+    
+
+
 def commit(message):
     os.popen(f'git commit -a -m "{message}"').read()
     
