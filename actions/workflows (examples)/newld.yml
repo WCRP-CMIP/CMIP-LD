@@ -5,7 +5,7 @@ on:
       - '*' 
       # - main  # Adjust this to your branch name if different
 jobs:
-  list-updated-directories:
+  update-jsonld:
     runs-on: ubuntu-latest  # Specify the machine type
       
     steps:
@@ -29,12 +29,5 @@ jobs:
       with:
         dirs: ${{ env.updated_dirs }}
         frames: "$PWD/compiled/graph_data.json"
-
-
-
-      
-
-      # artifact on new version release required. 
-      # if artifact, then release
 
         

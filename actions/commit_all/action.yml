@@ -22,7 +22,7 @@ runs:
       run: |
         git add -A
         git commit -m "${{ inputs.message }}"
-        git pull 
-        git push
+        # git pull 
+        # git push
       continue-on-error: true
       

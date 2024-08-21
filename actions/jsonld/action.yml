@@ -70,3 +70,16 @@ runs:
 
         echo "$OUTPUT" >> $GITHUB_STEP_SUMMARY
 
+
+# maybe we wan commits at the end of the process
+# or just the push 
+
+
+    - name: Commit All
+      id: cmt
+      uses: WCRP-CMIP/CMIP-LD/actions/commit_all@main
+      with:
+        message: "Automated update of JSONLD files, network and frames"
+
+      # artifact on new version release required. 
+      # if artifact, then release

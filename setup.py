@@ -9,6 +9,7 @@ setup(
         "requests",
         "pyld",
         "jmespath",
+	"schema"
     ],
     entry_points={
         "console_scripts": [
@@ -19,6 +20,7 @@ setup(
             "updateelastic=cmipld.generate.elasticmipcvs:run",
             "add_new=cmipld.git.actions.add:submit_dispatch",
             "test_inputs=cmipld.tests.inputs:run",
+            "issue_templates=cmipld.generate.issue_template:run",
         ],
     },
     scripts=[

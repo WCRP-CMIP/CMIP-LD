@@ -3,7 +3,7 @@ import requests
 import json
 import base64
 import asyncio
-import sys,os
+import sys,os,re
 from .locations import LatestFiles
 
 '''
@@ -15,6 +15,9 @@ Use main CMIP class to get data from CMIP JSON-LD files
 
 
 
+def ldname(path):
+    return re.sub(r'([^/]+)$', lambda m: m.group(1).replace('_', '-').lower(), path)
+    
 
 
 
@@ -116,3 +119,5 @@ class CMIPFileUtils:
             return sum(read,[])
         else:
             return read[0]
+
+

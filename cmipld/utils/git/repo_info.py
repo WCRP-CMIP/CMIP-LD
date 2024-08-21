@@ -8,10 +8,11 @@ def toplevel():
 
 def ldpath(path):
     # path = f'organisations/institutions'
-    toplevel = os.popen('git rev-parse --show-toplevel').read().strip()
-    loc = f"{toplevel()}/JSONLD/{path}/"
+    loc = os.path.abspath(f"{toplevel()}/JSONLD/{path}/")
     return loc
 
+def url():
+    return subprocess.getoutput('git remote get-url origin').replace('.git', '').strip()
 
 def commit_override_author(entry,where):
     if os.environ.get('OVERRIDE_AUTHOR'):
