@@ -15,12 +15,12 @@ reposhort = urlmap[repourl]
 ####################################################
 conf = f'''
 [{elementtype}]
-    Acronym = CMIP-IPO
-    Full_Name = Coupled Model Intercomparison Project: International Project Office
-    ROR = 000fg4e24
+    Acronym = "CMIP-IPO"
+    Full_Name = "Coupled Model Intercomparison Project: International Project Office"
+    ROR = "000fg4e24"
     
     # only change the item below to "update" if you are submitting a correction. 
-    action = new
+    action = "new"
 ''' 
 
 description = '''

@@ -20,7 +20,7 @@ def action():
 def main(conf):
     issue_number = os.environ.get('ISSUE_NUMBER')
     issue_submitter = os.environ.get('ISSUE_SUBMITTER') or 'automation@wcrp-cmip.org'
-    repo = os.environ.get('REPO').replace('https://github.com','https://api.github.com/repos')
+    # repo = repo_info.url().replace('https://github.com','https://api.github.com/repos')
     token = os.environ.get('GH_TOKEN')
     errors = []
 
@@ -71,8 +71,7 @@ def main(conf):
         if errors:
             print(errors)  
             
-if __name__ == '__main__':
-      print(action())      
+
         
     # git add one file. 
     # git commit with user
