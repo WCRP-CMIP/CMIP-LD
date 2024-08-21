@@ -9,9 +9,15 @@ def run():
             try:
                 module = getattr(el,element)
                 template = module.get_template()
+                
+                print(template)
 
+            # except ModuleNotFoundError:
+            #     pass
+            except AttributeError:
+                pass
             except Exception as e:
-                # print(e)
+                print(e)
                 continue
         
     

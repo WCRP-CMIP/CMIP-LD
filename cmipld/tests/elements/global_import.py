@@ -2,6 +2,7 @@ import json, os, sys
 from collections import OrderedDict
 import cmipld
 import pytest
+import cmipld.utils.git 
 
 # from schema import Schema, And, Use, Optional, SchemaError
 from cmipld.utils.git import repo_info,update_issue
@@ -13,15 +14,28 @@ from cmipld.frame_ld import Frame
 
 from pydantic import BaseModel, ValidationError, field_validator,Field,HttpUrl,model_validator
 
+def getid(self):
+    return self.json['@id'].split('/')[-1]
 
 
 def pydantic_eprint(e):
     error_details = e.errors()
+    
+    gh = '''# Errors <br>'''
+    
     print("\nParsed error details:")
     for error in error_details:
-        print(f"Error in field '{error}")
+        # print(f"Error in field '{error}")
         
-        print(f"-  {error['msg']} \n\n\t Input:{error['input']}")
+        gh += f"-  {error['msg']} \n Input:{error['input']} \n\n"
+        
+    cmipld.git.update_issue(f'#Sanity Check \n {comment}')
+    
+        
+        
+        
+        
+        
 
 
 
@@ -51,8 +65,11 @@ class MIPConfig():
         except ValidationError as e:
             pydantic_eprint(e)
             return False
-            
     
+    @property   
+    def getid(self):
+        return self.json['@id'].split('/')[-1]
+
     
        
     

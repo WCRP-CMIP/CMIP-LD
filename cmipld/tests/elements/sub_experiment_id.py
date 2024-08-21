@@ -1,8 +1,8 @@
 from cmipld.tests.elements.global_import import *
 
 
-elementpath = 'activity/'
-elementtype = "activity-id"
+elementpath = 'experiment/sub-id'
+elementtype = "sub-experiment-id"
 owners=['cmip6plus:']
 
 repo_path = repo_info.ldpath('')
@@ -12,11 +12,10 @@ reposhort = urlmap[repourl]
 ####################################################
 # Issue Templates
 ####################################################
-conf = '''
-[activity]
-    Name = CMIP
-    Long_Name =  Coupled Model Intercomparison Project
-    URL = https://wcrp-cmip.org
+conf = f'''
+[{elementtype}]
+    name =  new-sub-experiment
+    description = A sample sub-experiment id
     
     # only change the item below to "update" if you are submitting a correction. 
     action = new
@@ -47,11 +46,7 @@ class Validate(BaseModel):
     type: str = Field(alias='@type')
     name: str
     description: str
-    url: HttpUrl
-    # optional: int = Field(..., description="The age of the user")
-    
-    # class Config:
-    #     loc_by_alias = False 
+
     
 
     @field_validator('id')
@@ -75,11 +70,8 @@ class Validate(BaseModel):
     @field_validator('description')
     def description(cls, v):    
         return True
-    @field_validator('url')
-    def url(cls, v):    
-        return True
-  
-
+   
+   
     # after alias resolved
     @model_validator(mode='before')#before
     def check_keys(cls, values):
@@ -89,7 +81,7 @@ class Validate(BaseModel):
 ####################################################
 # Element Class
 ####################################################
-class activity(MIPConfig):
+class sub_experiment_id(MIPConfig):
     
     def __init__(self) -> None:
         # super().__init__()
@@ -104,13 +96,15 @@ class activity(MIPConfig):
         self.conf = conf
         self.aciton = conf['action']
         
+        del conf['action']
+        
         self.json = {
             "@id": f"{urlmap[repourl]}:{elementpath}{self.conf['name']}",
             "@type": elementtype,
-            "description": self.conf['long_name'],
-            "name": self.conf['name'],
-            "url": self.conf['url']
+            **conf
         }
+        
+        
         
         if self.validate(self.json):
             print(json.dumps(self.json, indent=4))
@@ -123,6 +117,12 @@ class activity(MIPConfig):
         else: 
             return False
         
+# publish 
+# dispatch with changes. 
+# create PR
+
+
+# util to change _- and vive versa
 
         
         
