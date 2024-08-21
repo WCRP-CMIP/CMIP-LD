@@ -36,13 +36,14 @@ def update_issue_title (what):
     print(f"Title Updated: {what}")
 
 
-def update_issue(comment,err=True):
+def update_issue(comment,err=True,summarize=True):
     if 'ISSUE_NUMBER' in os.environ:
         issue_number = os.environ['ISSUE_NUMBER']
         out = os.popen(f'gh issue comment {issue_number} --body "{comment}"')
+        if summarize:
+            update_summary(comment)
         if err: 
             print(out)
-            update_summary(comment)
             raise ValueError(comment)
         
     
