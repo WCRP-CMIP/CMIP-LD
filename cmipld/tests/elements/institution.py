@@ -207,7 +207,7 @@ class institution(MIPConfig):
                     json.dump(cmipld.utils.sorted_dict(self.json), f, indent=4)
                     
                 author = os.environ.get('OVERRIDE_AUTHOR','cmip-ipo')
-                cmipld.utils.git.addfile(path,author,f"New entry {self.getid} to the {elementpath} LD file")
+                cmipld.utils.git.commit_one(path,author,f"New entry {self.getid} to the {elementpath} LD file")
                 
                 
                 
