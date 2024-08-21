@@ -185,7 +185,7 @@ class institution(MIPConfig):
         # Check for Similarity in full name
         ##########################
         likeness = similarity(self.json['name'], self.conf['full_name'])
-        comment = f"#### Similarity: {likeness:.2f}% <br> `[\"{self.json['name']}\" | \"{self.conf['full_name']}\"]`"
+        comment = f"#### Similarity: {likeness:.2f}%  \n <br> `[\"{self.json['name']}\" | \"{self.conf['full_name']}\"]`"
         
         if likeness < 55:
             # exit 
