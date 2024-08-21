@@ -1,8 +1,7 @@
 from . import functions 
 from . import add
-import os 
-
-
+import os, subprocess
+from typing import List, Dict, Any, Tuple
 
 def update_env(key,value):
     import os
@@ -100,9 +99,7 @@ def prepare_pull(feature_branch,base_branch):
     print(os.popen(cmd).read())
     
     
-    import os, subprocess
 
-from typing import List, Dict, Any, Tuple
 
 
 def toplevel():
