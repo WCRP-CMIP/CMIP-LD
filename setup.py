@@ -9,7 +9,8 @@ setup(
         "requests",
         "pyld",
         "jmespath",
-	    "pytest"
+	    "pytest",
+        "pydantic"
     ],
     entry_points={
         "console_scripts": [
