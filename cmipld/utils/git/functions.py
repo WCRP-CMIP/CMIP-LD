@@ -42,7 +42,7 @@ def update_issue(comment,err=True):
         out = os.popen(f'gh issue comment {issue_number} --body "{comment}"')
         if err: 
             print(out)
-            cmipld.git.update_summary(comment)
+            update_summary(comment)
             raise ValueError(comment)
         
     
