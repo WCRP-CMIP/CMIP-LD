@@ -46,7 +46,8 @@ def main(config):
             
             # update issue status
             now = cmipld.utils.get_datetime()
-            cmipld.utils.git.update_issue(f'Issue updated: {now} \n\n ```{json.dumps(entryclass.json, indent=4)}```',False)
+            content = json.dumps(entryclass.json, indent=4)
+            cmipld.utils.git.update_issue(f'Issue updated: {now} \n\n ```{content}```',False)
             
             # commit the file. 
             print(f"Committing {entryclass.path}")

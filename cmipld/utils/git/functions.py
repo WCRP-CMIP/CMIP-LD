@@ -38,7 +38,7 @@ def update_issue_title (what):
 def update_issue(comment,err=True,summarize=True):
     if 'ISSUE_NUMBER' in os.environ:
         issue_number = os.environ['ISSUE_NUMBER']
-        out = os.popen(f'gh issue comment {issue_number} --body "{comment}"')
+        out = os.popen(f'gh issue comment {issue_number} --body \'{comment}\' ').rea()
         if summarize:
             update_summary(comment)
         if err: 
