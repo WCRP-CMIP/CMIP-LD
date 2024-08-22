@@ -234,8 +234,8 @@ def pull_req(feature_branch,author,content,title):
     #     f'"https://api.github.com/repos/{github_repository}/pulls?state=open&head=origin/{feature_branch}"| jq -r ".[].number"'
     # )
     
-    curl_command = f"gh pr list --head {feature_branch} --state all --json url --jq '.[].url'
-"
+    curl_command = f"gh pr list --head {feature_branch} --state all --json url --jq '.[].url'"
+
 
     # Execute the command
     pullrqsts = subprocess.getoutput(curl_command).strip().split('/')[-1]
