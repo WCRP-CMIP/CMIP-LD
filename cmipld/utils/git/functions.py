@@ -106,6 +106,7 @@ def commit_one(location,author,comment,branch=None):
         f'git commit -a --author="{author} <{author}@users.noreply.github.com>" -m "{comment}"'
     ]
     print('>> pushing commit to branch')
+    
     if branch:
         cmds.append(f'git push origin {branch} --force')
     # else:
@@ -153,6 +154,7 @@ def reset_branch(feature_branch):
 def prepare_pull(feature_branch,base_branch):
     issue_number = os.environ['ISSUE_NUMBER']
     if issue_number:
+        feature_branch = f'{feature_branch}-{issue_number}'
         reset_branch(feature_branch)
         return feature_branch
     return False
