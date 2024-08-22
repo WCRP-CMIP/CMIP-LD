@@ -203,10 +203,10 @@ def pull_req(content,feature_branch, author):
     )
 
     # Execute the command
-    output = subprocess.getoutput(curl_command).strip()
+    pullrqsts = subprocess.getoutput(curl_command).strip()
         
         
     
-    print('---', prs)
-    update_issue(f'Existing Pull Requests: {prs}',False)
+    print('---', pullrqsts)
+    update_issue(f'Existing Pull Requests: {pullrqsts}',False)
     
