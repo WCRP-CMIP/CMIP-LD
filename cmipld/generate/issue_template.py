@@ -4,20 +4,25 @@ import importlib.util
 def run():
     import cmipld.tests.elements as el
     
+    # print(dir(el))
+    
+    getattr(el,'institution').get_template()
+    
     for element in dir(el):
-         if '__' not in element[:2]:
+        if '__' not in element[:2]:
+            print('-',element)
             try:
                 module = getattr(el,element)
                 template = module.get_template()
                 
-                print(template)
+                print(element,module,template)
 
             # except ModuleNotFoundError:
             #     pass
-            except AttributeError:
-                pass
+            # except AttributeError:
+            #     pass
             except Exception as e:
-                print(e)
+                print('err',e)
                 continue
         
     

@@ -74,8 +74,20 @@ class MIPConfig():
         return json.dumps(self.json, indent=4)
 
     
-       
-    
+
+    def new_old_action_checks(self,elementtype):
+        if self.action == 'new':
+            if os.path.exists(self.path):
+                gitutils.close_issue('### File Already Exists \n Closing Issue. \n If you meant to update the file, please change the action to "update"')
+                raise FileExistsError(f'File Already Exists {self.path}')
+            
+            self.pullname = f"Add {elementtype}: {self.json['cmip_acronym']}"
+        else:
+            if not os.path.exists(self.path):
+                gitutils.close_issue('### File Does Not Exist \n Closing Issue. \n To add a new file, please change the action to "new"')
+                raise FileNotFoundError(f'Missing File - cannot update: {self.path}')
+            
+            self.pullname = f"Update {elementtype}:{self.getid}"
     
 def check_all_keys_present(cls, values):
         """

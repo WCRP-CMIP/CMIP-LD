@@ -10,6 +10,24 @@ import argparse,os
 import subprocess
 
 
+
+# import the library
+
+async def quicklook(graphpath,clean=True):
+    ''' Quickly load the files from a CMIPLD repo using the frame inside. '''
+    import cmipld,json
+    latest = await cmipld.CMIPFileUtils.load(graphpath)
+    frame = json.load(open(graphpath[0].replace('graph.jsonld', 'frame.jsonld'),'r'))
+    # del frame['@context']
+    return cmipld.Frame([latest], frame).clean().json if clean else cmipld.Frame(latest, frame).json
+
+# await quicklook(['JSONLD/organisations/institutions/graph.jsonld'])
+
+
+
+
+
+
 def run_bash_script(script_name):
     script_path = os.path.join(os.path.dirname(__file__), 'scripts', script_name)
     try:
