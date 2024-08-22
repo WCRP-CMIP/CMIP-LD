@@ -77,26 +77,32 @@ def pp(js):
     
     
 def prepare_pull(feature_branch,base_branch):
-    
-    cmd = f'''
-        base_branch="{base_branch}"
-        feature_branch="{feature_branch}"
-        git pull
+    issue_number = os.environ['ISSUE_NUMBER']
+    if issue_number:
+        feature_branch = f'{feature_branch}-{issue_number}'
+        cmd = f'''
+            base_branch="{base_branch}"
+            feature_branch="{feature_branch}"
+            git pull
+                
+            remote_branch='origin/{feature_branch}'
+            branch_info=$(git rev-parse --verify '$remote_branch' >/dev/null 2>&1 || true)
+            echo "branch info: $branch_info"
             
-        remote_branch='origin/$feature_branch'
-        branch_info=$(git rev-parse --verify '$remote_branch' >/dev/null 2>&1 || true)
-        echo "branch info: $branch_info"
-        
-        if [ -n "$branch_info" ]; then
-            echo "checkout existing"
-            git checkout $feature_branch
-            git reset --hard origin/main
-        else
-            echo "checkout new"
-            git checkout -b $feature_branch
-        fi
-            '''
-    print(os.popen(cmd).read())
+            if [ -n "$branch_info" ]; then
+                echo "checkout existing"
+                git checkout {feature_branch}
+                git reset --hard origin/main
+            else
+                echo "checkout new"
+                git checkout -b {feature_branch}
+            fi
+            
+            git push origin {feature_branch} -f 
+                '''
+        print(os.popen(cmd).read())
+        return feature_branch
+    return False
     
     
 

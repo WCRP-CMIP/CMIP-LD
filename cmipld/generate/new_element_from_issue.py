@@ -38,14 +38,18 @@ def main(config):
             # otherwise write to file and save repo on git. 
         
             # Set up repo
-            branch = f'{entrylib.elementtype}:{entryclass.getid}'
-            cmipld.utils.git.prepare_pull(branch,'main')
+            branch = f'{entrylib.elementtype}-{entryclass.getid}'
+            branch = cmipld.utils.git.prepare_pull(branch,'main')
+            
             # write to file
             json.dump(entryclass.json, open(entryclass.path, 'w') , indent=4)
+            
             # update issue status
             now = cmipld.utils.get_datetime()
             cmipld.utils.git.update_issue(f'Issue updated: {now} \n\n ```{json.dumps(entryclass.json, indent=4)}```',False)
+            
             # commit the file. 
+            print(f"Committing {entryclass.path}")
             author = os.environ.get('OVERRIDE_AUTHOR','cmip-ipo')
             cmipld.utils.git.commit_one(entryclass.path,author,f"New entry {entryclass.getid} to the {entrylib.elementpath} LD file",branch)
                 
