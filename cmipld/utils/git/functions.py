@@ -179,7 +179,7 @@ def newpull(base_branch, feature_branch,author,content,title,issue):
                         Adding the following new data.
                         
                         \`\`\`js
-                        {content}
+                        {content.replace('"','\"')}
                         \`\`\`
                         
                         Resolves #{issue}
