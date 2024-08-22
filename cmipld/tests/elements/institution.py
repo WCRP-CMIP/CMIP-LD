@@ -162,8 +162,8 @@ class institution(MIPConfig):
     def create_jsonld(self,conf,write=True):
 
         self.conf = conf
-        self.action = conf['action']
-        del conf['action']
+        self.action = conf.get('action','new')
+        if 'action' in conf: del conf['action']
         
         self.json = asyncio.run(parse_ror_data(conf['ror'],conf['acronym']))
     
