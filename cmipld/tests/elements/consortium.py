@@ -82,10 +82,12 @@ class Validate(BaseModel):
     # @model_validator(mode='before')#before
     # def check_keys(cls, values):
     #     return check_all_keys_present(cls, values)
-        
+import os 
+print(os.popen('ls').read())    
+
 async def get_existing():
-    inst = await cmipld.quicklook(['./JSONLD/organisations/institutions/graph.jsonld'])
-    cons = await cmipld.quicklook(['./JSONLD/organisations/consoria/graph.jsonld'])
+    inst = await cmipld.quicklook([os.cwd()+'/JSONLD/organisations/institutions/graph.jsonld'])
+    cons = await cmipld.quicklook([os.cwd()+'/JSONLD/organisations/consoria/graph.jsonld'])
     return dict(institutions=inst,consortia=cons)
 
 
