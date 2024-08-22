@@ -167,11 +167,16 @@ def prepare_pull(feature_branch,base_branch):
     return False
     
 
-def newpull(base_branch, feature_branch,author,content,title,issue):
+def newpull(base_branch, feature_branch,author,content,title,issue,update=None):
 
+    where = "gh pr create --base \'{base_branch}\' --head \'{feature_branch}\' --title \'{title}\'"
+    
+    if update != None:
+        where = "gh pr comment {update}"
+        
     cmds = f'''
             git pull; 
-            gh pr create --base \'{base_branch}\' --head \'{feature_branch}\' --title \'{title}\' --body \
+            {where} --body \
 \'This pull request was automatically created by a GitHub Actions workflow.
 
 Data submitted by @{author}
@@ -227,13 +232,16 @@ def pull_req(feature_branch,author,content,title):
     # Execute the command
     pullrqsts = eval(subprocess.getoutput(curl_command).strip())
     
-    print('---', pullrqsts)
-    update_issue(f'Existing Pull Requests: {pullrqsts}',False)
-    
     if not pullrqsts:
-        newpull('main', feature_branch,author,content,title,os.environ["ISSUE_NUMBER"])
-                
+        pullrqsts = [None]
+    else: 
+        pullrqsts = pullrqsts.split(' ')
+        update_issue(f'Existing Pull Requests: |{pullrqsts}|',False)
+
+    for pr in pullrqsts:
+        newpull('main', feature_branch,author,content,title,os.environ["ISSUE_NUMBER"],update = pr)
     
+        
     
 
 
