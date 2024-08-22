@@ -230,7 +230,7 @@ def pull_req(feature_branch,author,content,title):
     )
 
     # Execute the command
-    pullrqsts = eval(subprocess.getoutput(curl_command).strip())
+    pullrqsts = subprocess.getoutput(curl_command).strip()
     
     if not pullrqsts:
         pullrqsts = [None]
