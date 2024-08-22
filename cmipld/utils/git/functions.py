@@ -142,7 +142,8 @@ def reset_branch(feature_branch):
     cmds= [
             f"git checkout {feature_branch}",
             f"git reset --hard origin/main",
-            f"git push origin {feature_branch} -f"
+            f"git push origin {feature_branch} -f",
+            f"git pull"
         ]
     if not branchinfo:
          cmds[0]= f"git checkout -b {feature_branch}"
@@ -167,7 +168,7 @@ def pull_req(content,feature_branch, author):
 
     feature_branch = f'origin/{feature_branch}'
     
-    if not os.popen(f"$(git rev-parse --verify '{feature_branch}' >/dev/null 2>&1 || true)").read():
+    if not os.popen(f"git rev-parse --verify '{feature_branch}' >/dev/null 2>&1 || true").read():
         print(f'Pull_req: Branch {feature_branch} not found')
         sys.exit(f'Pull_req: Branch {feature_branch} not found')
     
