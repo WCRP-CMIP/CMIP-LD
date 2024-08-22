@@ -191,15 +191,15 @@ class institution(MIPConfig):
         # Check for Similarity in full name
         ##########################
         likeness = similarity(self.json['name'], self.conf['full_name'])
-        comment = f"#### Similarity: {likeness:.2f}%  \n <br> `[\"{self.json['name']}\" | \"{self.conf['full_name']}\"]`"
+        comment = f"Similarity: {likeness:.2f}%  \n  `[\"{self.json['name']}\" | \"{self.conf['full_name']}\"]` \n"
         
         if likeness < 55:
             # exit 
-            comment = f'#Closing Issue <br> {comment} <br> Please review and edit the configuration above. If unsure check the ROR ID {URL_TEMPLATE.format(self.json["ror"])}'
+            comment = f'# Closing Issue <br> {comment} \n Please review and edit the configuration above. If unsure check the ROR ID {URL_TEMPLATE.format(self.json["ror"])}'
             gitutils.close_issue(comment)
         
         else:
-            gitutils.update_issue(f'# Sanity Check \n {comment}',False)
+            gitutils.update_issue(f'## Sanity Check \n {comment}',False)
             
         self.json = cmipld.utils.sorted_dict(self.json)
         
