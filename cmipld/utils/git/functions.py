@@ -167,9 +167,9 @@ def pull_req(content,feature_branch, author):
 
 
     
-    if not os.popen("$(git rev-parse --verify '{feature_branch}' >/dev/null 2>&1 || true)").read():
-        print*('Pull_req: Branch {feature_branch} not found')
-        sys.exit('Pull_req: Branch {feature_branch} not found')
+    if not os.popen(f"$(git rev-parse --verify '{feature_branch}' >/dev/null 2>&1 || true)").read():
+        print(f'Pull_req: Branch {feature_branch} not found')
+        sys.exit(f'Pull_req: Branch {feature_branch} not found')
     
     
     cmds = [
