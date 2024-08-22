@@ -29,16 +29,7 @@ def pydantic_eprint(e):
         gh += f"-  {error['msg']} \n Input:{error['input']} \n\n"
         
     gitutils.update_issue(f'#Sanity Check \n {comment}')
-    
-        
-        
-        
-        
-        
-
-
-
-
+  
 
 
 
@@ -73,7 +64,6 @@ class MIPConfig():
     def jsonstr(self):
         return json.dumps(self.json, indent=4)
 
-    
 
     def new_old_action_checks(self,elementtype):
         if self.action == 'new':

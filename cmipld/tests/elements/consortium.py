@@ -121,14 +121,14 @@ class consortium(MIPConfig):
             error = '#Error: \n Pausing submission. Please edit the initial config (above) addressing the issues below to try again. \n\n ' + error
             update_issue(issue_number,error)
 
-    
+        print('aaa')
     
         self.path = ldname(f"{repo_path}/{elementpath}/{self.conf['name'].lower()}.json")
         
 
+        print(self.path)
         self.new_old_action_checks(elementtype)
-
-        
+        print(self.pullname)
         
     
         
