@@ -189,7 +189,7 @@ def newpull(base_branch, feature_branch,author,content,title,issue):
     print(output)
 
 
-def pull_req(feature_branch,author,content,title,issue):
+def pull_req(feature_branch,author,content,title):
     # gh_token, issue, base_branch
     # Set git configuration
 
