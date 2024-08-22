@@ -226,13 +226,15 @@ def pull_req(feature_branch,author,content,title):
 
     # Execute the command
     pullrqsts = eval(subprocess.getoutput(curl_command).strip())
-        
-    if len(pullrqsts) == 0:
-        newpull('main', feature_branch,author,content,title,os.environ["ISSUE_NUMBER"])
-                
     
     print('---', pullrqsts)
     update_issue(f'Existing Pull Requests: {pullrqsts}',False)
+    
+    if not pullrqsts:
+        newpull('main', feature_branch,author,content,title,os.environ["ISSUE_NUMBER"])
+                
+    
+    
 
 
 
