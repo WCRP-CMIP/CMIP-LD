@@ -171,7 +171,7 @@ class institution(MIPConfig):
         
         # def update_issue_title (what,payload):
         if self.action == 'new':
-            if os.path.exists(path):
+            if os.path.exists(selfpath):
                 cmipld.utils.git.close_issue('### File Already Exists \n Closing Issue. \n If you meant to update the file, please change the action to "update"')
                 raise FileExistsError(f'File Already Exists {path}')
             
