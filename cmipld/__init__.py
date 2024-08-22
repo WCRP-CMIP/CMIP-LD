@@ -22,7 +22,7 @@ async def quicklook(graphpath,clean=True):
     frame = json.load(open(f'{graphpath}frame.jsonld','r'))
     print(frame,graphpath)
     del frame['@context']
-    return cmipld.Frame([latest], frame).clean().json if clean else cmipld.Frame([latest], frame).json
+    return cmipld.Frame(latest['@graph'], frame).clean().json if clean else cmipld.Frame(latest['@graph'], frame).json
 
 # await quicklook(['JSONLD/organisations/institutions/graph.jsonld'])
 
