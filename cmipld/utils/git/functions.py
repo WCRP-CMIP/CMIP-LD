@@ -106,8 +106,9 @@ def commit_one(location,author,comment,branch=None):
     print('>> pushing commit to branch')
     if branch:
         cmds.append(f'git push origin {branch} --force')
-    else:
-        cmds.append(f'git push -f ')
+    # else:
+    
+    cmds.append(f'git push -f ')
         
     for cmd in cmds:
         print(os.popen(cmd).read())
