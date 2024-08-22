@@ -102,7 +102,7 @@ def commit_one(location,author,comment,branch=None):
     cmds = [
         f'git config --global user.email "{author}@users.noreply.github.com"',
         f'git config --global user.name "{author}"',
-        f'git add {location}',
+        f'git add {location} ',
         f'git commit -a --author="{author} <{author}@users.noreply.github.com>" -m "{comment}"'
     ]
     print('>> pushing commit to branch')
@@ -141,16 +141,18 @@ def reset_branch(feature_branch):
     
     binfo = branchinfo(feature_branch)
     cmds= [
+            'git remote -v',
+            'git fetch --all',
+            f"git pull",
             f"git checkout {feature_branch}",
             f"git reset --hard origin/main",
             f"git push origin {feature_branch} -f",
-            f"git pull",
-            'git remote -v',
-            'git fetch --all'
+            
+            
         ]
     if not binfo:
-         cmds[0]= f"git checkout -b {feature_branch}"
-         cmds[2]= f"git push --set-upstream origin {feature_branch} --force"
+         cmds[3]= f"git checkout -b {feature_branch}"
+         cmds[5]= f"git push --set-upstream origin {feature_branch} --force"
          
     for cmd in cmds:
         print(os.popen(cmd).read())
@@ -169,7 +171,7 @@ def pull_req(content,feature_branch, author):
     # gh_token, issue, base_branch
     # Set git configuration
 
-    comment = ''
+    comment = ' test'
 
 
     feature_branch = f'origin/{feature_branch}'
@@ -180,9 +182,9 @@ def pull_req(content,feature_branch, author):
     
     
     cmds = [
-        f'git config --global user.email "{author}@users.noreply.github.com"',
-        f'git config --global user.name "{author}"'
-        f'git commit -a --author="{author} <{author}@users.noreply.github.com>" -m "{comment}"'
+        f'git config --global user.email "{author}@users.noreply.github.com" ',
+        f'git config --global user.name "{author}" '
+        # f'git commit -a --author="{author} <{author}@users.noreply.github.com>" -m "{comment}"'
     ]
     
     
