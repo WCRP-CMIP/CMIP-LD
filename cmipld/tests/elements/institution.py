@@ -172,15 +172,15 @@ class institution(MIPConfig):
         # def update_issue_title (what,payload):
         if self.action == 'new':
             if os.path.exists(self.path):
-                cmipld.utils.git.close_issue('### File Already Exists \n Closing Issue. \n If you meant to update the file, please change the action to "update"')
-                raise FileExistsError(f'File Already Exists {path}')
+                gitutils.close_issue('### File Already Exists \n Closing Issue. \n If you meant to update the file, please change the action to "update"')
+                raise FileExistsError(f'File Already Exists {self.path}')
             
             self.pullname = f"Add {elementtype}: {self.json['cmip_acronym']}"
             # cmipld.utils.git.update_issue_title(f"{self.pullname} [{self.json['cmip_acronym']}] - {self.json['name']}")
         else:
             if not os.path.exists(self.path):
-                cmipld.utils.git.close_issue('### File Does Not Exist \n Closing Issue. \n To add a new file, please change the action to "new"')
-                raise FileNotFoundError(f'Missing File - cannot update: {path}')
+                gitutils.close_issue('### File Does Not Exist \n Closing Issue. \n To add a new file, please change the action to "new"')
+                raise FileNotFoundError(f'Missing File - cannot update: {self.path}')
             
             self.pullname = f"Update {elementtype}:{self.getid}"
 
@@ -196,7 +196,7 @@ class institution(MIPConfig):
         if likeness < 55:
             # exit 
             comment = f'#Closing Issue <br> {comment} <br> Please review and edit the configuration above. If unsure check the ROR ID {URL_TEMPLATE.format(self.json["ror"])}'
-            cmipld.utils.git.close_issue(comment)
+            gitutils.close_issue(comment)
         
         else:
             cmipld.utils.git.update_issue(f'# Sanity Check \n {comment}',False)
