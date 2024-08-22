@@ -169,10 +169,10 @@ def prepare_pull(feature_branch,base_branch):
 
 def newpull(base_branch, feature_branch,author,content,title,issue,update=None):
 
-    where = "gh pr create --base \'{base_branch}\' --head \'{feature_branch}\' --title \'{title}\'"
+    where = f"gh pr create --base \'{base_branch}\' --head \'{feature_branch}\' --title \'{title}\'"
     
     if update != None:
-        where = "gh pr comment {update}"
+        where = f"gh pr comment {update}"
         
     cmds = f'''
             git pull; 
