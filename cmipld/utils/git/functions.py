@@ -76,34 +76,7 @@ def pp(js):
     
     
     
-def prepare_pull(feature_branch,base_branch):
-    issue_number = os.environ['ISSUE_NUMBER']
-    if issue_number:
-        feature_branch = f'{feature_branch}-{issue_number}'
-        cmd = f'''
-            base_branch="{base_branch}"
-            feature_branch="{feature_branch}"
-            git pull
-                
-            remote_branch='origin/{feature_branch}'
-            branch_info=$(git rev-parse --verify '$remote_branch' >/dev/null 2>&1 || true)
-            echo "branch info: $branch_info"
-            
-            if [ -n "$branch_info" ]; then
-                echo "checkout existing"
-                git checkout {feature_branch}
-                git reset --hard origin/main
-            else
-                echo "checkout new"
-                git checkout -b {feature_branch}
-            fi
-            
-            git push origin {feature_branch} -f 
-                '''
-        print(os.popen(cmd).read())
-        return feature_branch
-    return False
-    
+
     
 
 
@@ -126,13 +99,18 @@ def commit_override_author(entry,where):
     return False
 
 def commit_one(location,author,comment,branch=None):
-    print(os.popen(f'git add {location}').read())
-    print(os.popen(f'git commit -a --author="{author} <{author}@users.noreply.github.com>" -m "{comment}"').read())
-    print('pushing commit to branch')
+    cmds = [
+        f'git add {location}',
+        f'git commit -a --author="{author} <{author}@users.noreply.github.com>" -m "{comment}"'
+    ]
+    print('>> pushing commit to branch')
     if branch:
-        print(os.popen(f'git push origin {branch} --force').read())
+        cmds.append(f'git push origin {branch} --force')
     else:
-        print(os.popen(f'git push -f ').read())
+        cmds.append(f'git push -f ')
+        
+    for cmd in cmds:
+        print(os.popen(cmd).read())
     
 
 
@@ -153,12 +131,29 @@ def get_cmip_repo_info() -> Tuple[str, str, str]:
 
 
 
-def reset_branch(branch):
+def reset_branch(feature_branch):
     # if a branch exists, reset it to main, then progress. 
     
-
-
-
+    branchinfo= os.popen("$(git rev-parse --verify '{feature_branch}' >/dev/null 2>&1 || true)").read()
+    
+    if branchinfo:
+        cmds= [
+            f"git checkout {feature_branch}",
+            f"git reset --hard origin/main",
+            f"git push origin {feature_branch} -f"
+        ]
+    else: cmds[0]= f"git checkout -b {feature_branch}"
+    for cmd in cmds:
+        print(os.popen(cmd).read())
+    
+    
+def prepare_pull(feature_branch,base_branch):
+    issue_number = os.environ['ISSUE_NUMBER']
+    if issue_number:
+        reset_branch(feature_branch)
+        return feature_branch
+    return False
+    
 
 def pull_req(content,feature_branch, req_author):
     # gh_token, issue, base_branch
@@ -174,30 +169,3 @@ def pull_req(content,feature_branch, req_author):
     print('---', branchinfo)
     update_issue(f'Branch Info: {branchinfo}',False)
     
-    # cmds= [
-    #     f"git checkout {branch}",
-    #     f"git reset --hard origin/main",
-    # ]
-    
-    
-    
-
-
-#     # Check if branch_info exists (not provided in the function parameters, assuming it's a global variable)
-#     if 'branch_info' in globals() and branch_info:
-#         # Get open pull requests
-#         api_url = f'https://api.github.com/repos/{os.environ["GITHUB_REPOSITORY"]}/pulls?state=open&head={branch}'
-#         headers = {'Authorization': f'token {gh_token}'}
-#         response = subprocess.run(['curl', '-s', '-H', f'Authorization: token {gh_token}', api_url], capture_output=True, text=True)
-#         pull_requests = json.loads(response.stdout)
-        
-#         for pr in pull_requests:
-#             pr_number = pr['number']
-#             comment_body = f"""This pull request (#{pr_number}) was automatically updated by a GitHub Actions workflow.
-
-# Data submitted by @{req_author}
-
-# Adding the following updated data.
-
-# ```js
-# {content}
