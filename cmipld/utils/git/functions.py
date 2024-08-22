@@ -229,30 +229,38 @@ def pull_req(feature_branch,author,content,title):
     # feature_branch = os.getenv('FEATURE_BRANCH')
 
     # Construct the curl command
-    curl_command = (
-        f'curl -s -H "Authorization: token {gh_token}" '
-        f'"https://api.github.com/repos/{github_repository}/pulls?state=open&head=origin/{feature_branch}"| jq -r ".[].number"'
-    )
+    # curl_command = (
+    #     f'curl -s -H "Authorization: token {gh_token}" '
+    #     f'"https://api.github.com/repos/{github_repository}/pulls?state=open&head=origin/{feature_branch}"| jq -r ".[].number"'
+    # )
+    
+    curl_command = f"gh pr list --head {feature_branch} --state all --json url --jq '.[].url'
+"
 
     # Execute the command
-    pullrqsts = subprocess.getoutput(curl_command).strip()
+    pullrqsts = subprocess.getoutput(curl_command).strip().split('/')[-1]
     
 
         
 
-    write = False
+    # write = False
     
-    #### sort out existing issue description updates later. 
+    # #### sort out existing issue description updates later. 
     
-    # for pr in pullrqsts.split(' '):
-    #     if pr == os.environ["ISSUE_NUMBER"]:
-    #         write = True
-    #         update_issue(f'Overwriting Pull Request Info: |{pr}|',False)
-    #         newpull('main', feature_branch,author,content,title,os.environ["ISSUE_NUMBER"],update = pr)
+    # # for pr in pullrqsts.split(' '):
+    # #     if pr == os.environ["ISSUE_NUMBER"]:
+    # #         write = True
+    # #         update_issue(f'Overwriting Pull Request Info: |{pr}|',False)
+    # #         newpull('main', feature_branch,author,content,title,os.environ["ISSUE_NUMBER"],update = pr)
     
-    if not write:
+    # if not write:
+    
+    try: 
+        update = int(pullrqsts)
+    except:
+        update = None
         # create a new pull request
-        newpull('main', feature_branch,author,content,title,os.environ["ISSUE_NUMBER"])
+    newpull('main', feature_branch,author,content,title,os.environ["ISSUE_NUMBER"],update)
     
         
     
