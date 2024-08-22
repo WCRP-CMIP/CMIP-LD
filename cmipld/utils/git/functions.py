@@ -170,6 +170,7 @@ def prepare_pull(feature_branch,base_branch):
 def newpull(base_branch, feature_branch,author,content,title,issue):
 
     cmds = f'''
+            git pull; 
             gh pr create --base "{base_branch}" --head "{feature_branch}" --title "{title}" --body \
                             "This pull request was automatically created by a GitHub Actions workflow.
                         
@@ -195,7 +196,7 @@ def pull_req(feature_branch,author,content,title):
     # Set git configuration
 
 
-    feature_branch = f'origin/{feature_branch}'
+    feature_branch = f'{feature_branch}'
     
     if not branchinfo(feature_branch):
         print(f'Pull_req: Branch {feature_branch} not found')

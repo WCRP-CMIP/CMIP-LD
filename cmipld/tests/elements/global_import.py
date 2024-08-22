@@ -68,6 +68,10 @@ class MIPConfig():
     @property   
     def getid(self):
         return self.json['@id'].split('/')[-1]
+    
+    @property
+    def jsonstr(self):
+        return json.dumps(self.json, indent=4)
 
     
        

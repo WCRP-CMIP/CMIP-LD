@@ -49,8 +49,7 @@ def main(config):
 
             # update issue status
             now = cmipld.utils.get_datetime()
-            content = json.dumps(entryclass.json, indent=4)
-            gitutils.update_issue(f'Issue updated: {now} \n\n ```json \n {content} \n```',False)
+            gitutils.update_issue(f'Issue updated: {now} \n\n ```json \n {entryclass.jsonstr} \n```',False)
             
             # commit the file. 
             print(f"Committing {entryclass.path}")
@@ -59,7 +58,7 @@ def main(config):
                 
                 
                 
-            gitutils.pull_req(branch, author, entryclass.json, entryclass.pullname)
+            gitutils.pull_req(branch, author, entryclass.jsonstr, entryclass.pullname)
 
         except ModuleNotFoundError as e:
             errors.append(f"No such module {section} in cmipld. Please check the congifuration file template.")
