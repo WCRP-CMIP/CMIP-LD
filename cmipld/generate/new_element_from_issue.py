@@ -1,7 +1,7 @@
 
 # python -m cmipld.tests.elements
 import cmipld.tests.elements
-from gitutils.actions import parse_md,dispatch
+from cmipld.utils.git.actions import parse_md,dispatch
 import configparser
 # from . import activity
 import json,sys,os,re
