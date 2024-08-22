@@ -32,25 +32,23 @@ def main(config):
             
             # print(entry)
             
-            sucess = entryclass.create_jsonld(entry,write=True)
+            if not entryclass.create_jsonld(entry,write=True):
+                continue
             
-            # write
-            # change branch 
-            
-            # if sucess:
+            # otherwise write to file and save repo on git. 
+        
+            # Set up repo
+            branch = f'{entrylib.elementtype}:{entryclass.getid}'
+            cmipld.utils.git.prepare_pull(branch,'main')
+            # write to file
+            json.dump(entryclass.json, open(entryclass.path, 'w') , indent=4)
+            # update issue status
+            now = cmipld.utils.get_datetime()
+            cmipld.utils.git.update_issue(f'Issue updated: {now} \n\n ```{json.dumps(entryclass.json, indent=4)}```',False)
+            # commit the file. 
+            author = os.environ.get('OVERRIDE_AUTHOR','cmip-ipo')
+            cmipld.utils.git.commit_one(entryclass.path,author,f"New entry {entryclass.getid} to the {entrylib.elementpath} LD file",branch)
                 
-            #     payload = {
-            #         "event_type": 'new_element',
-            #         "client_payload": {
-            #             "name": entryclass.pullname, # we need this to define the pull request
-            #             "issue": issue_number,
-            #             "author" : issue_submitter,
-            #             "data" : json.dumps(entryclass.json)
-            #         }
-            #     }
-
-
-            #     dispatch(token,payload,repo)
 
 
         except ModuleNotFoundError as e:

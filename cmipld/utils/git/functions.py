@@ -119,10 +119,13 @@ def commit_override_author(entry,where):
         return True
     return False
 
-def commit_one(location,author,comment):
+def commit_one(location,author,comment,branch=None):
     print(os.popen(f'git add {location}').read())
     print(os.popen(f'git commit -a --author="{author} <{author}@users.noreply.github.com>" -m "{comment}"').read())
-    print(os.popen(f'git push').read())
+    if branch:
+        print(os.popen(f'git push origin {branch} --force').read())
+    else:
+        print(os.popen(f'git push').read())
     
 
 

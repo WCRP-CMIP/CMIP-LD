@@ -156,40 +156,16 @@ To use this, please fill out the template below, keeping the spacing and indenta
         print(f"Template written to {location}")
     return template
 
-# # Define the superclass
-# class MIPConfig:
-#     def __init__(self) -> None:
-#         # super().__init__()
-#         self.errors = []
-#         self.issue = None
-   
-    
-     
-        
-        
-    # def __init__(self, name):
-    #     self.name = name
 
-    # def generate_config_template(self, schema=None, indent=4):
-    #     if schema is None:
-    #         schema = self.config_schema
-    #     template = ""
+def test_config(file,conf):
+    # test_config()
+    import configparser
+    cfg = configparser.ConfigParser()
+    cfg.read_string(conf)
+    
+    element = __file__.split('/')[-1].split('.')[0]
+    templateconf =  dict(cfg[element])
+    
+    test = globals()[element]()
+    test.create_jsonld(templateconf,write=False)
 
-    #     for key, value in schema._schema.items():
-    #         key_name = key._schema if isinstance(key, Optional) else key
-
-    #         # Determine if there's an example or description provided
-    #         example_value = getattr(value, 'example', None)
-    #         description = getattr(value, 'description', None)
-            
-    #         if isinstance(value, Schema):
-    #             template += ' ' * indent + f"{key_name}:\n"
-    #             template += self.generate_config_template(value, indent + 2)
-    #         else:
-    #             example_text = f"Example: {example_value}" if example_value else ""
-    #             template += ' ' * indent + f"{key_name}: <{type(value).__name__}> {example_text} \n"
-        
-    #     return template
-    
-    
-    

@@ -167,7 +167,7 @@ class institution(MIPConfig):
         
         self.json = asyncio.run(parse_ror_data(conf['ror'],conf['acronym']))
     
-        path = ldname(f"{repo_path}/{elementpath}/{self.conf['acronym'].lower()}.json")
+        self.path = ldname(f"{repo_path}/{elementpath}/{self.conf['acronym'].lower()}.json")
         
         # def update_issue_title (what,payload):
         if self.action == 'new':
@@ -195,23 +195,26 @@ class institution(MIPConfig):
         else:
             cmipld.utils.git.update_issue(f'# Sanity Check \n {comment}',False)
             
+        self.json = cmipld.utils.sorted_dict(self.json)
         
         if self.validate(self.json):
-            # print(json.dumps(self.json, indent=4))
+            return self.json
+        else:
+            return False
             
-            if write:
+           
+                #  add timestamp each time run. 
+                #  show updated config in issue.
+                #  move gh out of this function/ page. 
+                # push branch . 
                 
-                cmipld.utils.git.prepare_pull(f'{elementtype}:{self.getid}','main')
+                # global checks to ensure no duplicates. Enure before accepting pull request 
 
-                with open(path, 'w') as f:
-                    json.dump(cmipld.utils.sorted_dict(self.json), f, indent=4)
-                    
-                author = os.environ.get('OVERRIDE_AUTHOR','cmip-ipo')
-                cmipld.utils.git.commit_one(path,author,f"New entry {self.getid} to the {elementpath} LD file")
+
                 
+                #  documentation - e.g. config is parsed by python - so typing is used. 
                 
-                
-                
+                # move testconfig out of here. 
                 
                 
                 print(path)
@@ -223,32 +226,11 @@ class institution(MIPConfig):
         else: 
             return False
         
-# publish 
-# dispatch with changes. 
-# create PR
-
-
-# util to change _- and vive versa
-
-
-
-# global checks to ensure no duplicates. Enure before accepting pull request 
-
 
         
         
         
-def test_config():
-    # test_config()
-    import configparser
-    cfg = configparser.ConfigParser()
-    cfg.read_string(conf)
-    
-    element = __file__.split('/')[-1].split('.')[0]
-    templateconf =  dict(cfg[element])
-    
-    test = globals()[element]()
-    test.create_jsonld(templateconf,write=False)
+
     
     
     
@@ -257,7 +239,7 @@ def get_template():
     if reposhort not in owners:
         return None
     
-    test_config()
+    test_config(__file__,conf)
     
     location = repo_path.replace('JSONLD',f".github/ISSUE_TEMPLATE/{elementtype}.md") 
     
