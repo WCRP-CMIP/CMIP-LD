@@ -1,6 +1,6 @@
 from . import functions 
 from . import add
-import os, subprocess
+import os, subprocess,sys,json
 from typing import List, Dict, Any, Tuple
 
 def update_env(key,value):
@@ -161,17 +161,33 @@ def prepare_pull(feature_branch,base_branch):
     return False
     
 
-def pull_req(content,feature_branch, req_author):
+def pull_req(content,feature_branch, author):
     # gh_token, issue, base_branch
     # Set git configuration
-    subprocess.run(['git', 'config', '--global', 'user.email', f'{req_author}@users.noreply.github.com'])
-    subprocess.run(['git', 'config', '--global', 'user.name', req_author])
 
 
+    
+    if not os.popen("$(git rev-parse --verify '{feature_branch}' >/dev/null 2>&1 || true)").read():
+        sys.exit('Pull_req: Branch {feature_branch} not found')
+    
+    
+    cmds = [
+        f'git config --global user.email "{author}@users.noreply.github.com"',
+        f'git config --global user.name "{author}"'
+        f'git commit -a --author="{author} <{author}@users.noreply.github.com>" -m "{comment}"'
+    ]
+    
+    
+    for cmd in cmds:
+        print(cmd,':',subprocess.getoutput(cmd).strip())
     # remote_branch=f'origin/{feature_branch}'
     
-    branchinfo= os.popen("$(git rev-parse --verify '{feature_branch}' >/dev/null 2>&1 || true)").read()
     
-    print('---', branchinfo)
-    update_issue(f'Branch Info: {branchinfo}',False)
+    prs= subprocess.getoutput('$(curl -s -H "Authorization: token $GH_TOKEN" \
+                "https://api.github.com/repos/${{ github.repository }}/pulls?state=open&head=$feature_branch" | jq -r \'.[].number\')').strip()
+    
+    
+    
+    print('---', prs)
+    update_issue(f'Existing Pull Requests: {prs}',False)
     
