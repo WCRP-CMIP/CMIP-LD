@@ -135,14 +135,14 @@ def reset_branch(feature_branch):
     # if a branch exists, reset it to main, then progress. 
     
     branchinfo= os.popen("$(git rev-parse --verify '{feature_branch}' >/dev/null 2>&1 || true)").read()
-    
-    if branchinfo:
-        cmds= [
+    cmds= [
             f"git checkout {feature_branch}",
             f"git reset --hard origin/main",
             f"git push origin {feature_branch} -f"
         ]
-    else: cmds[0]= f"git checkout -b {feature_branch}"
+    if not branchinfo:
+         cmds[0]= f"git checkout -b {feature_branch}"
+         
     for cmd in cmds:
         print(os.popen(cmd).read())
     
