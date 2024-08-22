@@ -16,6 +16,7 @@ import subprocess
 async def quicklook(graphpath,clean=True):
     ''' Quickly load the files from a CMIPLD repo using the frame inside. '''
     import cmipld,json
+    print('----',graphpath)
     if graphpath[-1] != '/': graphpath += '/'
     latest = await cmipld.CMIPFileUtils.load(f'{graphpath}graph.jsonld')
     frame = json.load(open(f'{graphpath}frame.jsonld','r'))
