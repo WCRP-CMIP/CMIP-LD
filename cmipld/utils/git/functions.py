@@ -149,3 +149,41 @@ def get_cmip_repo_info() -> Tuple[str, str, str]:
     cv_tag = subprocess.getoutput("curl -s https://api.github.com/repos/WCRP-CMIP/CMIP6Plus_CVs/tags | jq -r '.[0].name'").strip()
     mip_tag = subprocess.getoutput("curl -s https://api.github.com/repos/PCMDI/mip-cmor-tables/tags | jq -r '.[0].name'").strip()
     return repo, cv_tag, mip_tag
+
+
+import subprocess
+import json
+import os
+
+def pullrq_pull(content, feature_branch, req_author, gh_token, issue, base_branch):
+    # Set git configuration
+    subprocess.run(['git', 'config', '--global', 'user.email', f'{req_author}@users.noreply.github.com'])
+    subprocess.run(['git', 'config', '--global', 'user.name', req_author])
+
+
+    remote_branch=f'origin/{feature_branch}'
+    
+    branchinfo= os.popen("$(git rev-parse --verify '{remote_branch}' >/dev/null 2>&1 || true)").read()
+    
+    print('---', branchinfo)
+    update_issue(f'Branch Info: {branchinfo}',False)
+
+
+#     # Check if branch_info exists (not provided in the function parameters, assuming it's a global variable)
+#     if 'branch_info' in globals() and branch_info:
+#         # Get open pull requests
+#         api_url = f'https://api.github.com/repos/{os.environ["GITHUB_REPOSITORY"]}/pulls?state=open&head={branch}'
+#         headers = {'Authorization': f'token {gh_token}'}
+#         response = subprocess.run(['curl', '-s', '-H', f'Authorization: token {gh_token}', api_url], capture_output=True, text=True)
+#         pull_requests = json.loads(response.stdout)
+        
+#         for pr in pull_requests:
+#             pr_number = pr['number']
+#             comment_body = f"""This pull request (#{pr_number}) was automatically updated by a GitHub Actions workflow.
+
+# Data submitted by @{req_author}
+
+# Adding the following updated data.
+
+# ```js
+# {content}

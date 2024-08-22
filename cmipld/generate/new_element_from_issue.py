@@ -1,7 +1,7 @@
 
 # python -m cmipld.tests.elements
 import cmipld.tests.elements
-from cmipld.utils.git.actions import parse_md,dispatch
+from gitutils.actions import parse_md,dispatch
 import configparser
 # from . import activity
 import json,sys,os,re
@@ -39,7 +39,7 @@ def main(config):
         
             # Set up repo
             branch = f'{entrylib.elementtype}-{entryclass.getid}'
-            branch = cmipld.utils.git.prepare_pull(branch,'main')
+            branch = gitutils.prepare_pull(branch,'main')
             
             # write to file
             json.dump(entryclass.json, open(entryclass.path, 'w') , indent=4)
@@ -47,12 +47,12 @@ def main(config):
             # update issue status
             now = cmipld.utils.get_datetime()
             content = json.dumps(entryclass.json, indent=4)
-            cmipld.utils.git.update_issue(f'Issue updated: {now} \n\n ```{content}```',False)
+            gitutils.update_issue(f'Issue updated: {now} \n\n ```json \n {content} \n```',False)
             
             # commit the file. 
             print(f"Committing {entryclass.path}")
             author = os.environ.get('OVERRIDE_AUTHOR','cmip-ipo')
-            cmipld.utils.git.commit_one(entryclass.path,author,f"New entry {entryclass.getid} to the {entrylib.elementpath} LD file",branch)
+            gitutils.commit_one(entryclass.path,author,f"New entry {entryclass.getid} to the {entrylib.elementpath} LD file",branch)
                 
 
 

@@ -4,9 +4,10 @@ import cmipld
 import cmipld.utils.git 
 
 # from schema import Schema, And, Use, Optional, SchemaError
-from cmipld.utils.git import update_issue
+from cmipld.utils.git import updat
 from cmipld.locations import urlmap
 from cmipld.utils import errprint
+import cmipld.utils.git as gitutils
 
 from cmipld.file_io import CMIPFileUtils,ldname
 from cmipld.frame_ld import Frame
@@ -28,7 +29,7 @@ def pydantic_eprint(e):
         
         gh += f"-  {error['msg']} \n Input:{error['input']} \n\n"
         
-    cmipld.git.update_issue(f'#Sanity Check \n {comment}')
+    gitutils.update_issue(f'#Sanity Check \n {comment}')
     
         
         

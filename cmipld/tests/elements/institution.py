@@ -176,7 +176,8 @@ class institution(MIPConfig):
                 raise FileExistsError(f'File Already Exists {path}')
             
             self.pullname = f"Add {elementtype}:{self.getid}"
-            cmipld.utils.git.update_issue_title(f"{self.pullname} [{self.json['cmip_acronym']}] - {self.json['name']}")
+            # cmipld.utils.git.update_issue_title(f"{self.pullname} [{self.json['cmip_acronym']}] - {self.json['name']}")
+            cmipld.utils.git.update_issue_title(f"{self.json['cmip_acronym']}")
 
         
         
