@@ -241,11 +241,14 @@ def pull_req(feature_branch,author,content,title):
         
 
     write = False
-    for pr in pullrqsts.split(' '):
-        if pr == os.environ["ISSUE_NUMBER"]:
-            write = True
-            update_issue(f'Overwriting Pull Request Info: |{pr}|',False)
-            newpull('main', feature_branch,author,content,title,os.environ["ISSUE_NUMBER"],update = pr)
+    
+    #### sort out existing issue description updates later. 
+    
+    # for pr in pullrqsts.split(' '):
+    #     if pr == os.environ["ISSUE_NUMBER"]:
+    #         write = True
+    #         update_issue(f'Overwriting Pull Request Info: |{pr}|',False)
+    #         newpull('main', feature_branch,author,content,title,os.environ["ISSUE_NUMBER"],update = pr)
     
     if not write:
         # create a new pull request
