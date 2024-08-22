@@ -83,11 +83,11 @@ class Validate(BaseModel):
     # def check_keys(cls, values):
     #     return check_all_keys_present(cls, values)
 import os 
-print(os.popen('ls').read())    
+print(os.popen('pwd').read())    
 
 async def get_existing():
-    inst = await cmipld.quicklook([os.cwd()+'/JSONLD/organisations/institutions/graph.jsonld'])
-    cons = await cmipld.quicklook([os.cwd()+'/JSONLD/organisations/consoria/graph.jsonld'])
+    inst = await cmipld.quicklook([os.path.abspath('./JSONLD/organisations/institutions/graph.jsonld')])
+    cons = await cmipld.quicklook([os.path.abspath('./JSONLD/organisations/consoria/graph.jsonld')])
     return dict(institutions=inst,consortia=cons)
 
 
