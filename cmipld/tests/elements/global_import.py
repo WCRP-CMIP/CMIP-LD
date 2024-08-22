@@ -1,10 +1,9 @@
 import json, os, sys
 from collections import OrderedDict
 import cmipld
-import cmipld.utils.git 
 
 # from schema import Schema, And, Use, Optional, SchemaError
-from cmipld.utils.git import updat
+
 from cmipld.locations import urlmap
 from cmipld.utils import errprint
 import cmipld.utils.git as gitutils
