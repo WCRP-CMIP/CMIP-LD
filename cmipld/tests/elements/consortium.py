@@ -108,6 +108,8 @@ class consortium(MIPConfig):
         if 'action' in conf: del conf['action']
         
         exist = asyncio.run(get_existing())
+        
+        print(exist)
     
         institutions = dict([[i['cmip_acronym'],i] for i in exist['institutions']])
     
