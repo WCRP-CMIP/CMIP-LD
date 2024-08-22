@@ -199,7 +199,7 @@ class institution(MIPConfig):
             gitutils.close_issue(comment)
         
         else:
-            cmipld.utils.git.update_issue(f'# Sanity Check \n {comment}',False)
+            gitutils.update_issue(f'# Sanity Check \n {comment}',False)
             
         self.json = cmipld.utils.sorted_dict(self.json)
         

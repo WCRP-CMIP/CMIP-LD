@@ -49,7 +49,7 @@ def update_issue(comment,err=True,summarize=True):
     print(comment)
 
 
-def close_issue(issue_number, comment,err=True):
+def close_issue( comment,err=True):
     if 'ISSUE_NUMBER' in os.environ:
         issue_number = os.environ['ISSUE_NUMBER']
         print(os.popen(f'gh issue close {issue_number} -c "{comment}"'))
