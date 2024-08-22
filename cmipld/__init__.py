@@ -17,7 +17,8 @@ async def quicklook(graphpath,clean=True):
     ''' Quickly load the files from a CMIPLD repo using the frame inside. '''
     import cmipld,json
     latest = await cmipld.CMIPFileUtils.load(graphpath)
-    frame = json.load(open(graphpath[0].replace('graph.jsonld', 'frame.jsonld'),'r'))
+    frame = json.load(open(graphpath[0].replace('graph', 'frame'),'r'))
+    print(frame,graphpath)
     # del frame['@context']
     return cmipld.Frame([latest], frame).clean().json if clean else cmipld.Frame(latest, frame).json
 
