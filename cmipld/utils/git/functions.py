@@ -167,7 +167,7 @@ def prepare_pull(feature_branch,base_branch):
     return False
     
 
-def newpull(base_branch, feature_branch,title, content,author,issue):
+def newpull(base_branch, feature_branch,author,content,title,issue):
 
     cmds = f'''
             gh pr create --base {base_branch} --head {feature_branch} --title {title} --body \
@@ -189,7 +189,7 @@ def newpull(base_branch, feature_branch,title, content,author,issue):
     print(output)
 
 
-def pull_req(feature_branch, author,content,title,issue):
+def pull_req(feature_branch,author,content,title,issue):
     # gh_token, issue, base_branch
     # Set git configuration
 

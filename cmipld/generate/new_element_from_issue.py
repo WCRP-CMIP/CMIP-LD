@@ -59,7 +59,7 @@ def main(config):
                 
                 
                 
-            gitutils.pull_req('test',branch,author, entryclass.json, entryclass.pullname, os.environ.get('ISSUE_NUMBER'))
+            gitutils.pull_req(branch, author, entryclass.json, entryclass.pullname, os.environ.get('ISSUE_NUMBER'))
 
         except ModuleNotFoundError as e:
             errors.append(f"No such module {section} in cmipld. Please check the congifuration file template.")
