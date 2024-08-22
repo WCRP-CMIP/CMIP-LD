@@ -168,6 +168,7 @@ def pull_req(content,feature_branch, author):
 
     
     if not os.popen("$(git rev-parse --verify '{feature_branch}' >/dev/null 2>&1 || true)").read():
+        print*('Pull_req: Branch {feature_branch} not found')
         sys.exit('Pull_req: Branch {feature_branch} not found')
     
     
@@ -183,7 +184,7 @@ def pull_req(content,feature_branch, author):
     # remote_branch=f'origin/{feature_branch}'
     
     
-    prs= subprocess.getoutput('$(curl -s -H "Authorization: token $GH_TOKEN" \
+    prs = subprocess.getoutput('$(curl -s -H "Authorization: token $GH_TOKEN" \
                 "https://api.github.com/repos/${{ github.repository }}/pulls?state=open&head=$feature_branch" | jq -r \'.[].number\')').strip()
     
     

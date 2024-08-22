@@ -54,7 +54,7 @@ def main(config):
             
             # commit the file. 
             print(f"Committing {entryclass.path}")
-            author = os.environ.get('OVERRIDE_AUTHOR','cmip-ipo')
+            author = os.environ.get('ISSUE_SUBMITTER','cmip-ipo')
             gitutils.commit_one(entryclass.path,author,f"New entry {entryclass.getid} to the {entrylib.elementpath} LD file",branch)
                 
                 
