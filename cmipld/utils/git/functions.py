@@ -165,7 +165,7 @@ def pull_req(content,feature_branch, author):
     # gh_token, issue, base_branch
     # Set git configuration
 
-
+    feature_branch = f'origin/{feature_branch}'
     
     if not os.popen(f"$(git rev-parse --verify '{feature_branch}' >/dev/null 2>&1 || true)").read():
         print(f'Pull_req: Branch {feature_branch} not found')
