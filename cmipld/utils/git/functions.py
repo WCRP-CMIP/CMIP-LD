@@ -167,11 +167,31 @@ def prepare_pull(feature_branch,base_branch):
     return False
     
 
-def pull_req(content,feature_branch, author):
+def newpull(base_branch, feature_branch,title, content,author,issue):
+
+    cmds = f'''
+            gh pr create --base {base_branch} --head {feature_branch} --title {title} --body \
+                            "This pull request was automatically created by a GitHub Actions workflow.
+                        
+                        Data submitted by @{author}
+                        
+                        Adding the following new data.
+                        
+                        \`\`\`js
+                        {content}
+                        \`\`\`
+                        
+                        Resolves #{issue}
+                        " 
+                        # --reviewer $GITHUB_REPOSITORY_OWNER
+            '''
+    output = subprocess.getoutput(cmds).strip()
+    print(output)
+
+
+def pull_req(feature_branch, author,content,title,issue):
     # gh_token, issue, base_branch
     # Set git configuration
-
-    comment = ' test'
 
 
     feature_branch = f'origin/{feature_branch}'
@@ -203,10 +223,13 @@ def pull_req(content,feature_branch, author):
     )
 
     # Execute the command
-    pullrqsts = subprocess.getoutput(curl_command).strip()
+    pullrqsts = eval(subprocess.getoutput(curl_command).strip())
         
-        
+    if len(pullrqsts) == 0:
+        newpull('main', feature_branch,author,content,title,issue)
     
     print('---', pullrqsts)
     update_issue(f'Existing Pull Requests: {pullrqsts}',False)
-    
+
+
+
