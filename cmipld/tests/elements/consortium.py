@@ -86,8 +86,8 @@ import os
 print(os.popen('pwd').read())    
 
 async def get_existing():
-    inst = await cmipld.quicklook([os.path.abspath('./JSONLD/organisations/institutions/graph.jsonld')])
-    cons = await cmipld.quicklook([os.path.abspath('./JSONLD/organisations/consortia/graph.jsonld')])
+    inst = await cmipld.quicklook([os.path.abspath('./JSONLD/organisations/institutions/')])
+    cons = await cmipld.quicklook([os.path.abspath('./JSONLD/organisations/consortia/')])
     return dict(institutions=inst,consortia=cons)
 
 
