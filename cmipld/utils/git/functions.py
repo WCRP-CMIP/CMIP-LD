@@ -185,6 +185,7 @@ def newpull(base_branch, feature_branch,author,content,title,issue):
                         " 
                         # --reviewer $GITHUB_REPOSITORY_OWNER
             '''
+    print('++',cmds)
     output = subprocess.getoutput(cmds).strip()
     print(output)
 
