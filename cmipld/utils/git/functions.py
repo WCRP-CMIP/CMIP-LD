@@ -100,6 +100,8 @@ def commit_override_author(entry,where):
 
 def commit_one(location,author,comment,branch=None):
     cmds = [
+        f'git config --global user.email "{author}@users.noreply.github.com"',
+        f'git config --global user.name "{author}"',
         f'git add {location}',
         f'git commit -a --author="{author} <{author}@users.noreply.github.com>" -m "{comment}"'
     ]
