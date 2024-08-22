@@ -152,6 +152,13 @@ def get_cmip_repo_info() -> Tuple[str, str, str]:
 
 
 
+def reset_branch(branch):
+    # if a branch exists, reset it to main, then progress. 
+    
+
+
+
+
 def pull_req(content,feature_branch, req_author):
     # gh_token, issue, base_branch
     # Set git configuration
@@ -159,12 +166,20 @@ def pull_req(content,feature_branch, req_author):
     subprocess.run(['git', 'config', '--global', 'user.name', req_author])
 
 
-    remote_branch=f'origin/{feature_branch}'
+    # remote_branch=f'origin/{feature_branch}'
     
-    branchinfo= os.popen("$(git rev-parse --verify '{remote_branch}' >/dev/null 2>&1 || true)").read()
+    branchinfo= os.popen("$(git rev-parse --verify '{feature_branch}' >/dev/null 2>&1 || true)").read()
     
     print('---', branchinfo)
     update_issue(f'Branch Info: {branchinfo}',False)
+    
+    # cmds= [
+    #     f"git checkout {branch}",
+    #     f"git reset --hard origin/main",
+    # ]
+    
+    
+    
 
 
 #     # Check if branch_info exists (not provided in the function parameters, assuming it's a global variable)
