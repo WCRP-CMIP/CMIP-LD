@@ -41,7 +41,9 @@ def main(config):
             # Set up repo
             gitutils.update_issue_title(f"{entryclass.pullname}")
             branch = f'{entrylib.elementtype}-{entryclass.getid}'
-            branch = gitutils.prepare_pull(branch,'main')
+            branch = gitutils.prepare_pull(branch)
+            
+            
             
             # write to file
             json.dump(entryclass.json, open(entryclass.path, 'w') , indent=4)
@@ -49,7 +51,7 @@ def main(config):
 
             # update issue status
             now = cmipld.utils.get_datetime()
-            gitutils.update_issue(f'Issue updated: {now} \n\n ```json \n {entryclass.jsonstr} \n```',False)
+            gitutils.update_issue(f'Issue updated: {now} \n\nBranch: {branch} \n\n ```json \n {entryclass.jsonstr} \n```',False)
             
             # commit the file. 
             print(f"Committing {entryclass.path}")

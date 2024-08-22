@@ -134,12 +134,14 @@ def get_cmip_repo_info() -> Tuple[str, str, str]:
     return repo, cv_tag, mip_tag
 
 def branchinfo(feature_branch):
-    return subprocess.getoutput(f"git rev-parse --verify '{feature_branch}'").strip()
+    return subprocess.getoutput(f"git rev-parse --verify {feature_branch}").strip()
 
 def reset_branch(feature_branch):
     # if a branch exists, reset it to main, then progress. 
     
     binfo = branchinfo(feature_branch)
+    print('BINFO:',binfo)
+    
     cmds= [
             'git remote -v',
             'git fetch --all',
@@ -158,7 +160,7 @@ def reset_branch(feature_branch):
         print(os.popen(cmd).read())
     
     
-def prepare_pull(feature_branch,base_branch):
+def prepare_pull(feature_branch):
     issue_number = os.environ['ISSUE_NUMBER']
     if issue_number:
         feature_branch = f'{feature_branch}-{issue_number}'
