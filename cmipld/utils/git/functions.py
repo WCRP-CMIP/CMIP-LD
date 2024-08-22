@@ -143,7 +143,9 @@ def reset_branch(feature_branch):
             f"git checkout {feature_branch}",
             f"git reset --hard origin/main",
             f"git push origin {feature_branch} -f",
-            f"git pull"
+            f"git pull",
+            'git remote -v',
+            'git fetch --all'
         ]
     if not branchinfo:
          cmds[0]= f"git checkout -b {feature_branch}"
@@ -185,8 +187,8 @@ def pull_req(content,feature_branch, author):
     # remote_branch=f'origin/{feature_branch}'
     
     
-    prs = subprocess.getoutput('$(curl -s -H "Authorization: token $GH_TOKEN" \
-                "https://api.github.com/repos/${{ github.repository }}/pulls?state=open&head=$feature_branch" | jq -r \'.[].number\')').strip()
+    prs = subprocess.getoutput('curl -s -H "Authorization: token $GH_TOKEN" \
+                "https://api.github.com/repos/${{ github.repository }}/pulls?state=open&head=$feature_branch" | jq -r \'.[].number\'').strip()
     
     
     
