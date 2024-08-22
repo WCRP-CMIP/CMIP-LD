@@ -39,6 +39,7 @@ def main(config):
             # otherwise write to file and save repo on git. 
         
             # Set up repo
+            gitutils.update_issue_title(f"{entryclass.pullname}")
             branch = f'{entrylib.elementtype}-{entryclass.getid}'
             branch = gitutils.prepare_pull(branch,'main')
             
@@ -55,6 +56,9 @@ def main(config):
             author = os.environ.get('OVERRIDE_AUTHOR','cmip-ipo')
             gitutils.commit_one(entryclass.path,author,f"New entry {entryclass.getid} to the {entrylib.elementpath} LD file",branch)
                 
+                
+                
+            gitutils.pull_req('test',branch,author)
 
 
         except ModuleNotFoundError as e:

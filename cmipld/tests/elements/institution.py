@@ -177,7 +177,12 @@ class institution(MIPConfig):
             
             self.pullname = f"Add {elementtype}:{self.getid}"
             # cmipld.utils.git.update_issue_title(f"{self.pullname} [{self.json['cmip_acronym']}] - {self.json['name']}")
-            cmipld.utils.git.update_issue_title(f"{self.json['cmip_acronym']}")
+        else:
+            if not os.path.exists(self.path):
+                cmipld.utils.git.close_issue('### File Does Not Exist \n Closing Issue. \n To add a new file, please change the action to "new"')
+                raise FileNotFoundError(f'Missing File - cannot update: {path}')
+            
+            self.pullname = f"Update {elementtype}:{self.getid}"
 
         
         

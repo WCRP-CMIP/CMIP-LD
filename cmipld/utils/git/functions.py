@@ -151,11 +151,9 @@ def get_cmip_repo_info() -> Tuple[str, str, str]:
     return repo, cv_tag, mip_tag
 
 
-import subprocess
-import json
-import os
 
-def pullrq_pull(content, feature_branch, req_author, gh_token, issue, base_branch):
+def pull_req(content,feature_branch, req_author):
+    # gh_token, issue, base_branch
     # Set git configuration
     subprocess.run(['git', 'config', '--global', 'user.email', f'{req_author}@users.noreply.github.com'])
     subprocess.run(['git', 'config', '--global', 'user.name', req_author])
