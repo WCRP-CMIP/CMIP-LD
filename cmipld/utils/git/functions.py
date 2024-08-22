@@ -192,11 +192,20 @@ def pull_req(content,feature_branch, author):
         print(cmd,':',subprocess.getoutput(cmd).strip())
     # remote_branch=f'origin/{feature_branch}'
     
-    
-    prs = subprocess.getoutput('curl -s -H "Authorization: token $GH_TOKEN" \
-                "https://api.github.com/repos/${{ github.repository }}/pulls?state=open&head=$feature_branch" | jq -r \'.[].number\'').strip()
-    
-    
+    gh_token = os.getenv('GH_TOKEN')
+    github_repository = os.getenv('GITHUB_REPOSITORY')
+    # feature_branch = os.getenv('FEATURE_BRANCH')
+
+    # Construct the curl command
+    curl_command = (
+        f'curl -s -H "Authorization: token {gh_token}" '
+        f'"https://api.github.com/repos/{github_repository}/pulls?state=open&head={feature_branch}"'
+    )
+
+    # Execute the command
+    output = subprocess.getoutput(curl_command).strip()
+        
+        
     
     print('---', prs)
     update_issue(f'Existing Pull Requests: {prs}',False)
