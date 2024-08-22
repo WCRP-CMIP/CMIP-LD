@@ -221,7 +221,7 @@ def pull_req(feature_branch,author,content,title):
     # Construct the curl command
     curl_command = (
         f'curl -s -H "Authorization: token {gh_token}" '
-        f'https://api.github.com/repos/{github_repository}/pulls?state=open&head={feature_branch}| jq -r ".[].number"'
+        f'"https://api.github.com/repos/{github_repository}/pulls?state=open&head={feature_branch}"| jq -r ".[].number"'
     )
 
     # Execute the command
