@@ -170,7 +170,7 @@ def prepare_pull(feature_branch,base_branch):
 def newpull(base_branch, feature_branch,author,content,title,issue):
 
     cmds = f'''
-            gh pr create --base {base_branch} --head {feature_branch} --title {title} --body \
+            gh pr create --base "{base_branch}" --head "{feature_branch}" --title "{title}" --body \
                             "This pull request was automatically created by a GitHub Actions workflow.
                         
                         Data submitted by @{author}
