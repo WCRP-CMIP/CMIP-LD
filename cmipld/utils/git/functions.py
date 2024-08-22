@@ -146,6 +146,7 @@ def reset_branch(feature_branch):
         ]
     if not branchinfo:
          cmds[0]= f"git checkout -b {feature_branch}"
+         cmds[2]= f"git push --set-upstream origin {feature_branch} --force"
          
     for cmd in cmds:
         print(os.popen(cmd).read())
