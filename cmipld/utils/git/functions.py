@@ -133,12 +133,13 @@ def get_cmip_repo_info() -> Tuple[str, str, str]:
     mip_tag = subprocess.getoutput("curl -s https://api.github.com/repos/PCMDI/mip-cmor-tables/tags | jq -r '.[0].name'").strip()
     return repo, cv_tag, mip_tag
 
-
+def branchinfo(feature_branch):
+    return subprocess.getoutput(f"git rev-parse --verify '{feature_branch}'").strip()
 
 def reset_branch(feature_branch):
     # if a branch exists, reset it to main, then progress. 
     
-    branchinfo= os.popen("$(git rev-parse --verify '{feature_branch}' >/dev/null 2>&1 || true)").read()
+    branchinfo= branchinfo(feature_branch)
     cmds= [
             f"git checkout {feature_branch}",
             f"git reset --hard origin/main",
@@ -170,7 +171,7 @@ def pull_req(content,feature_branch, author):
 
     feature_branch = f'origin/{feature_branch}'
     
-    if not os.popen(f"git rev-parse --verify '{feature_branch}' >/dev/null 2>&1 || true").read():
+    if not branchinfo(feature_branch):
         print(f'Pull_req: Branch {feature_branch} not found')
         sys.exit(f'Pull_req: Branch {feature_branch} not found')
     
