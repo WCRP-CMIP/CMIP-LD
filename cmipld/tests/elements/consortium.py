@@ -84,8 +84,8 @@ class Validate(BaseModel):
     #     return check_all_keys_present(cls, values)
         
 async def get_existing():
-    inst = await quicklook(['JSONLD/organisations/institutions/graph.jsonld'])
-    cons = await quicklook(['JSONLD/organisations/consoria/graph.jsonld'])
+    inst = await cmipld.quicklook(['JSONLD/organisations/institutions/graph.jsonld'])
+    cons = await cmipld.quicklook(['JSONLD/organisations/consoria/graph.jsonld'])
     return dict(institutions=inst,consortia=cons)
 
 
