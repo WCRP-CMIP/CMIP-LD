@@ -207,23 +207,7 @@ class institution(MIPConfig):
             return self.json
         else:
             return False
-            
-           
-                #  add timestamp each time run. 
-                #  show updated config in issue.
-                #  move gh out of this function/ page. 
-                # push branch . 
-                
-                # global checks to ensure no duplicates. Enure before accepting pull request 
-
-
-                
-                #  documentation - e.g. config is parsed by python - so typing is used. 
-                
-                # move testconfig out of here. 
-                
-                
-
+        
         
         
         
