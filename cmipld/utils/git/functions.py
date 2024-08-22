@@ -188,7 +188,7 @@ def newpull(base_branch, feature_branch,author,content,title,issue):
             '''
     print('++',cmds)
     output = subprocess.getoutput(cmds).strip()
-    print(output)
+    update_issue(f'New Pull Request: {output}',False)
 
 
 def pull_req(feature_branch,author,content,title):
