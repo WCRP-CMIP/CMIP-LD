@@ -46,6 +46,9 @@ def main(config):
             # write to file
             json.dump(entryclass.json, open(entryclass.path, 'w') , indent=4)
             
+            with open(entryclass.path,'r') as f:
+                print("FILEEE",f.read())
+            
             # update issue status
             now = cmipld.utils.get_datetime()
             content = json.dumps(entryclass.json, indent=4)
