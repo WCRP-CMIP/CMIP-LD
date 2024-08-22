@@ -139,7 +139,7 @@ def branchinfo(feature_branch):
 def reset_branch(feature_branch):
     # if a branch exists, reset it to main, then progress. 
     
-    branchinfo= branchinfo(feature_branch)
+    binfo = branchinfo(feature_branch)
     cmds= [
             f"git checkout {feature_branch}",
             f"git reset --hard origin/main",
@@ -148,7 +148,7 @@ def reset_branch(feature_branch):
             'git remote -v',
             'git fetch --all'
         ]
-    if not branchinfo:
+    if not binfo:
          cmds[0]= f"git checkout -b {feature_branch}"
          cmds[2]= f"git push --set-upstream origin {feature_branch} --force"
          
