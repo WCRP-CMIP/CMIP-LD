@@ -172,19 +172,19 @@ def newpull(base_branch, feature_branch,author,content,title,issue):
     cmds = f'''
             git pull; 
             gh pr create --base \'{base_branch}\' --head \'{feature_branch}\' --title \'{title}\' --body \
-                            \'This pull request was automatically created by a GitHub Actions workflow.
-                        
-                        Data submitted by @{author}
-                        
-                        Adding the following new data.
-                        
-                        \`\`\`js
-                        {content}
-                        \`\`\`
-                        
-                        Resolves #{issue}
-                        \'
-                        # --reviewer $GITHUB_REPOSITORY_OWNER
+\'This pull request was automatically created by a GitHub Actions workflow.
+
+Data submitted by @{author}
+
+Adding the following new data.
+
+```js
+{content}
+```
+
+Resolves #{issue}
+\'
+# --reviewer $GITHUB_REPOSITORY_OWNER
             '''
     print('++',cmds)
     output = subprocess.getoutput(cmds).strip()
