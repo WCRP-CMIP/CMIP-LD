@@ -231,20 +231,25 @@ def pull_req(feature_branch,author,content,title):
     # Construct the curl command
     curl_command = (
         f'curl -s -H "Authorization: token {gh_token}" '
-        f'"https://api.github.com/repos/{github_repository}/pulls?state=open&head={feature_branch}"| jq -r ".[].number"'
+        f'"https://api.github.com/repos/{github_repository}/pulls?state=open&head=origin/{feature_branch}"| jq -r ".[].number"'
     )
 
     # Execute the command
     pullrqsts = subprocess.getoutput(curl_command).strip()
     
-    if not pullrqsts:
-        pullrqsts = [None]
-    else: 
-        pullrqsts = pullrqsts.split(' ')
-        update_issue(f'Existing Pull Requests: |{pullrqsts}|',False)
 
-    for pr in pullrqsts:
-        newpull('main', feature_branch,author,content,title,os.environ["ISSUE_NUMBER"],update = pr)
+        
+
+    write = False
+    for pr in pullrqsts.split(' '):
+        if pr == os.environ["ISSUE_NUMBER"]:
+            write = True
+            update_issue(f'Overwriting Pull Request Info: |{pr}|',False)
+            newpull('main', feature_branch,author,content,title,os.environ["ISSUE_NUMBER"],update = pr)
+    
+    if not write:
+        # create a new pull request
+        newpull('main', feature_branch,author,content,title,os.environ["ISSUE_NUMBER"])
     
         
     
