@@ -217,15 +217,6 @@ class institution(MIPConfig):
                 # move testconfig out of here. 
                 
                 
-                print(path)
-                
-                
-            
-                
-            return True
-        else: 
-            return False
-        
 
         
         
