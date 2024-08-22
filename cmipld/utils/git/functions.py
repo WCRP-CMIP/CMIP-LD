@@ -169,6 +169,9 @@ def pull_req(content,feature_branch, author):
     # gh_token, issue, base_branch
     # Set git configuration
 
+    comment = ''
+
+
     feature_branch = f'origin/{feature_branch}'
     
     if not branchinfo(feature_branch):
