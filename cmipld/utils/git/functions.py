@@ -111,7 +111,7 @@ def commit_one(location,author,comment,branch=None):
     cmds.append(f'git push -f ')
         
     for cmd in cmds:
-        print(os.popen(cmd).read())
+        print(cmd,':',subprocess.getoutput(cmd).strip())
     
 
 
