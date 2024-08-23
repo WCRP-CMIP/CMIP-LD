@@ -132,6 +132,7 @@ def test(writelocation):
     
     # Run pytest and capture the result
     testsuite =os.path.abspath(os.path.join(os.path.dirname(__file__), '../tests/cvs/'))
+    print(os.getcwd(), __file__)
     print(testsuite,writelocation)
     result = pytest.main(["-v",f"--file-location={writelocation}", f"{testsuite}"])
     
