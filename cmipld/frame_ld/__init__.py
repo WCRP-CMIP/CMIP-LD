@@ -3,14 +3,17 @@ import json
 from pyld import jsonld
 import jmespath
 import re,os
-
+import pkg_resources
 
 
 def get_frame(base,file):
     '''Get frame from saved collections'''
     # sanitise path
     path = os.path.normpath(f'{base}/{file}.json')
-    with open(__file__.replace('__init__.py','examples/')+path,'r') as f:
+    # with open(__file__.replace('__init__.py','examples/')+path,'r') as f:
+    print(__name__)
+    
+    with pkg_resources.resource_stream(__name__, f'frame_ld/examples/{path}') as f:
         return json.load(f)
     
 
