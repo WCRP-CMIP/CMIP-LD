@@ -20,7 +20,7 @@ from datetime import datetime
 async def main():
 
     # latest = await sum([mip,cmip6plus],[])
-    latest = await CMIPFileUtils.load(['./compiled/graph_data.json',LatestFiles.mip_cmor_tabes_ld])
+    latest = await CMIPFileUtils.load(['./compiled/graph_data.json','mip_cmor_tabes_ld'])
 
     CV = {}
     # OrderedDict()
