@@ -3,6 +3,7 @@ from .utils.classfn import DotAccessibleDict
 LatestFiles = DotAccessibleDict({
     'cmip6plus_ld': ['WCRP-CMIP','CMIP6Plus_CVs','compiled/graph_data.min.json','jsonld'],
     'mip_cmor_tabes_ld': ['PCMDI','mip-cmor-tables','compiled/graph_data.min.json','jsonld'],
+    'mip_cmor_tabes': ['PCMDI','mip-cmor-tables','compiled/graph_data.min.json','main'],
 })
 
 
