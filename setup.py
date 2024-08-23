@@ -35,7 +35,7 @@ setup(
     include_package_data=True,
     package_data={
         "cmipld": ["scripts/*/*.sh"],
-        "frame-examples": ["cmipld/frame_id/*/*.json"],
+        "frame-examples": ["cmipld/frame_id/examples/*/*.json"],
     },
     # package_data={
     #     'your_library': ['examples/*.json'],  # Adjust this to your actual package and files
