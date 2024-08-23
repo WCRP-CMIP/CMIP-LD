@@ -103,10 +103,20 @@ async def main():
     
     
     branch=''
+    currentbranch = getbranch()
     if getbranch() != 'main':
         branch = '_'+ getbranch()
+        
     dirname = getreponame().replace('_CVs','')
-    writelocation = os.path.join(os.getcwd(),f'CVs/{dirname}{branch}_jsonld.json')
+    cvloc = os.path.join(os.getcwd(),f'CVs/')
+    writelocation = f'{cvloc}{dirname}_jsonld{branch}_CV.json'
+    
+    if branch == '':
+        print('on main branch,removing branch files')
+    for file in glob.glob(f'{cvloc}*_CV.json'):
+        print('removing:',file)
+        os.remove(file)
+    
     
     with open(writelocation,'w') as f:
             json.dump(dict(CV = CV),f,indent=4)    
