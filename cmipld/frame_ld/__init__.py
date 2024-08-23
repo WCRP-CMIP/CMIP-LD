@@ -11,9 +11,9 @@ def get_frame(base,file):
     # sanitise path
     path = os.path.normpath(f'{base}/{file}.json')
     # with open(__file__.replace('__init__.py','examples/')+path,'r') as f:
-    print(__name__)
-    
-    with pkg_resources.resource_stream(__name__, f'frame_ld/examples/{path}') as f:
+    # print(__name__)
+    # this works from the current directory
+    with pkg_resources.resource_stream(__name__, f'examples/{path}') as f:
         return json.load(f)
     
 
