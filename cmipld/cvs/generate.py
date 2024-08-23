@@ -10,7 +10,7 @@ python -m cmipld.cvs.generate
 from cmipld import *
 from cmipld.utils.classfn import sorted_dict
 from cmipld.utils.git import update_summary,getbranch,getreponame,getlasttag,getlastcommit
-import asyncio,json,os
+import asyncio,json,os,glob
 from collections import OrderedDict
 from .parse import process
 from datetime import datetime
