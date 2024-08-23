@@ -9,7 +9,7 @@ setup(
         "requests",
         "pyld",
         "jmespath",
-	    "pytest",
+        "pytest",
         "pydantic"
     ],
     entry_points={
@@ -23,6 +23,7 @@ setup(
             "test_inputs=cmipld.tests.inputs:run",
             "issue_templates=cmipld.generate.issue_template:run",
             "new_element=cmipld.generate.new_element_from_issue:action",
+            "gencv=cmipld.cvs.generate:run",
         ],
     },
     scripts=[

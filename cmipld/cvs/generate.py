@@ -9,9 +9,10 @@ python -m cmipld.cvs.generate
 # Import the library
 from cmipld import *
 from cmipld.utils.classfn import sorted_dict
+from cmipld.utils.git import update_summary,getbranch,getreponame,getlasttag,getlastcommit
 import asyncio,json,os
 from collections import OrderedDict
-from parse import process
+from .parse import process
 from datetime import datetime
 
 
@@ -19,7 +20,7 @@ from datetime import datetime
 async def main():
 
     # latest = await sum([mip,cmip6plus],[])
-    latest = await CMIPFileUtils.load(['/Users/daniel.ellis/WIPwork/CMIP6Plus_CVs/compiled/graph_data.json','/Users/daniel.ellis/WIPwork/mip-cmor-tables/compiled/graph_data.json'])
+    latest = await CMIPFileUtils.load(['./compiled/graph_data.json','/Users/daniel.ellis/WIPwork/mip-cmor-tables/compiled/graph_data.json'])
 
     CV = {}
     # OrderedDict()
@@ -87,9 +88,9 @@ async def main():
     CV['version_metadata'] = {
         "file_modified" : datetime.now().date().isoformat(),
         "CV": {
-            "version": os.popen('git describe --tags --abbrev=0').read().strip() or 'version tag read from repo running  - currently not in it. ', 
-            "git_commit":os.popen('git rev-parse HEAD').read().strip(), 
-            "gitbranch" : os.popen('git rev-parse --abbrev-ref HEAD').read().strip() } ,
+            "version": getlasttag() or 'version tag read from repo running  - currently not in it. ', 
+            "git_commit":getlastcommit(), 
+            "gitbranch" : getbranch() } ,
         "future": 'miptables, checksum, etc'}
     
     print('above not fatal - version metadata')
@@ -100,12 +101,18 @@ async def main():
     # pprint.pprint(CV)
     # print(CV)
     
-    writelocation = os.path.join(os.path.dirname(__file__),'CV.json')
+    
+    branch=''
+    if getbranch() != 'main':
+        branch = '_'+ getbranch()
+    dirname = getreponame().replace('_CVs','')
+    writelocation = os.path.join(os.getcwd(),f'CVs/{dirname}{branch}_jsonld.json')
     
     with open(writelocation,'w') as f:
             json.dump(dict(CV = CV),f,indent=4)    
             print('written to ',f.name )    
-        
+    
+    update_summary(f'CV written to {writelocation}')
         
     return os.path.abspath(writelocation)
         
@@ -118,6 +125,19 @@ def test(writelocation):
     testsuite =os.path.abspath(os.path.join(os.path.dirname(__file__), '../tests/cvs/'))
     print(testsuite,writelocation)
     result = pytest.main(["-v",f"--file-location={writelocation}", f"{testsuite}"])
+    
+    
+    print('!!!',result)
+    
+    update_summary(f'CV tests run with exit code {result}')
+    
+    
+    print('add conditional here')
+    if str(result) == 'ExitCode.OK':
+        os.popen(f'git add {writelocation}').read()
+        os.popen(f'git commit -m "CV generated"').read()
+
+    
     
     # # Print a summary based on the result
     # if result == pytest.ExitCode.OK:
@@ -138,9 +158,12 @@ def test(writelocation):
 
 '''
 
-
-
-if __name__ == "__main__":
+def run():
     writelocation = asyncio.run(main())
     print('pass cv location into tests')
     test(writelocation)
+
+if __name__ == "__main__":
+    run()
+
+    

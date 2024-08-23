@@ -124,6 +124,17 @@ def commit(message):
 def addfile(file):
     os.popen(f'git add {file}').read()
 
+def getbranch():
+    return subprocess.getoutput('git rev-parse --abbrev-ref HEAD').strip()
+def getreponame():  
+    return subprocess.getoutput('git remote get-url origin').split('/')[-1].replace('.git','').strip()
+def getrepoowner():  
+    return subprocess.getoutput('git remote get-url origin').split('/')[-2].strip()
+def getlastcommit():    
+    return subprocess.getoutput('git rev-parse HEAD').strip()
+def getlasttag():
+    return subprocess.getoutput('git describe --tags --abbrev=0').strip()
+
 
 
 def get_cmip_repo_info() -> Tuple[str, str, str]:
