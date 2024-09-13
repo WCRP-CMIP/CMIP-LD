@@ -39,7 +39,8 @@ runs:
         echo "fd: $FILTERED_DIRS"
 
         # Filter by the specified directory if provided
-        if [[ "${{env.updated_dirs}}" == *"${{ inputs.filter_dir }}"* ]; then
+        if [ -n "${{ inputs.filter_dir }}" ]; then
+        # if [[ "${{env.updated_dirs}}" == *"${{ inputs.filter_dir }}"* ]; then
           FILTERED_DIRS=$(echo "$UPDATED_DIRS" | grep "^${{ inputs.filter_dir }}")
           echo "fd: $FILTERED_DIRS"
         else
