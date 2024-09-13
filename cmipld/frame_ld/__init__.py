@@ -233,7 +233,7 @@ def key_value(data, key='name', value=None):
 
     
 def value_only(data,key):
-    return [d.get(key) for d in data]
+    return sorted(list(set([d.get(key) for d in data])))
 
 # def key_str(data,key,value):
 #     return dict([[d.get(key),d.get(value)] for d in data])

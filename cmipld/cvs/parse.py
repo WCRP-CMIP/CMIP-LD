@@ -1,14 +1,14 @@
 
 from collections import OrderedDict
 
-def name_description(data,key='name',value='description'):
-    return dict([(x[key],x[value]) for x in data])
+# def name_description(data,key='name',value='description'):
+#     return dict([(x[key],x[value]) for x in data])
 
-def key_only(data,key='name',default='missing'):
-    if isinstance(data[0],str):
-        # if single value do not fetch key
-        return data
-    return sorted(list(set([x.get(key,default) for x in data if x])))
+# def key_only(data,key='name',default='missing'):
+#     if isinstance(data[0],str):
+#         # if single value do not fetch key
+#         return data
+#     return sorted(list(set([x.get(key,default) for x in data if x])))
 
 
 ##################################
@@ -16,27 +16,30 @@ def key_only(data,key='name',default='missing'):
 ##################################
 
 def mip_cmor_tables_source_type (data):
-    return key_only(data)
+    return data.key_value('name','description')
 
 def mip_cmor_tables_frequency (data):
-    return name_description(data)
+    return data.key_value('name','description')
 
 def mip_cmor_tables_realm (data):
-    return name_description(data)
+    return data.key_value('name','description')
 
 def mip_cmor_tables_grid_label (data):
-    return name_description(data)
+    return data.key_value('name','description')
 
 ##################################
 ### CMIP fns            ###########
 ##################################
 
 def cmip6plus_organisations (data):
-    data = [d['organisation_id'] for d in data if d['organisation_id']['cmip_acronym']]
     
-    return name_description(data,key='cmip_acronym',value='name')
+    # data = [d['organisation_id'] for d in data if d['organisation_id']['cmip_acronym']]
+    
+    return data.key_value(key='cmip_acronym',value='name')
 
 def cmip6plus_descriptors (data):
+    data = data.json
+    
     for i in data['index']:
         if isinstance(data['index'][i],str):
             data['index'][i] = [data['index'][i]]
@@ -59,9 +62,10 @@ def cmip6plus_descriptors (data):
     return data
 
 def cmip6plus_activity_id (data):
-    return name_description(data)
+    return data.key_value('name','description')
 
 def cmip6plus_source_id (data):
+    data = data.json
     
     sid = OrderedDict()
     for source in sorted(data,key=lambda x: x['source_id']):
@@ -69,18 +73,13 @@ def cmip6plus_source_id (data):
         source['institution_id'] = [source['organisation_id'].get('cmip_acronym','')]
         del source['organisation_id']
         
-        # dict([[source['organisation_id'].get(i,'') for i in ['cmip_acronym','name']]])
-        
         source['license'].update(source['license'].get('kind',{}))
         
         if not isinstance(source['cohort'],list):
             source['cohort'] = [source['cohort']]
-      
-      
-        source['source'] = f"{source['source_id']} ({source['release_year']}): \n  "
-       
         
-       
+        source['source'] = f"{source['source_id']} ({source['release_year']}): \n  "
+
         #    combine the model-components
         for i in source['model_component']:
             try:
@@ -101,15 +100,17 @@ def cmip6plus_source_id (data):
     return sid
         
 def cmip6plus_native_nominal_resolution (data):
+    data = data.json
 
     return list(set([f"{x['nominal_resolution'].get('value',x['nominal_resolution'])}{x['nominal_resolution'].get('unit',{}).get('si','km')}" for x in data]))
     
 
 def cmip6plus_sub_experiment_id (data):
-    return name_description(data)
+    return data.key_value('name','description')
 
 
 def cmip6plus_experiment_id (data):
+    data = data.json
     
     eid = OrderedDict()
     for e in sorted(data,key=lambda x: x['experiment_id']):
@@ -123,7 +124,7 @@ def cmip6plus_experiment_id (data):
         del e['model_components']
                 
         # to list 
-        e['activity_id'] = key_only([e['activity_id']])
+        e['activity_id'] = cmipld.key_only([e['activity_id']])
         
         
         for i in e['parent']:
@@ -156,7 +157,7 @@ async def process(prefix,file,data=None,clean=None):
     else:
         data.clean_cv
     if name in local_globals:
-        data.data = local_globals[name](data.data) 
+        data.data = local_globals[name](data) 
     else:
         print('no parsing function found', name)
     

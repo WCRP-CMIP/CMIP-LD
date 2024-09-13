@@ -35,14 +35,12 @@ runs:
 
         echo  "Filter Dictionary: ${{ inputs.filter_dir }}"
 
-        FILTER=${{ inputs.filter_dir }}
-
-        FILTERED_DIRS=$(echo "$UPDATED_DIRS" | grep "^$FILTER")
+        FILTERED_DIRS=$(echo "$UPDATED_DIRS" | grep "^${{ inputs.filter_dir }}")
         echo "fd: $FILTERED_DIRS"
 
         # Filter by the specified directory if provided
-        if [ -n "$FILTER" ]; then
-          FILTERED_DIRS=$(echo "$UPDATED_DIRS" | grep "^$FILTER")
+        if [ -n "${{ inputs.filter_dir }}" ]; then
+          FILTERED_DIRS=$(echo "$UPDATED_DIRS" | grep "^${{ inputs.filter_dir }}")
           echo "fd: $FILTERED_DIRS"
         else
           FILTERED_DIRS=$UPDATED_DIRS
