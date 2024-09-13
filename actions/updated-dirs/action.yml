@@ -33,7 +33,7 @@ runs:
 
         echo "### Updated dirs: $UPDATED_DIRS"
 
-        echo "${{ inputs.filter_dir }}"
+        echo  "Filter Dictionary: ${{ inputs.filter_dir }}"
 
         # Filter by the specified directory if provided
         if [ -n "${{ inputs.filter_dir }}" ]; then
