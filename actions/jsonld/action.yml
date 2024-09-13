@@ -77,7 +77,7 @@ runs:
 
     - name: Commit All
       id: cmt
-      uses: WCRP-CMIP/CMIP-LD/actions/commit_all@main
+      uses: WCRP-CMIP/CMIP-LD/actions/commit-all@main
       with:
         message: "Automated update of JSONLD files, network and frames"
 
