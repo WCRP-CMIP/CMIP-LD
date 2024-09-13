@@ -52,6 +52,9 @@ runs:
             echo "- Running $SCRIPT on $file" >> $GITHUB_STEP_SUMMARY
 
                 # Run the script and capture stdout and stderr
+          
+            $SCRIPT "$file"
+
             OUTPUT=$($SCRIPT "$file" 2>&1)
             echo $OUTPUT;
             EXIT_CODE=$?
