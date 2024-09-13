@@ -53,6 +53,7 @@ runs:
 
                 # Run the script and capture stdout and stderr
             OUTPUT=$($SCRIPT "$file" 2>&1)
+            echo $OUTPUT;
             EXIT_CODE=$?
 
             # If the script fails, print output in red
