@@ -108,7 +108,7 @@ async def main():
         
     dirname = getreponame().replace('_CVs','')
     cvloc = os.path.join(os.getcwd(),f'CVs/')
-    writelocation = f'{cvloc}{dirname}_jsonld{branch}_CV.json'
+    writelocation = f'{cvloc}{dirname}{branch}_CV.json'
     
     if branch == '':
         print('on main branch,removing branch files')

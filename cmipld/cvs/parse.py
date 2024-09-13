@@ -1,5 +1,6 @@
 
 from collections import OrderedDict
+import cmipld
 
 # def name_description(data,key='name',value='description'):
 #     return dict([(x[key],x[value]) for x in data])
@@ -73,6 +74,8 @@ def cmip6plus_source_id (data):
         source['institution_id'] = [source['organisation_id'].get('cmip_acronym','')]
         del source['organisation_id']
         
+        source["activity_participation"] = cmipld.value_only(source.get("activity_participation",[]),'name')
+        
         source['license'].update(source['license'].get('kind',{}))
         
         if not isinstance(source['cohort'],list):
@@ -83,7 +86,7 @@ def cmip6plus_source_id (data):
         #    combine the model-components
         for i in source['model_component']:
             try:
-                source['source'] += f"{i['name']} ({i['realm']})\n  "
+                source['source'] += f"{i['name']} ({i['realm']['name']})\n  "
             except Exception as e:
                 
                 print('Missing',i, source['source_id'])
