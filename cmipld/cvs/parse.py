@@ -28,6 +28,13 @@ def mip_cmor_tables_realm (data):
 def mip_cmor_tables_grid_label (data):
     return data.key_value('name','description')
 
+def cmip6plus_activity_id (data):
+    return data.key_only('name')
+
+def cmip6plus_sub_experiment_id (data):
+    return data.key_value('name','description')
+
+
 ##################################
 ### CMIP fns            ###########
 ##################################
@@ -62,8 +69,7 @@ def cmip6plus_descriptors (data):
     del data['drs'], data['conventions'], data['@context']
     return data
 
-def cmip6plus_activity_id (data):
-    return data.key_value('name','description')
+
 
 def cmip6plus_source_id (data):
     data = data.json
@@ -108,8 +114,7 @@ def cmip6plus_native_nominal_resolution (data):
     return list(set([f"{x['nominal_resolution'].get('value',x['nominal_resolution'])}{x['nominal_resolution'].get('unit',{}).get('si','km')}" for x in data]))
     
 
-def cmip6plus_sub_experiment_id (data):
-    return data.key_value('name','description')
+
 
 
 def cmip6plus_experiment_id (data):
