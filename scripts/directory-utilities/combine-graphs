@@ -62,3 +62,7 @@ jq -c . "$OUTPUT_FILE" > "$MINIFIED_OUTPUT_FILE"
 
 echo "All $FILE_NAME files have been concatenated into $OUTPUT_FILE"
 echo "A minified version has been created as $MINIFIED_OUTPUT_FILE"
+
+
+echo "- [x] All $FILE_NAME files have been concatenated into $OUTPUT_FILE" >> $GITHUB_STEP_SUMMARY
+echo "- [x] A minified version has been created as $MINIFIED_OUTPUT_FILE" >> $GITHUB_STEP_SUMMARY
