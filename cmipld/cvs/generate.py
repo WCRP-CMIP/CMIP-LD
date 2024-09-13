@@ -121,7 +121,7 @@ async def main():
             json.dump(dict(CV = CV),f,indent=4)    
             print('written to ',f.name )    
     
-    update_summary(f'CV written to {writelocation}')
+    update_summary(f'- [x] CV written to {writelocation}')
         
     return os.path.abspath(writelocation)
         
