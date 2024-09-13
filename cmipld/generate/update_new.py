@@ -16,7 +16,7 @@ Key Features:
 
 Dependencies:
 - All libraries are from Python's standard library, except:
-  - pyld: For JSON-LD conformance testing
+- pyld: For JSON-LD conformance testing
 
 Usage:
 python cmip6plus_jsonld_extractor.py [--base-dir DIR] [--exclude-dirs DIR1,DIR2] [--exclude-files FILE1,FILE2] [--override]
@@ -29,10 +29,9 @@ import mmap
 import os
 import re
 import subprocess
-from  cmipld.locations import rmap, namesplit
-from cmipld.git.actions import update_env
+# from  cmipld.locations import rmap, namesplit
+from cmipld.utils.git import update_env,get_cmip_repo_info
 from cmipld.utils import bprint, errprint
-from cmipld.git.repo_info import get_cmip_repo_info
 from typing import List, Dict, Any, Tuple
 
 from pyld import jsonld
