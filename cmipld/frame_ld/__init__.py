@@ -189,3 +189,57 @@ class Frame:
         except jsonld.JsonLdError as e:
             print(f"JSON-LD compaction error: {e}")
             return None
+        
+
+    def filterkeys(self, keys, overwrite=False,missing=None):
+        # assert not set(keys) - set(self.data)
+        output = []
+        for d in self.data:
+            dummy = {}
+            for k in keys: 
+                dummy[k] = d.get(k,missing)
+            output.append(dummy)
+        
+        if overwrite:
+            self.data = output
+            return self
+        return output
+            
+
+    def key_value(self,key='name',value=None):
+        return key_value(self.data,key,value)
+    
+    def key_only(self,key='name',default='missing'):
+        return key_only(self.data,key,default)
+    
+    def value_only(self,key):
+        return value_only(self.data,key)
+    
+    # def key_str(self, key,value):
+    #     return key_str(self.data,key,value)
+    
+    
+    
+    
+####################
+# Utility functions
+####################
+    
+def key_value(data, key='name', value=None):
+    return {
+        (k := d.pop(key, f'keyNotFound[{key}]')): (d.get(value, f'valueNotFound[{value}]') if value else d)
+        for d in data
+    }
+
+    
+def value_only(data,key):
+    return [d.get(key) for d in data]
+
+# def key_str(data,key,value):
+#     return dict([[d.get(key),d.get(value)] for d in data])
+
+def key_only(data,key='name',default='missing'):
+    if isinstance(data[0],str):
+        # if single value do not fetch key
+        return data
+    return sorted(list(set([x.get(key,default) for x in data if x])))

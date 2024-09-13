@@ -113,11 +113,19 @@ class CMIPFileUtils:
             elif os.path.exists(f):
                 read.append(await CMIPFileUtils.read_file_fs(f))
             else:
-                sys.exit(f"File {f} not found")
+                sys.exit(f"File {f} not found. Make sure you are supplying a list to the load function.")
                 
         if len(read)>1:    
             return sum(read,[])
         else:
             return read[0]
+        
+
+
+def sync(item):
+    import asyncio
+    # return asyncio.run(item)
+    loop = asyncio.get_event_loop()
+    return loop.run_until_complete(item)
 
 

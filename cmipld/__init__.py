@@ -1,5 +1,5 @@
 # from . import git 
-from .file_io import CMIPFileUtils,LatestFiles
+from .file_io import CMIPFileUtils,LatestFiles,sync
 from .frame_ld import Frame,get_frame
 from .locations import *
 
