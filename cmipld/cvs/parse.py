@@ -17,7 +17,7 @@ import cmipld
 ##################################
 
 def mip_cmor_tables_source_type (data):
-    return data.key_value('name','description')
+    return data.key_only('name')
 
 def mip_cmor_tables_frequency (data):
     return data.key_value('name','description')
@@ -29,7 +29,7 @@ def mip_cmor_tables_grid_label (data):
     return data.key_value('name','description')
 
 def cmip6plus_activity_id (data):
-    return data.key_only('name')
+    return data.key_value('name','description')
 
 def cmip6plus_sub_experiment_id (data):
     return data.key_value('name','description')
