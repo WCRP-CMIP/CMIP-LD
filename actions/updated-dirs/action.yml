@@ -31,7 +31,9 @@ runs:
           done
         done | sort -u)
 
-        echo "### Updated dirs"
+        echo "### Updated dirs: $UPDATED_DIRS"
+
+        echo "${{ inputs.filter_dir }}"
 
         # Filter by the specified directory if provided
         if [ -n "${{ inputs.filter_dir }}" ]; then
@@ -40,6 +42,7 @@ runs:
           FILTERED_DIRS=$UPDATED_DIRS
         fi
 
+        echo "### Filtered dirs: $FILTERED_DIRS"
         echo "...";
         UPDATED_DIRS_LIST=$(echo "$FILTERED_DIRS" | tr '\n' ' ')
         # Set the output
