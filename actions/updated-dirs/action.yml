@@ -24,12 +24,12 @@ runs:
         PREV_COMMIT=$(git log -2 --pretty=format:"%H" | tail -n1)
         UPDATED_FILES=$(git diff --name-only $PREV_COMMIT HEAD)
         UPDATED_DIRS=$(for file in $UPDATED_FILES; do
-                         dir=$(dirname "$file")
-                         while [ "$dir" != "." ]; do
-                           echo "$dir"
-                           dir=$(dirname "$dir")
-                         done
-                       done | sort -u)
+          dir=$(dirname "$file")
+          while [ "$dir" != "." ]; do
+            echo "$dir"
+            dir=$(dirname "$dir")
+          done
+        done | sort -u)
 
         # Filter by the specified directory if provided
         if [ -n "${{ inputs.filter_dir }}" ]; then
