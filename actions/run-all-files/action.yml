@@ -53,7 +53,7 @@ runs:
 
                 # Run the script and capture stdout and stderr
           
-            $SCRIPT "$file"
+            # $SCRIPT "$file"
 
             OUTPUT=$($SCRIPT "$file" 2>&1)
             echo $OUTPUT;
