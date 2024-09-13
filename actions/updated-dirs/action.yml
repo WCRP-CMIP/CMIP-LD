@@ -1,6 +1,10 @@
 name: 'updated directories'
 description: 'Gets directories which have been updated'
 
+inputs:
+  filter_dir:
+    description: 'Directory to filter updated directories'
+    required: false
 # outputs:
 #   updated_dirs:
 #     description: directories which have been updated
@@ -26,6 +30,15 @@ runs:
                            dir=$(dirname "$dir")
                          done
                        done | sort -u)
+
+        # Filter by the specified directory if provided
+        if [ -n "${{ inputs.filter_dir }}" ]; then
+          FILTERED_DIRS=$(echo "$UPDATED_DIRS" | grep "^${{ inputs.filter_dir }}")
+        else
+          FILTERED_DIRS=$UPDATED_DIRS
+        fi
+
+
         UPDATED_DIRS_LIST=$(echo "$UPDATED_DIRS" | tr '\n' ' ')
         # Set the output
         # echo "updated_dirs=$UPDATED_DIRS_LIST" >> $GITHUB_OUTPUT
