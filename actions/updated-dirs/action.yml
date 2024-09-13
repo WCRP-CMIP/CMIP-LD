@@ -1,70 +1,47 @@
-name: 'updated directories'
-description: 'Gets directories which have been updated'
-
-inputs:
-  filter_dir:
-    description: 'Directory to filter updated directories'
-    required: false
-# outputs:
-#   updated_dirs:
-#     description: directories which have been updated
-# inputs:
-#   content:
-#     description: 'Content to write to the summary'
-#     required: true
-    
 runs:
   using: "composite"
   steps:
     - name: updated directories
       id: updir
       shell: bash
+      env:
+        FILTER_DIR: ${{ inputs.filter_dir }}
       run: |
         git fetch --depth=2
         PREV_COMMIT=$(git log -2 --pretty=format:"%H" | tail -n1)
         UPDATED_FILES=$(git diff --name-only $PREV_COMMIT HEAD)
+
+        if [ -z "$UPDATED_FILES" ]; then
+          echo "No updated files found."
+          exit 1
+        fi
+
         UPDATED_DIRS=$(for file in $UPDATED_FILES; do
           dir=$(dirname "$file")
-          while [ "$dir" != "." ]; do
+          max_depth=10  # Limit directory depth to prevent infinite loops
+          while [ "$dir" != "." ] && [ $max_depth -gt 0 ]; do
             echo "$dir"
             dir=$(dirname "$dir")
+            max_depth=$((max_depth - 1))
           done
         done | sort -u)
 
         echo "### Updated dirs: $UPDATED_DIRS"
 
-        echo  "Filter Dictionary: ${{ inputs.filter_dir }}"
-
-        FILTERED_DIRS=$(echo "$UPDATED_DIRS" | grep "^${{ inputs.filter_dir }}")
-        echo "fd: $FILTERED_DIRS"
-
-        # Filter by the specified directory if provided
-        if [ -n "${{ inputs.filter_dir }}" ]; then
-        # if [[ "${{env.updated_dirs}}" == *"${{ inputs.filter_dir }}"* ]; then
-          FILTERED_DIRS=$(echo "$UPDATED_DIRS" | grep "^${{ inputs.filter_dir }}")
-          echo "fd: $FILTERED_DIRS"
+        if [ -n "$FILTER_DIR" ]; then
+          FILTERED_DIRS=$(echo "$UPDATED_DIRS" | grep "^$FILTER_DIR")
+          echo "Filtered dirs: $FILTERED_DIRS"
         else
-          FILTERED_DIRS=$UPDATED_DIRS
+          # FILTERED_DIRS=$UPDATED_DIRS
+          exit 1
         fi
 
-        echo "### Filtered dirs: $FILTERED_DIRS"
-        echo "...";
         UPDATED_DIRS_LIST=$(echo "$FILTERED_DIRS" | tr '\n' ' ')
-        # Set the output
-        # echo "updated_dirs=$UPDATED_DIRS_LIST" >> $GITHUB_OUTPUT
-
-        echo "updated_dirs=$UPDATED_DIRS_LIST" >> $GITHUB_ENV
-        # access  ${{env.updated_dirs }}"
-
-        echo "### Updated Directories:" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY # this is a blank line
-        # echo "$SUMMARY" >> $GITHUB_STEP_SUMMARY
-
-        for dir in $UPDATED_DIRS_LIST; do
-          echo "-  $dir " >> $GITHUB_STEP_SUMMARY
-        done
-
-
-        # https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/workflow-commands-for-github-actions
-
         
+        echo "updated_dirs=$UPDATED_DIRS_LIST" >> $GITHUB_ENV
+        
+        echo "### Updated Directories:" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        for dir in $UPDATED_DIRS_LIST; do
+          echo "- $dir" >> $GITHUB_STEP_SUMMARY
+        done
