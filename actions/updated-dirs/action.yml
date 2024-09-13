@@ -31,6 +31,8 @@ runs:
           done
         done | sort -u)
 
+        echo "### Updated dirs"
+
         # Filter by the specified directory if provided
         if [ -n "${{ inputs.filter_dir }}" ]; then
           FILTERED_DIRS=$(echo "$UPDATED_DIRS" | grep "^${{ inputs.filter_dir }}")
