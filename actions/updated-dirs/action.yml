@@ -13,7 +13,7 @@ runs:
 
         if [ -z "$UPDATED_FILES" ]; then
           echo "No updated files found."
-          exit 1
+          exit 0
         fi
 
         UPDATED_DIRS=$(for file in $UPDATED_FILES; do
@@ -33,7 +33,7 @@ runs:
           echo "Filtered dirs: $FILTERED_DIRS"
         else
           # FILTERED_DIRS=$UPDATED_DIRS
-          exit 1
+          exit 0
         fi
 
         UPDATED_DIRS_LIST=$(echo "$FILTERED_DIRS" | tr '\n' ' ')
