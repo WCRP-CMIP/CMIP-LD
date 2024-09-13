@@ -44,6 +44,8 @@ runs:
           exit 1
         fi
 
+        echo "### Running all files in $DIRECTORY with $SCRIPT" >> $GITHUB_STEP_SUMMARY
+
         # Loop through files starting with a-z or A-Z
         for file in "$DIRECTORY"/[a-zA-Z]*"$SCRIP_EXT"; do
           # Check if the file exists
