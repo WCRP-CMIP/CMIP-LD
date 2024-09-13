@@ -25,6 +25,11 @@ runs:
       id: run-all-files
       shell: bash
       run: |
+      
+        DIRECTORY=${{ inputs.directory }}
+        SCRIPT=${{ inputs.script }}
+        SCRIP_EXT=${{ inputs.script_ext }}
+
         # Check if the script variable is set
         if [ -z "$SCRIPT" ]; then
           echo "Error: SCRIPT_ENV_VAR is not set."
