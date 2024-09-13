@@ -38,8 +38,8 @@ runs:
           FILTERED_DIRS=$UPDATED_DIRS
         fi
 
-
-        UPDATED_DIRS_LIST=$(echo "$UPDATED_DIRS" | tr '\n' ' ')
+        echo "...";
+        UPDATED_DIRS_LIST=$(echo "$FILTERED_DIRS" | tr '\n' ' ')
         # Set the output
         # echo "updated_dirs=$UPDATED_DIRS_LIST" >> $GITHUB_OUTPUT
 
