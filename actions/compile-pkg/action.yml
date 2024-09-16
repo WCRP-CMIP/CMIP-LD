@@ -65,7 +65,7 @@ runs:
       shell: bash
       run: |
         echo "Uploading package to Anaconda" 
-        conda activate build-env
+        bash
         # conda install -y anaconda-client
         pip install anaconda-client
         anaconda login --username ${{ inputs.anaconda-username }} --password ${{ inputs.anaconda-password }}
