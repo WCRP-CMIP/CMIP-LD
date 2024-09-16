@@ -24,7 +24,7 @@ conf = f'''
                 "CMIP-IPO",
                 "WCRP"
             ]
-    # nest instututions here, use the cmip acnronyms which they have been registered with.
+    # nest institutions here, use the cmip acnronyms which they have been registered with.
 ''' 
 
 description = '''
