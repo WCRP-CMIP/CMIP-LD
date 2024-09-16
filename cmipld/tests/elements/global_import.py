@@ -118,7 +118,7 @@ def create_template(element_type,moreinfo,config,location):
     
     template  = f"""---
 name: {element_type_c}
-about: Addding a new, or updating an existing, {split.lower()}
+about: Adding a new, or updating an existing, {split.lower()}
 title: 'Review request for change in {element_type}'
 labels: '{element_type}'
 assignees: ''
