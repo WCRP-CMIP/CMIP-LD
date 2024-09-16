@@ -34,7 +34,6 @@ runs:
         miniconda-version: "latest"
         channels: bioconda, conda-forge, defaults
         use-only-tar-bz2: true  # IMPORTANT: This needs to be set for caching to work properly!
-        auto-update-conda: true
         auto-activate-base: true
 
     - name: Create and activate environment
