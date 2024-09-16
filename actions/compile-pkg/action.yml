@@ -36,13 +36,13 @@ runs:
         use-only-tar-bz2: true  # IMPORTANT: This needs to be set for caching to work properly!
         auto-activate-base: true
 
-    # - name: Create and activate environment
-    #   shell: bash
-    #   run: |
-    #   # we can run from base
-    #     conda env create -f environment.yml
-    #     conda activate build-env
-    #     echo " - Compiling Python package for ${{inputs.python-version}}" >> $GITHUB_STEP_SUMMARY
+    - name: Create and activate environment
+      shell: bash
+      run: |
+        conda activate build-env
+        # conda env create -f environment.yml
+        # conda activate build-env
+        echo " - Compiling Python package for ${{inputs.python-version}}" >> $GITHUB_STEP_SUMMARY
 
     # - name: Install dependencies
     #   shell: bash
@@ -62,6 +62,7 @@ runs:
       if: ${{ inputs.upload-to-anaconda == 'true' }}
       shell: bash
       run: |
+        echo "Uploading package to Anaconda" 
         conda install anaconda-client
         anaconda login --username ${{ inputs.anaconda-username }} --password ${{ inputs.anaconda-password }}
         anaconda upload dist/*.tar.bz2
