@@ -17,7 +17,7 @@ jobs:
       - name: Checkout source code
         run: | 
           echo " ## Checking out source code" >> $GITHUB_STEP_SUMMARY
-          echo " - Running on `${{ matrix.os }}`" >> $GITHUB_STEP_SUMMARY
+          echo " - Running on ${{ matrix.os }}" >> $GITHUB_STEP_SUMMARY
 
       - name: Use Conda Build Action
         uses: WCRP-CMIP/cmip-ld/actions/compile-pkg@main
