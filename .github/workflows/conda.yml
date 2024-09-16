@@ -20,7 +20,7 @@ jobs:
           echo " - Running on `${{ matrix.os }}`" >> $GITHUB_STEP_SUMMARY
 
       - name: Use Conda Build Action
-        uses: WCRP-CMIP/cmip-d/actions/compile-pkg@main
+        uses: WCRP-CMIP/cmip-ld/actions/compile-pkg@main
         with:
           python-version: ${{ matrix.python-version }}
           upload-to-anaconda: false  # Change to 'true' to upload
