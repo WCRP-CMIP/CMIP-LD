@@ -40,6 +40,7 @@ runs:
       shell: bash
       run: |
         conda init
+        source /home/runner/.bashrc
         conda activate build-env
         # conda env create -f environment.yml
         # conda activate build-env
