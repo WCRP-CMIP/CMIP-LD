@@ -66,7 +66,7 @@ runs:
       run: |
         echo "Uploading package to Anaconda" 
         bash
-        # conda install -y anaconda-client
-        pip install anaconda-client
+        conda install -y anaconda-client
+        # pip install anaconda-client
         anaconda login --username ${{ inputs.anaconda-username }} --password ${{ inputs.anaconda-password }}
         anaconda upload dist/*.tar.bz2
