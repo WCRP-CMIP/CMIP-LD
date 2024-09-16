@@ -39,6 +39,7 @@ runs:
     - name: Create and activate environment
       shell: bash
       run: |
+        conda init
         conda activate build-env
         # conda env create -f environment.yml
         # conda activate build-env
