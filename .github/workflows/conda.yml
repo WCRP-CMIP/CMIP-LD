@@ -23,6 +23,6 @@ jobs:
         uses: WCRP-CMIP/cmip-ld/actions/compile-pkg@main
         with:
           python-version: ${{ matrix.python-version }}
-          upload-to-anaconda: false  # Change to 'true' to upload
+          upload-to-anaconda: true  # Change to 'true' to upload
           anaconda-username: ${{ secrets._CONDA_NAME }}
           anaconda-password: ${{ secrets._CONDA_PUSH }}
