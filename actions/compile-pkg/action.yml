@@ -45,6 +45,7 @@ runs:
         conda activate build-env
         # conda env create -f environment.yml
         # conda activate build-env
+        conda update -n build-env -c defaults conda
         echo " - Compiling Python package for ${{inputs.python-version}}" >> $GITHUB_STEP_SUMMARY
 
     # - name: Install dependencies
@@ -66,7 +67,9 @@ runs:
       shell: bash
       run: |
         echo "Uploading package to Anaconda" 
+        
         conda install -y anaconda::anaconda-client
+        echo " - Uploading package to Anaconda" >> $GITHUB_STEP_SUMMARY
         # pip install anaconda-client
         anaconda login --username ${{ inputs.anaconda-username }} --password ${{ inputs.anaconda-password }}
         anaconda upload dist/*.tar.bz2
