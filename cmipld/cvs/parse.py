@@ -43,7 +43,12 @@ def cmip6plus_organisations (data):
     
     # data = [d['organisation_id'] for d in data if d['organisation_id']['cmip_acronym']]
     
-    return data.key_value(key='cmip_acronym',value='name')
+    data.clean(['rmnull'])
+    
+    # # return filter(lambda x: 'cmip_acronym' in x, data)
+    # data.print
+
+    return cmipld.key_value(data.value_only('organisation_id'),key='cmip_acronym',value='name')
 
 def cmip6plus_descriptors (data):
     data = data.json

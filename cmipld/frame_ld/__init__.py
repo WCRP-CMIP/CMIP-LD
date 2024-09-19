@@ -191,6 +191,14 @@ class Frame:
             return None
         
 
+    # @property
+    # def rmempty(self):
+    #     print(self.data)
+    #     self.data = dict([i for i in self.data if i.values()])
+        
+    #     return self
+    
+
     def filterkeys(self, keys, overwrite=False,missing=None):
         # assert not set(keys) - set(self.data)
         output = []
@@ -233,7 +241,11 @@ def key_value(data, key='name', value=None):
 
     
 def value_only(data,key):
-    return sorted(list(set([d.get(key) for d in data])))
+    try:
+        return sorted(list(set([d.get(key) for d in data if d.get(key)])))
+    except TypeError as e:
+        return list([d.get(key) for d in data if d.get(key)])
+        
 
 # def key_str(data,key,value):
 #     return dict([[d.get(key),d.get(value)] for d in data])

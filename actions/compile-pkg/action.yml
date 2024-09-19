@@ -45,7 +45,7 @@ runs:
         conda activate build-env
         # conda env create -f environment.yml
         # conda activate build-env
-        conda update -n build-env -c defaults conda
+        # conda update -n build-env -c defaults conda
         echo " - Compiling Python package for ${{inputs.python-version}}" >> $GITHUB_STEP_SUMMARY
 
     # - name: Install dependencies
