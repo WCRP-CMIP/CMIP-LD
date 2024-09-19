@@ -86,7 +86,7 @@ class CMIPFileUtils:
     @staticmethod
     async def load_latest():
         print("Loading latest CMIP6Plus and MIP-CMOR-Tables files...")
-        latest = [LatestFiles.mip_cmor_tabes_ld, LatestFiles.cmip6plus_ld]
+        latest = [LatestFiles.mip_cmor_tabes, LatestFiles.cmip6plus]
         
         return sum([await gh_read_file(*f) for f in latest],[])
         
