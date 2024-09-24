@@ -56,7 +56,8 @@ def read_json_file_mmap(file: str, directory: str) -> Tuple[Dict[str, Any], Dict
 
 
 
-def read_all_json_files(directory: str, base_dir: str) -> Tuple[str, str]:
+
+def read_all_json_files(directory: str, base_dir: str, typeprefix: str) -> Tuple[str, str]:
     """Read and process all JSON files in a directory."""
     # skipped = [f"{directory}/{f}" for f in DEFAULT_SKIP_FILES]
     try:
@@ -90,11 +91,11 @@ def read_all_json_files(directory: str, base_dir: str) -> Tuple[str, str]:
     all_data = []
     versioning = []
     
-    def add_prefix_to_keys(data, prefix):
+    def add_prefix_to_keys(data, prefix, typeprefix):
         if isinstance(data, dict):
-            return {prefix + k if not k.startswith('@') else k: add_prefix_to_keys(v, prefix) for k, v in data.items()}
+            return {prefix + k if not k.startswith('@') else k: add_prefix_to_keys(v, prefix,typeprefix) for k, v in data.items()}
         elif isinstance(data, list):
-            return [add_prefix_to_keys(item, prefix) for item in data]
+            return [add_prefix_to_keys(item, prefix, typeprefix) for item in data]
         else:
             return data
 
@@ -105,7 +106,7 @@ def read_all_json_files(directory: str, base_dir: str) -> Tuple[str, str]:
             try:
                 data, v = future.result()
                 
-                data['@type'] = f"mip:{data['@type']}"
+                data['@type'] = f"{typeprefix}:{data['@type']}"
                 all_data.append(data)
                 versioning.append(v)
             except Exception as exc:
@@ -117,7 +118,7 @@ def read_all_json_files(directory: str, base_dir: str) -> Tuple[str, str]:
     # all_data = [{prefix + k if not k.startswith('@') else k: v for k, v in z.items()} for z in all_data]
     
     
-    all_data = [add_prefix_to_keys(item, prefix) for item in all_data]
+    all_data = [add_prefix_to_keys(item, prefix, typeprefix) for item in all_data]
     
     ldroot = directory.removeprefix(base_dir).removeprefix('/./')
     
@@ -125,7 +126,7 @@ def read_all_json_files(directory: str, base_dir: str) -> Tuple[str, str]:
     complete_graph = {
         "@id": 'graph:'+context['@vocab'].replace('_','-'),
             # ldroot.replace('JSONLD/',rmap[namesplit(REPO)]),
-           
+
         "@type": "mip:graph",
         "@context": context,
         ':url': REPO.removesuffix('JSONLD')+ldroot,
@@ -193,16 +194,16 @@ def get_directories_to_process(base_dir: str, skip_dirs: set, override: bool) ->
     """Get the set of directories to process based on Git status or override flag."""
     if override:
         all_dirs = set()
-        for root, dirs, _ in os.walk(base_dir+'/JSONLD/'):
+        for root, dirs, _ in os.walk(base_dir):
             for d in dirs:
                 if d not in skip_dirs :
                     
                     # full_path = os.path.join(root, d)
                     newd =  root.replace('../../','')+ '/' +   d
-                  
                     all_dirs.add(newd.replace('//','/'))
                 # if full_path.startswith(base_dir) and not any(full_path.startswith(i) for i in skip_dirs):
                 #     all_dirs.add(full_path.removeprefix(base_dir))
+
 
         return all_dirs
 
@@ -216,7 +217,7 @@ def get_directories_to_process(base_dir: str, skip_dirs: set, override: bool) ->
     # Get unique directories that need updating
     return set(re.findall(r'^JSONLD.*(?=/)', output, re.MULTILINE)) - skip_dirs
 
-def main(base_dir: str, exclude_dirs: List[str], exclude_files: List[str], override: bool,matched = False):
+def main(base_dir: str, exclude_dirs: List[str], exclude_files: List[str], override: bool,matched = False, typeprefix = 'mip') -> None:
     """
     Main function to orchestrate the JSON-LD file processing.
 
@@ -225,7 +226,7 @@ def main(base_dir: str, exclude_dirs: List[str], exclude_files: List[str], overr
     :param exclude_files: List of files to exclude
     :param override: Flag to process all non-skipped repos
     """
-    skip_files = DEFAULT_SKIP_FILES + exclude_files
+    # skip_files = DEFAULT_SKIP_FILES + exclude_files d
     skip_dirs = set(DEFAULT_SKIP_DIRS + exclude_dirs)
 
 
@@ -242,10 +243,10 @@ def main(base_dir: str, exclude_dirs: List[str], exclude_files: List[str], overr
             print('EXIT: No new files found! Use --override to process all directories.')
         return
     
-    for directory in matched:
-        print(directory)
-        full_path = os.path.join(base_dir, directory)
-        graph_data, _ = read_all_json_files(full_path, base_dir)
+    for full_path in matched:
+        print(full_path)
+        # full_path = os.path.join(base_dir, directory)
+        graph_data, _ = read_all_json_files(full_path, base_dir,typeprefix)
         # print(graph_data)
         
         if not graph_data: 
@@ -256,11 +257,12 @@ def main(base_dir: str, exclude_dirs: List[str], exclude_files: List[str], overr
 
 def init():
     parser = argparse.ArgumentParser(description="Process CMIP6Plus JSON-LD files.")
-    parser.add_argument("--base-dir", type=str, default="./", help="Base directory to start from")
+    parser.add_argument("--base-dir", type=str, default="./JSONLD", help="Base directory to start from")
     parser.add_argument("--exclude-dirs", type=str, help="Comma-separated list of directories to exclude")
     parser.add_argument("--exclude-files", type=str, help="Comma-separated list of files to exclude")
     
     parser.add_argument("--output-dir", type=str, default="", help="where to save output")
+    parser.add_argument("--type-prefix", type=str, default="mip", help="the bit before the type-name")
     
     parser.add_argument("--override", action="store_true", help="Process all non-skipped repos, ignoring Git status")
     
@@ -272,7 +274,7 @@ def init():
     
     
     if args.updated:
-        args.updated = [i for i in args.updated if 'JSONLD/' in i]
+        args.updated = [ i for i in args.updated ] #if 'JSONLD/' in i]
         if len(args.updated) == 0:
             import sys
             update_env("needs_update",0)
@@ -287,7 +289,7 @@ def init():
     exclude_dirs = args.exclude_dirs.split(',') if args.exclude_dirs else []
     exclude_files = args.exclude_files.split(',') if args.exclude_files else []
 
-    main(base_dir, exclude_dirs, exclude_files, args.override, args.updated)
+    main(base_dir, exclude_dirs, exclude_files, args.override, args.updated, args.type_prefix)
         
         
 if __name__ == "__main__":
