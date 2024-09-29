@@ -30,8 +30,9 @@ async def gh_read_file(owner, repo, file_path, branch='main'):
         
         if content == '':
             print(f"Emty contents, this might be because file is too big. Trying gh_read_raw instead.")
-            return []
-        return json.loads(base64.b64decode(content).decode('utf-8'))
+            return gh_read_raw(owner, repo, file_path, branch)
+        else:
+            return json.loads(base64.b64decode(content).decode('utf-8'))
     
     except requests.RequestException as e:
         print(f"Error reading file: {e}")
