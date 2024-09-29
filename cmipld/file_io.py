@@ -27,12 +27,27 @@ async def gh_read_file(owner, repo, file_path, branch='main'):
         response = requests.get(url)
         response.raise_for_status()
         content = response.json()['content']
+        
+        if content == '':
+            print(f"Emty contents, this might be because file is too big. Trying gh_read_raw instead.")
+            return []
         return json.loads(base64.b64decode(content).decode('utf-8'))
     
     except requests.RequestException as e:
         print(f"Error reading file: {e}")
         return None
         
+        
+async def gh_read_raw(owner, repo, file_path, branch='main'):
+    url = f"https://github.com/{owner}/{repo}/raw/refs/heads/{branch}/{file_path}"    
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        return response.json()
+    except requests.RequestException as e:
+        print(f"Error reading file: {e}")
+        return None
+
 
 class CMIPFileUtils:
     @staticmethod
