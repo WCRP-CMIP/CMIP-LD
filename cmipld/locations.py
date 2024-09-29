@@ -14,6 +14,7 @@ mapping = {
     'cmip6plus:': 'https://github.com/WCRP-CMIP/CMIP6Plus_CVs',
     'mip-cmor-tables:': 'https://github.com/PCMDI/mip-cmor-tables',
     'wolfiex-mip-cmor-tables:': 'https://github.com/wolfiex/wolfiex-mip-cmor-tables',
+    'cf': 'https://github.com/WCRP-CMIP/CF',
 }
 
 namesplit = lambda x: tuple(x.split('/')[3:5])
