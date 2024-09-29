@@ -5,6 +5,7 @@ LatestFiles = DotAccessibleDict({
     'cmip6plus': ['WCRP-CMIP','CMIP6Plus_CVs','compiled/graph_data.min.json','main'],
     'mip_cmor_tables_ld': ['PCMDI','mip-cmor-tables','compiled/graph_data.min.json','jsonld'],
     'mip_cmor_tables': ['PCMDI','mip-cmor-tables','compiled/graph_data.min.json','main'],
+    "CF": ['WCRP-CMIP','CF','compiled/graph_data.min.json','main'],
 })
 
 
