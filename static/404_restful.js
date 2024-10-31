@@ -111,6 +111,7 @@ async function fetchAndDisplayData(location) {
                 // Display types with schema.org links if available
                 if (itemData.type) {
                     contentHTML += `<h2>Types</h2><ul>`;
+                    if (itemData.type instanceof Array) itemData.type = [itemData.type]
                     itemData.type.forEach(type => {
                         contentHTML += `<li><a href="https://schema.org/${type}" target="_blank">${type}</a></li>`;
                     });
