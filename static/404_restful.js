@@ -19,7 +19,7 @@ async function fetchAndDisplayData(location) {
                 }
                 
                 const jsonURL = `${baseURL}${item}.json`;
-                const schemaURL = `${baseURL}/_schema`;
+                const schemaURL = `${baseURL}/_schema`.replace('//','/');
                 console.log(baseURL)
                 
                 // Set title with link back to base URL
