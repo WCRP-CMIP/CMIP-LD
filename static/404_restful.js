@@ -1,7 +1,7 @@
 async function fetchAndDisplayData(location) {
 
             const url = location.href
-            console.warn(url)
+            console.warn('404',url)
             try {
                 // Process URL components
 
@@ -26,7 +26,7 @@ async function fetchAndDisplayData(location) {
                 document.getElementById('title').innerHTML = `<a href=${baseURL}>${origin}</a> : ${item}`;
 
                 // Attempt to fetch JSON data for the current item
-                let response = await fetch(jsonURL);
+
                 if (!url.endsWith('.json')){
                 let response = await fetch(jsonURL);
                 if (response.ok) {
