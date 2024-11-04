@@ -9,6 +9,16 @@ LatestFiles = DotAccessibleDict({
 })
 
 
+contexts = {
+    "https://wcrp-cmip.github.io/":"localhost",
+    "wcrp-universe":"https://wcrp-cmip.github.io/WCRP-UNIVERSE/data_descriptors/",
+    "mip-variables":"https://wcrp-cmip.github.io/MIP_variables/data_descriptors/",
+    "cmip6plus":"https://wcrp-cmip.github.io/CMIP6Plus_CVs/data_descriptors/",
+    "cf":"https://wcrp-cmip.github.io/CF/data_descriptors/",
+}
+
+
+
 # locations mandatory for graphing script to run
 mapping = {
     'cmip6plus:': 'https://github.com/WCRP-CMIP/CMIP6Plus_CVs',
