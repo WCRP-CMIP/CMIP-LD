@@ -14,24 +14,13 @@ on:
         description: 'Branch to deploy from'
         required: true
         type: string
-jobs:
-  push2production:
-    runs-on: ubuntu-latest
+runs:
+    using: 'composite'
     env:
       API_KEY: ${{ inputs.API_KEY }}
       GH_TOKEN: ${{ inputs.GITHUB_TOKEN }}
       BRANCH: ${{ inputs.branch_name }}
-    permissions:
-      actions: write
-      checks: write
-      contents: write
-      deployments: write
-      id-token: write
-      packages: write
-      pages: write
-      pull-requests: write
-      repository-projects: write
-      statuses: write
+
     steps:
 
 
