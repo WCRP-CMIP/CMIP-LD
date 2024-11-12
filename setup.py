@@ -29,9 +29,10 @@ setup(
     scripts=[
         "scripts/directory-utilities/combine-graphs",
         "scripts/directory-utilities/compile-ld",
+        "scripts/directory-utilities/ld2graph",
         "scripts/jsonld-util/rmbak",
         "scripts/jsonld-util/rmgraph"
-        "scripts/directory-utilities/ld2graph",
+        
     ],
     include_package_data=True,
     package_data={
