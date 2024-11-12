@@ -181,6 +181,19 @@ class JsonLdProcessor:
         return processed
 
 
+    def find_missing(self,url):
+        '''
+        Get all the references in an LD object, 
+        and check if they exist.
+        '''
+        from tqdm import tqdm
+        from ..utils.urltools import url_exists
+        
+        links = self.depends(url)
+        missing = [link for link in tqdm(links) if not url_exists(link)]
+        
+        return missing
+
 # LOCATION>S.MAPPING
 mapping = {
     'mip-universe:': 'https://WCRP-CMIP.github.io/WCRP-UNIVERSE/',
