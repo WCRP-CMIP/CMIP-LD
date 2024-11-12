@@ -31,6 +31,7 @@ setup(
         "scripts/directory-utilities/compile-ld",
         "scripts/jsonld-util/rmbak",
         "scripts/jsonld-util/rmgraph"
+        "scripts/directory-utilities/ld2graph",
     ],
     include_package_data=True,
     package_data={
