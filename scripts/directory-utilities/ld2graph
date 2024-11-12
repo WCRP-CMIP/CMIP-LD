@@ -16,8 +16,9 @@ echo '"@graph": [' >> "$DIR/graph.jsonld"
 for file in "$DIR"/*.json; do
     # Read the content of each file and strip off the enclosing braces
     # content=$(sed '1d;$d' "$file")
-    # read the file
-    content=$(cat "$file") 
+    # # read the file
+    # content=$(cat "$file") 
+    content=$(jq 'del(."@context")' "$file")
     
     # Append the content of the file to the graph.jsonld file
     echo "$content," >> "$DIR/graph.jsonld"
