@@ -88,12 +88,17 @@ runs:
           echo "Files copied"
 
           # identify broken files. 
-          find . -type f -name "graph.jsonld" -exec sh -c 'jq empty "{}" || echo "Broken JSON: {}"' \;
+          find . -type f -name "graph.jsonld" -exec sh -c 'jq empty "{}" || echo "Broken JSON :{}"' \;
 
           # Find all graph.jsonld files and merge them into a single JSON list
           find . -type f -name "graph.jsonld" -exec jq -s '[.[][]]' {} + > data_descriptors/graph.jsonld
 
           echo "Files copied"
+
+
+          # group all graphs
+          find data_descriptors -type f -name "graph.jsonld" -exec jq -s '[.[][]]' {} + > data_descriptors/graph.jsonld
+
 
 
           # Stage all changes, commit, and push to production branch
