@@ -84,6 +84,11 @@ runs:
           # return to copys as artifacts do not handle symlinks
           find . -type f -name "*.json" -exec sh -c 'cp "$0" "${0%.json}"' {} \;
 
+          # Find all graph.jsonld files and merge them into a single JSON list
+          find . -type f -name "graph.jsonld" -exec jq -s '[.[][]]' {} + > data_descriptors/graph.jsonld
+
+
+
           # Stage all changes, commit, and push to production branch
           git add -A
           git commit -m "production push"
