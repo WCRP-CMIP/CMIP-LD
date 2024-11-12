@@ -23,6 +23,7 @@ runs:
 
     - name: Gathering graphs
       id: gathering-graphs
+      shell: bash
       run: |
       
         for dir in  ${{ env.updated_dirs }}; do
