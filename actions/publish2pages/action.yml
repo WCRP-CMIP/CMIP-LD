@@ -97,7 +97,7 @@ runs:
 
 
           # group all graphs
-          find data_descriptors -type f -name "graph.jsonld" -exec jq -s '[.[][]]' {} + > data_descriptors/graph.jsonld
+          find data_descriptors -type f -name "graph.jsonld" -exec jq -s '[.[]]' {} + > data_descriptors/graph.jsonld
 
 
 
