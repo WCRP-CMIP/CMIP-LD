@@ -58,6 +58,7 @@ runs:
 
           # Find all .json files and create symbolic links without the .json extension
           # return to copys as artifacts do not handle symlinks
+          find . -type f -name "*.jsonld" -exec sh -c 'cp "$0" "${0%.jsonld}"' {} \;
           find . -type f -name "*.json" -exec sh -c 'cp "$0" "${0%.json}"' {} \;
 
           # Stage all changes, commit, and push to production branch

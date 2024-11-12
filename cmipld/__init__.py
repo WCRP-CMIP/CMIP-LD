@@ -2,7 +2,9 @@
 # from .file_io import CMIPFileUtils,LatestFiles,sync
 # from .frame_ld import Frame,get_frame,key_only,key_value,value_only
 from .locations import *
+from .browse import *
 
+processor = JsonLdProcessor()
 
 # # for CLI purposes. To develop further
 

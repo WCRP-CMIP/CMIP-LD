@@ -117,6 +117,19 @@ class JsonLdProcessor:
             print(f"Error extracting dependencies: {str(e)}")
             return set()
     
+    
+    def depends(self,uid,**kwargs):
+        print(kwargs)
+        # if arg in locations, then use that and give that level. 
+        
+        return self.extract_dependencies(uid,**kwargs)
+    
+    def get(self,uid,**kwargs):
+        print(kwargs)
+        # if arg in locations, then use that and give that level. 
+        
+        return self.expand_document(uid,**kwargs)
+    
     def expand_document(self,
                        jsonld_doc: Union[str, Dict],
                        compact: bool = True,

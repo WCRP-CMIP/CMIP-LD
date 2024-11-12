@@ -36,7 +36,7 @@ def main():
             result = sorted(list(deps))
         else:
             # Process document
-            result = processor.expand_document(
+            result = processor.get(
                 args.url,
                 compact=not args.no_compact,
                 expand_ctx=not args.expand_ctx,
