@@ -1,5 +1,6 @@
 from .__init__ import * 
 
+
 def main():
     """CLI entry point for the JSON-LD processor."""
     parser = argparse.ArgumentParser(description='Process JSON-LD documents and extract dependencies')

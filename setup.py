@@ -15,6 +15,7 @@ setup(
     entry_points={
         "console_scripts": [
             "cmipld=cmipld.browse.__main__:main",
+            "update_ctx=cmipld.generate.update_ctx:main",
             # "cmipgraph=cmipld.graph:main",
             # "updateld=cmipld.generate.update_new:init",
             # "makegraph=cmipld.generate.makegraph:run",

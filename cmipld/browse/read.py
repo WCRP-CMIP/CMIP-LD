@@ -1,4 +1,4 @@
-import json
+import json,sys
 import re
 import argparse
 from typing import Any, Dict, List, Union, Set
@@ -143,6 +143,17 @@ class JsonLdProcessor:
     def get(self,query,**kwargs):
         query = self.replace_prefix(query)
         return self.expand_document(query,**kwargs)
+    
+    def frame(self,query,frame={}):
+        query = self.replace_prefix(query)
+        if '@embed' not in frame:
+            frame['@embed'] = "@always"
+        if '@context' not in frame:
+            frame['@context'] = mapping
+        else:
+            frame['@context'] = {**mapping,**frame['@context']}
+        
+        return jsonld.frame(query,frame)
     
     def expand_document(self,
                        jsonld_doc: Union[str, Dict],

@@ -1,4 +1,4 @@
-from .utils.classfn import DotAccessibleDict
+from .utils import DotAccessibleDict
 
 # LatestFiles = DotAccessibleDict({
 #     'cmip6plus_ld': ['WCRP-CMIP','CMIP6Plus_CVs','graph_data.min.json','jsonld'],

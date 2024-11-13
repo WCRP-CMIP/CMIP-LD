@@ -45,6 +45,13 @@ runs:
             fi
         done
 
+
+    - name: Update ctx
+      id: update-ctx
+      shell: bash
+      run: |
+        update_ctx
+      continue-on-error: true
 # maybe we wan commits at the end of the process
 # or just the push 
 
