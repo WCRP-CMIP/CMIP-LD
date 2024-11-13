@@ -21,6 +21,11 @@ runs:
     steps:
 
 
+
+      - name: Get a list of directories with updated files
+        id: install-cmipld
+        uses: WCRP-CMIP/CMIP-LD/actions/cmipld@main
+
       - name: Check out the repository
         uses: actions/checkout@v4
         with:
@@ -99,9 +104,18 @@ runs:
           # group all graphs
           find data_descriptors -type f -name "graph.jsonld" -exec jq -s '[.[]]' {} + > data_descriptors/graph.jsonld
           cp data_descriptors/graph.jsonld data_descriptors/graph
+        shell: bash
+    
+      - name: Update ctx
+        id: update-ctx
+        shell: bash
+        run: |
+          update_ctx
+        continue-on-error: true
 
-
-
+      - name: Commit changes
+        id: commit
+        run: |
           # Stage all changes, commit, and push to production branch
           git add -A
           git commit -m "production push"
