@@ -59,10 +59,17 @@ def sorted_ctx(dct):
     assert '@context' in dct
     
     ctx = OrderedDict()
-    # definitions
+    
+    # lddefinitions
+    for ck,cv in sorted(dct['@context'].items()):
+        if ck[0] == '@':
+            ctx[ck] = cv
+    
+    # ld objects
     for ck,cv in sorted(dct['@context'].items()):
         if isinstance(cv,str) and cv[0] == '@':
             ctx[ck] = cv
+            
     
     # prefix
     for ck,cv in sorted(dct['@context'].items()):
