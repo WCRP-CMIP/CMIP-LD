@@ -8,6 +8,9 @@ from pyld import jsonld
 
 from .interactive import open_jless_with_memory
 
+from ..locations import mapping
+matches =re.compile(f"({'|'.join(mapping.keys())})")
+
 class JsonLdProcessor:
     """
     A class for processing JSON-LD documents with recursive expansion and ID resolution.
@@ -118,17 +121,28 @@ class JsonLdProcessor:
             return set()
     
     
-    def depends(self,uid,**kwargs):
+    def depends(self,query,**kwargs):
         print(kwargs)
         # if arg in locations, then use that and give that level. 
-        
-        return self.extract_dependencies(uid,**kwargs)
+        query = self.replace_prefix(query)
+        return self.extract_dependencies(query,**kwargs)
     
-    def get(self,uid,**kwargs):
-        print(kwargs)
-        # if arg in locations, then use that and give that level. 
-        
-        return self.expand_document(uid,**kwargs)
+    @staticmethod
+    def replace_prefix(query):        
+        m = matches.search(query+':')
+        if m:
+            match = m.group()
+            if len(match)-1 == len(query):
+                query = f"{mapping[match]}graph.jsonld"
+            else:
+                query = query.replace(match, mapping[match])
+            print('Substituting prefix:')
+            print(match,query)
+        return query
+    
+    def get(self,query,**kwargs):
+        query = self.replace_prefix(query)
+        return self.expand_document(query,**kwargs)
     
     def expand_document(self,
                        jsonld_doc: Union[str, Dict],
@@ -195,12 +209,5 @@ class JsonLdProcessor:
         return missing
 
 # LOCATION>S.MAPPING
-mapping = {
-    'mip-universe:': 'https://WCRP-CMIP.github.io/WCRP-UNIVERSE/',
-    'mip-variables:': 'https://WCRP-CMIP/github.io/MIPvariables/',
-    'cmip6plus:': 'https://WCRP-CMIP.github.io/CMIP6Plus_CVs/',
-    'mip-cmor-tables:': 'https://PCMDI.github.io/mip-cmor-tables/',
-    'cf': 'https://WCRP-CMIP.github.io/WCRP-CMIP/CF/',
-}
 
-matches ='|'.join(mapping.keys())
+

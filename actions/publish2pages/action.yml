@@ -98,6 +98,7 @@ runs:
 
           # group all graphs
           find data_descriptors -type f -name "graph.jsonld" -exec jq -s '[.[]]' {} + > data_descriptors/graph.jsonld
+          cp data_descriptors/graph.jsonld data_descriptors/graph
 
 
 
