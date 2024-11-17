@@ -75,8 +75,12 @@ runs:
 
           else
               git checkout production
-              rm -rf docs
+              rm -rf data_descriptors
+              
           fi
+
+          git add -A 
+          git commit -m 'cleaning up'
 
           # Checkout the specified branch's data_descriptors directory into production
           git checkout "${BRANCH}" -- data_descriptors
