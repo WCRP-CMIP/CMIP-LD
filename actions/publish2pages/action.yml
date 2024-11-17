@@ -62,7 +62,8 @@ runs:
 
               # Create a .nojekyll file to prevent GitHub Pages from processing with Jekyll
               touch .nojekyll
-              git add .nojekyll
+              git add -A
+              # .nojekyll
               git commit -m "Add .nojekyll to production branch"
 
               # # Make sure the publish workflow exists 
