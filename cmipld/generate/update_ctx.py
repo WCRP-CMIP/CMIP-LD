@@ -6,6 +6,10 @@ import glob
 import json
 import tqdm
 
+# sort by length of key
+mapping = dict(sorted(mapping.items(), key=lambda item: len(item[0])))
+
+
 def main():
     
     # note, an easier, but messier way can achieved by speifying two contexts in the file. 

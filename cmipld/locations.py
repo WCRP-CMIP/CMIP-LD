@@ -24,7 +24,9 @@ mapping = {
 }
 
 
-namesplit = lambda x: tuple(x.split('/')[3:5])
 
-rmap = {namesplit(v):k for k,v in mapping.items()}
-urlmap = {v:k for k,v in mapping.items()}
+
+# namesplit = lambda x: tuple(x.split('/')[3:5])
+
+# rmap = {namesplit(v):k for k,v in mapping.items()}
+# urlmap = {v:k for k,v in mapping.items()}
