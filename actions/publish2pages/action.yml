@@ -57,12 +57,13 @@ runs:
 
               # curl command here
               # echo "curl command here"
-              touch 404.html
               git checkout "${BRANCH}" -- 404.html
+              touch 404.html
+              git add 404.html
 
               # Create a .nojekyll file to prevent GitHub Pages from processing with Jekyll
               touch .nojekyll
-              git add -A
+              git add .nojekyll
               # .nojekyll
               git commit -m "Add .nojekyll to production branch"
 
