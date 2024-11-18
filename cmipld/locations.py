@@ -15,15 +15,15 @@ from .utils import DotAccessibleDict
 # locations mandatory for graphing script to run
 # added to contexts
 mapping = {
-    'wcrp-universe:': 'https://WCRP-CMIP.github.io/WCRP-UNIVERSE/',
-    'mip-variables:': 'https://WCRP-CMIP/github.io/MIPvariables/',
-    'cmip6plus:': 'https://WCRP-CMIP.github.io/CMIP6Plus_CVs/',
-    'cmip7:': 'https://WCRP-CMIP.github.io/CMIP7_CVs/',
-    'mip-cmor-tables:': 'https://PCMDI.github.io/mip-cmor-tables/',
+    'wcrp-universe': 'https://WCRP-CMIP.github.io/WCRP-UNIVERSE/',
+    'mip-variables': 'https://WCRP-CMIP/github.io/MIPvariables/',
+    'cmip6plus': 'https://WCRP-CMIP.github.io/CMIP6Plus_CVs/',
+    'cmip7': 'https://WCRP-CMIP.github.io/CMIP7_CVs/',
+    # 'mip-cmor-tables': 'https://PCMDI.github.io/mip-cmor-tables/',
     'cf': 'https://WCRP-CMIP.github.io/WCRP-CMIP/CF/',
 }
 
-
+historic = ['mip-variables','cmip6plus','cmip7','cf','wcrp-universe','mip-cmor-tables','mip-variables:', 'cmip6plus:', 'cmip7:', 'cf:', 'wcrp-universe:', 'mip-cmor-tables:']
 
 
 # namesplit = lambda x: tuple(x.split('/')[3:5])

@@ -155,11 +155,16 @@ class JsonLdProcessor:
         
         return jsonld.frame(query,frame)
     
+    
+    
     def expand_document(self,
                        jsonld_doc: Union[str, Dict],
                        compact: bool = True,
                        expand_ctx: bool = True,
                        expand_links: bool = True,
+                       no_ctx: bool = False,
+                       as_json: bool = False,
+                       pprint: bool = False,
                        is_nested: bool = False) -> List[Dict]:
         """
         Expand a JSON-LD document and resolve all referenced URLs.
@@ -198,11 +203,33 @@ class JsonLdProcessor:
                     re.sub(r'"context"', '"@context"', json.dumps(processed_item))
                 )
             
-            if expand_ctx and '@context' in processed_item and isinstance(processed_item['@context'], str):
-                processed_item['@context'] = self.loader(processed_item['@context'])['document']
+            if expand_ctx and not no_ctx and '@context' in processed_item:
+                # script to deal with complex contexts
+                if not isinstance(processed_item['@context'], list):
+                    processed_item['@context'] = [processed_item['@context']]
+                
+                ctx = {}
+                
+                for c in processed_item['@context']:
+                    if isinstance(c, dict):
+                        ctx = {**ctx, **c}
+                    elif isinstance(c, str):
+                        c = self.loader(c)['document']['@context']
+                    ctx = {**ctx, **c}
+                
+                processed_item['@context'] = ctx
                 
             processed.append(processed_item)
-        
+            
+            if no_ctx and '@context' in processed_item:
+                del processed_item['@context']
+                
+                
+        if pprint:
+            from pprint import pprint
+            pprint(processed)
+        if as_json: 
+            return json.dumps(processed,indent=4)
         return processed
 
 

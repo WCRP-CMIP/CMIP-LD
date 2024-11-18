@@ -1,4 +1,4 @@
-from ..locations import mapping
+from ..locations import mapping,historic
 from ..utils import sorted_ctx
 from collections import OrderedDict
 
@@ -19,13 +19,25 @@ def main():
     print('Updating contexts: to match latest repository prefixes')
     for cx in tqdm.tqdm(ctxs):
         
-        data = json.load(open(cx))
+        try:
         
-        data = OrderedDict(sorted((k, v) for k, v in data.items()))
-        
-        data['@context'].update(mapping)
-        
-        data = sorted_ctx(data)
+            data = json.load(open(cx))
+            
+            data = OrderedDict(sorted((k, v) for k, v in data.items()))
+            
+            for rm in  historic:
+                if rm in data['@context']:
+                    del data['@context'][rm]# list comprehension to remove historic prefixes from mapping
+            
+            data['@context'].update(mapping)
+            
+            data = sorted_ctx(data)
 
-        with open(cx,'w') as f:
-            json.dump(data,f,indent=4)
+            with open(cx,'w') as f:
+                json.dump(data,f,indent=4)
+                
+        except Exception as e:
+            print(f"Error: {str(e)}")
+            print(f"Error with {cx}")
+            continue
+            
