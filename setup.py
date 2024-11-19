@@ -31,6 +31,8 @@ setup(
     scripts=[
         # "scripts/directory-utilities/combine-graphs",
         # "scripts/directory-utilities/compile-ld",
+        "scripts/directory-utilities/dev",
+        "scripts/directory-utilities/validjsonld",
         "scripts/directory-utilities/ld2graph",
         "scripts/jsonld-util/rmbak",
         "scripts/jsonld-util/rmgraph"

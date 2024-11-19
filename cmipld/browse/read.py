@@ -9,7 +9,7 @@ from pyld import jsonld
 from .interactive import open_jless_with_memory
 
 from ..locations import mapping
-matches =re.compile(f"({'|'.join(mapping.keys())})")
+matches =re.compile(f"({'|'.join([i+':' for i in mapping.keys()])})")
 
 class JsonLdProcessor:
     """

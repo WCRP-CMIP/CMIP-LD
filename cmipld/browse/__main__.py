@@ -23,11 +23,12 @@ def main():
     if 'https://' not in args.url and re.match(matches, args.url):
                 for k,v in mapping.items():
                     if k in args.url:
-                        args.url = args.url.replace(k,v)
+                        args.url = args.url.replace(k+":",v)
                         print(f"Resolving: {k}")
                         break
-    
+    print('-'*50)
     print(args.url)
+    print('-'*50)
     
     try:
         if args.deps:
