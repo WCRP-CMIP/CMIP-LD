@@ -58,38 +58,54 @@ def sorted_ctx(dct):
     assert isinstance(dct, dict)
     assert '@context' in dct
     
-    ctx = OrderedDict()
     
-    # lddefinitions
-    for ck,cv in sorted(dct['@context'].items()):
-        if ck[0] == '@':
-            ctx[ck] = cv
+    ctxlist = []
     
-    # ld objects
-    for ck,cv in sorted(dct['@context'].items()):
-        if isinstance(cv,str) and cv[0] == '@':
-            ctx[ck] = cv
-            
+    if not isinstance(dct['@context'],list):
+        dct['@context'] = [dct['@context']]
+        
+        
+    for dctx in dct['@context']:
+        
+        if isinstance(dctx,str):
+            ctxlist.append(dctx)
+            continue
+        
+        ctx = OrderedDict()
+        
+        # lddefinitions
+        for ck,cv in sorted(dctx.items()):
+            if ck[0] == '@':
+                ctx[ck] = cv
+        
+        # ld objects
+        for ck,cv in sorted(dctx.items()):
+            if isinstance(cv,str) and cv[0] == '@':
+                ctx[ck] = cv
+                
+        
+        # prefix
+        for ck,cv in sorted(dctx.items()):
+            if ck[-1] == ':':
+                ctx[ck] = cv
+                
+                
+        # others
+        
+        # non context items
+        for ck,cv in sorted(dctx.items()):
+            if '@context' not in cv:
+                ctx[ck] = cv
+                
+        # context items (links)
+        for ck,cv in sorted(dctx.items()):
+            if '@context' in cv:
+                ctx[ck] = cv
+                
+        ctxlist.append(ctx)
+        
+    dct['@context'] = ctxlist
     
-    # prefix
-    for ck,cv in sorted(dct['@context'].items()):
-        if ck[-1] == ':':
-            ctx[ck] = cv
-            
-            
-    # others
-    
-    # non context items
-    for ck,cv in sorted(dct['@context'].items()):
-        if '@context' not in cv:
-            ctx[ck] = cv
-            
-    # context items (links)
-    for ck,cv in sorted(dct['@context'].items()):
-        if '@context' in cv:
-            ctx[ck] = cv
-            
-    dct['@context'] = ctx
     dct['@embed'] = '@always'
     return dct
     
