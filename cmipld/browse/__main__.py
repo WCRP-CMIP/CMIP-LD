@@ -30,36 +30,45 @@ def main():
     print(args.url)
     print('-'*50)
     
-    try:
-        if args.deps:
-            
-            # Extract dependencies  
-            deps = processor.extract_dependencies(args.url, args.relative)
-            result = sorted(list(deps))
-        else:
-            # Process document
-            result = processor.get(
-                args.url,
-                compact=not args.no_compact,
-                expand_ctx=not args.expand_ctx,
-                expand_links=not args.no_expand_links
-            )
-        
-        # Output results
-        
-        if args.output:
-            output = json.dumps(result, indent=2)
-            with open(args.output, 'w') as f:
-                f.write(output)
+    passes=2
+    while passes:
+        try:
+            if args.deps:
                 
-        if args.no_interactive:
-            open_jless_with_memory(result)
-        else:
-            print(output)
+                # Extract dependencies  
+                deps = processor.extract_dependencies(args.url, args.relative)
+                result = sorted(list(deps))
+            else:
+                # Process document
+                result = processor.get(
+                    args.url,
+                    compact=not args.no_compact,
+                    expand_ctx=not args.expand_ctx,
+                    expand_links=not args.no_expand_links
+                )
             
-    except Exception as e:
-        print(f"Error processing document: {str(e)}", file=sys.stderr)
-        sys.exit(1)
+            # Output results
+            
+            if args.output:
+                output = json.dumps(result, indent=2)
+                with open(args.output, 'w') as f:
+                    f.write(output)
+                    
+            if args.no_interactive:
+                open_jless_with_memory(result)
+            else:
+                print(output)
+                
+            passes=0
+            sys.exit(0)
+                
+        except Exception as e:
+            if 'Could not retrieve a JSON-LD document from the URL.' in str(e):
+                passes-=1
+                args.url+= '/graph'
+            if not passes:
+                print(f"Error processing document: {str(e)}\n\n", file=sys.stderr)
+                sys.exit(1)
 
 
 main()
