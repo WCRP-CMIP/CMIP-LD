@@ -4,6 +4,7 @@ import argparse
 from typing import Any, Dict, List, Union, Set
 from functools import lru_cache
 from urllib.parse import urljoin
+# from ..utils.urltools import valid_url
 from pyld import jsonld
 
 from .interactive import open_jless_with_memory
@@ -179,8 +180,13 @@ class JsonLdProcessor:
         Returns:
             List of processed documents
         """
-        doc = self._load_document(jsonld_doc) if isinstance(jsonld_doc, str) else jsonld_doc
+        # doc = self._load_document(jsonld_doc) if isinstance(jsonld_doc, str) else jsonld_doc
         
+        # if isinstance(doc['@context'],str):
+        #     if not valid_url(doc['@context']):
+        #         doc['@context']
+            
+            
         expanded = jsonld.expand(jsonld_doc, options={'defaultLoader': self.loader})
         
         processed = []

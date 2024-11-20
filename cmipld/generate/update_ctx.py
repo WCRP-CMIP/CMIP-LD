@@ -25,7 +25,7 @@ def main():
     ctxs = glob.glob('data_descriptors/*/*_context_')
     print('Updating contexts: to match latest repository prefixes')
     for cx in tqdm.tqdm(ctxs):
-        print(cx)
+        # print(cx)
         
         item = cx.split('/')[1]
         
@@ -80,5 +80,5 @@ def main():
         
         data = sorted_ctx(data)
         
-        json.dump(mapping,f,indent=4)
+        json.dump(data,f,indent=4)
             

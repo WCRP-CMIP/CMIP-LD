@@ -61,8 +61,11 @@ def sorted_ctx(dct):
     
     ctxlist = []
     
+    islist = True
     if not isinstance(dct['@context'],list):
         dct['@context'] = [dct['@context']]
+        islist = False
+        
         
         
     for dctx in dct['@context']:
@@ -107,5 +110,9 @@ def sorted_ctx(dct):
     dct['@context'] = ctxlist
     
     dct['@embed'] = '@always'
+    
+    if not islist:
+        dct['@context'] = dct['@context'][0]
+        
     return dct
     

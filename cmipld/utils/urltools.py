@@ -1,4 +1,5 @@
 import requests
+# import urlparse
 
 def url_exists(url):
     try:
@@ -12,3 +13,8 @@ def url_exists(url):
         print(f"An error occurred: {e}")
         return None
     
+    
+# def valid_url(url):
+#     parsed_url = urlparse(url)
+#     # Check if the URL has a valid scheme (e.g., 'http', 'https') and netloc (domain)
+#     return parsed_url.scheme and parsed_url.netloc
