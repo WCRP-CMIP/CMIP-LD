@@ -17,10 +17,10 @@ from .utils import DotAccessibleDict
 mapping = {
     'wcrp-universe': 'https:/wcrp-cmip.github.io/WCRP-UNIVERSE/',
     'mip-variables': 'https://wcrp-cmip.github.io/MIPvariables/',
-    'cmip6plus': 'https:/wcrp-cmip.github.io/CMIP6Plus_CVs/',
-    'cmip7': 'https:/wcrp-cmip.github.io/CMIP7_CVs/',
+    'cmip6plus': 'https://wcrp-cmip.github.io/CMIP6Plus_CVs/',
+    'cmip7': 'https://wcrp-cmip.github.io/CMIP7_CVs/',
     # 'mip-cmor-tables': 'https://PCMDI.github.io/mip-cmor-tables/',
-    'cf': 'https:/wcrp-cmip.github.io/WCRP-CMIP/CF/',
+    'cf': 'https://wcrp-cmip.github.io/WCRP-CMIP/CF/',
 }
 
 historic = ['mip-variables','cmip6plus','cmip7','cf','wcrp-universe','mip-cmor-tables','mip-variables:', 'cmip6plus:', 'cmip7:', 'cf:', 'wcrp-universe:', 'mip-cmor-tables:']
