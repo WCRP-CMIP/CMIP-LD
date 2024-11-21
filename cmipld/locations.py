@@ -15,7 +15,7 @@ from .utils import DotAccessibleDict
 # locations mandatory for graphing script to run
 # added to contexts
 mapping = {
-    'wcrp-universe': 'https:/wcrp-cmip.github.io/WCRP-UNIVERSE/',
+    'wcrp-universe': 'https://wcrp-cmip.github.io/WCRP-UNIVERSE/',
     'mip-variables': 'https://wcrp-cmip.github.io/MIPvariables/',
     'cmip6plus': 'https://wcrp-cmip.github.io/CMIP6Plus_CVs/',
     'cmip7': 'https://wcrp-cmip.github.io/CMIP7_CVs/',
