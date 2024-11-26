@@ -16,7 +16,7 @@ from .utils import DotAccessibleDict
 # added to contexts
 mapping = {
     'wcrp-universe': 'https://wcrp-cmip.github.io/WCRP-UNIVERSE/',
-    'mip-variables': 'https://wcrp-cmip.github.io/MIPvariables/',
+    'mip-variables': 'https://wcrp-cmip.github.io/MIP-variables/',
     'cmip6plus': 'https://wcrp-cmip.github.io/CMIP6Plus_CVs/',
     'cmip7': 'https://wcrp-cmip.github.io/CMIP7_CVs/',
     # 'mip-cmor-tables': 'https://PCMDI.github.io/mip-cmor-tables/',
