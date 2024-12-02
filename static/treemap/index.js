@@ -102,7 +102,7 @@ async function createTreemap() {
         .selectAll('tspan')
         .data((d) => {
             const nameParts = d.data.name.split(/(?=[A-Z][^A-Z])/g);
-            return [...nameParts, format(d.value)];
+            return [...nameParts, d.depth>3?format(d.value):''];
         })
         .join('tspan')
         .attr('fill-opacity', (d, i, nodes) => 
