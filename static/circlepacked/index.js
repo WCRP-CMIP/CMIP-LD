@@ -136,16 +136,6 @@ const head = d3.select("#title")
 
     console.log(k, v, width / 2)
 
-    svglinks.attr(
-      "transform",
-      `translate(${-v[0]},${-v[1]})`
-    );
-
-    if (Math.floor(k) != 1) {
-      svglinks.attr("opacity", 0)
-    } else {
-      svglinks.attr("opacity", 1)
-    }
 
     node.attr("r", (d) => d.r * k);
   }
