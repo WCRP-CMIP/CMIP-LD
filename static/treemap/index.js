@@ -121,7 +121,7 @@ fetch("https://wcrp-cmip.github.io/LD-Collection/universe_contents/universe_hier
       .append("clipPath")
       .attr("id", (d) => d.data.name + "-clip")
       .append("use")
-      .attr("xlink:href", (d) => d.nodeUid.href);
+      .attr("xlink:href", (d) => d.nodeUid);
 
     node
       .append("text")
