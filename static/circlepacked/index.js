@@ -94,7 +94,8 @@ function chart(data) {
       "click",
 
       (event, d) => {
-        if (d.depth<2) return focus !== d && (zoom(event, d), event.stopPropagation())
+        if (d.depth<2) d = d.parent
+        return focus !== d && (zoom(event, d), event.stopPropagation())
       });
 
 
