@@ -64,17 +64,18 @@ fetch("https://wcrp-cmip.github.io/LD-Collection/universe_contents/universe_hier
       // const shadow = DOM.uid("shadow");
 
 
-    function generateUID(prefix = "id") {
-      return `${prefix}-${Math.random().toString(36).substr(2, 9)}`;
-    }
+    // function generateUID(prefix = "id") {
+    //   return `${prefix}-${Math.random().toString(36).substr(2, 9)}`;
+    // }
     
-    // Create a shadow filter with a unique ID
-    const shadowID = generateUID("shadow");
+    // // Create a shadow filter with a unique ID
+    // const shadowID = generateUID("shadow");
 
-    
+
     const shadow = svg
       .append("filter")
-      .attr("id", shadowID)
+      .attr("id", 'test')
+        //shadowID)
       .append("feDropShadow")
       .attr("flood-opacity", 0.3)
       .attr("dx", 0)
