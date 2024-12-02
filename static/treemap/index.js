@@ -115,7 +115,7 @@ async function createTreemap() {
         .filter((d) => d.children)
         .selectAll('tspan')
         .attr('dx', 3)
-        .attr('y', 13);
+        .attr('y', 3);
 
     // Positioning for leaf nodes (no children)
     node
