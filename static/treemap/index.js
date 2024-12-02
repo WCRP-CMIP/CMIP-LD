@@ -1,5 +1,5 @@
-const width = 928;
-const height = 1060;
+const width = window.innerWidth;
+const height = window.innerHeight;
 
 // Load JSON data and render the chart
 fetch("https://wcrp-cmip.github.io/LD-Collection/universe_contents/universe_hierarchy.json")
