@@ -1,5 +1,5 @@
-const width = window.innerWidth;
-const height = window.innerHeight;
+const width = 600;
+const height = 400;
 
 const tetrad = [
   "#5215fc",  // Original Violet
