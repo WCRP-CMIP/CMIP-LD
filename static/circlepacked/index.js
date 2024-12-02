@@ -139,7 +139,6 @@ function chart(data) {
       (d) => `translate(${(d.x - v[0]) * k},${(d.y - v[1]) * k})`
     );
 
-    console.log(k, v, width / 2)
 
 
     node.attr("r", (d) => d.r * k);
@@ -147,8 +146,8 @@ function chart(data) {
 
   function zoom(event, d) {
 
-    if (d.depth > 2) {d = d.parent}
-    else{return 0};
+    // if (d.depth > 2) {d = d.parent}
+    // else{return 0};
 
     const focus0 = focus;
 
