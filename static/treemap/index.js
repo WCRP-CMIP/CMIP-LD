@@ -1,8 +1,11 @@
 import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7/+esm';
+const url ='https://wcrp-cmip.github.io/LD-Collection/universe_contents/universe_hierarchy.json'
+
+
 
 async function createTreemap() {
     // Fetch data
-    const response = await fetch('https://wcrp-cmip.github.io/LD-Collection/universe_contents/universe_hierarchy.json');
+    const response = await fetch(url);
     const data = await response.json();
 
     // Clear previous chart
@@ -77,34 +80,54 @@ async function createTreemap() {
         (d) => `${d.ancestors().reverse().map((d) => d.data.name).join('/')}\n${format(d.value)}`
     );
 
-    // Rectangles
+    // Rectangles with unique IDs
     node
         .append('rect')
+        .attr('id', (d, i) => `rect-${i}`)
         .attr('fill', (d) => d.depth > 0 ? color[d.data.prefix](d.height) : 'white')
         .attr('width', (d) => d.x1 - d.x0)
         .attr('height', (d) => d.y1 - d.y0);
 
-    // Text
+    // Clip paths
     node
+        .append('clipPath')
+        .attr('id', (d, i) => `clip-${i}`)
+        .append('use')
+        .attr('href', (d, i) => `#rect-${i}`);
+
+    // Text with improved positioning
+    const text = node
         .append('text')
+        .attr('clip-path', (d, i) => `url(#clip-${i})`)
         .selectAll('tspan')
-        .data((d) => d.data.name.split(/(?=[A-Z][^A-Z])/g).concat(format(d.value)))
+        .data((d) => {
+            const nameParts = d.data.name.split(/(?=[A-Z][^A-Z])/g);
+            return [...nameParts, format(d.value)];
+        })
         .join('tspan')
-        .attr('fill-opacity', (d, i, nodes) => i === nodes.length - 1 ? 0.7 : null)
+        .attr('fill-opacity', (d, i, nodes) => 
+            i === nodes.length - 1 ? 0.7 : null
+        )
         .text((d) => d);
 
-    // Adjust text positioning
+    // Positioning for parent nodes (with children)
     node
         .filter((d) => d.children)
         .selectAll('tspan')
         .attr('dx', 3)
         .attr('y', 13);
 
+    // Positioning for leaf nodes (no children)
     node
         .filter((d) => !d.children)
         .selectAll('tspan')
         .attr('x', 3)
-        .attr('y', (d, i, nodes) => `${(i === nodes.length - 1) ? 0.3 + 1.1 : i * 0.9}em`);
+        .attr('y', (d, i, nodes) => {
+            const isLastItem = i === nodes.length - 1;
+            return isLastItem ? '1.4em' : `${i * 0.9}em`;
+        });
+
+    return svg.node();
 }
 
 // Initial render
