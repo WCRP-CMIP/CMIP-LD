@@ -1,11 +1,34 @@
 const width = window.innerWidth;
 const height = window.innerHeight;
 
+const tetrad = [
+  "#5215fc",  // Original Violet
+  "#fc154b",  // Original Red
+  "#bffc15",  // Original Lime Green
+  "#15fca1",  // Teal
+  "#15bffc",  // Cyan
+  "#fc8915",  // Orange
+  "#fc15e0",  // Magenta
+  "#15fc42",  // Bright Green
+  "#8a15fc",  // Purple
+  "#fc1515",  // Bright Red
+  "#15fcfc",  // Aqua
+  "#fcf315",  // Yellow
+  "#a115fc",  // Deep Violet
+  "#fc7015",  // Deep Orange
+  "#5ffc15",  // Yellow-Green
+  "#15fc9a",  // Mint Green
+  "#15a1fc",  // Sky Blue
+  "#e015fc",  // Bright Pink
+  "#fc4567",  // Coral
+  "#6a15fc",  // Indigo
+]
+
 // Load JSON data and render the chart
 fetch("https://wcrp-cmip.github.io/LD-Collection/universe_contents/universe_hierarchy.json")
   .then((response) => response.json())
   .then((data) => {
-    const colors = d3.schemeCategory10.map((color) =>
+    const colors = tetrad.map((color) =>
       d3.scaleSequential([5, 0], (t) => d3.interpolateRgb(color, "white")(t))
     );
 
