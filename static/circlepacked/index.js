@@ -11,7 +11,7 @@ function chart(data) {
   // const color = d3.scaleOrdinal(d3.schemeCategory10);
     // Color generation
   const colours = d3.schemeCategory10.map((d) => 
-      d3.scaleSequential([5, 0], (t) => d3.interpolate(d, "white")(t))
+      d3.scaleSequential([8, 0], (t) => d3.interpolate(d, "white")(t))
   );
   
   const color = {};
