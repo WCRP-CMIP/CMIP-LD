@@ -70,7 +70,7 @@ const head = d3.select("#title")
     .attr("fill-opacity", 0.1)
     .attr("stroke", linkstroke)
     .attr("stroke-width", (d) => (d.depth == 2 ? 2 : 1))
-    .attr("stroke-opacity", (d) => (d.depth ===1? 0.3: d.depth < 3 === 0 ? 1 : 0.4))
+    // .attr("stroke-opacity", (d) => (d.depth ===1? 0.3: d.depth < 3 === 0 ? 1 : 0.4))
     .attr("stroke-dasharray", (d) => (d.depth != 1 ? "0" : "8 6"))
     .attr("pointer-events", (d) => (!d.children ? "none" : null))
     .on("mouseover", function () {
@@ -107,7 +107,7 @@ const head = d3.select("#title")
     .style("fill-opacity", (d) => (d.parent === root ? 1 : 0))
     .style("display", (d) => (d.parent === root ? "inline" : "none"))
     .style("font-size", (d) =>
-      d.depth < 2 ? "2.5em" : d.depth > 2 ? "0.01em" : "1em"
+      d.depth < 2 ? "1.5em" : d.depth > 2 ? "0.01em" : ".7em"
     )
     .attr("text-align", "center")
     .attr("backdrop-filter", "blur(10px)")
