@@ -31,7 +31,7 @@ async function createTreemap() {
     const treemap = (data) => 
         d3.treemap()
             .size([width, height])
-            .paddingOuter(3)
+            .paddingOuter(0)
             .paddingTop(19)
             .paddingInner(1)
             .round(true)(
