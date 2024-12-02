@@ -147,7 +147,8 @@ function chart(data) {
 
   function zoom(event, d) {
 
-    if (d.depth < 2) return console.log(d.depth, d)
+    if (d.depth > 1 && d.parent) {d = d.parent}
+    else{return 0};
 
     const focus0 = focus;
 
