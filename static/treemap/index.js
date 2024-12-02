@@ -110,7 +110,7 @@ fetch("https://wcrp-cmip.github.io/LD-Collection/universe_contents/universe_hier
 
     node
       .append("rect")
-      .attr("id", (d) => (d.nodeUid = DOM.uid("node")).id)
+      .attr("id", (d) => d.data.name)
       .attr("fill", (d) =>
         d.depth > 0 ? color[d.data.prefix](d.height) : "white"
       )
@@ -119,7 +119,7 @@ fetch("https://wcrp-cmip.github.io/LD-Collection/universe_contents/universe_hier
 
     node
       .append("clipPath")
-      .attr("id", (d) => (d.clipUid = DOM.uid("clip")).id)
+      .attr("id", (d) => d.data.name + "-clip")
       .append("use")
       .attr("xlink:href", (d) => d.nodeUid.href);
 
