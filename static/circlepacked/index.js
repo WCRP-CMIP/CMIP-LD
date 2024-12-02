@@ -9,11 +9,11 @@ function chart(data) {
 
   // Create the color scale.
   // const color = d3.scaleOrdinal(d3.schemeCategory10);
-    // Color generation
-  const colours = d3.schemeCategory10.map((d) => 
-      d3.scaleSequential([8, 0], (t) => d3.interpolate(d, "white")(t))
+  // Color generation
+  const colours = d3.schemeCategory10.map((d) =>
+    d3.scaleSequential([8, 0], (t) => d3.interpolate(d, "white")(t))
   );
-  
+
   const color = {};
   data.children.forEach((d, i) => (color[d.prefix] = colours[i]));
 
@@ -24,12 +24,12 @@ function chart(data) {
       d3
         .hierarchy(data)
         .sum((d) => d.size)
-        // .sort((a, b) => b.size - a.size)
+      // .sort((a, b) => b.size - a.size)
     );
 
-    // function d3_layout_packSort(a, b) {
-    //   return -(a.value - b.value);
-    // }
+  // function d3_layout_packSort(a, b) {
+  //   return -(a.value - b.value);
+  // }
   const root = pack(data);
 
   // Create the SVG container.
@@ -54,12 +54,12 @@ function chart(data) {
   }
 
 
-function linkstroke(d) {
-  return d.depth==2?'none':color[d.data.prefix](1)
-}
+  function linkstroke(d) {
+    return d.depth == 2 ? 'none' : color[d.data.prefix](1+d.height*2)
+  }
 
 
-const head = d3.select("#title")
+  const head = d3.select("#title")
   // Append the nodes.
   const node = svg
     .append("g")
@@ -77,10 +77,11 @@ const head = d3.select("#title")
     .on("mouseover", function () {
       d3.select(this).attr("stroke", (d) => {
         head.text(`${d.data.prefix} : ${d.data.name}`)
-        return color[d.data.prefix](d.height)}
-    );
-      
-      
+        return color[d.data.prefix](d.height)
+      }
+      );
+
+
     })
     .on("mouseout", function () {
       d3.select(this)
@@ -89,9 +90,10 @@ const head = d3.select("#title")
     })
     .on(
       "click",
-    
-      (event, d) => {if (d.depth<3) return focus !== d && (zoom(event, d), event.stopPropagation()) 
-});
+
+      (event, d) => {
+        if (d.depth < 3) return focus !== d && (zoom(event, d), event.stopPropagation())
+      });
 
   console.log(links)
 
@@ -108,7 +110,7 @@ const head = d3.select("#title")
     .style("fill-opacity", (d) => (d.parent === root ? 1 : 0))
     .style("display", (d) => (d.parent === root ? "inline" : "none"))
     .style("font-size", (d) =>
-      d.depth < 2 ? "1.5em" : d.depth > 2 ? "0.01em" : ".7em"
+      d.depth < 2 ? "1.5em" : d.depth > 2 ? "0.01em" : "1em"
     )
     .attr("text-align", "center")
     .attr("backdrop-filter", "blur(10px)")
