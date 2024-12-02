@@ -76,7 +76,7 @@ const head = d3.select("#title")
     .on("mouseover", function () {
       d3.select(this).attr("stroke", (d) => {
         head.text(`${d.data.prefix} : ${d.data.name}`)
-        return color(d.data.prefix)}
+        return color[d.data.prefix](d.height)}
     );
       
       
