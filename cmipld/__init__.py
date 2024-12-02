@@ -6,6 +6,21 @@ from .browse import *
 
 processor = JsonLdProcessor()
 
+
+def reload(module=None):
+    # nowork
+    import sys
+    if not module: 
+        module = sys.modules[__name__]
+        
+    import importlib
+    del sys.modules[module.__name__]
+    importlib.invalidate_caches()
+    module = importlib.import_module(module.__name__)
+    importlib.reload(module)
+    print('Reloaded',module)
+    
+
 # # for CLI purposes. To develop further
 
 # import argparse,os

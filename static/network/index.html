@@ -136,7 +136,28 @@
             // window.location.reload();
         }, 10000);
 
-        const tetrad = '#5215fc #fc154b #bffc15'.split(' ')
+        const tetrad = [
+    "#5215fc",  // Original Violet
+    "#fc154b",  // Original Red
+    "#bffc15",  // Original Lime Green
+    "#15fca1",  // Teal
+    "#15bffc",  // Cyan
+    "#fc8915",  // Orange
+    "#fc15e0",  // Magenta
+    "#15fc42",  // Bright Green
+    "#8a15fc",  // Purple
+    "#fc1515",  // Bright Red
+    "#15fcfc",  // Aqua
+    "#fcf315",  // Yellow
+    "#a115fc",  // Deep Violet
+    "#fc7015",  // Deep Orange
+    "#5ffc15",  // Yellow-Green
+    "#15fc9a",  // Mint Green
+    "#15a1fc",  // Sky Blue
+    "#e015fc",  // Bright Pink
+    "#fc4567",  // Coral
+    "#6a15fc",  // Indigo
+]
         // Get the dimensions of the screen
         let width = window.innerWidth;
         let height = window.innerHeight;
@@ -166,17 +187,34 @@
             // Create a simulation with several forces.
             const simulation = d3.forceSimulation(nodes)
                 .force("link", d3.forceLink(links).id(d => d.id))
-                .force("charge", d3.forceManyBody().strength(-100))
-                .force("x", d3.forceX(d => {
-                    if (d.category === "cmip6plus") return width / 4;
-                    if (d.category === "mip-cmor-tables") return -width / 4;
-                    return 0;
-                }).strength(d => {
-                    if (d.category === "cmip6plus") return 0.1;
-                    if (d.category === "mip-cmor-tables") return 0.1;
-                    return 0.2;
-                }))
-                .force("y", d3.forceY());
+                .force("charge", d3.forceManyBody().strength(d=>- Math.sqrt(d.total_weight)*2)
+                .theta(0.5)
+                .distanceMax(500)
+                )
+                .force("xs", d3.forceX(d => {
+                    // if (d.category === "cmip6plus") return width / 4;
+                    if (d.category === "wcrp-universe") return -width / 8;
+                    return  0;
+                }).strength(.001)
+                // .strength(d => {
+                //     // if (d.category === "cmip6plus") return 0.001;
+                //     if (d.category === "wcrp-universe") return 0.001;
+                //     return 0.002;
+                // })
+                )
+                // .force("link", d3.forceLink().id(function(d) { return d.id; }))
+                //     .force('charge', d3.forceManyBody()
+                //     .strength(-1900)
+                //     .theta(0.5)
+                //     .distanceMax(1500)
+                //     )
+                    .force('collision', d3.forceCollide().radius(function(d) {
+                            return d.radius
+                        }))
+                    .force("center", d3.forceCenter(width / 2, height / 2))
+
+                // .force("x", d3.forceX())
+                // .force("y", d3.forceY());
 
             // Create the SVG container.
             const svg = d3.select("#chart").append("svg")

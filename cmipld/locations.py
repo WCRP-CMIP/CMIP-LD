@@ -20,7 +20,8 @@ mapping = {
     'cmip6plus': 'https://wcrp-cmip.github.io/CMIP6Plus_CVs/',
     'cmip7': 'https://wcrp-cmip.github.io/CMIP7_CVs/',
     # 'mip-cmor-tables': 'https://PCMDI.github.io/mip-cmor-tables/',
-    'cf': 'https://wcrp-cmip.github.io/WCRP-CMIP/CF/',
+    'cf': 'https://wcrp-cmip.github.io/CF/',
+    'obs4mips': 'https://wolfiex.github.io/obs4MIPs-cmor-tables-ld//'
 }
 
 historic = ['mip-variables','cmip6plus','cmip7','cf','wcrp-universe','mip-cmor-tables','mip-variables:', 'cmip6plus:', 'cmip7:', 'cf:', 'wcrp-universe:', 'mip-cmor-tables:']
