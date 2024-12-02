@@ -72,7 +72,7 @@ function chart(data) {
     .attr("stroke-width", (d) => (d.depth == 2 ? 2 : 1))
     .attr("stroke-opacity", 1)
     //(d) => (d.depth ===1? 0.3: d.depth < 3 === 0 ? 1 : 0.4))
-    .attr("stroke-dasharray", (d) => (d.depth != 1 ? "0" : "8 6 1 1 3 4"))
+    .attr("stroke-dasharray", (d) => (d.depth != 1 ? "0" : "8 3 1 1 3 4"))
     .attr("pointer-events", (d) => (!d.children ? "none" : null))
     .on("mouseover", function () {
       d3.select(this).attr("stroke", (d) => {
