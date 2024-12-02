@@ -32,7 +32,7 @@ fetch("https://wcrp-cmip.github.io/LD-Collection/universe_contents/universe_hier
       d3.scaleSequential([5, 0], (t) => d3.interpolateRgb(color, "white")(t))
     );
 
-    const colorMap = {};
+    const color = {};
     data.children.forEach((d, i) => (colorMap[d.prefix] = colors[i]));
 
     const treemap = (data) =>
