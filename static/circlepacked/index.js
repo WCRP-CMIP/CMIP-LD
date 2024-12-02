@@ -94,10 +94,10 @@ function chart(data) {
       "click",
 
       (event, d) => {
-        if (d.depth<2) return focus !== d && (zoom(event, d.parent), event.stopPropagation())
+        if (d.depth<2) return focus !== d && (zoom(event, d), event.stopPropagation())
       });
 
-  console.log(links)
+
 
   // Append the text labels.
   const label = svg
@@ -146,6 +146,9 @@ function chart(data) {
   }
 
   function zoom(event, d) {
+
+    if (d.depth < 2) return console.log(d.depth, d)
+
     const focus0 = focus;
 
     focus = d;
