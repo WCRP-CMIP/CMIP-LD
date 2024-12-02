@@ -108,6 +108,7 @@ async function createTreemap() {
         .attr('fill-opacity', (d, i, nodes) => 
             i === nodes.length - 1 ? 0.7 : null
         )
+        .attr('font-size', (d, i, nodes) =>d.depth>2?"0.6em":'1em')
         .text((d) => d);
 
     // Positioning for parent nodes (with children)
@@ -124,7 +125,7 @@ async function createTreemap() {
         .attr('x', 3)
         .attr('y', (d, i, nodes) => {
             const isLastItem = i === nodes.length - 1;
-            return isLastItem ? '1.4em' : `${i * 0.9}em`;
+            return isLastItem ? '1.4em' : '1em';//`${i * 0.9}em`;
         });
 
     return svg.node();
