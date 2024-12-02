@@ -43,11 +43,11 @@ fetch("https://wcrp-cmip.github.io/LD-Collection/universe_contents/universe_hier
         .paddingTop(19)
         .paddingInner(1)
         .round(true)(
-        d3
-          .hierarchy(data)
-          .sum((d) => d.size)
-          .sort((a, b) => b.size - a.size)
-      );
+          d3
+            .hierarchy(data)
+            .sum((d) => d.size)
+            .sort((a, b) => b.size - a.size)
+        );
 
     const root = treemap(data);
 
@@ -61,8 +61,9 @@ fetch("https://wcrp-cmip.github.io/LD-Collection/universe_contents/universe_hier
         "max-width: 100%; height: auto; overflow: visible; font: 10px sans-serif;"
       );
 
-    const shadow = svg.append("filter").attr("id", "shadow");
-    shadow
+    svg
+      .append("filter")
+      .attr("id", shadow.id)
       .append("feDropShadow")
       .attr("flood-opacity", 0.3)
       .attr("dx", 0)
@@ -70,34 +71,42 @@ fetch("https://wcrp-cmip.github.io/LD-Collection/universe_contents/universe_hier
 
     const node = svg
       .selectAll("g")
-      .data(root.descendants())
+      .data(d3.group(root, (d) => d.height))
+      .join("g")
+      .attr("filter", shadow)
+      .selectAll("g")
+      .data((d) => d[1])
       .join("g")
       .attr("transform", (d) => `translate(${d.x0},${d.y0})`);
 
     const format = d3.format(",d");
-
-    node
-      .append("title")
-      .text(
-        (d) =>
-          `${d
-            .ancestors()
-            .reverse()
-            .map((d) => d.data.name)
-            .join("/")}\n${format(d.value)}`
-      );
+    node.append("title").text(
+      (d) =>
+        `${d
+          .ancestors()
+          .reverse()
+          .map((d) => d.data.name)
+          .join("/")}\n${format(d.value)}`
+    );
 
     node
       .append("rect")
+      .attr("id", (d) => (d.nodeUid = DOM.uid("node")).id)
       .attr("fill", (d) =>
-        d.depth > 0 ? colorMap[d.data.prefix](d.height) : "white"
+        d.depth > 0 ? color[d.data.prefix](d.height) : "white"
       )
       .attr("width", (d) => d.x1 - d.x0)
       .attr("height", (d) => d.y1 - d.y0);
 
     node
+      .append("clipPath")
+      .attr("id", (d) => (d.clipUid = DOM.uid("clip")).id)
+      .append("use")
+      .attr("xlink:href", (d) => d.nodeUid.href);
+
+    node
       .append("text")
-      .attr("clip-path", (d) => `url(#clip-${d.data.name})`)
+      .attr("clip-path", (d) => d.clipUid)
       .selectAll("tspan")
       .data((d) => d.data.name.split(/(?=[A-Z][^A-Z])/g).concat(format(d.value)))
       .join("tspan")
@@ -105,6 +114,21 @@ fetch("https://wcrp-cmip.github.io/LD-Collection/universe_contents/universe_hier
         i === nodes.length - 1 ? 0.7 : null
       )
       .text((d) => d);
+
+    node
+      .filter((d) => d.children)
+      .selectAll("tspan")
+      .attr("dx", 3)
+      .attr("y", 13);
+
+    node
+      .filter((d) => !d.children)
+      .selectAll("tspan")
+      .attr("x", 3)
+      .attr(
+        "y",
+        (d, i, nodes) => `${(i === nodes.length - 1) * 0.3 + 1.1 + i * 0.9}em`
+      );
 
     document.body.appendChild(svg.node());
   })
