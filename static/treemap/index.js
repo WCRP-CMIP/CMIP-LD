@@ -108,7 +108,7 @@ async function createTreemap() {
         .attr('fill-opacity', (d, i, nodes) => 
             i === nodes.length - 1 ? 0.7 : null
         )
-        .attr('font-size', (d, i, nodes) =>d.depth>2?"0.6em":'1em')
+        .attr('font-size', (d, i, nodes) =>d.depth>2?"0.2em":'1em')
         .text((d) => d);
 
     // Positioning for parent nodes (with children)
