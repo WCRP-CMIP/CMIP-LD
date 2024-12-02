@@ -55,7 +55,7 @@ function chart(data) {
 
 
 function linkstroke(d) {
-  return d.depth==2?'none':color[d.data.prefix](d.height)
+  return d.depth==2?'none':color[d.data.prefix](1)
 }
 
 
