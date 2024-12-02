@@ -2,7 +2,6 @@ import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7/+esm';
 const url ='https://wcrp-cmip.github.io/LD-Collection/universe_contents/universe_hierarchy.json'
 
 
-
 async function createTreemap() {
     // Fetch data
     const response = await fetch(url);
@@ -83,7 +82,7 @@ async function createTreemap() {
     // Rectangles with unique IDs
     node
         .append('rect')
-        .attr('id', (d, i) => `rect-${i}`)
+        .attr('id', (d) => (d.nodeUid = svg.append('defs').append('path').attr('id', `rect-${Math.random()}`)).id)
         .attr('fill', (d) => d.depth > 0 ? color[d.data.prefix](d.height) : 'white')
         .attr('width', (d) => d.x1 - d.x0)
         .attr('height', (d) => d.y1 - d.y0);
@@ -91,14 +90,14 @@ async function createTreemap() {
     // Clip paths
     node
         .append('clipPath')
-        .attr('id', (d, i) => `clip-${i}`)
+        .attr('id', (d) => (d.clipUid = svg.append('defs').append('path').attr('id', `clip-${Math.random()}`)).id)
         .append('use')
-        .attr('href', (d, i) => `#rect-${i}`);
+        .attr('xlink:href', (d) => d.nodeUid.href);
 
     // Text with improved positioning
     const text = node
         .append('text')
-        .attr('clip-path', (d, i) => `url(#clip-${i})`)
+        .attr('clip-path', (d) => `url(#${d.clipUid.id})`)
         .selectAll('tspan')
         .data((d) => {
             const nameParts = d.data.name.split(/(?=[A-Z][^A-Z])/g);
