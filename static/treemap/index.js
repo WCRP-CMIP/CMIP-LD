@@ -33,7 +33,7 @@ fetch("https://wcrp-cmip.github.io/LD-Collection/universe_contents/universe_hier
     );
 
     const color = {};
-    data.children.forEach((d, i) => (colorMap[d.prefix] = colors[i]));
+    data.children.forEach((d, i) => (color[d.prefix] = colors[i]));
 
     const treemap = (data) =>
       d3
