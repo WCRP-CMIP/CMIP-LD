@@ -21,6 +21,27 @@ def reload(module=None):
     print('Reloaded',module)
     
 
+
+def get(a):
+    return processor.get(a)
+
+
+def expand(u):
+    return jsonld.expand(resolve_url(u))
+
+def getall(l):
+    '''
+    Get multiple items
+    '''
+    assert isinstance(l,list)
+    return [expand(a) for a in l]
+
+
+# getall auto depend. -. is this the same as processor get?
+
+
+
+
 # # for CLI purposes. To develop further
 
 # import argparse,os

@@ -7,9 +7,9 @@ from urllib.parse import urljoin
 # from ..utils.urltools import valid_url
 from pyld import jsonld
 from .interactive import open_jless_with_memory
-from ..locations import mapping
+from ..locations import mapping,matches
 from .contexts import get_context
-matches = re.compile(f"({'|'.join([i+':' for i in mapping.keys()])})")
+
 
 class JsonLdProcessor:
     """

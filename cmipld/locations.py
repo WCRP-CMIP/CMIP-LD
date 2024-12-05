@@ -1,4 +1,6 @@
 from .utils import DotAccessibleDict
+import re
+
 
 # LatestFiles = DotAccessibleDict({
 #     'cmip6plus_ld': ['WCRP-CMIP','CMIP6Plus_CVs','graph_data.min.json','jsonld'],
@@ -7,7 +9,6 @@ from .utils import DotAccessibleDict
 #     'mip_cmor_tables': ['PCMDI','mip-cmor-tables','graph_data.min.json','main'],
 #     "CF": ['WCRP-CMIP','CF','compiled/graph_data.min.json','main'],
 # })
-
 
 
 
@@ -26,6 +27,22 @@ mapping = {
 
 historic = ['mip-variables','cmip6plus','cmip7','cf','wcrp-universe','mip-cmor-tables','mip-variables:', 'cmip6plus:', 'cmip7:', 'cf:', 'wcrp-universe:', 'mip-cmor-tables:']
 
+matches = re.compile(f"({'|'.join([i+':' for i in mapping.keys()])})")
+
+def resolve_url(url):
+    if url.startswith('http') and url.count(':')>2:
+        return mapping.get(url,url)
+    else:
+        return url
+    
+def compact_url(url):
+    if url.startswith('http') and url.count(':')>2:
+        for k,v in mapping.items():
+            if url.startswith(v):
+                return url.replace(v,k+':')
+        return url
+    else:
+        return url
 
 # namesplit = lambda x: tuple(x.split('/')[3:5])
 
