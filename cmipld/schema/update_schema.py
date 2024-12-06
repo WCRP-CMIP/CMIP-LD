@@ -45,7 +45,10 @@ def main():
                         
                         ref = value["@context"].replace("_context_","")
                         
-                        description = value.get('description',f'A reference object from <a href={ref}> {compact_url(ref)} </a>')
+                        
+                        define = f'A reference object from <a href={ref}> {compact_url(ref)} </a>. '
+                        
+                        description = define + value.get('description',"").split('</a>')[-1]
                         
                         schema['properties'][key] = {
                             "type": schema['properties'][key].get("type","string"),
