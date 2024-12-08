@@ -10,6 +10,10 @@ name: Validate JSON-LD Graph
 runs:
   using: 'composite'
   steps:
+
+    - name: Setup node
+        uses: actions/setup-node@v4
+        
     - name: Set GitHub Pages URL
       id: set-url
       run: |
