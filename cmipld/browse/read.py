@@ -8,7 +8,7 @@ from urllib.parse import urljoin
 from pyld import jsonld
 from .interactive import open_jless_with_memory
 from ..locations import mapping,matches
-from .contexts import get_context
+from .contexts import get_context,generate_context
 
 
 class JsonLdProcessor:

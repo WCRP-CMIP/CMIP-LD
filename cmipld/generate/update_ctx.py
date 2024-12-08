@@ -1,4 +1,4 @@
-from ..locations import mapping,historic
+from ..locations import mapping
 from ..utils import sorted_ctx
 from collections import OrderedDict
 
@@ -15,7 +15,7 @@ mapping = dict(sorted(mapping.items(), key=lambda item: len(item[0])))
 mapping['id'] = '@id'
 mapping['type'] = '@type'
 
-historic.extend(['id','type'])
+historic = ['id','type']
 
 def main():
     

@@ -3,11 +3,46 @@ from urllib.parse import urljoin
 import requests
 import logging
 
+
+
 logger = logging.getLogger(__name__)
+
+
+def generate_context(base='https://wcrp-cmip.github.io',vocab='https://wcrp-cmip.github.io/',type=None,id=None, expand={},expand_ctx={}):
+    
+    
+    from ..locations import mapping
+    from ..utils import sorted_ctx
+    
+    context = mapping.copy()
+
+
+    if base:
+        context['@base'] = base
+    if vocab:
+        context['@vocab'] = vocab
+        
+    context.update(expand_ctx)    
+        
+    context = {"@context":context}
+    
+    if type:
+        context['type'] = type
+    if id:
+        context['id'] = id
+        
+    context.update(expand)
+    
+    
+    return sorted_ctx(context)    
+
+
 
 class ContextResolutionError(Exception):
     """Custom exception for context resolution errors."""
     pass
+
+
 
 def resolve_contexts(
     contexts: typing.Union[str, list, dict], 

@@ -6,6 +6,8 @@ class DotAccessibleDict:
         self.entries = dict(entries)
         for key in self.entries.keys():
             self.__dict__[key] = self.entries[key]
+            if '-' in key:
+                self.__dict__[key.replace('-','_')] = self.entries[key]
 
     # def __getattr__(self, name):
     #     if name in self.entries:
