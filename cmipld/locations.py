@@ -16,7 +16,7 @@ import re
 # locations mandatory for graphing script to run
 # added to contexts
 mapping = {
-    'wcrp-universe': 'https://wcrp-cmip.github.io/WCRP-UNIVERSE/',
+    'wcrp-universe': 'https://wcrp-cmip.github.io/WCRP-universe/',
     'mip-variables': 'https://wcrp-cmip.github.io/MIP-variables/',
     'cmip6plus': 'https://wcrp-cmip.github.io/CMIP6Plus_CVs/',
     'cmip7': 'https://wcrp-cmip.github.io/CMIP7_CVs/',

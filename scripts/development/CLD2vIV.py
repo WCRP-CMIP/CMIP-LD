@@ -15,9 +15,9 @@ pages_url = f"https://{user_repo.split('/')[0]}.github.io/{user_repo.split('/')[
 # print(remote_url)
 # print(user_repo)
 # print(pages_url)
-# https://github.com/WCRP-CMIP/WCRP-UNIVERSE.git
-# WCRP-CMIP/WCRP-UNIVERSE
-# https://WCRP-CMIP.github.io/WCRP-UNIVERSE
+# https://github.com/WCRP-CMIP/WCRP-universe.git
+# WCRP-CMIP/WCRP-universe
+# https://WCRP-CMIP.github.io/WCRP-universe
 
 
 folders = glob.glob('*/')
