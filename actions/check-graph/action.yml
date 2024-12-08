@@ -19,7 +19,9 @@ runs:
 
     - name: Install jsonld CLI
       run: |
-        npm install -g jsonld-cli
+        npm install -g digitalbazaar/jsonld-cli
+
+        
       shell: bash
 
     - name: Validate JSON-LD from URL
