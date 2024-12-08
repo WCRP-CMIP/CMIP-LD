@@ -124,6 +124,7 @@ runs:
           echo "Enabling downstream workflow triggers"
         env:
           ACTIONS_ALLOW_UNSECURE_DOWNSTREAM: "true"
+        shell: bash
 
       - name: Commit changes
         id: commit
