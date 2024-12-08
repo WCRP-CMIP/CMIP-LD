@@ -25,7 +25,4 @@ def main():
 
             data['type'] = [f"wcrp:{dname}",prefix]
 
-            print(data['type'])
-            break
-
             json.dump(data,open(f,'w'))
