@@ -3,12 +3,13 @@ import re
 
 # Registered locations
 mapping = {
-    'wcrp-universe': 'https://wcrp-cmip.github.io/WCRP-universe/',
-    'mip-variables': 'https://wcrp-cmip.github.io/MIP-variables/',
+    'wcrp':'https://wcrp-cmip.github.io/',
+    'universal': 'https://wcrp-cmip.github.io/WCRP-universe/',
+    'variables': 'https://wcrp-cmip.github.io/MIP-variables/',
     'cmip6plus': 'https://wcrp-cmip.github.io/CMIP6Plus_CVs/',
     'cmip7': 'https://wcrp-cmip.github.io/CMIP7_CVs/',
     'cf': 'https://wcrp-cmip.github.io/CF/',
-    'obs4mips': 'https://wolfiex.github.io/obs4MIPs-cmor-tables-ld//'
+    'obs4mips': 'https://wolfiex.github.io/obs4MIPs-cmor-tables-ld/'
 }
 
 # sort
@@ -18,6 +19,8 @@ mapping = dict(sorted(mapping.items(), key=lambda item: len(item[0])))
 # a dot accessible dict of the mapping
 latest = DotAccessibleDict(dict([i,j +'graph'] for i,j in mapping.items()))
 
+def reverse_mapping():
+    return {v:k for k,v in mapping.items()}
 
 def fetchAll(subset=None):
     if subset:

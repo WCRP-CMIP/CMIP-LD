@@ -8,7 +8,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-def generate_context(base='https://wcrp-cmip.github.io',vocab='https://wcrp-cmip.github.io/',type=None,id=None, expand={},expand_ctx={}):
+def generate_context(base='https://wcrp-cmip.github.io',vocab=None,type=None,id=None, expand={},expand_ctx={}):
     
     
     from ..locations import mapping
@@ -27,9 +27,9 @@ def generate_context(base='https://wcrp-cmip.github.io',vocab='https://wcrp-cmip
     context = {"@context":context}
     
     if type:
-        context['type'] = type
+        context['@type'] = type
     if id:
-        context['id'] = id
+        context['@id'] = id
         
     context.update(expand)
     
