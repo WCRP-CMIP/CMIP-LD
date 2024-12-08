@@ -75,20 +75,20 @@ runs:
 
           else
               git checkout production
-              rm -rf data_descriptors
+              rm -rf src-data
               
           fi
 
           git add -A 
           git commit -m 'cleaning up'
 
-          # Checkout the specified branch's data_descriptors directory into production
-          git checkout "${BRANCH}" -- data_descriptors
-          # mv data_descriptors docs
+          # Checkout the specified branch's src-data directory into production
+          git checkout "${BRANCH}" -- src-data
+          # mv src-data docs
 
           # copy the 404 code. 
-          cp 404.html data_descriptors/404.html
-          cp .nojekyll data_descriptors/.nojekyll
+          cp 404.html src-data/404.html
+          cp .nojekyll src-data/.nojekyll
 
 
           # Find all .json files and create symbolic links without the .json extension
@@ -102,14 +102,14 @@ runs:
           find . -type f -name "graph.jsonld" -exec sh -c 'jq empty "{}" || echo "Broken JSON :{}"' \;
 
           # Find all graph.jsonld files and merge them into a single JSON list
-          find . -type f -name "graph.jsonld" -exec jq -s '[.[][]]' {} + > data_descriptors/graph.jsonld
+          find . -type f -name "graph.jsonld" -exec jq -s '[.[][]]' {} + > src-data/graph.jsonld
 
           echo "Files copied"
 
 
           # group all graphs
-          find data_descriptors -type f -name "graph.jsonld" -exec jq -s '[.[]]' {} + > data_descriptors/graph.jsonld
-          cp data_descriptors/graph.jsonld data_descriptors/graph
+          find src-data -type f -name "graph.jsonld" -exec jq -s '[.[]]' {} + > src-data/graph.jsonld
+          cp src-data/graph.jsonld src-data/graph
         shell: bash
     
       - name: Update ctx

@@ -135,7 +135,7 @@ def main():
         
     print('Generating issue templates for all data descriptors')
     
-    for dir in tqdm(glob.glob("./data_descriptors/*/")):
+    for dir in tqdm(glob.glob("./src-data/*/")):
         
         if not os.path.exists(dir+'_schema_') and not os.path.exists(dir+'_context'):
             # skip all directories without a schema and context

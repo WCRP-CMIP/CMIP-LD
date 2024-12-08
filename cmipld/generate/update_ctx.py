@@ -22,7 +22,7 @@ def main():
     # note, an easier, but messier way can achieved by speifying two contexts in the file. 
     # @context: [context1, context2] 
     
-    ctxs = glob.glob('data_descriptors/*/*_context_')
+    ctxs = glob.glob('src-data/*/*_context_')
     print('Updating contexts: to match latest repository prefixes')
     for cx in tqdm.tqdm(ctxs):
         # print(cx)
@@ -72,7 +72,7 @@ def main():
             continue
     
     # lets write the root repo
-    with open('data_descriptors/_context_','w') as f:
+    with open('src-data/_context_','w') as f:
         data = {"@context":mapping}
         
         data['@context']['@base'] = base

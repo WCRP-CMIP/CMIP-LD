@@ -13,7 +13,7 @@ async function fetchAndDisplayData(location) {
 
 
                 // console.warn(baseURL,window.location.origin, origin)
-                if (baseURL === location.origin || origin === 'data_descriptors'){
+                if (baseURL === location.origin || origin === 'src-data'){
                     console.log(origin,item)
                     origin = item
                 }
@@ -63,7 +63,7 @@ async function fetchAndDisplayData(location) {
                     
                     contentHTML += `<h2>Parent</h2><p>${data.prefix} : <a href=${baseURL}>${origin}</a></p>`
                     
-                    const github = `${data.repo}/tree/main/data_descriptors/${origin}`
+                    const github = `${data.repo}/tree/main/src-data/${origin}`
                     contentHTML += `<h2>GithubURL</h2><p><a href=${github}>${data.repo.split('github.com/')[1]}</a></p>`
 
 
@@ -102,7 +102,7 @@ async function fetchAndDisplayData(location) {
 
                 contentHTML += `<h2>Parent</h2><p>${data.prefix} : <a href=${baseURL}>${origin}</a></p>`
 
-                const github = `${data.repo}/tree/main/data_descriptors/${origin}`
+                const github = `${data.repo}/tree/main/src-data/${origin}`
                 contentHTML += `<h2>GithubURL</h2><p><a href=${github}>${data.repo.split('github.com/')[1]}</a></p>`
                     
                     
@@ -139,5 +139,5 @@ async function fetchAndDisplayData(location) {
         }
 
         // Example usage with URL input
-        // const exampleURL = "https://wcrp-cmip.github.io/CMIP6Plus_MIP_variables/data_descriptors/variables/cell_measures";
+        // const exampleURL = "https://wcrp-cmip.github.io/CMIP6Plus_MIP_variables/src-data/variables/cell_measures";
         fetchAndDisplayData(window.location);

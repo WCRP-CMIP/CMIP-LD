@@ -5,7 +5,7 @@ from ..utils.git import io2url
 
 def main():
 
-    for dir in glob.glob("./data_descriptors/*/"):
+    for dir in glob.glob("./src-data/*/"):
         # DO THIS EXTERNALLY
         
         if not os.path.exists(dir+'_schema_') and not os.path.exists(dir+'_context'):
@@ -60,7 +60,7 @@ def main():
                 if key in schema:
                     del schema[key]
                         
-                schema['base'] = io2url(c['@base'],path_base='data_descriptors/')
+                schema['base'] = io2url(c['@base'],path_base='src-data/')
                 
         # from pprint import pprint
         

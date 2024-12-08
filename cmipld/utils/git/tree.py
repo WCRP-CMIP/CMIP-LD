@@ -1,7 +1,7 @@
 import requests
 
-def get_repo_tree(owner, repo, path="data_descriptors", branch = "main", prefix=None):
-    # owner,repo,path,branch = "WCRP-CMIP", "WCRP-universe","data_descriptors","main"
+def get_repo_tree(owner, repo, path="src-data", branch = "main", prefix=None):
+    # owner,repo,path,branch = "WCRP-CMIP", "WCRP-universe","src-data","main"
     
     if prefix is None: prefix = repo
     

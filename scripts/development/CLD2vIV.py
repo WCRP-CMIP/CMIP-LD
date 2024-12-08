@@ -35,7 +35,7 @@ for folder in folders:
                 continue
             js['id'] = file.split('/')[-1]
             js['type'] = js['@type'].replace('-', '_')
-            js['@context'] = f'{pages_url}/data_descriptors/{folder}_context'
+            js['@context'] = f'{pages_url}/src-data/{folder}_context'
             del js['@type'], js['@id']
             
             js = OrderedDict(sorted(js.items()))
@@ -46,7 +46,7 @@ for folder in folders:
         
         
     # context new file
-    location = f"{pages_url}/data_descriptors/{folder}"
+    location = f"{pages_url}/src-data/{folder}"
     context = {
         
         "@context": {

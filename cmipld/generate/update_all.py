@@ -18,7 +18,7 @@ def main():
 
 
 
-    for i in tqdm.tqdm(glob.glob('data_descriptors/*/')):
+    for i in tqdm.tqdm(glob.glob('src-data/*/')):
 
         os.system('ld2graph '+i)
 
