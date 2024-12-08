@@ -119,12 +119,12 @@ runs:
           update_ctx
         continue-on-error: true
 
-      - name: Allow downstream workflows to trigger
-        run: |
-          echo "Enabling downstream workflow triggers"
-        env:
-          ACTIONS_ALLOW_UNSECURE_DOWNSTREAM: "true"
-        shell: bash
+      # - name: Allow downstream workflows to trigger
+      #   run: |
+      #     echo "Enabling downstream workflow triggers"
+      #   env:
+      #     ACTIONS_ALLOW_UNSECURE_DOWNSTREAM: "true"
+      #   shell: bash
 
       - name: Commit changes
         id: commit
