@@ -75,7 +75,7 @@ def convert_schema_to_github_form(schema_path):
 
 
 
-    for field, details in sorted(schema.get("properties", {}).items()):
+    for field, details in schema.get("properties", {}).items():
         
         if field in ['id','type']: continue
         
@@ -192,7 +192,7 @@ def main():
         # print(yaml.dump(form,indent=4,sort_keys=False))
         
         with open(f'.github/ISSUE_TEMPLATE/cmipld_'+dir.split('/')[-2]+'.yml','w') as f:
-            yaml.dump(form,f,indent=4,sort_keys=True)
+            yaml.dump(form,f,indent=4,sort_keys=False)
         
         
         # yaml.dump(form, open(dir+'_form.yaml','w'), sort_keys=False)
