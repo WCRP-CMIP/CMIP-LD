@@ -108,8 +108,20 @@ def convert_schema_to_github_form(schema_path):
                 
             
         elif details.get('form')=="checkboxes" or details["type"] == "array" and "items" in details and "enum" in details["items"]:
+            
             form_field["type"] = "checkboxes"
-            form_field["attributes"]["options"] = [{"label": opt.lower()} for opt in details["items"]["enum"]]
+            
+            if 'items' in details:
+                form_field["attributes"]["options"] = [{"label": opt.lower()} for opt in details["items"]["enum"]]
+            elif 'enum' in details:
+                form_field["attributes"]["options"] = [{"label": opt.lower()} for opt in details["enum"]]
+            
+            else:
+                print('CHECKBOX FAIL',details)
+                # assert False, "No enum or items found for checkboxes"
+            
+                
+                
             # form_field['multiple'] = details.get("multiple", False)
             
         elif details.get('form')=="bool" or details["type"] == "boolean":
@@ -180,7 +192,7 @@ def main():
         # print(yaml.dump(form,indent=4,sort_keys=False))
         
         with open(f'.github/ISSUE_TEMPLATE/cmipld_'+dir.split('/')[-2]+'.yml','w') as f:
-            yaml.dump(form,f,indent=4,sort_keys=False)
+            yaml.dump(form,f,indent=4,sort_keys=True)
         
         
         # yaml.dump(form, open(dir+'_form.yaml','w'), sort_keys=False)
