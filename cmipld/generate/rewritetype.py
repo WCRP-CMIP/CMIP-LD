@@ -11,18 +11,24 @@ def main():
 
     prefix = rmap[base]
     
+    print(prefix)
+    
     
 
-    for dir in glob.glob('src-data/*/'):
+    for dir in glob.glob('./src-data/*/'):
             
-                
-        dname = dir.split('/')[-2]
+        try:
         
-        for f in glob.glob(f'{dir}/*.json'):
-            data = json.load(open(f))
-        
-            data = json.load(open(f))
+            dname = dir.split('/')[-2]
+            
+            for f in glob.glob(f'{dir}/*.json'):
+                data = json.load(open(f))
+            
+                data = json.load(open(f))
 
-            data['type'] = [f"wcrp:{dname}",prefix]
+                data['type'] = [f"wcrp:{dname}",prefix]
 
-            json.dump(data,open(f,'w'))
+                json.dump(data,open(f,'w'),indent=4)
+        except Exception as e:
+            print(dname)
+            pass

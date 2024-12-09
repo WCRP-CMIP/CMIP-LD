@@ -7,6 +7,8 @@ import json
 import tqdm
 import os
 
+from ..locations import reverse_mapping
+reverse = reverse_mapping()
 
 repo = os.popen("git remote get-url origin").read().replace('.git','').strip('\n').split('/')[-2:]
 base = f'https://{repo[0].lower()}.github.io/{repo[1]}/'
@@ -16,6 +18,8 @@ mapping['id'] = '@id'
 mapping['type'] = '@type'
 
 historic = ['id','type']
+
+
 
 def main():
     
@@ -62,6 +66,8 @@ def main():
             data['@context'] = ctx
             data = sorted_ctx(data)   
             
+            data['@type'] = [reverse[base]]
+            
         
             with open(cx,'w') as f:
                 json.dump(data,f,indent=4)
@@ -77,6 +83,10 @@ def main():
         
         data['@context']['@base'] = base
         data['@context']['@vocab'] = base
+        
+        
+        
+        
         
         data = sorted_ctx(data)
         

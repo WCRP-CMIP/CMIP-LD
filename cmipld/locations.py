@@ -3,7 +3,7 @@ import re
 
 # Registered locations
 mapping = {
-    'wcrp':'https://wcrp-cmip.github.io/',
+    # 'wcrp':'https://wcrp-cmip.github.io/',
     'universal': 'https://wcrp-cmip.github.io/WCRP-universe/',
     'variables': 'https://wcrp-cmip.github.io/MIP-variables/',
     'cmip6plus': 'https://wcrp-cmip.github.io/CMIP6Plus_CVs/',
@@ -22,14 +22,29 @@ latest = DotAccessibleDict(dict([i,j +'graph'] for i,j in mapping.items()))
 def reverse_mapping():
     return {v:k for k,v in mapping.items()}
 
-def fetchAll(subset=None):
+def fetch_all(subset=None):
+    from pyld import jsonld
+    from tqdm import tqdm
+    
     if subset:
         subset = {k:latest[k] for k in subset}
     else:
         subset = latest
         
-    # expanded = []
-    # for i in 
+    expanded = []
+
+    for url in tqdm(mapping.values()):
+        try:
+            expanded.extend(jsonld.expand(url+'graph.jsonld'))
+        except Exception as e:
+            print('error expanding', url, e)
+            
+    return expanded
+
+
+
+
+
     
 
 

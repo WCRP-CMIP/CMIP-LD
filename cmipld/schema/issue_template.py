@@ -14,10 +14,14 @@ def resolve_ref(schema, resolver):
     
     """Recursively resolve $ref in the schema"""
     try:
+        # overrride = schema.get('form',False)
         if "$ref" in schema:
             ref_url = schema["$ref"]
+            # schema0 = schema.copy()
             # Resolve the reference using the resolver and get the actual definition
-            schema = resolver.resolve(ref_url)[1]  # The second element is the resolved schema
+            schema.update(resolver.resolve(ref_url)[1])
+            
+            # print(schema, schema0)# The second element is the resolved schema
         if isinstance(schema, dict):
             for key, value in schema.items():
                 schema[key] = resolve_ref(value, resolver)
@@ -25,6 +29,8 @@ def resolve_ref(schema, resolver):
             for idx, item in enumerate(schema):
                 schema[idx] = resolve_ref(item, resolver)
     finally: 
+        # if overrride and overrride!= None:
+        #     schema['form'] = overrride
         return schema
 
 
@@ -91,24 +97,47 @@ def convert_schema_to_github_form(schema_path):
     "validations":{"required": field in schema.get("required", [])}
         }
 
-
-        if details["type"] == "string" and "enum" in details:
+        print('OVERRRIDE',field,details.get('form'))
+        if details.get('form'):
+            details['type'] = 'override'
+            print('OVERRRIDE',field,details.get('form'))
+            
+        if details.get('form')=="dropdown" or details["type"] == "string" and "enum" in details:
             form_field["type"] = "dropdown"
             form_field["attributes"]["options"] = list(details["enum"])
+                
             
-            
-        elif details["type"] == "array" and "items" in details and "enum" in details["items"]:
+        elif details.get('form')=="checkboxes" or details["type"] == "array" and "items" in details and "enum" in details["items"]:
             form_field["type"] = "checkboxes"
             form_field["attributes"]["options"] = [{"label": opt.lower()} for opt in details["items"]["enum"]]
             # form_field['multiple'] = details.get("multiple", False)
             
-        elif details["type"] == "boolean":
+        elif details.get('form')=="bool" or details["type"] == "boolean":
             form_field["type"] = "dropdown"
             form_field["attributes"]["options"] = ["Yes", "No"]
             # form_field['multiple'] = details.get("multiple", False)
+            
+        elif details.get('form')=="textarea":
+            form_field["type"] = "textarea"
+            # form_field["attributes"]["placeholder"] = details.get("default",f"Enter your {field.replace('_', ' ')}")
         else:
             form_field["type"] = "input"
             # form_field["attributes"]["placeholder"] = details.get("default",f"Enter your {field.replace('_', ' ')}")
+
+        if details.get('other',False):
+                form["body"].append(form_field)
+                
+                form_field = {
+                    "id": field+'_other',
+                    "attributes": {
+                        
+                        "label":"^",
+                        "description":  details['other']+ " For new values only, please register them in the relevant area.",
+                        },
+                "type" : "input",
+                "validations":{"required":False}
+                }
+
 
         form["body"].append(form_field)
 

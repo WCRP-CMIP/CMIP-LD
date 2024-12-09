@@ -50,10 +50,11 @@ def main():
                         
                         description = define + value.get('description',"").split('</a>')[-1]
                         
-                        schema['properties'][key] = {
-                            "type": schema['properties'][key].get("type","string"),
-                            "description": description,
-                            "$ref":f"{ref}_schema_#/contains"
+                        schema['properties'][key] = {**schema['properties'].get(key,{}),
+                                                     **{ "type": schema['properties'][key].get("type","string"),
+                                                            "description": description,
+                                                            "$ref":f"{ref}_schema_#/contains"
+                                                    }
                         }
                 
                 # undo earlier mistake
