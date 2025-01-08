@@ -200,11 +200,15 @@ class JsonLdProcessor:
         # if isinstance(doc['@context'],str):
         #     if not valid_url(doc['@context']):
         #         doc['@context']
-            
+        
+        return (jsonld_doc)
             
         expanded = jsonld.expand(jsonld_doc, options={'defaultLoader': self.loader})
         
         
+        
+        
+        return expanded
         # mainfile context
         
         
