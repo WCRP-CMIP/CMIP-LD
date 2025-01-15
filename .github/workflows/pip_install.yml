@@ -41,8 +41,7 @@ jobs:
         run: |
           echo "Install test completed for Python ${{ matrix.python-version }} on OS ${{ matrix.os }}."
     
-    # Add failure annotations for each step where something might fail
-    steps:
+
       - name: Add annotations for installation and testing failures
         if: failure()  # Only run this step if any previous step failed
         run: |
