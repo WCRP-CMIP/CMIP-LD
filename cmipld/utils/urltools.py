@@ -37,3 +37,9 @@ def relative_url(base_url, target_url):
 #     parsed_url = urlparse(url)
 #     # Check if the URL has a valid scheme (e.g., 'http', 'https') and netloc (domain)
 #     return parsed_url.scheme and parsed_url.netloc
+
+
+def https(url):
+    if url.startswith("http://"):
+        return url.replace("http://", "https://", 1)
+    return url

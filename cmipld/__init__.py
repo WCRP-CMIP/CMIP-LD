@@ -22,8 +22,8 @@ def reload(module=None):
     
 
 
-def get(a):
-    return processor.get(a)
+def get(a,kwargs):
+    return processor.get(a,**kwargs)
 
 
 def expand(u):

@@ -27,13 +27,13 @@ def fetch_all(subset=None):
     from tqdm import tqdm
     
     if subset:
-        subset = {k:latest[k] for k in subset}
+        subset = {k:mapping[k] for k in subset}
     else:
         subset = latest
         
     expanded = []
 
-    for url in tqdm(mapping.values()):
+    for url in tqdm(subset.values()):
         try:
             expanded.extend(jsonld.expand(url+'graph.jsonld'))
         except Exception as e:

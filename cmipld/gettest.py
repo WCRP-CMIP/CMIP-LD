@@ -1,11 +1,12 @@
-import cmipld
+import cmipld,json
 from pprint import pprint
 process = cmipld.JsonLdProcessor()
 
 
-res = process.get('https://wcrp-cmip.github.io/CMIP6Plus_CVs/project/activity.json',compact = True)
+res = process.get('https://wcrp-cmip.github.io/CMIP6Plus_CVs/project/tables.json')
 
 
 
 
-pprint(res)
+# pprint(res)
+print(json.dumps(res,indent=2))

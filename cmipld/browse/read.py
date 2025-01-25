@@ -1,5 +1,5 @@
 import json,sys
-import re
+import re,os
 import argparse
 from typing import Any, Dict, List, Union, Set
 from functools import lru_cache
@@ -9,9 +9,19 @@ from pyld import jsonld
 from .interactive import open_jless_with_memory
 from ..locations import mapping,matches
 from .contexts import get_context,generate_context
+from p_tqdm import p_map
 
 
-class JsonLdProcessor:
+from .class_loader import Loader
+from .class_linknav import LinkNav
+# linknav import depends. 
+# Depends import processurl.
+
+
+
+
+
+class JsonLdProcessor(Loader,LinkNav):
     """
     A class for processing JSON-LD documents with recursive expansion and ID resolution.
     
@@ -22,41 +32,14 @@ class JsonLdProcessor:
     - Maintains context handling
     - Extracts document dependencies
     """
-    
-    def __init__(self):
-        """Initialize the processor with a cached document loader."""
-        self.loader = jsonld.requests_document_loader()
-    
-    @staticmethod
-    def _extract_base_url(url: str) -> str:
-        """
-        Extract the base URL from a full URL path.
-        
-        Args:
-            url: The full URL to process
-            
-        Returns:
-            The base URL containing protocol and domain
-        """
-        parts = url.split('/')
-        return '/'.join(parts[:3])
-    
-    @lru_cache(maxsize=100)
-    def _load_document(self, url: str) -> Dict:
-        """
-        Load and cache a JSON-LD document from a URL.
-        
-        Args:
-            url: The URL to fetch the document from
-            
-        Returns:
-            The loaded document
-        """
-        return self.loader(url)['document']
+
+   
     
     def _resolve_ids(self, 
                      data: Union[Dict, List], 
-                     compact: bool = True) -> Union[Dict, List]:
+                     compact: bool = True,
+                     depth: int = 60
+                     ) -> Union[Dict, List]:
         """
         Recursively resolve @id fields in the document.
         
@@ -67,86 +50,69 @@ class JsonLdProcessor:
         Returns:
             The processed data structure with resolved IDs
         """
+        if not depth:
+            return data
+        
         if isinstance(data, dict):
             if '@id' in data and not '@type' in data and data['@id'].startswith('http'):
                 
                 # print('!!!',data['@id'])
                 
                 try:
+                    
                     expanded = self.expand_document(
                         data['@id'],
                         compact=compact,
-                        is_nested=True
+                        is_nested=True,
+                        depth=depth
                     )
+                    
+                    
+                        
                 except jsonld.JsonLdError:
                     print('\n WARNING missing id: ',data['@id'])
                     expanded = None
                 if expanded:
-                    data = expanded[0]
+                    
+                    
+                    if len(data.keys()) -1:
+                        # we have additional keys
+                        id = data['@id']
+                        del data['@id']
+                        data = jsonld.compact({**expanded[0],**data},expanded[0])
+                        print(data.keys())
+                        # print(data)
+
+                    else:
+                        data = expanded[0]
+                        
             
             return {
-                key: self._resolve_ids(value, compact)
+                key: self._resolve_ids(value, compact, depth)
                 for key, value in data.items()
             }
         
         elif isinstance(data, list):
-            return [self._resolve_ids(item, compact) for item in data]
+            
+            if len(data)>3 and depth <2:
+                # lets try parallel
+                def resolve_id(it):
+                    return self._resolve_ids(it,compact,depth)
+                
+                return p_map(resolve_id, data)
+            else:
+                return [self._resolve_ids(item, compact, depth) for item in data]
         
         return data
     
-    def extract_dependencies(self, url: str, relative: bool = False) -> Set[str]:
-        """
-        Extract all dependencies (@id references) from a JSON-LD document.
-        
-        Args:
-            url: URL of the JSON-LD document
-            relative: If True, returns relative URLs, if False returns absolute URLs
-            
-        Returns:
-            Set of dependency URLs found in the document
-        """
-        try:
-            # Frame the document to extract all @id references
-            framed = jsonld.frame(url, {'@explicit': True}, options={'defaultLoader': self.loader})
-            ids = framed.get('@graph', [])
-            
-            # Process URLs based on relative flag
-            if relative:
-                return {item['@id'] for item in ids if '@id' in item}
-            else:
-                return {urljoin(url, item['@id']) for item in ids if '@id' in item}
-                
-        except Exception as e:
-            print(f"Error extracting dependencies: {str(e)}")
-            return set()
-    
-    
-    def depends(self,query,**kwargs):
-        print(kwargs,'w2')
-        # if arg in locations, then use that and give that level. 
-        query = self.replace_prefix(query)
-        return self.extract_dependencies(query,**kwargs)
-    
-    @staticmethod
-    def replace_prefix(query):      
-        if isinstance(query,str) and not query.startswith('http'):  
-            m = matches.search(query+':')
-            if m:
-                match = m.group()
-                if len(match)-1 == len(query):
-                    query = f"{mapping[match]}graph.jsonld"
-                else:
-                    query = query.replace(match, mapping[match[:-1]])
-                print('Substituting prefix:')
-                print(match,query)
-        return query
+ 
     
     def get(self,query,**kwargs):
-        query = self.replace_prefix(query)
+        query = self.resolve_prefix(query)
         return self.expand_document(query,**kwargs)
     
     def frame(self,query,frame=None,embed = '@always'):
-        query = self.replace_prefix(query)
+        query = self.resolve_prefix(query)
         if frame is None:
             # use context of the file as a frame
             frame = query
@@ -159,9 +125,12 @@ class JsonLdProcessor:
         
         return jsonld.frame(query,frame)
     
+    
+    
     def compact(self,query,ctx=None):
+        
         if isinstance(query,str):
-            query = self.replace_prefix(query)
+            query = self.resolve_prefix(query)
             if ctx is None:
                 print( 'No context provided, using the context of the file')
                 ctx = query
@@ -172,7 +141,7 @@ class JsonLdProcessor:
             ctx = {}
         return jsonld.compact(query,ctx)
     
-    
+    @lru_cache(maxsize=None)
     def expand_document(self,
                        jsonld_doc: Union[str, Dict],
                        compact: bool = True,
@@ -181,6 +150,7 @@ class JsonLdProcessor:
                        no_ctx: bool = False,
                        as_json: bool = False,
                        pprint: bool = False,
+                       depth: int = 2,
                        is_nested: bool = False) -> List[Dict]:
         """
         Expand a JSON-LD document and resolve all referenced URLs.
@@ -201,101 +171,49 @@ class JsonLdProcessor:
         #     if not valid_url(doc['@context']):
         #         doc['@context']
         
-        return (jsonld_doc)
+            
             
         expanded = jsonld.expand(jsonld_doc, options={'defaultLoader': self.loader})
+        depth -=1
         
-        
-        
-        
-        return expanded
         # mainfile context
-        
-        
-
-        
         processed = []
         for item in expanded:
-            
+
             if expand_links:
-                processed_item = self._resolve_ids(item, compact).copy()
-                print(processed_item)
+                processed_item = self._resolve_ids(item, compact,depth).copy()
             else:
                 processed_item = item.copy()
             
-            if compact and not is_nested:
-                self.compact(processed_item)
-
-            
-            # if expand_ctx and not no_ctx and '@context' in processed_item:
-            #     # script to deal with complex contexts
-            #             # mainfile context
-            #     if isinstance(jsonld_doc, str):
-            #         pctx = self._load_document(jsonld_doc)['@context']
-            #     else:
-            #         ctx = jsonld_doc.get('@context',{})
-                    
-                
-                
-            #     if not isinstance(processed_item['@context'], list):
-            #         processed_item['@context'] = [processed_item['@context']]
-                
-            #     ctx = {}
-                
-            #     for c in processed_item['@context']:
-            #         if isinstance(c, dict):
-            #             ctx = {**ctx, **c}
-            #         elif isinstance(c, str):
-            #             c = self.loader(c)['document']['@context']
-            #         ctx = {**ctx, **c}
-                
-            #     processed_item['@context'] = ctx
-                
-                
+            if compact:
+                    # and not is_nested:
+                    processed_item = jsonld.compact(processed_item,self.id2ctx(item['@id']))
                 
             if no_ctx and '@context' in processed_item:
                 del processed_item['@context']
 
-                
             processed.append(processed_item)
-            
-            
             
         if not no_ctx:
             if isinstance(jsonld_doc, str):
-                ctx = self.get_context(jsonld_doc)
+                ctx = get_context(jsonld_doc)
             else:
                 ctx = jsonld_doc.get('@context',{})
                 
             for item in expanded:
                 if '@context' not in item:
                     item['@context'] = ctx
-                
-                
+                    
         if pprint:
             from pprint import pprint
             pprint(processed)
         if as_json: 
             return json.dumps(processed,indent=4)
         return processed
-    
     @staticmethod
-    def get_context(uri):
-        return get_context(uri)
+    def EmbeddedFrame(url, timeout = 5):
+        from .class_embedded import EmbeddedFrame as ef
+        return ef(url)
 
-    def find_missing(self,url):
-        '''
-        Get all the references in an LD object, 
-        and check if they exist.
-        '''
-        from tqdm import tqdm
-        from ..utils.urltools import url_exists
-        
-        links = self.depends(url)
-        missing = [link for link in tqdm(links) if not url_exists(link)]
-        
-        return missing
-
-# LOCATION>S.MAPPING
 
 

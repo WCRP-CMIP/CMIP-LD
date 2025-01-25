@@ -1,6 +1,6 @@
 from . import functions 
 from . import add
-import os, subprocess,sys,json
+import os, subprocess,sys,json,re
 from typing import List, Dict, Any, Tuple
 
 def update_env(key,value):
@@ -75,18 +75,73 @@ def pp(js):
     pprint.pprint(js)
     
     
-    
+def extract_repo_info(github_pages_url):
+    """Extract username and repository name from GitHub Pages URL."""
+    pattern = r'https{0,1}://([a-zA-Z0-9-_]+)\.github\.io/([a-zA-Z0-9-_]+)/(.*)?'
+    match = re.match(pattern, github_pages_url)
 
+    if match:
+        username = match.group(1)
+        repo_name = match.group(2)
+        path = match.group(3)
+        return username, repo_name, path
+    else:
+        raise ValueError("Invalid GitHub Pages URL")
+
+def io2url(github_pages_url, branch='main', path_base=''):
+
+    username, repo_name, path = extract_repo_info(github_pages_url)
+    base_url = f'https://github.com/{username}/{repo_name}/tree/{branch}/{path_base}{path}'
     
+    return base_url
+
+
+def io2repo(github_pages_url):
+
+    username, repo_name, path = extract_repo_info(github_pages_url)
+    base_url = f'https://github.com/{username}/{repo_name}.git'
+    
+    return base_url
+
+
+def url2io(github_repo_url, branch='main', path_base=''):
+    print('make test for url2io')
+
+    if '/tree/' in github_repo_url:
+        # Regex to extract username, repo name, and path from GitHub repo URL
+        pattern = rf"https://github\.com/(?P<username>[^/]+)/(?P<repo_name>[^/]+)/tree/{branch}/{path_base}(?P<path>.*)"
+        
+    else:
+        pattern = rf"https://github\.com/(?P<username>[^/]+)/(?P<repo_name>[^/]+)"
+        
+    match = re.match(pattern, github_repo_url)
+    
+    if not match:
+        raise ValueError("Invalid GitHub repository URL format.")
+    
+    username = match.group("username")
+    repo_name = match.group("repo_name")
+    path = match.groupdict().get("path", "").strip('/')
+    
+    github_pages_url = f"https://{username.lower()}.github.io/{repo_name}/{path}/"
+    if github_pages_url[-2:] == '//':
+        github_pages_url = github_pages_url[:-1]
+    elif github_pages_url[-1] != '/':
+        github_pages_url += '/'
+        
+    return github_pages_url
+
 
 
 
 def toplevel():
     return os.popen('git rev-parse --show-toplevel').read().strip()
 
-def ldpath(path):
+def ldpath(path=''):
     # path = f'organisations/institutions'
-    loc = os.path.abspath(f"{toplevel()}/JSONLD/{path}/")
+    loc = os.path.abspath(f"{toplevel()}/src-data/{path}/")
+    if loc[-1] != '/':
+        loc += '/'
     return loc
 
 def url():
