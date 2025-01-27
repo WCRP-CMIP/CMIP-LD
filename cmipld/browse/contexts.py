@@ -46,7 +46,7 @@ class ContextResolutionError(Exception):
 
 def resolve_contexts(
     contexts: typing.Union[str, list, dict], 
-    base_uri: str
+    base_uri: str = '.'
 ) -> typing.List[dict]:
     """Recursively resolve and expand @context URIs or inline contexts."""
     try:
@@ -70,6 +70,7 @@ def resolve_contexts(
     except Exception as e:
         logger.error(f"Context resolution error: {e}")
         raise ContextResolutionError(f"Resolution failed: {e}")
+
 
 def combine_contexts(
     context: typing.Union[list, dict]

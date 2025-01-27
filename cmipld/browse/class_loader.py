@@ -38,7 +38,7 @@ class Loader:
     
         default_loader = jsonld.requests_document_loader()
         
-        def cached_loader(url, kwargs):
+        def cached_loader(url, kwargs={}):
             global custom_cache 
             url = https(url)
             # cache hit

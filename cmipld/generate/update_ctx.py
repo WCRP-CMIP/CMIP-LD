@@ -16,6 +16,7 @@ base = f'https://{repo[0].lower()}.github.io/{repo[1]}/'
 mapping = dict(sorted(mapping.items(), key=lambda item: len(item[0])))
 mapping['id'] = '@id'
 mapping['type'] = '@type'
+mapping['entries']='@none'
 
 historic = ['id','type']
 

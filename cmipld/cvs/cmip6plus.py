@@ -1,13 +1,23 @@
 def get_entry(data,entry='label'):
     if isinstance(data,dict):
-        data = list(data.values())
-        print(data)
+        if 'id' in data:
+            return [data[entry]]
+        else:
+            data = list(data.values())
+            print(data)
     return [i.get(entry) for i in data]
 
 def name_entry(data,value = 'description', key='label'):
     if isinstance(data,list):
-        {entry[key]: entry[value] for entry in data}
-
+        return {entry[key]: entry[value] for entry in data}
+    
+    elif isinstance(data,dict):
+        if 'id' in data:
+            return {data[key]:data[value]}
+        else:
+            return {entry: data[entry][value] for entry in data}
+        
+        
 
 def license(data):
     return data
@@ -112,13 +122,11 @@ for name in named_entry_feed:
 
 
 
-
-
-
-
 locals().update(functionlist)
 
 # end named field 
+
+
 
 
 
