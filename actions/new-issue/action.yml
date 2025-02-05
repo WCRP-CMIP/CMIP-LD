@@ -28,6 +28,7 @@ runs:
         run: |
           new_issue
 
+        shell: bash
         continue-on-error: false
 
           
