@@ -20,6 +20,7 @@ setup(
             "update_schema=cmipld.schema.update_schema:main",
             "update_issues=cmipld.schema.issue_template:main",
             "rewrite_type=cmipld.generate.rewritetype:main",
+            "new_issue=cmipld.generate.new_issue:main"
             # "cmipgraph=cmipld.graph:main",
             # "updateld=cmipld.generate.update_new:init",
             # "makegraph=cmipld.generate.makegraph:run",

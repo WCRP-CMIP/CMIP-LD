@@ -10,16 +10,16 @@ find "$INPUT_DIR" -type f -name "_context_" | while read -r file; do
     cp "$file" "$file.bak"
 
     # Use jq to modify the @container value in the file
-    jq 'walk( if type == "object" and .["@container"] == "@id" then .["@container"] = "@index" else . end )' "$file" > "$file.tmp"
+    jq 'walk( if type == "object" and .["@container"] == "@id" then .["@container"] = "@set" else . end )' "$file" > "$file.tmp"
 
     # Overwrite the original file with the modified content
     mv "$file.tmp" "$file"
 
         # Use jq to modify the @container value in the file
-    jq 'walk( if type == "object" and .["@container"] == "@index" then .["@container"] = ["@index","@set"] else . end )' "$file" > "$file.tmp"
+    # jq 'walk( if type == "object" and .["@container"] = ["@index","@set"]" then .["@container"] = ["@set"] else . end )' "$file" > "$file.tmp"
 
-    # Overwrite the original file with the modified content
-    mv "$file.tmp" "$file"
+    # # Overwrite the original file with the modified content
+    # mv "$file.tmp" "$file"
 
 
     echo "Processed: $file"

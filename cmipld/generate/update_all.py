@@ -10,9 +10,9 @@ def main():
     
     os.system('update_ctx')
     
-    os.system('update_schema')
+    # os.system('update_schema')
     
-    os.system('update_issues')
+    # os.system('update_issues')
 
     os.system('validjsonld')
 

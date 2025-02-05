@@ -77,7 +77,12 @@ def combine_contexts(
 ) -> dict:
     """Combine multiple context dictionaries into a single dictionary."""
     if isinstance(context, list):
+        # context.reverse()
         return {k: v for ctx in context if isinstance(ctx, dict) for k, v in ctx.items()}
+        # print(context)
+        # ctx = {}
+        # (ctx.update(c) for c in context)
+        # return ctx
     
     if isinstance(context, dict):
         return context
