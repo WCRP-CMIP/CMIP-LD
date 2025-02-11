@@ -2,6 +2,8 @@ from . import functions
 from . import add
 import os, subprocess,sys,json,re
 from typing import List, Dict, Any, Tuple
+import requests
+
 
 def update_env(key,value):
     import os
@@ -333,3 +335,11 @@ def pull_req(feature_branch,author,content,title):
 
 
 
+def get_tags(owner,repo):
+    # Get the tags from the repo
+    return requests.get(f'https://api.github.com/repos/{owner}/{repo}/tags').json()
+
+
+def get_contents(owner,repo,path):
+    # Get the tags from the repo
+    return requests.get(f'https://api.github.com/repos/{owner}/{repo}/contents/{path}').json()
