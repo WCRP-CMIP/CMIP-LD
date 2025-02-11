@@ -10,7 +10,8 @@ setup(
         "pyld",
         "jmespath",
         "pytest",
-        "pydantic"
+        "pydantic",
+        "p_tqdm"
     ],
     entry_points={
         "console_scripts": [
