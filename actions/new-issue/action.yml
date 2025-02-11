@@ -2,8 +2,7 @@ name: Read Issue Content and Labels
 description: Acton to process a new issue
 
 runs:
-    using: ubuntu-latest
-
+    using: 'composite'
     steps:
 
       - name: cmip-ld library
