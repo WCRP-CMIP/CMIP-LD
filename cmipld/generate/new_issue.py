@@ -42,7 +42,7 @@ def parse_issue_body(issue_body):
 
 def main():
     issue = get_issue()
-    parsed_issue = parse_issue_body(issue)
+    parsed_issue = parse_issue_body(issue['body'])
     issue_type = parsed_issue.get('issue_type', '')
     # print(json.dumps(parsed_issue,indent=4))
 
