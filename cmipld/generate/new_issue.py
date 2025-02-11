@@ -51,7 +51,7 @@ def main():
         sys.exit('No issue type selected. Exiting')
 
     # Define the path to the script based on the issue_type
-    script_path = os.path.join(tloc, f"{path}{issue_type}.py")
+    script_path = f"{path}{issue_type}.py"
 
     # Check if the script exists
     if os.path.exists(script_path):
