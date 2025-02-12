@@ -4,7 +4,7 @@ from pydantic import StrictStr, StrictBool, StrictFloat
 from typing import Union, Optional
 import json
 
-from ror import ror_field
+from .ror import ror_field
 
 
 from ..components import id_field, type_field
