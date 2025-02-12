@@ -1,14 +1,16 @@
 
 from pydantic import BaseModel, field_validator
-from pydantic import StrictStr, StrictBool, StrictFloat, conlist
+from pydantic import StrictStr, StrictBool, StrictFloat
 from typing import Union, Optional
 import json
+
+from ror import ror_field
 
 
 from ..components import id_field, type_field
 
 
-class institution(BaseModel,id_field,type_field):
+class institution(BaseModel,id_field,type_field,ror_field):
 
 
     @field_validator('type', mode='after')  
