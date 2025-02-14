@@ -18,7 +18,7 @@ class ror_field:
     @field_validator('ror', mode='after')
     @classmethod
     def ror_length(cls,value):
-        assert len(value) == 9
+        assert len(value) == 9, f'ROR key "{value}" must be 9 characters long'
         return value
     
 
