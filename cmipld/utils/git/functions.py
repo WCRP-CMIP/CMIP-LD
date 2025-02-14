@@ -32,13 +32,11 @@ def update_issue_title (what):
     if 'ISSUE_NUMBER' in os.environ:
         assert isinstance(int(os.environ['ISSUE_NUMBER']),int)
         issue_number = os.environ['ISSUE_NUMBER']
+    
         
-        # Safely escape the comment string
-        safe_comment = shlex.quote(what)
-        
-        print(os.popen(f'gh issue edit {issue_number} --title "{safe_comment}"').read())
+        print(os.popen(f'gh issue edit {issue_number} --title "{what}"').read())
         # : {payload["client_payload"]["name"]}"
-    update_summary(f"#### Title Updated:\n `{safe_comment}`")
+    update_summary(f"#### Title Updated:\n `{what}`")
 
 
 def update_issue(comment,err=True,summarize=True):
@@ -46,12 +44,11 @@ def update_issue(comment,err=True,summarize=True):
         assert isinstance(int(os.environ['ISSUE_NUMBER']),int)
         issue_number = os.environ['ISSUE_NUMBER']
         
-        safe_comment = shlex.quote(comment)
         
-        out = os.popen(f'gh issue comment {issue_number} --body \'{safe_comment}\' ').read()
+        out = os.popen(f'gh issue comment {issue_number} --body \'{comment}\' ').read()
         
         if summarize:
-            update_summary(safe_comment)
+            update_summary(comment)
         if err: 
             print(out)
             raise ValueError(comment)
