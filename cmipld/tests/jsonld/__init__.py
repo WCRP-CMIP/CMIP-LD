@@ -18,16 +18,15 @@ def multi_field_test(args):
 
 def table2md(table: Table) -> str:
     # Extract headers
-    headers = [col.header for col in table.columns]
+    headers = [col.name for col in table.columns]
     md = "| " + " | ".join(headers) + " |\n"
     md += "| " + " | ".join(["---"] * len(headers)) + " |\n"
 
     # Extract rows
     for row in table.rows:
-        md += "| " + " | ".join(str(cell) for cell in row.cells) + " |\n"
+        md += "| " + " | ".join(str(cell) for cell in row) + " |\n"  # Iterate over the row directly
 
     return md
-
 
 def handle_pydantic_errors(e: ValidationError):
     """Format and display Pydantic errors with rich."""
