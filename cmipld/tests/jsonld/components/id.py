@@ -21,9 +21,9 @@ class id_field:
     
     id:StrictStr
     
-    type_hyphen = field_validator('type', mode='after')(hyphenate)  # Directly apply hyphenate
+    type_hyphen = field_validator('id', mode='after')(hyphenate)  # Directly apply hyphenate
     
-    type_maxlength = field_validator('type', mode='after')(maxlen(max_id))  
+    type_maxlength = field_validator('id', mode='after')(maxlen(max_id))  
         
     @field_validator('id', mode='after')  
     @classmethod
