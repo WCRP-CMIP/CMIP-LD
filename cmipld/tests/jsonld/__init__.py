@@ -18,7 +18,15 @@ def multi_field_test(args):
 
 def table2md(table: Table) -> str:
     # Extract headers
+    
+    md = f"#### {table.title}\n"
+    headers = [f"<span style=\'color:{col.style}\'>{col.header}</span>" for col in table.columns]
+    md += "| " + " | ".join(headers) + " |\n"
+    md += "| " + " | ".join(["---"] * len(headers)) + " |\n"
 
+    # Extract rows
+    for row in range(len(table.columns[0]._cells)):
+        md += "| " + " | ".join(c._cells[row] for c in table.columns) + " |\n"  # Iterate over the row directly
 
     return md
 
