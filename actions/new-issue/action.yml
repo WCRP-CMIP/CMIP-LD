@@ -1,6 +1,11 @@
 name: Read Issue Content and Labels
 description: Acton to process a new issue
 
+permissions:
+  issues: write
+  pull-requests: write
+  contents: write  # Allows creating branches, pushing changes to repositories
+
 runs:
     using: 'composite'
     steps:

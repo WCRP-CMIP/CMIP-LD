@@ -50,7 +50,7 @@ def handle_pydantic_errors(e: ValidationError):
     # Print the table
     console.print(table)
     mdtable = table2md(table)
-    git.update_summary(f"### Validation Errors\n{mdtable}")
+    # git.update_summary(f"### Validation Errors\n{mdtable}")
     git.update_issue(f"### Validation failed:\n {len(e.errors())} issues found.\n{mdtable}")
 
 def run_checks(function,args):
