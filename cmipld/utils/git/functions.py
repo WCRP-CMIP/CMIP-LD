@@ -33,13 +33,12 @@ def update_issue_title (what):
         assert isinstance(int(os.environ['ISSUE_NUMBER']),int)
         issue_number = os.environ['ISSUE_NUMBER']
         
-
         # Safely escape the comment string
         safe_comment = shlex.quote(what)
         
         print(os.popen(f'gh issue edit {issue_number} --title "{safe_comment}"').read())
         # : {payload["client_payload"]["name"]}"
-    update_summary(f"#### Title Updated: {safe_comment}")
+    update_summary(f"#### Title Updated:\n `{safe_comment}`")
 
 
 def update_issue(comment,err=True,summarize=True):
