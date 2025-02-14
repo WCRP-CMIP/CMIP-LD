@@ -16,6 +16,19 @@ def multi_field_test(args):
     return type('multi_field_test', (BaseModel, *args), {})
 
 
+def table2md(table: Table) -> str:
+    # Extract headers
+    headers = [col.header for col in table.columns]
+    md = "| " + " | ".join(headers) + " |\n"
+    md += "| " + " | ".join(["---"] * len(headers)) + " |\n"
+
+    # Extract rows
+    for row in table.rows:
+        md += "| " + " | ".join(str(cell) for cell in row.cells) + " |\n"
+
+    return md
+
+
 def handle_pydantic_errors(e: ValidationError):
     """Format and display Pydantic errors with rich."""
     console = Console()
@@ -35,8 +48,9 @@ def handle_pydantic_errors(e: ValidationError):
 
     # Print the table
     console.print(table)
-    git.update_summary(f"### Validation Errors\n{table}")
-    git.update_issue(f"### Validation failed:\n {len(e.errors())} issues found.\n{table}")
+    mdtable = table2md(table)
+    git.update_summary(f"### Validation Errors\n{mdtable}")
+    git.update_issue(f"### Validation failed:\n {len(e.errors())} issues found.\n{mdtable}")
 
 def run_checks(function,args):
     # Usage in your run function
