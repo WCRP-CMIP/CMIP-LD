@@ -3,6 +3,7 @@ from . import add
 import os, subprocess,sys,json,re
 from typing import List, Dict, Any, Tuple
 import requests
+import shlex
 
 
 def update_env(key,value):
@@ -29,18 +30,29 @@ def update_summary(md):
 def update_issue_title (what):
     # change issue name to reflect contents. 
     if 'ISSUE_NUMBER' in os.environ:
+        assert isinstance(int(os.environ['ISSUE_NUMBER']),int)
         issue_number = os.environ['ISSUE_NUMBER']
-        print(os.popen(f'gh issue edit {issue_number} --title "{what}"').read())
+        
+
+        # Safely escape the comment string
+        safe_comment = shlex.quote(what)
+        
+        print(os.popen(f'gh issue edit {issue_number} --title "{safe_comment}"').read())
         # : {payload["client_payload"]["name"]}"
-    print(f"Title Updated: {what}")
+    update_summary(f"#### Title Updated: {safe_comment}")
 
 
 def update_issue(comment,err=True,summarize=True):
     if 'ISSUE_NUMBER' in os.environ:
+        assert isinstance(int(os.environ['ISSUE_NUMBER']),int)
         issue_number = os.environ['ISSUE_NUMBER']
-        out = os.popen(f'gh issue comment {issue_number} --body \'{comment}\' ').read()
+        
+        safe_comment = shlex.quote(comment)
+        
+        out = os.popen(f'gh issue comment {issue_number} --body \'{safe_comment}\' ').read()
+        
         if summarize:
-            update_summary(comment)
+            update_summary(safe_comment)
         if err: 
             print(out)
             raise ValueError(comment)
