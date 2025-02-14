@@ -14,8 +14,6 @@ def update_env(key,value):
 
 
 
-
-
 def update_summary(md):
     import os
     if "GITHUB_STEP_SUMMARY" in os.environ:

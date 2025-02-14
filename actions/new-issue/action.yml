@@ -23,6 +23,7 @@ runs:
           ISSUE_SUBMITTER: ${{ github.event.issue.user.login }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
           # GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ github.token }} # We need this to update the issue
 
         run: |
           new_issue
