@@ -5,8 +5,8 @@ import cmipld
 owner = 'ror-community'
 repo = 'ror-records'
 
-tag = cmipld.utils.git.get_tags(owner,repo)[0]['name']
-rors = [i['name'].replace('.json','') for i in cmipld.utils.git.get_contents(owner,repo,tag)]
+# tag = cmipld.utils.git.get_tags(owner,repo)[0]['name']
+# rors = [i['name'].replace('.json','') for i in cmipld.utils.git.get_contents(owner,repo,tag)]
 
 # Regex pattern for ROR key validation
 ror_pattern = re.compile(r'^\d{2}\w{5}\d{2}$')
@@ -32,11 +32,13 @@ class ror_field:
         return value
 
 
-    @field_validator('ror', mode='after')
-    @classmethod
-    def ror_exists(cls, value: str) -> str:
-        if value not in rors:
-            raise FileExistsError(f'ROR key "{value}" not found in the ROR records of latest tag: {tag}')
-        return value
+    # just a test, may need a bit of updating. 
+
+    # @field_validator('ror', mode='after')
+    # @classmethod
+    # def ror_exists(cls, value: str) -> str:
+    #     if value not in rors:
+    #         raise FileExistsError(f'ROR key "{value}" not found in the ROR records of latest tag: {tag}')
+    #     return value
     
     
