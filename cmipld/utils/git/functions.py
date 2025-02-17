@@ -252,14 +252,31 @@ def prepare_pull(feature_branch):
 
 def newpull(feature_branch,author,content,title,issue,base_branch = 'main',update=None):
     
-    print(os.popen(f"git branch --set-upstream-to=origin/{base_branch} {feature_branch}").read())
+     # Ensure we're using the current branch
+    feature_branch = subprocess.getoutput("git rev-parse --abbrev-ref HEAD")
     
-    # print(os.popen(f"git pull").read())
-
-    where = f"gh pr create --base \'{base_branch}\' --head \'{feature_branch}\' --title \'{title}\'"
+    # Set upstream for the current branch if not already set
+    os.popen(f"git branch --set-upstream-to=origin/{base_branch} {feature_branch}")
     
-    if update != None:
+    # Ensure there are commits between the branches
+    commits = subprocess.getoutput(f"git log origin/{base_branch}..HEAD --oneline")
+    if not commits:
+        raise ValueError(f"No commits between {base_branch} and {feature_branch}. Cannot create pull request.")
+    
+    # Create the PR
+    where = f"gh pr create --base '{base_branch}' --head '{feature_branch}' --title '{title}'"
+    
+    if update is not None:
         where = f"gh pr comment {update}"
+    
+    # print(os.popen(f"git branch --set-upstream-to=origin/{base_branch} {feature_branch}").read())
+    
+    # # print(os.popen(f"git pull").read())
+
+    # where = f"gh pr create --base \'{base_branch}\' --head \'{feature_branch}\' --title \'{title}\'"
+    
+    # if update != None:
+    #     where = f"gh pr comment {update}"
         
     cmds = f'''
             git pull; 
