@@ -43,8 +43,7 @@ def update_issue(comment,err=True,summarize=True):
     if 'ISSUE_NUMBER' in os.environ:
         assert isinstance(int(os.environ['ISSUE_NUMBER']),int)
         issue_number = os.environ['ISSUE_NUMBER']
-        
-        
+    
         out = os.popen(f'gh issue comment {issue_number} --body \'{comment}\' ').read()
         
         if summarize:
@@ -198,7 +197,11 @@ def getlastcommit():
 def getlasttag():
     return subprocess.getoutput('git describe --tags --abbrev=0').strip()
 
+def addall():
+    print(os.popen('git add -A').read())
 
+def newbranch(branch):
+    print(os.system(f"git checkout -b {branch} || git checkout {branch}").read())
 
 def get_cmip_repo_info() -> Tuple[str, str, str]:
     """Retrieve repository information and tags."""
@@ -246,7 +249,7 @@ def prepare_pull(feature_branch):
     return False
     
 
-def newpull(base_branch, feature_branch,author,content,title,issue,update=None):
+def newpull(feature_branch,author,content,title,issue,base_branch = 'main',update=None):
 
     where = f"gh pr create --base \'{base_branch}\' --head \'{feature_branch}\' --title \'{title}\'"
     
@@ -297,9 +300,10 @@ def pull_req(feature_branch,author,content,title):
     for cmd in cmds:
         print(cmd,':',subprocess.getoutput(cmd).strip())
     # remote_branch=f'origin/{feature_branch}'
-    
+    '''
     gh_token = os.getenv('GH_TOKEN')
     github_repository = os.getenv('GITHUB_REPOSITORY')
+    '''
     # feature_branch = os.getenv('FEATURE_BRANCH')
 
     # Construct the curl command
@@ -338,7 +342,8 @@ def pull_req(feature_branch,author,content,title):
     
         
     
-
+def push(branch='HEAD'):
+    print(os.popen(f'git push -u origin {branch}').read())
 
 
 def get_tags(owner,repo):
@@ -349,3 +354,5 @@ def get_tags(owner,repo):
 def get_contents(owner,repo,path):
     # Get the tags from the repo
     return requests.get(f'https://api.github.com/repos/{owner}/{repo}/contents/{path}').json()
+
+
