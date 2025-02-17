@@ -1,6 +1,6 @@
 name: Read Issue Content and Labels
 description: Acton to process a new issue
-# Read repository contents and packages permissions
+# heck the "Read repository contents and packages permissions" in settings
 
 permissions:
   issues: write
