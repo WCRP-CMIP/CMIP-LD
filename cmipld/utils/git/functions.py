@@ -253,6 +253,8 @@ def prepare_pull(feature_branch):
 def newpull(feature_branch,author,content,title,issue,base_branch = 'main',update=None):
     
     print(os.popen(f"git branch --set-upstream-to=origin/$(git rev-parse --abbrev-ref HEAD)").read())
+    
+    print(os.popen(f"git pull").read())
 
     where = f"gh pr create --base \'{base_branch}\' --head \'{feature_branch}\' --title \'{title}\'"
     
