@@ -1,5 +1,6 @@
 name: Read Issue Content and Labels
 description: Acton to process a new issue
+# the main calling action must have the following permissions as well. 
 
 permissions:
   issues: write
