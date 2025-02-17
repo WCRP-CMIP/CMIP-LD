@@ -202,6 +202,7 @@ def addall():
 
 def newbranch(branch):
     print(os.popen(f"git checkout -b {branch} || git checkout {branch}").read())
+    print(os.popen(f'git branch --set-upstream-to=origin/{branch}').read())
 
 def get_cmip_repo_info() -> Tuple[str, str, str]:
     """Retrieve repository information and tags."""
