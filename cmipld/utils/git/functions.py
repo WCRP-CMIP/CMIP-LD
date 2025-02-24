@@ -181,10 +181,10 @@ def commit_one(location,author,comment,branch=None):
 
 
 def commit(message):
-    os.popen(f'git commit -a -m "{message}"').read()
+    print(os.popen(f'git commit -a -m "{message}"').read())
     
 def addfile(file):
-    os.popen(f'git add {file}').read()
+    print(os.popen(f'git add {file}').read())
 
 def getbranch():
     return subprocess.getoutput('git rev-parse --abbrev-ref HEAD').strip()
