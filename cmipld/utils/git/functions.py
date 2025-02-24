@@ -204,7 +204,13 @@ def addall():
     print(os.popen('git add -A').read())
 
 def newbranch(branch):
+    # pull the main 
+    print(os.popen(f"git pull").read())
+    # create the new branch
     print(os.popen(f"git checkout -b {branch} || git checkout {branch}").read())
+    # pull the branch if it exists
+    print(os.popen(f"git pull").read())
+    # set upstream
     print(os.popen(f'git branch --set-upstream-to=origin/{branch}').read())
 
 def get_cmip_repo_info() -> Tuple[str, str, str]:
