@@ -156,8 +156,11 @@ def url():
 
 def commit_override_author(entry,where):
     if os.environ.get('OVERRIDE_AUTHOR'):
-        print(f'git commit -a --author="{os.environ["OVERRIDE_AUTHOR"].strip()} <{os.environ["OVERRIDE_AUTHOR"].strip()}@users.noreply.github.com>" -m "New entry {entry} to the {where} LD file"')
+        cmd = f'git commit -a --author="{os.environ["OVERRIDE_AUTHOR"].strip()} <{os.environ["OVERRIDE_AUTHOR"].strip()}@users.noreply.github.com>" -m "New entry {entry} to the {where} LD file"'
+        print(os.popen(cmd).read())
         return True
+    print('No author found')
+    os.popen(f'git commit -m "A commit to {entry} at {where}"').read()
     return False
 
 def commit_one(location,author,comment,branch=None):
