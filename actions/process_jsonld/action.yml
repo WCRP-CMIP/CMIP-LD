@@ -28,7 +28,7 @@ runs:
       
         for dir in  ${{ env.updated_dirs }}; do
             # Check if '_context' file exists in the directory
-            if [[ -f "$dir/_context" ]]; then
+            if [[ -f "$dir/_context_" ]]; then
                 # If '_context' exists, run ld2graph
                 ld2graph "$dir"
                 # Add the directory to the GitHub summary
@@ -41,7 +41,7 @@ runs:
                 jq -c . $dir/graph.jsonld > $dir/graph.min.jsonld
 
             else
-                echo "Skipping $dir as '_context' file is not present."
+                echo "Skipping $dir as '_context_' file is not present."
             fi
         done
 
