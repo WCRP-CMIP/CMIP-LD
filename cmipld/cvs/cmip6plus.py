@@ -1,34 +1,4 @@
-def get_entry(data,entry='label'):
-    if isinstance(data,dict):
-        if 'id' in data:
-            return [data[entry]]
-        else:
-            data = list(data.values())
-    return [i.get(entry) for i in data]
-
-def name_entry(data,value = 'description', key='label'):
-    if isinstance(data,list):
-        return {entry[key]: entry[value] for entry in data}
-    
-    elif isinstance(data,dict):
-        if 'id' in data:
-            return {data[key]:data[value]}
-        else:
-            return {entry: data[entry][value] for entry in data}
-        
-def key_extract(data,keep_list):
-    return {k: data[k] for k in keep_list if k in data}
-
-def keypathstrip(data):
-    return {k.split('/')[-1]:v for k,v in data.items()}
-
-
-
-def rmkeys(data, keys=['id','type','@context']):
-    for ky in keys:
-        if ky in data:
-            del data[ky]
-        return data
+from cmipld.utils.ldparse import *
 
 
 def license(data):
