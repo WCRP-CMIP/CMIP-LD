@@ -72,7 +72,7 @@ def _checksum(obj):
     return 'md5: {}'.format(checksum_hex)
 
 
-def versioning(data,name,location='./'):
+def version(data,name,location='./'):
     
     writefile = f'{location}{name}.json'
     output = OrderedDict()
