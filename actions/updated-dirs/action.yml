@@ -29,11 +29,11 @@ runs:
         echo "### Updated dirs: $UPDATED_DIRS"
 
         if [ -n "$FILTER_DIR" ]; then
-          FILTERED_DIRS=$(echo "$UPDATED_DIRS" | grep "^$FILTER_DIR")
+          # Remove the supplied filter directory from the list
+          FILTERED_DIRS=$(echo "$UPDATED_DIRS" | grep -v "^$FILTER_DIR$")
           echo "Filtered dirs: $FILTERED_DIRS"
         else
-          # FILTERED_DIRS=$UPDATED_DIRS
-          exit 0
+          FILTERED_DIRS="$UPDATED_DIRS"
         fi
 
         UPDATED_DIRS_LIST=$(echo "$FILTERED_DIRS" | tr '\n' ' ')
