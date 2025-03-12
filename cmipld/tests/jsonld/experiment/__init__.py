@@ -6,7 +6,7 @@ import json,os
 from cmipld import mapping,jsonld
 
 
-from ..components import id_field, type_field, validate_date
+from ..components import id_field, type_field, validate_date,  description_field
 
 
 class experiment_model(BaseModel,id_field,type_field,description_field):
