@@ -5,6 +5,8 @@ from pydantic import ValidationError
 from rich.console import Console
 from rich.table import Table
 
+import experiment
+
 
 
 def field_test(extended_class):
