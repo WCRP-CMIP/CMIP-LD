@@ -44,7 +44,8 @@ def update_issue(comment,err=True,summarize=True):
         assert isinstance(int(os.environ['ISSUE_NUMBER']),int)
         issue_number = os.environ['ISSUE_NUMBER']
     
-        cmd = f'gh issue comment {issue_number} --body \'{comment}\' '.replace('"', '\\"').replace('\n', '\\n')
+        cmd = f'gh issue comment {issue_number} --body \'{comment}\' '
+        # .replace('"', '\\"').replace('\n', '\\n')
         print(cmd)
         out = os.popen(cmd).read()
         
