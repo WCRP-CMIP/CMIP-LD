@@ -6,12 +6,12 @@ from typing import Union, Optional
 import json
 
 
-from .stringcheck import hyphenate,maxlen
+from .stringcheck import hyphenate,maxlen,minlen
 
 import re
 
 # start with a letter, allow numbers and hyphens
-idstr = re.compile(r'^[a-z][a-z\d\-]+$')
+idstr = re.compile(r'[a-z\d][a-z\d\-]+$')
 
 max_id = 30
 
@@ -24,6 +24,8 @@ class id_field:
     type_hyphen = field_validator('id', mode='after')(hyphenate)  # Directly apply hyphenate
     
     type_maxlength = field_validator('id', mode='after')(maxlen(max_id))  
+    
+    type_minlength = field_validator('id', mode='after')(minlen(2))  
         
     @field_validator('id', mode='after')  
     @classmethod

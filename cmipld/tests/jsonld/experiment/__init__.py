@@ -70,7 +70,7 @@ class experiment_model(BaseModel,id_field,type_field,description_field):
             return value
         
         dir = 'src-data/experiment/'
-        if value[0] not in [f.replace('.json','') for f in os.listdir(dir) ]:
+        if value[0].lower() not in [f.replace('.json','') for f in os.listdir(dir) ]:
             
             raise ValueError(f"Parent experiment {value} not found in {dir}")
         
