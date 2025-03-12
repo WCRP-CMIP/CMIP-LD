@@ -1,7 +1,7 @@
 
 from pydantic import BaseModel, Field, field_validator
 from pydantic import StrictStr, StrictBool, StrictFloat
-from typing import Union, Optional
+from typing import Union, Optional, List
 import json,os
 from cmipld import mapping,jsonld
 
@@ -9,7 +9,7 @@ from cmipld import mapping,jsonld
 from ..components import id_field, type_field, validate_date
 
 
-class experiment_model(BaseModel,id_field,type_field):
+class experiment_model(BaseModel,id_field,type_field,description_field):
 
     tier:int
     minimum_number_of_years: int = Field(..., alias="minimum-number-of-years")
@@ -17,20 +17,20 @@ class experiment_model(BaseModel,id_field,type_field):
     branch_date: Optional[StrictStr] = Field(..., alias="branch-date")
     model_realms: Optional[list[dict]] = Field(..., alias="model-realms")
     description: StrictStr
-    parent_experiment: StrictStr = Field(..., alias="parent-experiment")
+    parent_experiment: List[StrictStr] = Field(..., alias="parent-experiment")
     
     
 
     @field_validator('type', mode='after')  
     @classmethod
     def type_contains(cls,value):
-        assert 'wcrp:experiment' in value
+        assert 'wcrp:experiment' in value , 'type should contain wcrp:experiment'
         return value
     
     @field_validator('tier', mode='after')  
     @classmethod
     def tier_val(cls,value):
-        assert value in [1,2,3]
+        assert value in [1,2,3], 'tier should be 1,2, or 3'
         return value
     
     
@@ -65,11 +65,12 @@ class experiment_model(BaseModel,id_field,type_field):
     @field_validator('parent_experiment', mode='after')
     @classmethod
     def parent_e(cls,value):
-        if value == 'none':
+        assert len(value) == 1, 'parent experiment should be a single value'
+        if value[0] == 'none':
             return value
         
         dir = 'src-data/experiment/'
-        if value not in [f.replace('.json','') for f in os.listdir(dir) ]:
+        if value[0] not in [f.replace('.json','') for f in os.listdir(dir) ]:
             
             raise ValueError(f"Parent experiment {value} not found in {dir}")
         

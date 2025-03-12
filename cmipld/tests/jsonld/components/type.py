@@ -11,7 +11,7 @@ from .stringcheck import hyphenate,maxlen
 import re
 
 
-typestr = re.compile(r'[a-z\-:]+')
+typestr = re.compile(r'[a-z\-:\d]+')
 max_type = 50
 
 
