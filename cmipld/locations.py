@@ -7,7 +7,7 @@ mapping = {
     'universal': 'https://wcrp-cmip.github.io/WCRP-universe/',
     'variables': 'https://wcrp-cmip.github.io/MIP-variables/',
     'cmip6plus': 'https://wcrp-cmip.github.io/CMIP6Plus_CVs/',
-    'cmip7': 'https://wcrp-cmip.github.io/CMIP7_CVs/',
+    'cmip7': 'https://wcrp-cmip.github.io/CMIP7-CVs/',
     'cf': 'https://wcrp-cmip.github.io/CF/',
     'obs4mips': 'https://wolfiex.github.io/obs4MIPs-cmor-tables-ld/'
 }
