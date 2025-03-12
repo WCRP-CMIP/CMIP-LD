@@ -42,13 +42,23 @@ class LocalServer:
 
         self.server = socketserver.TCPServer(("", self.port), handler)
 
-        # Wrap the server with SSL
-        self.server.socket = ssl.wrap_socket(
-            self.server.socket,
-            keyfile=self.keyfile,
-            certfile=self.certfile,
-            server_side=True
-        )
+        # # Wrap the server with SSL
+        
+        # Create an SSL context
+        context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
+        context.load_cert_chain(certfile=self.certfile, keyfile=self.keyfile)
+
+        # Wrap the server socket with SSL
+        self.server.socket = context.wrap_socket(self.server.socket, server_side=True)
+
+
+        # code below was depreciated in py3.12
+        # self.server.socket = ssl.wrap_socket(
+        #     self.server.socket,
+        #     keyfile=self.keyfile,
+        #     certfile=self.certfile,
+        #     server_side=True
+        # )
 
         def run_server():
             print(f"Serving {self.base_path} at https://localhost:{self.port}")
