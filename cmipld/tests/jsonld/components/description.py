@@ -7,7 +7,7 @@ import json
 
 
 
-minlen = 80
+minlen = 50
 
 
 
@@ -18,6 +18,6 @@ class description_field:
     @classmethod
     def description_minlen(cls,value):
         if len(value) <= minlen:
-            raise UnicodeError(f"Description length == {len(value)}. This is less than the minimum character length of {minlen}.")
+            raise UnicodeError(f"Description length == {len(value)}. This is less than the minimum character length of {minlen}. `{value}`")
         return value
     
