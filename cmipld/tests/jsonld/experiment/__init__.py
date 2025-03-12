@@ -43,7 +43,8 @@ class experiment_model(BaseModel,id_field,type_field,description_field):
     @field_validator('branch_date', mode='after')
     @classmethod
     def s_date(cls,value):
-        validate_date(value)
+        if value != 'none':
+            validate_date(value)
         return value
     
 
