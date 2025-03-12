@@ -33,6 +33,9 @@ def parse_issue_body(issue_body):
     for key in issue_data:
         issue_data[key] = issue_data[key].strip()
         
+        if issue_data[key] == "\"none\"":
+            issue_data[key] = issue_data[key].replace("\"none\"", "none")
+        
     return issue_data
 
     # return json.dumps(issue_data, indent=4)

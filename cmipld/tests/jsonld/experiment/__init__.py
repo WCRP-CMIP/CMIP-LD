@@ -9,7 +9,7 @@ from cmipld import mapping,jsonld
 from ..components import id_field, type_field, validate_date
 
 
-class experiment(BaseModel,id_field,type_field,ror_field):
+class experiment_model(BaseModel,id_field,type_field,ror_field):
 
     tier:int
     minimum_number_of_years: int = Field(..., alias="minimum-number-of-years")

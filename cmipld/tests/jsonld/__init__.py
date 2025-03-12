@@ -53,10 +53,10 @@ def handle_pydantic_errors(e: ValidationError):
     # git.update_summary(f"### Validation Errors\n{mdtable}")
     git.update_issue(f"### Validation failed:\n {len(e.errors())} issues found.\n{mdtable}")
 
-def run_checks(function,args):
+def run_checks(pydclass,args):
     # Usage in your run function
     try:
-        function(**args)  # Your Pydantic validation
+        pydclass(**args)  # Your Pydantic validation
     except ValidationError as e:
         handle_pydantic_errors(e)
         git.close_issue(f"Validation failed: {len(e.errors())} issues found.")
