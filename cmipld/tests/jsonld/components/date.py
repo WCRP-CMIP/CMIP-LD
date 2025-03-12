@@ -15,7 +15,7 @@ from datetime import datetime
 
 
 
-def validate_date(cls, value):
+def validate_date(value):
     # Try parsing the date in different formats
     for fmt in ("%Y-%m-%d", "%Y"):
         try:
