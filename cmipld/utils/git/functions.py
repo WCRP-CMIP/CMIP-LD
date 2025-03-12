@@ -207,6 +207,7 @@ def addall():
     print(os.popen('git add -A').read())
 
 def newbranch(branch):
+    branch = branch.replace(' ','-')
     # pull the main 
     print(os.popen(f"git pull").read())
     # create the new branch
