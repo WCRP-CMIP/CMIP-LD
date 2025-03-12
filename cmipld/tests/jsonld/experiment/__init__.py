@@ -51,7 +51,7 @@ class experiment_model(BaseModel,id_field,type_field):
     @classmethod
     def ld_realms(cls,value):
         
-        urlbase = cmipld.mapping['universal']
+        urlbase = mapping['universal']
         for i in value:
             
             url = f'{urlbase}source-type/{i['id']}'
