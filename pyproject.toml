@@ -45,7 +45,6 @@ include-package-data = true
 
 [tool.setuptools.package-data]
 cmipld = ["scripts/*/*.sh"]
-cmipld.frame_ld = ["examples/*/*.json"]
 
 [tool.setuptools_scm]
 write_to = "cmipld/version.py"
