@@ -200,6 +200,9 @@ def getlastcommit():
 def getlasttag():
     return subprocess.getoutput('git describe --tags --abbrev=0').strip()
 
+def getfilenames(branch='main'):
+    return os.popen(f'git ls-tree -r {branch} --name-only ').read().split()
+
 def addall():
     print(os.popen('git add -A').read())
 
