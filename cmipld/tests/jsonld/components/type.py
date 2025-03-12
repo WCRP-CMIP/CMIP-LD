@@ -28,8 +28,9 @@ class type_field:
     @classmethod
     def type_allowed_char(cls,value):
         for i in value:
+            
             if typestr.fullmatch(i) == None:
-                raise UnicodeError(f"Types must only have a-z, lowercase letters and colons (:) to separate the prefixes from the type. Full urls should be provided within the context for clarity. [\"id\": \"{value}\"] has the invalid character: ({set(typestr.sub('',value))}).")
+                raise UnicodeError(f"Types must only have a-z, lowercase letters and colons (:) to separate the prefixes from the type. Full urls should be provided within the context for clarity. [\"id\": \"{i}\"] has the invalid character: ({set(typestr.sub('',i))}).")
         return value
     
 
