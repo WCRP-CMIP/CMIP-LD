@@ -44,7 +44,9 @@ def update_issue(comment,err=True,summarize=True):
         assert isinstance(int(os.environ['ISSUE_NUMBER']),int)
         issue_number = os.environ['ISSUE_NUMBER']
     
-        out = os.popen(f'gh issue comment {issue_number} --body \'{comment}\' ').read()
+        cmd = f'gh issue comment {issue_number} --body \'{comment}\' '
+        print(cmd)
+        out = os.popen(cmd).read()
         
         if summarize:
             update_summary(comment)
