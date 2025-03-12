@@ -25,12 +25,12 @@ runs:
           ISSUE_TITLE: ${{ github.event.issue.title }}
           ISSUE_BODY: |
               ${{ github.event.issue.body }}
+          # pipe should preseve newline properties for multilines
           ISSUE_SUBMITTER: ${{ github.event.issue.user.login }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
+          # GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_TOKEN: ${{ github.token }}
-          GITHUB_TOKEN: ${{ github.token }} 
-          # We need this to update the issue
-          # pipe should preseve newline properties for multilines for the body
+          GITHUB_TOKEN: ${{ github.token }} # We need this to update the issue
 
         run: |
           new_issue
@@ -39,5 +39,3 @@ runs:
         continue-on-error: false
 
           
-
-# GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
