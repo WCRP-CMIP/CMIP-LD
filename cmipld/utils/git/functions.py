@@ -287,7 +287,7 @@ def newpull(feature_branch, author, content, title, issue, base_branch='main', u
 
     # Construct command using cat <<EOF to handle special characters safely
     cmds = f"""
-    git pull;
+    nohup git pull -v > /dev/null 2>&1 ;
     {where} --body "$(cat <<EOF
 This pull request was automatically created by a GitHub Actions workflow.
 
@@ -305,6 +305,7 @@ EOF
     # Data submitted by @{author}
 
     print('++', cmds)
+    
     output = subprocess.getoutput(cmds).strip()
     
     # Add a comment to the issue if necessary
