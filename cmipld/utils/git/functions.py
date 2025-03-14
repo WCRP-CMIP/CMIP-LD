@@ -295,7 +295,7 @@ This pull request was automatically created by a GitHub Actions workflow.
 Adding the following new data.
 
 \`\`\`js
-{content}
+{content.replace('`', r'\`')}
 \`\`\`
 
 Resolves #{issue}
