@@ -266,9 +266,9 @@ def prepare_pull(feature_branch):
     return False
     
 
-def newpull(feature_branch,author,content,title,issue,base_branch = 'main',update=None):
-    
-     # Ensure we're using the current branch
+
+def newpull(feature_branch, author, content, title, issue, base_branch='main', update=None):
+    # Ensure we're using the current branch
     feature_branch = subprocess.getoutput("git rev-parse --abbrev-ref HEAD")
     
     # Set upstream for the current branch if not already set
@@ -279,42 +279,36 @@ def newpull(feature_branch,author,content,title,issue,base_branch = 'main',updat
     if not commits:
         raise ValueError(f"No commits between {base_branch} and {feature_branch}. Cannot create pull request.")
     
-    # Create the PR
-    where = f"gh pr create --base '{base_branch}' --head '{feature_branch}' --title '{title}'"
-    
+    # Create the PR or update existing one
     if update is not None:
         where = f"gh pr comment {update}"
-    
-    # print(os.popen(f"git branch --set-upstream-to=origin/{base_branch} {feature_branch}").read())
-    
-    # # print(os.popen(f"git pull").read())
+    else:
+        where = f"gh pr create --base '{base_branch}' --head '{feature_branch}' --title '{title}'"
 
-    # where = f"gh pr create --base \'{base_branch}\' --head \'{feature_branch}\' --title \'{title}\'"
-    
-    # if update != None:
-    #     where = f"gh pr comment {update}"
-        
-    cmds = f'''
-            git pull; 
-            {where} --body \
-\'This pull request was automatically created by a GitHub Actions workflow.
+    # Construct command using cat <<EOF to handle special characters safely
+    cmds = f"""
+    git pull;
+    {where} --body "$(cat <<EOF
+This pull request was automatically created by a GitHub Actions workflow.
 
 Data submitted by @{author}
 
 Adding the following new data.
 
-```js
+\`\`\`js
 {content}
-```
+\`\`\`
 
 Resolves #{issue}
-\'
-# --reviewer $GITHUB_REPOSITORY_OWNER
-            '''
-    print('++',cmds)
-    output = subprocess.getoutput(cmds).strip()
-    update_issue(f'New Pull Request: {output}',False)
+EOF
+)"
+    """
 
+    print('++', cmds)
+    output = subprocess.getoutput(cmds).strip()
+    
+    # Add a comment to the issue if necessary
+    update_issue(f'New Pull Request: {output}', False)
 
 def pull_req(feature_branch,author,content,title):
     # gh_token, issue, base_branch
