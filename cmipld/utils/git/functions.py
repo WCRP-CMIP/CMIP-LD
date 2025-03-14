@@ -291,7 +291,6 @@ def newpull(feature_branch, author, content, title, issue, base_branch='main', u
     {where} --body "$(cat <<EOF
 This pull request was automatically created by a GitHub Actions workflow.
 
-Data submitted by @{author}
 
 Adding the following new data.
 
@@ -303,6 +302,7 @@ Resolves #{issue}
 EOF
 )"
     """
+    # Data submitted by @{author}
 
     print('++', cmds)
     output = subprocess.getoutput(cmds).strip()
